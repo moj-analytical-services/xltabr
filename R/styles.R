@@ -9,7 +9,12 @@ add_default_styles <- function (tab) {
     cell <- openxlsx::readWorkbook(wb, rows = r, cols = c, colNames = FALSE, rowNames = FALSE)
     value <- cell[1, 1]
 
-    tab$styles[[value]] <- i
+
+    tab$style_catalogue[[value]] <- list()
+    tab$style_catalogue[[value]]$style <- i$style
+
+    cell <- openxlsx::readWorkbook(wb, rows = r, cols = c + 1, colNames = FALSE, rowNames = FALSE)
+    tab$style_catalogue[[value]]$row_height <- cell[1, 1]
   }
 
   tab
