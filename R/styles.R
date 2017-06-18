@@ -1,5 +1,5 @@
 add_default_styles <- function (tab) {
-  paths <- system.file("extdata", "styles.xlsx", package = "xltabr")
+  path <- system.file("extdata", "styles.xlsx", package = "xltabr")
   wb <- openxlsx::loadWorkbook(path)
   openxlsx::readWorkbook(wb)
 

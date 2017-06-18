@@ -32,6 +32,9 @@ write_title_rows <- function(tab) {
   start_column <- tab$metadata$startcell_column
   ws_name <- tab$data$ws_name
 
+  # How wide?
+  ncols <- df_width(tab)
+
   # This will recycle if necessary
   pairs <- cbind(tab$data$title, tab$data$title_style)
 
@@ -50,7 +53,7 @@ write_title_rows <- function(tab) {
       row_height <- tab$style_catalogue[[pair[2]]]$row_height
 
       openxlsx::writeData(tab$wb, ws_name, title, startRow = write_row, startCol = write_col)
-      openxlsx::addStyle(tab$wb, ws_name, style, rows = write_row, cols=write_col)
+      openxlsx::addStyle(tab$wb, ws_name, style, rows = write_row, cols=write_col:(write_col + ncols - 1))
       openxlsx::setRowHeights(tab$wb, ws_name, rows=write_row, heights=row_height)
 
       tab$metadata$rows_before_df_counter <- tab$metadata$rows_before_df_counter + 1
