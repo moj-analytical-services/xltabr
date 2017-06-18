@@ -64,9 +64,8 @@ autoderive_formats <- function(tab, columns, styles = NULL) {
     lookup <- dplyr::data_frame(indent = seq_along(styles, from=0), meta_formatting_ = paste0("indent_", seq_along(styles, from=0)))
   }
 
-
   tab$data$df_orig <- tab$data$df_orig %>%
-    dplyr::mutate(indent = length(columns) - rowSums(.[columns] == "(all)" )) %>%
+    dplyr::mutate(indent = length(columns) - rowSums(.[columns] == "(all)") - 1) %>%
     dplyr::left_join(lookup, by="indent") %>%
     dplyr::select(-indent)
 
@@ -84,12 +83,9 @@ autoderive_formats <- function(tab, columns, styles = NULL) {
 combine_column_headers <- function(tab, columns) {
 
   # TODO:  This doesn't add a pad, it's to do with aligning right.  We just want to add spaces.
-  get_text_format <- function(x, indent_spaces = 6) {
-    paste0("%", (3 - x) * indent_spaces, "s")
-  }
 
   cols_to_concat = lapply(as.list(columns), as.name)
-  q <- dplyr::quos(paste(!!! cols_to_concat, sep="|'|"))
+  paste_fn <- dplyr::quos(paste(!!!cols_to_concat, sep="|'|"))
 
   get_last <- function(col) {
     elems <- strsplit(col, "\\|'\\|", perl=TRUE)
@@ -103,16 +99,19 @@ combine_column_headers <- function(tab, columns) {
     unlist(last_elem)
   }
 
-
+  add_spaces <- function(sum_margin_cols, header_column) {
+    num_cols <- length(columns)
+    num_spaces <- (num_cols - sum_margin_cols - 1) * 6
+    paste0(strrep(" ", num_spaces), header_column)
+  }
 
   tab$data$df_final <- tab$data$df_final %>%
     dplyr::mutate(sum_margin_cols = rowSums(.[columns] == "(all)" )) %>%
-    dplyr::mutate(text_format = get_text_format(sum_margin_cols)) %>%
-    dplyr::mutate(header_column = !!! q) %>%
+    dplyr::mutate(header_column = !!! paste_fn) %>%
     dplyr::mutate(header_column = gsub("\\(all\\)","", header_column)) %>%
     dplyr::mutate(header_column = get_last(header_column)) %>%
-    dplyr::mutate(header_column = sprintf(text_format, header_column)) %>%
-    dplyr::select(-sum_margin_cols, -text_format) %>%
+    dplyr::mutate(header_column = add_spaces(sum_margin_cols, header_column)) %>%
+    dplyr::select(-sum_margin_cols) %>%
     dplyr::select(.dots = -dplyr::one_of(columns)) %>%
     dplyr::select(header_column, dplyr::everything())
 

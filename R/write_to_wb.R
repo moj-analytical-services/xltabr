@@ -19,7 +19,7 @@ write_to_wb <- function(tab) {
   )
 
 
-  # tab <- apply_styles_to_wb(tab)
+  apply_styles_to_wb(tab)
 
   tab
 }
@@ -52,8 +52,8 @@ write_title_rows <- function(tab) {
       style <- tab$style_catalogue[[pair[2]]]$style
       row_height <- tab$style_catalogue[[pair[2]]]$row_height
 
-      openxlsx::writeData(tab$wb, ws_name, title, startRow = write_row, startCol = write_col)
-      openxlsx::addStyle(tab$wb, ws_name, style, rows = write_row, cols=write_col:(write_col + ncols - 1))
+      openxlsx::writeData(tab$wb, ws_name, title, startRow = write_row, startCol = start_column)
+      openxlsx::addStyle(tab$wb, ws_name, style, rows = write_row, cols=start_column)
       openxlsx::setRowHeights(tab$wb, ws_name, rows=write_row, heights=row_height)
 
       tab$metadata$rows_before_df_counter <- tab$metadata$rows_before_df_counter + 1
