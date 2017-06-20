@@ -3,54 +3,49 @@ sheetExists <- function(wb, ws_name) {
   return(ws_name %in% sheets)
 }
 
+# Get number of columns in the data we've written to the sheet
 df_width <- function(tab) {
   ncol(tab$data$df_final)
 }
 
+get_body_rows <- function(tab) {
 
-get_style <- function(tab, row, col) {
+  start <- tab$metadata$startcell_row + tab$metadata$rows_before_df_counter + tab$metadata$num_header_rows
+  end <- start + nrow(tab$data$df_final) - 1
 
-  filtered <- tab$styles_lookup %>%
-    dplyr::filter(row == row) %>%
-    dplyr::filter(col == col) %>%
-    select(style)
+  start:end
+}
 
-  if (length(filtered) == 1 ) {
-    return(filtered[1,1])
-  } else {
-    return(NULL)
-  }
+get_body_columns <- function(tab) {
+  start <- tab$metadata$startcell_column + tab$metadata$cols_before_df_counter + get_num_header_columns(tab)
+  end <- start + ncol(tab$data$df_final) - get_num_header_columns(tab)
+
+  start:end
+}
+
+get_all_columns <- function(tab) {
+  start <- tab$metadata$startcell_column + tab$metadata$cols_before_df_counter
+  end <- start + ncol(tab$data$df_final) - 1
+
+  start:end
+
+}
+
+#todo
+get_header_columns <- function(tab) {
+  start <- tab$metadata$startcell_column + tab$metadata$cols_before_df_counter
+  end <- start + get_num_header_columns(tab) -1
+
+  start:end
 
 
 
 }
 
-# Takes a style object and updates it based on a se
-update_style <- function(style_old, style_new) {
-
+get_num_header_columns <- function(tab) {
+  length(tab$metadata$header_columns)
 }
 
-# Unfortunately it seems that finding the currently styling of a particular row and column is quite difficult
-# Create a df with a list column that contains all the current styles for all the worksheets that can then easily be lookuped up
-update_styles_lookup <- function(tab) {
-
-  stobs <- tab$wb$styleObjects
-
-  counter <- 1
-
-  style <- list()
-  col <- integer()
-  row <- integer()
-
-  for (stob in stobs) {
-    for (i in seq_along(stob$rows)) {
-      row[counter] <- stob$rows[i]
-      col[counter] <- stob$cols[i]
-      style[counter] <- stob$style
-      counter = counter + 1
-    }
-  }
-
-  tab$styles_lookup <- dplyr::data_frame(col = col, row = row, style = style)
-
+not_null <- function(x) {
+  !(is.null(x))
 }

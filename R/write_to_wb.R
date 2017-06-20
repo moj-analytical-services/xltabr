@@ -4,10 +4,6 @@ write_to_wb <- function(tab) {
 
   ws_name <- tab$data$ws_name
 
-  if (!(sheetExists(tab$wb, ws_name))) {
-    openxlsx::addWorksheet(tab$wb, ws_name, gridLines = FALSE)
-  }
-
   tab <- write_title_rows(tab)
 
   openxlsx::writeData(

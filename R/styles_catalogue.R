@@ -1,3 +1,4 @@
+# Iterate through the default style workbook, adding them to the styles catalogue
 add_default_styles <- function (tab) {
   path <- system.file("extdata", "styles.xlsx", package = "xltabr")
   wb <- openxlsx::loadWorkbook(path)
@@ -8,7 +9,6 @@ add_default_styles <- function (tab) {
     c <- i$cols
     cell <- openxlsx::readWorkbook(wb, rows = r, cols = c, colNames = FALSE, rowNames = FALSE)
     value <- cell[1, 1]
-
 
     tab$style_catalogue[[value]] <- list()
     tab$style_catalogue[[value]]$style <- i$style
