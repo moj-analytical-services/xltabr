@@ -1,5 +1,1 @@
-class, excel_format
-numeric, comma
-integer, comma
-character, text
-Date, date
+class, excel_formatnumeric,"#,##0"integer,"#,##0"character, textDate, date
