@@ -6,4 +6,4 @@ title_style_names <- c("title", "subtitle", "spacer")
 tab <- xltabr::initialise() %>%
   xltabr::add_title(title_text, title_style_names)
 
-xltabr:::title_get_style_names(tab)
+xltabr:::title_get_cell_styles_table(tab)

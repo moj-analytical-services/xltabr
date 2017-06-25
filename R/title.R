@@ -23,7 +23,7 @@ add_title <- function(tab, title_text, title_style_names) {
 
 }
 
-#' Get the column occupied by the title
+#' Get the column occupied by the title in the wb
 title_get_wb_cols <- function(tab) {
 
   num_rows <- length(tab$title$title_text)
@@ -40,7 +40,7 @@ title_get_wb_cols <- function(tab) {
   title_cols
 }
 
-#' Get the rows occupied by the title
+#' Get the rows occupied by the title in the wb
 title_get_wb_rows <- function(tab) {
 
   num_rows <- length(tab$title$title_text)
@@ -59,7 +59,7 @@ title_get_wb_rows <- function(tab) {
 }
 
 #' Create table |row|col|style name| containing the styles names
-title_get_style_names <- function(tab) {
+title_get_cell_styles_table <- function(tab) {
 
   rows <- title_get_wb_rows(tab)
   styles <- tab$title$title_style_names
@@ -68,42 +68,22 @@ title_get_style_names <- function(tab) {
 
   df <- data.frame(row = rows, style_name = styles)
   df <- merge(df, data.frame(col = cols))
+  df <- df[,c("row", "col", "style_name")]
   df
 }
 
-
+#' Write all the required data (but no styles)
 title_write_rows <- function(tab) {
-  # For each title, write and apply style
 
-  start_row <- min(title_get_wb_rows(tab))
-  start_column <- min(title_get_wb_cols(tab))
   ws_name <- tab$misc$ws_name
 
-  # This will recycle if necessary - e.g. if a single stitle style is provided
-  pairs <- cbind(tab$data$title_text, tab$data$title_style_names)
+  col <- min(title_get_wb_cols(tab))
+  rows <- title_get_wb_rows
 
-  nrows <- nrow(pairs)
-  row_counter <- 0
-
-  if (nrows > 0) {
-    for (row_num in 1:nrows) {
-      pair <- pairs[row_num,]
-
-      write_row <- start_row + row_counter
-      write_col <- start_column
-
-      title <- pair[1]
-      style <- tab$style_catalogue[[pair[2]]]$style
-      row_height <- tab$style_catalogue[[pair[2]]]$row_height
-
-      openxlsx::writeData(tab$wb, ws_name, title, startRow = write_row, startCol = start_column)
-
-      tab$metadata$rows_before_df_counter <- tab$metadata$rows_before_df_counter + 1
-      row_counter = row_counter + 1
-    }
+  for (r in rows) {
+    openxlsx::writeData(tab$wb, ws_name, title, startRow = write_row, startCol = start_column)
   }
 
   tab
-
 }
 
