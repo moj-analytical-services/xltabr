@@ -11,20 +11,24 @@ extent_initialise <- function(tab, topleft_row, topleft_col) {
 # Get the rows occupied by the tab
 extent_get_rows <- function(tab) {
 
-  tr <- title_get_rows(tab)
-  tr
+  tr <- title_get_wb_rows(tab)
+  thr <- top_headers_get_wb_rows(tab)
+
+  c(tr,thr)
 }
 
 #Get the cols occupied by the tab
 extent_get_cols <- function(tab) {
 
-  tc <- title_get_cols(tab)
-  tc
+  tc <- title_get_wb_cols(tab)
+  thc <- top_headers_get_wb_cols(tab)
+
+  unique(c(tc, thc))
 
 }
 
 
-extent_get_bottomright_row <- function(tab) {
+extent_get_bottom_wb_row <- function(tab) {
 
   er <- extent_get_rows(tab)
 
@@ -36,7 +40,7 @@ extent_get_bottomright_row <- function(tab) {
 
 }
 
-extent_get_bottomright_col <- function(tab) {
+extent_get_rightmost_wb_col <- function(tab) {
 
   ec <- extent_get_cols(tab)
 

@@ -46,7 +46,6 @@ title_get_wb_rows <- function(tab) {
   num_rows <- length(tab$title$title_text)
 
   tlr <- tab$extent$topleft_row
-  tlc <- tab$extent$topleft_col
 
   if (num_rows == 0) {
     title_rows = integer(0)
@@ -58,8 +57,25 @@ title_get_wb_rows <- function(tab) {
 
 }
 
+#' Get the bottom row of the titles in the wb
+title_get_bottom_wb_row <- function(tab) {
+  title_rows <- title_get_wb_rows(tab)
+  max(c(title_rows, tab$extent$topleft_row))
+}
+
+#' Get the rightmost column of the titles in the wb
+title_get_rightmost_wb_col <- function(tab) {
+  title_cols <- title_get_wb_cols(tab)
+  max(c(title_cols, tab$extent$topleft_col))
+}
+
 #' Create table |row|col|style name| containing the styles names
 title_get_cell_styles_table <- function(tab) {
+
+  if (length(rows) == 0) {
+    df <- data.frame("row" = integer(0), "col" = integer(0), "style_name" = integer(0))
+    return(df)
+  }
 
   rows <- title_get_wb_rows(tab)
   styles <- tab$title$title_style_names
@@ -78,12 +94,14 @@ title_write_rows <- function(tab) {
   ws_name <- tab$misc$ws_name
 
   col <- min(title_get_wb_cols(tab))
-  rows <- title_get_wb_rows
+  rows <- title_get_wb_rows(tab)
 
+  counter <- 1
   for (r in rows) {
-    openxlsx::writeData(tab$wb, ws_name, title, startRow = write_row, startCol = start_column)
+    title <- tab$title$title_text[counter]
+    counter = counter + 1
+    openxlsx::writeData(tab$wb, ws_name, title, startRow = r, startCol = col)
   }
 
-  tab
 }
 
