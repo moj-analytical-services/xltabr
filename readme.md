@@ -11,3 +11,7 @@ The package works best when the input dataframe is the output of a crosstabulati
 ## Getting started
 
 TODO
+
+## Some diagrams
+
+See [here](https://drive.google.com/file/d/0BwYwuy7YhhdxY2hGQnVGNFN6QkE/view?usp=sharing)
