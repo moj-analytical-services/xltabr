@@ -20,7 +20,7 @@ top_headers_initialise <- function(tab) {
 #' @param col_style_names A character vector, with and elemment for each column of the top header.  Each element is a style name. Col styles in inherit from row_styles.
 #'
 #' @export
-add_top_headers <- function(tab, top_headers, col_style_names=NULL, row_style_names="body|top_header_1") {
+add_top_headers <- function(tab, top_headers, col_style_names="", row_style_names="body|top_header_1") {
 
   # Check types and assign the data to top_headers_list.  Each row is an element in the list
   if (typeof(top_headers) == "character") {
@@ -38,5 +38,95 @@ add_top_headers <- function(tab, top_headers, col_style_names=NULL, row_style_na
 
   tab$top_headers$top_headers_row_style_names <- row_style_names
   tab$top_headers$top_headers_col_style_names <- col_style_names
+
+  tab
+
+}
+
+top_headers_get_wb_cols <- function(tab) {
+
+  if (is.null(tab$top_headers$top_headers_list)) {
+    return(integer(0))
+  }
+
+  tlc <- tab$extent$topleft_col
+
+  header_cols_vec <- tab$top_headers$top_headers_list[[1]]
+
+  wb_cols <- seq_along(header_cols_vec) + tlc - 1
+
+  wb_cols
+
+
+}
+
+top_headers_get_wb_rows <- function(tab) {
+
+  offset <- title_get_bottom_wb_row(tab)
+  seq_along(tab$top_headers$top_headers_list) + offset
+
+
+}
+
+top_headers_get_bottom_wb_row <- function(tab) {
+
+  title_bottom <- title_get_bottom_wb_row(tab)
+  th_rows <- top_headers_get_wb_rows(tab)
+
+  max(c(title_bottom, th_rows))
+
+}
+
+top_headers_get_rightmost_wb_col <- function(tab) {
+
+  rightmost_title <- title_get_rightmost_wb_col(tab)
+  th_cols <- top_headers_get_wb_cols
+
+  max(c(rightmost_title, th_cols))
+
+}
+
+#' Create table |row|col|style name| containing the styles names
+top_headers_get_cell_styles_table <- function(tab) {
+
+  rows <- top_headers_get_wb_rows(tab)
+
+  if (length(rows) == 0) {
+    df <- data.frame("row" = integer(0), "col" = integer(0), "style_name" = integer(0))
+    return(df)
+  }
+
+  rs <- tab$top_headers$top_headers_row_style_names
+  df1 <- data.frame(rs, row = rows)
+
+  cs <- tab$top_headers$top_headers_col_style_names
+  cols <-  top_headers_get_wb_cols(tab)
+
+  df2 <- data.frame(cs, col = cols)
+  df <- merge(df1, df2)
+
+  df$style_name <- paste(df$rs, df$cs, sep="|")
+  df$style_name <-  gsub("\\|+$", "", df$style_name, perl=TRUE)
+
+  df[, c("row", "col", "style_name")]
+
+
+}
+
+#' Write all the required data (but no styles)
+top_headers_write_rows <- function(tab) {
+
+  ws_name <- tab$misc$ws_name
+
+  #TODO:check there's something to write before writing
+
+  #This is safe because we want everything to be character
+  data <- t(data.frame(tab$top_headers$top_headers_list))
+
+  col <- min(top_headers_get_wb_cols(tab))
+  row <- min(top_headers_get_wb_rows(tab))
+
+  openxlsx::writeData(tab$wb, ws_name, data, startRow = row, startCol = col, colNames = FALSE)
+
 
 }
