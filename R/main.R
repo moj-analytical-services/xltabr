@@ -6,59 +6,63 @@
 #' @importFrom magrittr %>%
 #' @name %>%#'
 #' @export
-initialise <- function(df, wb = openxlsx::createWorkbook(), ws_name = "Sheet1", startcell_row = 1, startcell_column = 1, column_headers = NULL) {
+initialise <- function(df, wb = openxlsx::createWorkbook(), ws_name = "Sheet1", topleft_row = 1, topleft_col = 1) {
+
+  # Main object
   tab <- list()
-  tab$data <- list()
-  tab$metadata <- list()
-  tab$wb <- wb
 
-  # Default values - functions are provided for the user to overwrite these
-  tab$metadata$num_header_rows <- 1
+  tab <- extent_initialise(tab, topleft_row, topleft_col)
+  tab <- title_initialise(tab)
+  tab <- style_catalogue_initialise(tab)
+  tab <- wb_initialise(tab, wb, ws_name)
 
-  tab$metadata$header_columns <- column_headers
+  tab$misc$ws_name <- ws_name
 
+  tab
 
-  tab$metadata$num_header_rows <- 1
+  # tab$data <- list()
+  # tab$metadata <- list()
+  # tab$wb <- wb
 
-  tab$metadata$startcell_row <- startcell_row
-  tab$metadata$startcell_column <- startcell_column
-
-
-  # Together the following counters keep track of how many rows of space this xltabr takes up
-  # A counter which stores how many rows we've written before writing the core df
-  tab$metadata$rows_before_df_counter <- 0
-
-  # A counter which stores how many rows we've written before after the core df
-  tab$metadata$cols_before_df_counter <- 0
-
-
-  tab$style_catalogue <- list()
-  tab <- add_default_styles(tab)
-
-  tab$styles <- list()
-  tab$styles$title_styles <- NULL
-
-  tab$data$title <- character()
-  tab$data$ws_name <- ws_name
-  if (!(sheetExists(tab$wb, ws_name))) {
-    openxlsx::addWorksheet(tab$wb, ws_name, gridLines = FALSE)
-  }
-
-  tab$data$df_orig <- df
+  # # Default values - functions are provided for the user to overwrite these
+  # tab$metadata$num_header_rows <- 1
+  #
+  # tab$metadata$header_columns <- column_headers
+  #
+  #
+  # tab$metadata$num_header_rows <- 1
+  #
+  # tab$metadata$startcell_row <- startcell_row
+  # tab$metadata$startcell_column <- startcell_column
+  #
+  #
+  # # Together the following counters keep track of how many rows of space this xltabr takes up
+  # # A counter which stores how many rows we've written before writing the core df
+  # tab$metadata$rows_before_df_counter <- 0
+  #
+  # # A counter which stores how many rows we've written before after the core df
+  # tab$metadata$cols_before_df_counter <- 0
+  #
+  #
+  # tab$style_catalogue <- list()
+  # tab <- add_default_styles(tab)
+  #
+  # tab$styles <- list()
+  # tab$styles$title_styles <- NULL
+  #
+  # tab$data$title <- character()
 
   #
-  tab <- preprocess_df_orig_and_create_df_final(tab)
-
-
-  tab
+  # tab$data$df_orig <- df
+  #
+  # #
+  # tab <- preprocess_df_orig_and_create_df_final(tab)
+  #
+  #
+  # tab
 }
 
-#' @export
-add_titles <- function(tab, title = "My title", title_style = "row_header_1") {
-  tab$data$title <- title
-  tab$data$title_style <- title_style
-  tab
-}
+
 
 
 #' Guess row formats from presence of (all) in column headers
