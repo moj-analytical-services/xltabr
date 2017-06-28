@@ -80,7 +80,7 @@ top_headers_get_bottom_wb_row <- function(tab) {
 top_headers_get_rightmost_wb_col <- function(tab) {
 
   rightmost_title <- title_get_rightmost_wb_col(tab)
-  th_cols <- top_headers_get_wb_cols
+  th_cols <- top_headers_get_wb_cols(tab)
 
   max(c(rightmost_title, th_cols))
 
@@ -106,7 +106,7 @@ top_headers_get_cell_styles_table <- function(tab) {
   df <- merge(df1, df2)
 
   df$style_name <- paste(df$rs, df$cs, sep="|")
-  df$style_name <-  gsub("\\|+$", "", df$style_name, perl=TRUE)
+  df$style_name <- remove_leading_trailing_pipe(df$style_name)
 
   df[, c("row", "col", "style_name")]
 
