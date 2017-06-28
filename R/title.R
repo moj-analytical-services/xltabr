@@ -60,7 +60,9 @@ title_get_wb_rows <- function(tab) {
 #' Get the bottom row of the titles in the wb
 title_get_bottom_wb_row <- function(tab) {
   title_rows <- title_get_wb_rows(tab)
-  max(c(title_rows, tab$extent$topleft_row))
+
+  #-1 because if title doesn't exist, the next item will be instructed to write to the row after the title
+  max(c(title_rows, tab$extent$topleft_row - 1))
 }
 
 #' Get the rightmost column of the titles in the wb

@@ -6,3 +6,10 @@ sheetExists <- function(wb, ws_name) {
 not_null <- function(x) {
   !(is.null(x))
 }
+
+
+remove_leading_trailing_pipe <- function(x) {
+  x <-  gsub("\\|+$", "", x, perl=TRUE)
+  x <-  gsub("^\\|+", "", x, perl=TRUE)
+  x
+}

@@ -18,3 +18,7 @@ xltabr:::title_get_cell_styles_table(tab)
 xltabr:::top_headers_get_cell_styles_table(tab)
 openxlsx::saveWorkbook(tab$wb, "testoutput.xlsx")
 
+seq_along(mtcars)
+
+df <- tibble::data_frame(a=1:2, b=c("x", "y"))
+
