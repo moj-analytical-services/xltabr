@@ -68,7 +68,7 @@ title_get_bottom_wb_row <- function(tab) {
 #' Get the rightmost column of the titles in the wb
 title_get_rightmost_wb_col <- function(tab) {
   title_cols <- title_get_wb_cols(tab)
-  max(c(title_cols, tab$extent$topleft_col))
+  max(c(title_cols, tab$extent$topleft_col -1))
 }
 
 #' Create table |row|col|style name| containing the styles names

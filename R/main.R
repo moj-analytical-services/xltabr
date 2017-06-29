@@ -6,7 +6,7 @@
 #' @importFrom magrittr %>%
 #' @name %>%#'
 #' @export
-initialise <- function(df, wb = openxlsx::createWorkbook(), ws_name = "Sheet1", topleft_row = 1, topleft_col = 1) {
+initialise <- function(wb = openxlsx::createWorkbook(), ws_name = "Sheet1", topleft_row = 1, topleft_col = 1) {
 
   # Main object
   tab <- list()
