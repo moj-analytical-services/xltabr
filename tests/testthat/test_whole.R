@@ -39,7 +39,6 @@ test_that("Simple test of dimensions, title", {
   testthat::expect_true(t2)
   testthat::expect_true(t3)
 
-
   # Check the rightmost column is reported correctly
   t1 = xltabr:::title_get_rightmost_wb_col(tab_all_elements_no_offset) == 1
   t2 = xltabr:::title_get_rightmost_wb_col(tab_no_title) == 0
@@ -49,11 +48,27 @@ test_that("Simple test of dimensions, title", {
   testthat::expect_true(t2)
   testthat::expect_true(t3)
 
+  # Check that the cols are reported correctly
+  t1 = xltabr:::title_get_wb_cols(tab_all_elements_no_offset) ==1
+  t2 = xltabr:::title_get_wb_cols(tab_no_title) == integer(0)
+  t3 = xltabr:::title_get_wb_cols(tab_all_elements_offset) == 4
 
-  xltabr:::title_get_rightmost_wb_col(tab)
-  xltabr:::title_get_wb_cols(tab)
-  xltabr:::title_get_wb_rows(tab)
+  testthat::expect_true(t1)
+  testthat::expect_true(t2)
+  testthat::expect_true(t3)
 
+  # Check that the rows are reported correctly
+  t1 = xltabr:::title_get_wb_rows(tab_all_elements_no_offset) == 1:3
+  t2 = xltabr:::title_get_wb_rows(tab_no_title) == integer(0)
+  t3 = xltabr:::title_get_wb_rows(tab_all_elements_offset) == 10:13
+
+  xltabr:::title_get_wb_rows(tab_all_elements_no_offset)
+  xltabr:::title_get_wb_rows(tab_no_title)
+  xltabr:::title_get_wb_rows(tab_all_elements_offset)
+
+  testthat::expect_true(all(t1))
+  testthat::expect_true(t2)
+  testthat::expect_true(all(t3))
 
   xltabr:::title_get_bottom_wb_row(tab_all_elements_offset)
 
