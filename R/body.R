@@ -3,7 +3,7 @@ body_initialise <- function(tab) {
 
   tab$body <- list()
 
-  # body_df contains the original data which was passed to to body, augmented 
+  # body_df contains the original data which was passed to to body, augmented
   # with two additional columns that store styling information, called
   # meta_row_ and meta_left_header_row_.  We create a duplicate that
   # contains only the data that we want to write to the worksheet, called body_df_to_write
@@ -76,8 +76,8 @@ body_get_wb_cols <- function(tab) {
 
   wb_cols
 }
- 
-#' Get the subset of body columns which are left header columns 
+
+#' Get the subset of body columns which are left header columns
 body_get_wb_left_header_cols <- function(tab){
 
   if (is.null(tab$body$body_df)) {
@@ -125,7 +125,7 @@ body_get_rightmost_wb_col <- function(tab) {
 body_get_cell_styles_table <- function(tab) {
 
   # Approach is to start by creating a table of |row|col|body_style|left_header_style|top_header_style
-  # See https://www.draw.io/#G0BwYwuy7YhhdxY2hGQnVGNFN6QkE 
+  # See https://www.draw.io/#G0BwYwuy7YhhdxY2hGQnVGNFN6QkE
 
   r <- xltabr:::body_get_wb_rows(tab)
   c <- xltabr:::body_get_wb_cols(tab)
@@ -142,13 +142,13 @@ body_get_cell_styles_table <- function(tab) {
   if (length(hc_cols) > 0) {
     #a table containing each row and its associated style for the header rows
     df_lhc_r <- data.frame(row = r, left_header_style = tab$body$body_df$meta_left_header_row_, stringsAsFactors = FALSE)
-  
+
     hcs <- data.frame(col = hc_cols)
     df_hcs <- merge(df_lhc_r, hcs) # a df that contains |rowcol|left_header style for all cols and rows of left headers,
-    
+
 
     df <- merge(df, df_hcs, by=c("row", "col"), all.x = TRUE) #All so that we don't drop entries which are not in df_hcs
-    df$left_header_style[is.na(df$left_header_style)] <- "" 
+    df$left_header_style[is.na(df$left_header_style)] <- ""
   }
 
   #Add a final column that includes the column style information - i.e. top header styles
@@ -167,11 +167,11 @@ body_get_cell_styles_table <- function(tab) {
 body_write_rows <- function(tab) {
     ws_name <- tab$misc$ws_name
 
-    data <- tab$body$df_to_write
+    data <- tab$body$body_df_to_write
 
     col <- min(body_get_wb_cols(tab))
     row <- min(body_get_wb_rows(tab))
 
     openxlsx::writeData(tab$wb, ws_name, data, startRow = row, startCol = col, colNames = FALSE)
-    
+
 }

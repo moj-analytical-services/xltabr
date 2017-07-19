@@ -6,7 +6,7 @@ footer_initialise <- function(tab) {
     tab$footer$footer_style_names <- NULL
 
     tab
-    
+
 }
 
 #' Add footers to the tab.  Footer text is provided as a character vector, with each element being a row of the footer
@@ -38,13 +38,13 @@ footer_get_wb_cols <- function(tab) {
         footer_cols <- tlc
     }
 
-    footers_cols 
+    footer_cols
 
 }
 
 
 #' Get the rows occupied by the footer in the wb
-footer_get_wb_rows <- function() {
+footer_get_wb_rows <- function(tab) {
 
   offset <- body_get_bottom_wb_row(tab)
 
@@ -54,7 +54,7 @@ footer_get_wb_rows <- function() {
   if (num_rows == 0) {
     footer_rows = integer(0)
   } else {
-    footer_rows = seq_along(tab$foooter$footer_text) + offset
+    footer_rows = seq_along(tab$footer$footer_text) + offset
   }
 
   footer_rows
@@ -65,8 +65,8 @@ footer_get_bottom_wb_row <- function(tab) {
 
     body_bottom <- body_get_bottom_wb_row(tab)
     footer_rows <- footer_get_wb_rows(tab)
-   
-    max(c(body_bottom, footer_rows)) 
+
+    max(c(body_bottom, footer_rows))
 }
 
 #' Get the rightmost column of the footers in the wb
@@ -100,9 +100,11 @@ footer_write_rows <- function(tab) {
 
   col <- min(footer_get_wb_cols(tab))
   rows <- footer_get_wb_rows(tab)
-
+  print("hi")
+  print(rows)
   counter <- 1
   for (r in rows) {
+    print("hello")
     footer <- tab$footer$footer_text[counter]
     counter = counter + 1
     openxlsx::writeData(tab$wb, ws_name, footer, startRow = r, startCol = col)
