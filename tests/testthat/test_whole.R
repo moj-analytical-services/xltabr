@@ -14,6 +14,10 @@ test_that("Simple test of dimensions, title", {
   path <- system.file("extdata", "test_3x2.csv", package="xltabr")
   df <- readr::read_csv(path)
 
+  # TODO:  Add footers to tests
+  # footer_text <- c("Caveat 1 goes here", "Caveat 2 goes here")
+  # footer_style_names <- c("footer", "footer")
+
   tab_all_elements_no_offset <- xltabr::initialise() %>%
     xltabr::add_title(title_text, title_style_names) %>%
     xltabr::add_top_headers(h_list) %>%
@@ -68,7 +72,6 @@ test_that("Simple test of dimensions, title", {
 
   xltabr:::title_get_bottom_wb_row(tab_all_elements_offset)
 
-
   testthat::expect_true(all(tab_all_elements_no_offset$body$body_df$meta_row_ == c("body", "body", "body") ))
   testthat::expect_true(all(tab_all_elements_no_offset$body$body_df$meta_left_header_row_ == c("left_header_1", "left_header_1", "left_header_1") ))
   testthat::expect_true(all(tab_all_elements_no_offset$body$meta_col_ == c("", "") ))
@@ -77,8 +80,6 @@ test_that("Simple test of dimensions, title", {
   df2 <- xltabr:::body_get_cell_styles_table(tab_all_elements_no_offset)
   tab_all_elements_no_offset$body$body_df
   testthat::expect_true(all(df2$style_name == c("body|left_header_1", "body|left_header_1","body|left_header_1", "body", "body", "body")))
-
-
 
 
 })
