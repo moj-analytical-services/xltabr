@@ -3,9 +3,10 @@ body_initialise <- function(tab) {
 
   tab$body <- list()
 
-  # body_df contains the original data which was passed to to body,
-  # augmented with two additional columns that store styling information, called
-  # meta_row_ and meta_left_header_row_
+  # body_df contains the original data which was passed to to body, augmented 
+  # with two additional columns that store styling information, called
+  # meta_row_ and meta_left_header_row_.  We create a duplicate that
+  # contains only the data that we want to write to the worksheet, called body_df_to_write
   tab$body$body_df<- NULL
   tab$body$body_df_to_write <- NULL #This is the df that's actually written to wb
 
@@ -16,7 +17,8 @@ body_initialise <- function(tab) {
 #' Add a table body (a df) to the tab.
 #'
 #' @param df For a single top_header row, a character vector.  For multiple top_header rows, a list of character vectors.
-#' @param left_header_colnames The columns in the df which are left headers
+#' @param left_header_colnames The names of the columns in the df which are left headers, as opposed to the main body
+#' of the table
 #'
 #' @export
 add_body <- function(tab, df, left_header_colnames = NULL, row_style_names = NULL, left_header_style_names = NULL, col_style_names = NULL) {
@@ -59,6 +61,7 @@ add_body <- function(tab, df, left_header_colnames = NULL, row_style_names = NUL
   tab
 }
 
+#' Body includes body and left header data.
 body_get_wb_cols <- function(tab) {
 
   if (is.null(tab$body$body_df)) {
@@ -72,10 +75,9 @@ body_get_wb_cols <- function(tab) {
   wb_cols <- seq_along(cols_vec) + tlc - 1
 
   wb_cols
-
-
 }
-
+ 
+#' Get the subset of body columns which are left header columns 
 body_get_wb_left_header_cols <- function(tab){
 
   if (is.null(tab$body$body_df)) {
@@ -85,6 +87,9 @@ body_get_wb_left_header_cols <- function(tab){
   tlc <- tab$extent$topleft_col
 
   cols_vec <- seq_along(tab$body$left_header_colnames)
+
+
+
 
   wb_cols <- seq_along(cols_vec) + tlc - 1
 
@@ -97,6 +102,7 @@ body_get_wb_rows <- function(tab) {
   offset <- top_headers_get_bottom_wb_row(tab)
   seq_along(tab$body$body_df[[1]]) + offset
 }
+
 
 
 
@@ -118,32 +124,36 @@ body_get_rightmost_wb_col <- function(tab) {
 #' Create table |row|col|style name| containing the styles names
 body_get_cell_styles_table <- function(tab) {
 
+  # Approach is to start by creating a table of |row|col|body_style|left_header_style|top_header_style
+  # See https://www.draw.io/#G0BwYwuy7YhhdxY2hGQnVGNFN6QkE 
+
   r <- xltabr:::body_get_wb_rows(tab)
   c <- xltabr:::body_get_wb_cols(tab)
   df <- expand.grid(row = r, col = c)
 
   #All cells get body
-  df_br <- data.frame(row = r, body_style = tab$body$body_df$meta_row_)
-  df <- merge(df, df_br, by="row")
+  df_br <- data.frame(row = r, body_style = tab$body$body_df$meta_row_) #br stands for body row
+  df <- merge(df, df_br, by="row") #At this point, df has all row col combos, and the given row style
 
   #Left headers only
   hc_cols <- xltabr:::body_get_wb_left_header_cols(tab)
 
+  #If left header columns actuall exist
   if (length(hc_cols) > 0) {
-    df_hc_r <- data.frame(row = r, left_header_style = tab$body$body_df$meta_left_header_row_, stringsAsFactors = FALSE)
+    #a table containing each row and its associated style for the header rows
+    df_lhc_r <- data.frame(row = r, left_header_style = tab$body$body_df$meta_left_header_row_, stringsAsFactors = FALSE)
+  
     hcs <- data.frame(col = hc_cols)
-    df_hcs <- merge(df_hc_r, hcs)
+    df_hcs <- merge(df_lhc_r, hcs) # a df that contains |rowcol|left_header style for all cols and rows of left headers,
+    
 
-    df <- merge(df, df_hcs, by=c("row", "col"), all.x = TRUE)
-    df$left_header_style[is.na(df$left_header_style)] <- ""
+    df <- merge(df, df_hcs, by=c("row", "col"), all.x = TRUE) #All so that we don't drop entries which are not in df_hcs
+    df$left_header_style[is.na(df$left_header_style)] <- "" 
   }
 
-  #Columns
+  #Add a final column that includes the column style information - i.e. top header styles
   df_th <- data.frame(col = c, top_header_style = tab$body$meta_col_)
   df <- merge(df, df_th, by="col")
-
-
-
 
   df$style_name <- paste(df$body_style, df$left_header_style, df$top_header_style, sep="|")
   df <- df[, c("row", "col", "style_name")]
