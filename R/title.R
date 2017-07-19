@@ -83,9 +83,8 @@ title_get_cell_styles_table <- function(tab) {
   styles <- tab$title$title_style_names
   cols <- title_get_wb_cols(tab)
 
-
   df <- data.frame(row = rows, style_name = styles)
-  df <- merge(df, data.frame(col = cols))
+  df <- merge(df, data.frame(col = cols)) #merge with no join column creates cartesian product
   df <- df[,c("row", "col", "style_name")]
   df
 }
