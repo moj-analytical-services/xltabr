@@ -163,5 +163,15 @@ body_get_cell_styles_table <- function(tab) {
 
 }
 
-body_write_rows <- function() {
+#' Write all the required data (by no styles)
+body_write_rows <- function(tab) {
+    ws_name <- tab$misc$ws_name
+
+    data <- tab$body$df_to_write
+
+    col <- min(body_get_wb_cols(tab))
+    row <- min(body_get_wb_rows(tab))
+
+    openxlsx::writeData(tab$wb, ws_name, data, startRow = row, startCol = col, colNames = FALSE)
+    
 }

@@ -120,7 +120,7 @@ top_headers_write_rows <- function(tab) {
 
   #TODO:check there's something to write before writing
 
-  #This is safe because we want everything to be character
+  #The transpose operation is safe because we want everything to be character
   data <- t(data.frame(tab$top_headers$top_headers_list))
 
   col <- min(top_headers_get_wb_cols(tab))
