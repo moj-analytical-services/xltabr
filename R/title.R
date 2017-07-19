@@ -28,7 +28,7 @@ title_get_wb_cols <- function(tab) {
 
   num_rows <- length(tab$title$title_text)
 
-  #TODO: If body exists, then use body_get_wb_cols here
+  #TODO: If body exists, then use body_get_wb_cols here, because this means we can merge title cells to the right width
   tlc <- tab$extent$topleft_col
 
   if (num_rows == 0) {
