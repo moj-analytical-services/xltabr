@@ -88,9 +88,6 @@ body_get_wb_left_header_cols <- function(tab){
 
   cols_vec <- seq_along(tab$body$left_header_colnames)
 
-
-
-
   wb_cols <- seq_along(cols_vec) + tlc - 1
 
   wb_cols
