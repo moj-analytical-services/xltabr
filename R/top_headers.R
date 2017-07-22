@@ -79,10 +79,14 @@ top_headers_get_bottom_wb_row <- function(tab) {
 
 top_headers_get_rightmost_wb_col <- function(tab) {
 
-  rightmost_title <- title_get_rightmost_wb_col(tab)
   th_cols <- top_headers_get_wb_cols(tab)
 
-  max(c(rightmost_title, th_cols))
+  if (length(th_cols) == 0) {
+    return(tab$extent$topleft_col - 1)
+  } else {
+    return(max(th_cols))
+  }
+
 
 }
 
