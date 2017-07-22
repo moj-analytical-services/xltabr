@@ -1,1 +1,5 @@
-class, excel_formatnumeric,"#,##0"integer,"#,##0"character, textDate, date
+class, excel_format
+numeric,floating1
+integer,integer1
+character, character1
+Date, date1

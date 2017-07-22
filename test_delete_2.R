@@ -50,6 +50,8 @@ tab <- xltabr::initialise() %>%
   xltabr::add_body(df) %>%
   xltabr::add_footer(footer_text, footer_style_names)
 
+xltabr:::combine_all_styles(tab)
+
 xltabr:::title_write_rows(tab)
 xltabr:::top_headers_write_rows(tab)
 xltabr:::body_write_rows(tab)
