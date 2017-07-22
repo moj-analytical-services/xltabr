@@ -100,11 +100,8 @@ footer_write_rows <- function(tab) {
 
   col <- min(footer_get_wb_cols(tab))
   rows <- footer_get_wb_rows(tab)
-  print("hi")
-  print(rows)
   counter <- 1
   for (r in rows) {
-    print("hello")
     footer <- tab$footer$footer_text[counter]
     counter = counter + 1
     openxlsx::writeData(tab$wb, ws_name, footer, startRow = r, startCol = col)
