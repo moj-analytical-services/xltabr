@@ -15,13 +15,23 @@ style_catalogue_xlsx_import <- function(tab, path) {
     r <- i$rows
     c <- i$cols
     cell <- openxlsx::readWorkbook(wb, rows = r, cols = c, colNames = FALSE, rowNames = FALSE)
+
     value <- cell[1, 1]
 
-    tab$style_catalogue[[value]] <- list()
-    tab$style_catalogue[[value]]$style <- i$style
+    tmp_list <- list()
+    tmp_list$style <- i$style
 
     cell <- openxlsx::readWorkbook(wb, rows = r, cols = c + 1, colNames = FALSE, rowNames = FALSE)
-    tab$style_catalogue[[value]]$row_height <- cell[1, 1]
+    tmp_list$row_height <- cell[1, 1]
+
+    style_key <- create_style_key(tmp_list)
+
+    # If the style_key does not exist in the style_dictionary values then S4 object to style catalogue
+    if (!style_key %in% unlist(tab$style_dictionary)){
+      tab$style_catalogue[[style_key]] <- tmp_list
+    }
+    # Always log the key value pair in the style dictionary
+    tab$style_dictionary[[value]] <- style_key
   }
 
   tab
@@ -118,3 +128,4 @@ build_style <- function(cell_style_definition){
   }
   return (create_style_key(previous_style))
 }
+
