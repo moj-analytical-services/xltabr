@@ -66,57 +66,6 @@ xltabr:::title_write_rows(tab)
 xltabr:::top_headers_write_rows(tab)
 
 tab <- xltabr:::add_styles_to_wb(tab, add_from = c("title","headers","body"))
+
 openxlsx::saveWorkbook(tab$wb, "testoutput.xlsx")
 
-
-### TESTING APPLYING STYLES
-title_cells <- xltabr:::title_get_cell_styles_table(tab)
-unique_styles <- title_cells %>%
-  dplyr::select(style_name) %>%
-  dplyr::distinct()
-unique_title_styles <- as.character(unique_styles[,1])
-
-table_cells <- xltabr:::top_headers_get_cell_styles_table(tab)
-unique_styles <- table_cells %>%
-  dplyr::select(style_name) %>%
-  dplyr::distinct()
-unique_cell_styles <- as.character(unique_styles[,1])
-
-# take each cell style definition, convert it to a style_key and then add style_key to style_catalogue
-for (style in unique_cell_styles){
-  tab <- xltabr:::add_style_defintion_to_catelogue(tab, style)
-}
-
-
-# NEW BIT
-sc <- tab$style_catalogue
-sc_names <- names(sc)
-names(sc) <- NULL
-sc_values <- unlist(sc)
-
-sc_table <- data.frame(style_name = sc_names, style_key = sc_values, stringsAsFactors = FALSE)
-
-table_cells <- dplyr::left_join(table_cells, y = sc_table, by = "style_name")
-
-unique_styles <- table_cells %>%
-  dplyr::select(style_key) %>%
-  dplyr::distinct()
-unique_style_keys <- as.character(unique_styles[,1])
-
-# get a unique set of style_keys
-
-# Need to turn below into function once working
-# First get a unique list of styles that are used in final workbook
-style_key <- unique_style_keys[1]
-for (sk in unique_style_keys){
-  row_col_styles <- table_cells %>% dplyr::filter(style_key == sk)
-  rows <- row_col_styles$row
-  cols <- row_col_styles$col
-
-  created_style <- xltabr:::convert_style_object(sk, convert_to_S4 = TRUE)
-  openxlsx::addStyle(tab$wb, tab$wb$sheet_names[1], created_style, rows, cols)
-}
-# names(tab$style_catalogue)
-# names(tab$style_dictionary)
-#
-openxlsx::saveWorkbook(tab$wb, "testoutput.xlsx")

@@ -155,8 +155,12 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
     }
 
     # Do convertions for correct createStyle inputs
+    font_colour_input <- NULL
     if(!is.null(style[["fontColour"]])){
-      if(style[["fontColour"]] == "1") style[["fontColour"]] <- "black"
+      # if(style[["fontColour"]] "1") style[["fontColour"]] <- "black"
+      if(suppressWarnings(is.na(as.integer(style[["fontColour"]])))){
+        font_colour_input <- style[["fontColour"]]
+      }
     }
 
     if(!is.null(style[["fontSize"]])){
@@ -170,7 +174,7 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
     out_style <- openxlsx::createStyle(
       fontName = style[["fontName"]],
       fontSize = style[["fontSize"]],
-      fontColour = style[["fontColour"]],
+      fontColour = font_colour_input,
       numFmt = "GENERAL",
       border = NULL,
       borderColour = getOption("openxlsx.borderColour", "black"),
@@ -183,6 +187,11 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
       wrapText = FALSE,
       textRotation = NULL,
       indent = style[["indent"]])
+
+    if(suppressWarnings(!is.na(as.integer(style[["fontColour"]])))){
+      out_style$fontColour <- c(theme = style[["fontColour"]])
+    }
+
     return(out_style)
   } else {
 
