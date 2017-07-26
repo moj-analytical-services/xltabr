@@ -25,3 +25,15 @@ initialise <- function(wb = openxlsx::createWorkbook(), ws_name = "Sheet1", topl
 
 
 }
+
+initialise_debug <- function(wb = openxlsx::createWorkbook(), ws_name = "Sheet1", topleft_row = 1, topleft_col = 1) {
+
+  # Main object
+  tab <- list()
+
+  tab <- extent_initialise(tab, topleft_row, topleft_col)
+  tab <- title_initialise(tab)
+  tab <- body_initialise(tab)
+
+  tab
+}
