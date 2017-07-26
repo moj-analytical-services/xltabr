@@ -29,7 +29,7 @@ add_body <- function(tab, df, left_header_colnames = NULL, row_style_names = NUL
 
   # Establish 'meta' columns, which contain style names for each row (and will not be written to the wb)
   tab$body$body_df$meta_row_ <- "body" # Fill whole col
-  tab$body$body_df$meta_left_header_row_ <- "left_header_1" #Fill whole col
+  tab$body$body_df$meta_left_header_row_ <- "body|left_header" #Fill whole col
 
   # The meta_ columns deal with styling that varies by row.
   # We also need to set up a vector that contains a style_name per column
