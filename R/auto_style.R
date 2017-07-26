@@ -10,8 +10,6 @@
 #' @export
 auto_style_number_formatting <- function(tab, overrides = list()) {
 
-
-
   # Want to add number style to meta_col_ on body only -  tab$body$meta_col_
   col_classes <- sapply(tab$body$body_df_to_write, class)
 
@@ -48,31 +46,25 @@ auto_style_number_formatting <- function(tab, overrides = list()) {
 }
 
 
+
 # Uses the presence of '(all)' in the leftmost columns of data to detect that these
 # columns are really left headers rather than body colummns
-# auto_style_left_headers <- function(tab) {
-#
-#
-#
-#   ab$body$body_df_to_write
+auto_style_body_rows <- function(tab, indent = FALSE, keyword = "(all)") {
 
-  # Work from the left of the table finding columns
+  # If headers haven't been provided by the user, attempt to autodetect them
+  if (is.null(tab$body$left_header_colnames)) {
+    tab <- auto_detect_left_headers(tab)
+  }
 
-  # if (is.null(styles)) {
-  #   lookup <- dplyr::data_frame(indent = 0:10, meta_formatting_ = paste0("indent_", 0:10))
-  # } else {
-  #   lookup <- dplyr::data_frame(indent = seq_along(styles, from=0), meta_formatting_ = paste0("indent_", seq_along(styles, from=0)))
-  # }
+  # Autodetect the 'summary level' e.g. header 1 is most prominent, header 2 next etc.
+  tab <- auto_detect_body_title_level(tab, keyword)
 
-  # tab$data$df_orig <- tab$data$df_orig %>%
-  #   dplyr::mutate(indent = length(header_columns) - rowSums(.[header_columns] == "(all)") - 1) %>%
-  #   dplyr::left_join(lookup, by="indent") %>%
-  #   dplyr::select(-indent)
 
-#   tab
-#
-# }
+  tab
 
+}
+
+# Auto detect which of the columns are left headers
 auto_detect_left_headers <- function(tab, keyword = "(all)") {
   # Looking to write tab$body$left_header_colnames
 
@@ -111,6 +103,51 @@ auto_detect_left_headers <- function(tab, keyword = "(all)") {
 
 }
 
-# auto_style_based_on_number_of_all() {
-#
-# }
+get_inv_title_count <- function(left_headers_df, keyword) {
+
+  to_count <- (left_headers_df == keyword)
+  all_count <- rowSums(to_count)
+
+  #rows with higher (all) count should have a lower title value because title_1 is the most emphasized
+  all_count_inv <- max(all_count) - all_count + 1
+  all_count_inv[all_count == 0] <- NA
+
+  all_count_inv
+
+}
+
+# Autodetect the 'title level' e.g. title 1 is most prominent, title 2 next etc.
+auto_detect_body_title_level <- function(tab, keyword = "(all)") {
+
+  left_headers_df <- tab$body$body_df_to_write[tab$body$left_header_colnames]
+
+  all_count_inv <- get_inv_title_count(left_headers_df, keyword)
+
+  # Append title level to both meta_row_ and meta_left_title_row_
+  col <- tab$body$body_df$meta_row_[not_na(all_count_inv)]
+  concat <- all_count_inv[not_na(all_count_inv)]
+  concat <- paste0("title_", concat)
+  tab$body$body_df[not_na(all_count_inv),"meta_row_"] <- paste(col, concat,sep = "|")
+
+  col <- tab$body$body_df$meta_left_header_row_[not_na(all_count_inv)]
+  concat <- all_count_inv[not_na(all_count_inv)]
+  concat <- paste0("title_", concat)
+  tab$body$body_df[not_na(all_count_inv),"meta_left_header_row_"] <- paste(col, concat,sep = "|")
+
+  tab
+
+}
+
+
+
+# Consolidate the header columns into one, taking the rightmost value and applying indent
+# e.g. a | b | (all) -> b
+auto_style_indent(tab) {
+
+  # scan from right to left finding first column that does not contain (all)
+  left_headers_df <- tab$body$body_df_to_write[tab$body$left_header_colnames]
+
+
+
+
+}

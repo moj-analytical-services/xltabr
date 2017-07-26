@@ -69,5 +69,6 @@ xltabr:::top_headers_write_rows(tab)
 
 tab <- xltabr:::add_styles_to_wb(tab, add_from = c("title","headers","body"))
 
+openxlsx::openXL(tab$wb)
 openxlsx::saveWorkbook(tab$wb, "testoutput.xlsx")
 
