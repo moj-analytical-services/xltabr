@@ -7,6 +7,10 @@ not_null <- function(x) {
   !(is.null(x))
 }
 
+not_na <- function(x) {
+  !(is.na(x))
+}
+
 
 remove_leading_trailing_pipe <- function(x) {
   x <-  gsub("\\|+$", "", x, perl=TRUE)
