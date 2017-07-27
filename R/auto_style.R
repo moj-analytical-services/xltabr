@@ -138,8 +138,6 @@ auto_detect_body_title_level <- function(tab, keyword = "(all)") {
 
 }
 
-
-
 # Consolidate the header columns into one, taking the rightmost value and applying indent
 # e.g. a | b | (all) -> b
 auto_style_indent <- function(tab, keyword = "(all)") {
