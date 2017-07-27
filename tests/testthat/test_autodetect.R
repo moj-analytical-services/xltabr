@@ -38,9 +38,11 @@ test_that("Test meta columns are populated", {
   tab <- xltabr::initialise() %>%
     xltabr::add_body(df) %>%
     xltabr:::auto_detect_left_headers() %>%
-    xltabr:::auto_style_indent()
+    xltabr:::auto_style_body_rows() %>%
+    xltabr:::auto_style_indent() %>%
+    xltabr::auto_style_number_formatting()
 
-  lapply(tab$body$body_df_to_write, class)
 
+  xltabr:::body_get_cell_styles_table(tab)
 
 })

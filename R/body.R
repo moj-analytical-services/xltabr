@@ -125,34 +125,35 @@ body_get_cell_styles_table <- function(tab) {
   # See https://www.draw.io/#G0BwYwuy7YhhdxY2hGQnVGNFN6QkE
 
   r <- xltabr:::body_get_wb_rows(tab)
-  c <- xltabr:::body_get_wb_cols(tab)
-  df <- expand.grid(row = r, col = c)
+  c_all_body <- xltabr:::body_get_wb_cols(tab)
+  #Left headers only
+  lh_cols <- xltabr:::body_get_wb_left_header_cols(tab)
+
+  #c_all_body is all body cells - for body styling we need to remove header rows
+  c_body_no_lh <- c_all_body[!(c_all_body %in% lh_cols)]
+
+  df <- expand.grid(row = r, col = c_body_no_lh)
 
   #All cells get body
-  df_br <- data.frame(row = r, body_style = tab$body$body_df$meta_row_) #br stands for body row
-  df <- merge(df, df_br, by="row") #At this point, df has all row col combos, and the given row style
+  df_br <- data.frame(row = r, style_name = tab$body$body_df$meta_row_) #br stands for body row
+  df <- merge(df, df_br, by="row") #At this point, df has all row col combos for the body, but not the left columns, and the given row style
 
-  #Left headers only
-  hc_cols <- xltabr:::body_get_wb_left_header_cols(tab)
-
-  #If left header columns actuall exist
-  if (length(hc_cols) > 0) {
+  #If left header columns actually exist
+  if (length(lh_cols) > 0) {
     #a table containing each row and its associated style for the header rows
-    df_lhc_r <- data.frame(row = r, left_header_style = tab$body$body_df$meta_left_header_row_, stringsAsFactors = FALSE)
+    df_lhc_r <- data.frame(row = r, style_name = tab$body$body_df$meta_left_header_row_, stringsAsFactors = FALSE)
 
-    hcs <- data.frame(col = hc_cols)
+    hcs <- data.frame(col = lh_cols)
     df_hcs <- merge(df_lhc_r, hcs) # a df that contains |rowcol|left_header style for all cols and rows of left headers,
 
-
-    df <- merge(df, df_hcs, by=c("row", "col"), all.x = TRUE) #All so that we don't drop entries which are not in df_hcs
-    df$left_header_style[is.na(df$left_header_style)] <- ""
+    df <- rbind(df, df_hcs)
   }
 
   #Add a final column that includes the column style information - i.e. top header styles
-  df_th <- data.frame(col = c, top_header_style = tab$body$meta_col_)
+  df_th <- data.frame(col = c_all_body, top_header_style = tab$body$meta_col_)
   df <- merge(df, df_th, by="col")
 
-  df$style_name <- paste(df$body_style, df$left_header_style, df$top_header_style, sep="|")
+  df$style_name <- paste(df$style_name, df$top_header_style, sep="|")
   df <- df[, c("row", "col", "style_name")]
   df$style_name <- remove_leading_trailing_pipe(df$style_name)
 
