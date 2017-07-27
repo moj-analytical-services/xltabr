@@ -6,7 +6,14 @@ tab <- xltabr::initialise() %>%
   xltabr::add_body(df) %>%
   xltabr:::auto_detect_left_headers() %>%
   xltabr:::auto_detect_body_title_level() %>%
-  xltabr:::auto_style_indent() %>%
-  xltabr:::auto_style_number_formatting()
+  xltabr:::auto_style_indent()
 
+
+
+xltabr:::body_write_rows(tab)
 xltabr:::body_get_cell_styles_table(tab)
+
+
+tab <- xltabr:::add_styles_to_wb(tab, add_from = c("body"))
+
+openxlsx::openXL(tab$wb)
