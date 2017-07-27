@@ -142,12 +142,53 @@ auto_detect_body_title_level <- function(tab, keyword = "(all)") {
 
 # Consolidate the header columns into one, taking the rightmost value and applying indent
 # e.g. a | b | (all) -> b
-auto_style_indent(tab) {
+auto_style_indent <- function(tab, keyword = "(all)") {
+
+  if (is.null(tab$body$left_header_colnames )) {
+    Stop("You've called auto_style_indent, but there are no left_header_colnames to work with/")
+  }
 
   # scan from right to left finding first column that does not contain (all)
   left_headers_df <- tab$body$body_df_to_write[tab$body$left_header_colnames]
 
+  # count '(all)'
+  to_count <- (left_headers_df == keyword)
+  all_count <- rowSums(to_count)
+
+  # paste together all left headers
+  concat <- do.call(paste, c(left_headers_df, sep="=|="))
+  concat <- gsub("\\(all\\)","", concat)
+  # Get last
+  #|(^|)|(all)
+  elems <- strsplit(concat, "=\\|=", perl=TRUE)
+
+  last_elem <- lapply(elems, function(x) {
+    x <- x[x != ""]
+    if (length(x) == 0) {
+      x <- ""
+    }
+    tail(x,1)
+  })
+
+  new_left_headers <- unlist(last_elem)
+
+  # Remove original left_header_columns
+  cols <- !(names(tab$body$body_df_to_write) %in% tab$body$left_header_colnames)
+  tab$body$body_df_to_write <- tab$body$body_df_to_write[cols]
+  tab$body$body_df_to_write  <- cbind(new_left_headers = new_left_headers, tab$body$body_df_to_write, stringsAsFactors = FALSE)
+  tab$body$left_header_colnames <- "new_left_headers"
+
+  #Set meta_left_header_row_ to include relevant indents
+  all_count_inv <- get_inv_title_count(left_headers_df, keyword = keyword)
+
+  col <- tab$body$body_df$meta_left_header_row_[not_na(all_count_inv)]
+  concat <- all_count_inv[not_na(all_count_inv)]
+  concat <- paste0("indent_", concat)
+  tab$body$body_df[not_na(all_count_inv),"meta_left_header_row_"] <- paste(col, concat,sep = "|")
+
+  # Update body$meta_col_
+  tab$body$meta_col_ <- c("new_left_headers" = "", tab$body$meta_col_[cols])
 
 
-
+  tab
 }
