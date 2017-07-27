@@ -31,5 +31,16 @@ test_that("Test meta columns are populated", {
 
   expect_true(t1)
 
+  path <- system.file("extdata", "test_autodetect.csv", package="xltabr")
+
+  df <- readr::read_csv(path)
+
+  tab <- xltabr::initialise() %>%
+    xltabr::add_body(df) %>%
+    xltabr:::auto_detect_left_headers() %>%
+    xltabr:::auto_style_indent()
+
+  lapply(tab$body$body_df_to_write, class)
+
 
 })
