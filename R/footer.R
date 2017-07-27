@@ -78,6 +78,8 @@ footer_get_rightmost_wb_col <- function(tab) {
 #' Create table |row|col|style name| containing the styles names
 footer_get_cell_styles_table <- function(tab) {
 
+  rows <- footer_get_wb_rows(tab)
+
   if (length(rows) == 0) {
     df <- data.frame("row" = integer(0), "col" = integer(0), "style_name" = integer(0))
     return(df)
