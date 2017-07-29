@@ -1,5 +1,5 @@
-[![Coverage Status](https://img.shields.io/codecov/c/github/moj-analytical-services/xltabr/master.svg)](https://codecov.io/github/moj-analytical-services/xltabr?branch=master)
-[![Build Status](https://travis-ci.org/moj-analytical-services/xltabr.svg?branch=master)](https://travis-ci.org/moj-analytical-services/xltabr)
+[![Coverage Status](https://img.shields.io/codecov/c/github/moj-analytical-services/xltabr/dev.svg)](https://codecov.io/github/moj-analytical-services/xltabr?branch=dev)
+[![Build Status](https://travis-ci.org/moj-analytical-services/xltabr.svg?branch=dev)](https://travis-ci.org/moj-analytical-services/xltabr)
 # xltabr:  An R package for writing formatted cross tabulations to Excel using openxlsx
 
 ## Introduction
