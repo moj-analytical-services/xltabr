@@ -14,7 +14,7 @@ footer_initialise <- function(tab) {
 #' @param footer_text A character vector.  Each element is a row of the footer
 #' @param footer_style_names A character vector.  Each elemment is a style_name
 #' @export
-add_footer <- function(tab, footer_text, footer_style_names) {
+add_footer <- function(tab, footer_text, footer_style_names = "footer") {
 
    tab$footer$footer_text <- footer_text
    tab$footer$footer_style_names <- footer_style_names
