@@ -33,7 +33,7 @@ footer_get_wb_cols <- function(tab) {
     tlc <- tab$extent$topleft_col
 
     if (num_rows == 0) {
-        footer_cols = integer(0)
+        footer_cols = NULL
     } else {
         footer_cols <- tlc
     }
@@ -52,7 +52,7 @@ footer_get_wb_rows <- function(tab) {
 
 
   if (num_rows == 0) {
-    footer_rows = integer(0)
+    footer_rows = NULL
   } else {
     footer_rows = seq_along(tab$footer$footer_text) + offset
   }

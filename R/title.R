@@ -32,7 +32,7 @@ title_get_wb_cols <- function(tab) {
   tlc <- tab$extent$topleft_col
 
   if (num_rows == 0) {
-    title_cols = integer(0)
+    title_cols = NULL
   } else {
     title_cols <- tlc
   }
@@ -48,7 +48,7 @@ title_get_wb_rows <- function(tab) {
   tlr <- tab$extent$topleft_row
 
   if (num_rows == 0) {
-    title_rows = integer(0)
+    title_rows = NULL
   } else {
     title_rows = tlr:(tlr + num_rows-1)
   }
