@@ -13,7 +13,6 @@ h_list <- list( r1,  r2)
 path <- system.file("extdata", "test_3x2.csv", package="xltabr")
 suppressMessages(df <- readr::read_csv(path))
 
-# TODO:  Add footers to tests
 footer_text <- c("Caveat 1 goes here", "Caveat 2 goes here")
 footer_style_names <- c("footer", "footer")
 
@@ -40,12 +39,6 @@ tab_no_top_headers <- xltabr::initialise() %>%
 
 
 test_that("Simple test of dimensions, title", {
-
-
-
-  #--------------------
-  # Check titles reported correctly
-  #--------------------
 
   # Check bottom row is reported correctly
   t1 = xltabr:::title_get_bottom_wb_row(tab_all_elements_no_offset) == 3
@@ -89,14 +82,6 @@ test_that("Simple test of dimensions, title", {
 
 test_that("Simple test of dimensions, top_header", {
 
-
-
-
-
-  #--------------------
-  #Check top header reported correctly
-  #--------------------
-
   # Check bottom row is reported correctly
   t1 = xltabr:::top_headers_get_bottom_wb_row(tab_all_elements_no_offset) == 5
   t2 = xltabr:::top_headers_get_bottom_wb_row(tab_no_title) == 2
@@ -136,19 +121,44 @@ test_that("Simple test of dimensions, top_header", {
 
 })
 
+test_that("Simple test of dimensions, body", {
 
-test_that("Simple style test", {
-  #--------------------
-  # Test styles derived correctly
-  #--------------------
+  # Check bottom row is reported correctly
+  t1 = xltabr:::body_get_bottom_wb_row(tab_all_elements_no_offset) == 8
+  t2 = xltabr:::body_get_bottom_wb_row(tab_no_title) == 5
+  t3 = xltabr:::body_get_bottom_wb_row(tab_all_elements_offset) == 17
 
-  df2 <- xltabr:::body_get_cell_styles_table(tab_all_elements_no_offset)
-  df2
-  tab_all_elements_no_offset$body$body_df
-  testthat::expect_true(all(df2$style_name == c("body|left_header", "body|left_header","body|left_header", "body", "body", "body")))
+  testthat::expect_true(t1)
+  testthat::expect_true(t2)
+  testthat::expect_true(t3)
 
-  testthat::expect_true(all(tab_all_elements_no_offset$body$body_df$meta_row_ == c("body", "body", "body") ))
-  testthat::expect_true(all(tab_all_elements_no_offset$body$body_df$meta_left_header_row_ == c("body|left_header", "body|left_header", "body|left_header") ))
-  testthat::expect_true(all(tab_all_elements_no_offset$body$meta_col_ == c("", "") ))
+  # Check the rightmost column is reported correctly
+  t1 = xltabr:::body_get_rightmost_wb_col(tab_all_elements_no_offset) == 2
+  t2 = xltabr:::body_get_rightmost_wb_col(tab_no_top_headers) == 2
+  t3 = xltabr:::body_get_rightmost_wb_col(tab_all_elements_offset) == 5
+
+  testthat::expect_true(t1)
+  testthat::expect_true(t2)
+  testthat::expect_true(t3)
+
+  # Check that the cols are reported correctly
+  t1 = all(xltabr:::body_get_wb_cols(tab_all_elements_no_offset) == 1:2)
+
+  t2 = all(xltabr:::body_get_wb_cols(tab_no_top_headers) == 1:2)  #Because you can't do integer(0) == integer(0)
+  t3 = all(xltabr:::body_get_wb_cols(tab_all_elements_offset) == 4:5)
+
+  testthat::expect_true(t1)
+  testthat::expect_true(t2)
+  testthat::expect_true(t3)
+
+  # Check that the rows are reported correctly
+  t1 = xltabr:::body_get_wb_rows(tab_all_elements_no_offset) == 6:8
+  t2 = all(xltabr:::body_get_wb_rows(tab_no_top_headers) == 4:6)
+  t3 = xltabr:::body_get_wb_rows(tab_all_elements_offset) == 15:17
+
+  testthat::expect_true(all(t1))
+  testthat::expect_true(t2)
+  testthat::expect_true(all(t3))
 
 })
+
