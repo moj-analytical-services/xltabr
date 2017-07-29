@@ -10,12 +10,12 @@ test_that("Test meta columns are populated", {
     xltabr::add_body(df, left_header_colnames = "a")
 
   testthat::expect_true(all(tab$body$body_df$meta_row_ == c("body", "body") ))
-  testthat::expect_true(all(tab$body$body_df$meta_left_header_row_ == c("left_header_1", "left_header_1") ))
+  testthat::expect_true(all(tab$body$body_df$meta_left_header_row_ == c("body|left_header", "body|left_header") ))
   testthat::expect_true(all(tab$body$meta_col_ == c("", "") ))
 
   # Test styles derived correctly
   df2 <- xltabr:::body_get_cell_styles_table(tab)
-  testthat::expect_true(all(df2$style_name == c("body|left_header_1", "body|left_header_1", "body", "body")))
+  testthat::expect_true(all(df2$style_name == c("body|left_header", "body|left_header", "body", "body")))
 
 
 
