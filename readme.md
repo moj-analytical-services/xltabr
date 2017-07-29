@@ -12,7 +12,7 @@ The package works best when the input dataframe is the output of a crosstabulati
 
 ## Getting started
 
-TODO
+TODO: Auto generate this readme from a rmd
 
 ## Some diagrams
 
