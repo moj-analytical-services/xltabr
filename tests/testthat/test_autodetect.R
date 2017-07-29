@@ -1,4 +1,4 @@
-context("Test body")
+context("Test autodetection")
 
 test_that("Test meta columns are populated", {
 
