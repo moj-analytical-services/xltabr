@@ -60,7 +60,7 @@ test_that("Simple test of dimensions, title", {
 
   # Check that the cols are reported correctly
   t1 = xltabr:::title_get_wb_cols(tab_all_elements_no_offset) == 1
-  t2 = identical(xltabr:::title_get_wb_cols(tab_no_title), integer(0)) #Because you can't do integer(0) == integer(0)
+  t2 = is.null(xltabr:::title_get_wb_cols(tab_no_title))
   t3 = xltabr:::title_get_wb_cols(tab_all_elements_offset) == 4
 
   testthat::expect_true(t1)
@@ -69,7 +69,7 @@ test_that("Simple test of dimensions, title", {
 
   # Check that the rows are reported correctly
   t1 = xltabr:::title_get_wb_rows(tab_all_elements_no_offset) == 1:3
-  t2 = identical(xltabr:::title_get_wb_rows(tab_no_title) ,integer(0))
+  t2 = is.null(xltabr:::title_get_wb_rows(tab_no_title) )
   t3 = xltabr:::title_get_wb_rows(tab_all_elements_offset) == 10:12
 
   testthat::expect_true(all(t1))
@@ -102,7 +102,7 @@ test_that("Simple test of dimensions, top_header", {
 
   # Check that the cols are reported correctly
   t1 = all(xltabr:::top_headers_get_wb_cols(tab_all_elements_no_offset) == 1:2)
-  t2 = identical(xltabr:::top_headers_get_wb_cols(tab_no_top_headers), integer(0)) #Because you can't do integer(0) == integer(0)
+  t2 = is.null(xltabr:::top_headers_get_wb_cols(tab_no_top_headers))
   t3 = all(xltabr:::top_headers_get_wb_cols(tab_all_elements_offset) == 4:5)
 
   testthat::expect_true(t1)
@@ -111,7 +111,7 @@ test_that("Simple test of dimensions, top_header", {
 
   # Check that the rows are reported correctly
   t1 = xltabr:::top_headers_get_wb_rows(tab_all_elements_no_offset) == 4:5
-  t2 = identical(xltabr:::top_headers_get_wb_rows(tab_no_top_headers) ,numeric(0))
+  t2 = is.null(xltabr:::top_headers_get_wb_rows(tab_no_top_headers))
   t3 = xltabr:::top_headers_get_wb_rows(tab_all_elements_offset) == 13:14
 
   testthat::expect_true(all(t1))
@@ -144,7 +144,7 @@ test_that("Simple test of dimensions, body", {
   # Check that the cols are reported correctly
   t1 = all(xltabr:::body_get_wb_cols(tab_all_elements_no_offset) == 1:2)
 
-  t2 = all(xltabr:::body_get_wb_cols(tab_no_top_headers) == 1:2)  #Because you can't do integer(0) == integer(0)
+  t2 = all(xltabr:::body_get_wb_cols(tab_no_top_headers) == 1:2)
   t3 = all(xltabr:::body_get_wb_cols(tab_all_elements_offset) == 4:5)
 
   testthat::expect_true(t1)

@@ -46,7 +46,7 @@ add_top_headers <- function(tab, top_headers, col_style_names="", row_style_name
 top_headers_get_wb_cols <- function(tab) {
 
   if (is.null(tab$top_headers$top_headers_list)) {
-    return(integer(0))
+    return(NULL)
   }
 
   tlc <- tab$extent$topleft_col
@@ -61,6 +61,10 @@ top_headers_get_wb_cols <- function(tab) {
 }
 
 top_headers_get_wb_rows <- function(tab) {
+
+  if (is.null(tab$top_headers$top_headers_list)) {
+    return(NULL)
+  }
 
   offset <- title_get_bottom_wb_row(tab)
   seq_along(tab$top_headers$top_headers_list) + offset

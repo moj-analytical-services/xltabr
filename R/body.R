@@ -65,7 +65,7 @@ add_body <- function(tab, df, left_header_colnames = NULL, row_style_names = NUL
 body_get_wb_cols <- function(tab) {
 
   if (is.null(tab$body$body_df)) {
-    return(integer(0))
+    return(NULL)
   }
 
   tlc <- tab$extent$topleft_col
@@ -81,7 +81,7 @@ body_get_wb_cols <- function(tab) {
 body_get_wb_left_header_cols <- function(tab){
 
   if (is.null(tab$body$body_df)) {
-    return(integer(0))
+    return(NULL)
   }
 
   tlc <- tab$extent$topleft_col
@@ -123,6 +123,13 @@ body_get_cell_styles_table <- function(tab) {
 
   # Approach is to start by creating a table of |row|col|body_style|left_header_style|top_header_style
   # See https://www.draw.io/#G0BwYwuy7YhhdxY2hGQnVGNFN6QkE
+
+  rows <- body_get_wb_rows(tab)
+
+  if (length(rows) == 0) {
+    df <- data.frame("row" = integer(0), "col" = integer(0), "style_name" = integer(0))
+    return(df)
+  }
 
   r <- xltabr:::body_get_wb_rows(tab)
   c_all_body <- xltabr:::body_get_wb_cols(tab)
