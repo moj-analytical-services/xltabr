@@ -145,10 +145,10 @@ test_that("Simple style test", {
   df2 <- xltabr:::body_get_cell_styles_table(tab_all_elements_no_offset)
   df2
   tab_all_elements_no_offset$body$body_df
-  testthat::expect_true(all(df2$style_name == c("body|left_header_1", "body|left_header_1","body|left_header_1", "body", "body", "body")))
+  testthat::expect_true(all(df2$style_name == c("body|left_header", "body|left_header","body|left_header", "body", "body", "body")))
 
   testthat::expect_true(all(tab_all_elements_no_offset$body$body_df$meta_row_ == c("body", "body", "body") ))
-  testthat::expect_true(all(tab_all_elements_no_offset$body$body_df$meta_left_header_row_ == c("left_header_1", "left_header_1", "left_header_1") ))
+  testthat::expect_true(all(tab_all_elements_no_offset$body$body_df$meta_left_header_row_ == c("body|left_header", "body|left_header", "body|left_header") ))
   testthat::expect_true(all(tab_all_elements_no_offset$body$meta_col_ == c("", "") ))
 
 })
