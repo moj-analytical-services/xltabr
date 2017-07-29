@@ -13,7 +13,7 @@ title_initialise <- function(tab) {
 #' @param title_text A character vector.  Each element is a row of the title
 #' @param title_style_names A character vector.  Each elemment is a style_name
 #' @export
-add_title <- function(tab, title_text, title_style_names) {
+add_title <- function(tab, title_text, title_style_names = "title") {
 
   tab$title$title_text <- title_text
   tab$title$title_style_names <- title_style_names

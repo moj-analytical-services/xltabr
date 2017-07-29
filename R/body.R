@@ -96,6 +96,9 @@ body_get_wb_left_header_cols <- function(tab){
 }
 
 body_get_wb_rows <- function(tab) {
+  if (is.null(tab$body$body_df)) {
+    return(NULL)
+  }
   offset <- top_headers_get_bottom_wb_row(tab)
   seq_along(tab$body$body_df[[1]]) + offset
 }
