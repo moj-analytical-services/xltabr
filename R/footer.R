@@ -98,6 +98,10 @@ footer_get_cell_styles_table <- function(tab) {
 #' Write all the required data (but no styles)
 footer_write_rows <- function(tab) {
 
+  if (is.null(tab$footer$footer_text)) {
+    return(tab)
+  }
+
   ws_name <- tab$misc$ws_name
 
   col <- min(footer_get_wb_cols(tab))
@@ -108,5 +112,7 @@ footer_write_rows <- function(tab) {
     counter = counter + 1
     openxlsx::writeData(tab$wb, ws_name, footer, startRow = r, startCol = col)
   }
+
+  tab
 
 }

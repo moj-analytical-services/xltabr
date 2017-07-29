@@ -17,29 +17,64 @@ test_that("Test meta columns are populated", {
   df2 <- xltabr:::body_get_cell_styles_table(tab)
   testthat::expect_true(all(df2$style_name == c("body|left_header", "body|left_header", "body", "body")))
 
-
-
-
 })
 
-test_that("Test dimentions for super simple 2x2", {
 
-  path <- system.file("extdata", "test_2x2.csv", package="xltabr")
+
+test_that("Test user addition of style information", {
+
+  path <- system.file("extdata", "test_3x3.csv", package="xltabr")
   df <- readr::read_csv(path)
 
+  # Adding a single style should work
   tab <- xltabr::initialise() %>%
-    xltabr::add_body(df)
+    xltabr::add_body(df, left_header_colnames = "a" , row_style_names = "b", left_header_style_names = "lh")
 
-  cols <- xltabr:::body_get_wb_cols(tab)
-  testthat::expect_true(all(cols == 1:2))
+  t1 <- all(xltabr:::body_get_cell_styles_table(tab)$style_name == c(rep("lh",3), rep("b", 6)))
+  testthat::expect_true(t1)
 
-  testthat::expect_true(all(xltabr:::body_get_wb_rows(tab) == 1:2))
-  testthat::expect_true(xltabr:::body_get_bottom_wb_row(tab) == 2)
-  testthat::expect_true(xltabr:::body_get_rightmost_wb_col(tab) == 2)
-  xltabr:::body_get_rightmost_wb_col(tab)
+  # Adding two should raise warning; it does not object multiplication rules
+  tab <- xltabr::initialise()
+  testthat::expect_warning(xltabr::add_body(tab, df, left_header_colnames = "a" , row_style_names = c("br", "br2"), left_header_style_names = c("lhr", "lhr2")))
+
+  # Adding three is the core use case and should work
+  rsn <- c("br1", "br2", "br3")
+  lhsn <-c("lh1", "lh2", "lh3")
+
+  tab <- xltabr::initialise() %>%
+    xltabr::add_body(df, left_header_colnames = "a" , row_style_names = rsn, left_header_style_names = lhsn)
+
+  t1 <- all(xltabr:::body_get_cell_styles_table(tab)$style_name  == c(lhsn, rsn, rsn))
+  testthat::expect_true(t1)
+
+  # Similarly, with col_style_names
+  csn <- "col"
+  tab <- xltabr::initialise() %>%
+    xltabr::add_body(df, left_header_colnames = "a" , row_style_names = rsn, left_header_style_names = lhsn, col_style_names = csn)
+
+  style_names <- paste(c(lhsn, rsn, rsn), "col", sep="|")
+
+  t1 = all(xltabr:::body_get_cell_styles_table(tab)$style_name  == style_names)
+  testthat::expect_true(t1)
+
+  # Similarly, with col_style_names
+  csn <- c("col", "col1")
+  tab <- xltabr::initialise()
+  testthat::expect_warning(xltabr::add_body(tab, df, left_header_colnames = "a" , row_style_names = rsn, left_header_style_names = lhsn, col_style_names = csn))
+
+  #Provide all three col style names
+  csn <- c("col1", "col2", "col3")
+  tab <- xltabr::initialise() %>%
+    xltabr::add_body(df, left_header_colnames = "a" , row_style_names = rsn, left_header_style_names = lhsn, col_style_names = csn)
+
+  style_names <- paste(c(lhsn, rsn, rsn), rep(csn, each = 3), sep = "|")
+
+  t1 = all(xltabr:::body_get_cell_styles_table(tab)$style_name  == style_names)
+
+  testthat::expect_true(t1)
 
 
-})
+  })
 
 
 # test_that("Simple style test", {

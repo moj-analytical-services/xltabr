@@ -60,6 +60,14 @@ extent_get_rightmost_wb_col <- function(tab) {
 
 }
 
+write_all_elements_to_wb <- function(tab) {
+  tab <- xltabr:::title_write_rows(tab)
+  tab <- xltabr:::top_headers_write_rows(tab)
+  tab <- xltabr:::body_write_rows(tab)
+  tab <- xltabr:::footer_write_rows(tab)
+  tab
+}
+
 #' Get all the styles currently in use by the workbook
 combine_all_styles <- function(tab) {
 
