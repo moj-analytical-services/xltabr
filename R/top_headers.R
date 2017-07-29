@@ -124,6 +124,10 @@ top_headers_get_cell_styles_table <- function(tab) {
 #' Write all the required data (but no styles)
 top_headers_write_rows <- function(tab) {
 
+  if (is.null(tab$top_headers$top_headers_list)) {
+    return(tab)
+  }
+
   ws_name <- tab$misc$ws_name
 
   #TODO:check there's something to write before writing
@@ -136,5 +140,6 @@ top_headers_write_rows <- function(tab) {
 
   openxlsx::writeData(tab$wb, ws_name, data, startRow = row, startCol = col, colNames = FALSE)
 
+  tab
 
 }

@@ -8,6 +8,7 @@ title_initialise <- function(tab) {
   tab
 }
 
+
 #' Add titles to the tab.  Title text is provided as a character vector, with each element being a row of the title
 #'
 #' @param title_text A character vector.  Each element is a row of the title
@@ -94,6 +95,10 @@ title_get_cell_styles_table <- function(tab) {
 #' Write all the required data (but no styles)
 title_write_rows <- function(tab) {
 
+  if (is.null(tab$title$title_text)) {
+    return(tab)
+  }
+
   ws_name <- tab$misc$ws_name
 
   col <- min(title_get_wb_cols(tab))
@@ -105,6 +110,8 @@ title_write_rows <- function(tab) {
     counter = counter + 1
     openxlsx::writeData(tab$wb, ws_name, title, startRow = r, startCol = col)
   }
+
+  tab
 
 }
 
