@@ -17,3 +17,7 @@ xltabr:::body_get_cell_styles_table(tab)
 tab <- xltabr:::add_styles_to_wb(tab, add_from = c("body"))
 
 openxlsx::openXL(tab$wb)
+
+ct <- reshape2::dcast(mtcars, am + gear ~ cyl, value.var= "mpg", margins=c("am", "gear"), fun.aggregate = mean)
+
+xltabr::auto_crosstab_to_xl(ct)

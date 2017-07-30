@@ -23,6 +23,10 @@ body_initialise <- function(tab) {
 #' @export
 add_body <- function(tab, df, left_header_colnames = NULL, row_style_names = NULL, left_header_style_names = NULL, col_style_names = NULL) {
 
+  # Make all factors character
+  i <- sapply(df, is.factor)
+  df[i] <- lapply(df[i], as.character)
+
   tab$body$body_df <- df
   tab$body$body_df_to_write <- df
   tab$body$left_header_colnames <- left_header_colnames

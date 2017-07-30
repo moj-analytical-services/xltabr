@@ -12,7 +12,7 @@ output:
 
 ## Introduction
 
-xltabr allows you to write formatted cross tabulations to Excel usign openxlsx.  It has been developed to help automate the process of publishing official statistics.
+xltabr allows you to write formatted cross tabulations to Excel using [`openxlsx`](https://github.com/awalker89/openxlsx).  It has been developed to help automate the process of publishing official statistics.
 
 The user provides a dataframe, which is outputted to Excel with various types of rich formatting such as totals and subtotals shown with various degrees of emphasis, number formatting, etc.
 
@@ -20,11 +20,38 @@ The package works best when the input dataframe is the output of a crosstabulati
 
 ## Getting started
 
-TODO: Auto generate this readme from a rmd
+Much of `xltabr` utility comes from its ability to automatically format cross tabulations which have been produced by `reshape2:dcast`.
+
+The package provides a core convenience function called `xltabr::auto_crosstab_to_xl`. This wraps more advanced functionality, at the cost of reducing flexibility. 
+
+A simple example is as follows
+
+```{r, eval=FALSE, include=TRUE}
+ct <- reshape2::dcast(mtcars, am + gear ~ cyl, value.var= "mpg", margins=c("am", "gear"), fun.aggregate = mean)
+wb <- xltabr::auto_crosstab_to_xl(ct)
+openxlsx::openXL(wb)
+```
+
+The simplest use is to write an aribtary data.frame to an in memory openxlsx workbook, ready to be written to disk:
+
+```{r, eval=FALSE, include=TRUE}
+wb <- xltabr::auto_df_to_xl(mtcars)
+openxlsx::openXL(wb)
+```
+
+
+
+### Options 
+
+```{r include=FALSE}
+tools::Rd2txt_options(underline_titles = FALSE)
+tools::Rd2txt("../man/auto_crosstab_to_xl.Rd")
+```
+
+## Advanced usage
 
 ## Some diagrams
 
 See [here](https://drive.google.com/file/d/0BwYwuy7YhhdxY2hGQnVGNFN6QkE/view?usp=sharing)
 
-
-rmarkdown::render("vignettes/readme.Rmd", output_format="md_document", output_file = "../README.md", output_options=list("variant" = "markdown_github"))
+This documentation was automatically generated on `r format(Sys.time(), '%d %B, %Y')` by [Travis CI](https://travis-ci.org/).
