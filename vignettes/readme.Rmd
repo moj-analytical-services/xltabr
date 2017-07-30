@@ -1,6 +1,14 @@
+---
+title: "Readme"
+author: Robin Linacre
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  md_document:
+    variant: markdown_github
+---
+
 [![Coverage Status](https://img.shields.io/codecov/c/github/moj-analytical-services/xltabr/dev.svg)](https://codecov.io/github/moj-analytical-services/xltabr?branch=dev)
 [![Build Status](https://travis-ci.org/moj-analytical-services/xltabr.svg?branch=dev)](https://travis-ci.org/moj-analytical-services/xltabr)
-# xltabr:  An R package for writing formatted cross tabulations to Excel using openxlsx
 
 ## Introduction
 
@@ -17,3 +25,6 @@ TODO: Auto generate this readme from a rmd
 ## Some diagrams
 
 See [here](https://drive.google.com/file/d/0BwYwuy7YhhdxY2hGQnVGNFN6QkE/view?usp=sharing)
+
+
+rmarkdown::render("vignettes/readme.Rmd", output_format="md_document", output_file = "../README.md", output_options=list("variant" = "markdown_github"))
