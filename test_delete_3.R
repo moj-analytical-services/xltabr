@@ -1,6 +1,6 @@
 path <- system.file("extdata", "test_autodetect.csv", package="xltabr")
 
-df <- readr::read_csv(path)
+df <- read.csv(path, stringsAsFactors = FALSE)
 
 tab <- xltabr::initialise() %>%
   xltabr::add_body(df) %>%

@@ -4,7 +4,7 @@ test_that("Test meta columns are populated", {
 
   path <- system.file("extdata", "test_2x2.csv", package="xltabr")
 
-  df <- readr::read_csv(path)
+  df <- read.csv(path, stringsAsFactors = FALSE)
 
   tab <- xltabr::initialise() %>%
     xltabr::add_body(df, left_header_colnames = "a")
@@ -24,7 +24,7 @@ test_that("Test meta columns are populated", {
 test_that("Test user addition of style information", {
 
   path <- system.file("extdata", "test_3x3.csv", package="xltabr")
-  df <- readr::read_csv(path)
+  df <- read.csv(path, stringsAsFactors = FALSE)
 
   # Adding a single style should work
   tab <- xltabr::initialise() %>%

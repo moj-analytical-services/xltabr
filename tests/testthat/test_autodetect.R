@@ -4,7 +4,8 @@ test_that("Test meta columns are populated", {
 
   path <- system.file("extdata", "test_autodetect.csv", package="xltabr")
 
-  df <- readr::read_csv(path)
+  df <- read.csv(path, stringsAsFactors = FALSE)
+  df$f <- as.Date(df$f)
 
   tab <- xltabr::initialise() %>%
     xltabr::add_body(df)
@@ -33,7 +34,7 @@ test_that("Test meta columns are populated", {
 
   path <- system.file("extdata", "test_autodetect.csv", package="xltabr")
 
-  df <- readr::read_csv(path)
+  df <- read.csv(path, stringsAsFactors = FALSE)
 
   tab <- xltabr::initialise() %>%
     xltabr::add_body(df) %>%

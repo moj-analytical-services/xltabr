@@ -11,7 +11,7 @@ r2 <- paste0("r2_col_", as.character(1:2))
 h_list <- list( r1,  r2)
 
 path <- system.file("extdata", "test_3x2.csv", package="xltabr")
-suppressMessages(df <- readr::read_csv(path))
+df <- read.csv(path, stringsAsFactors = FALSE)
 
 footer_text <- c("Caveat 1 goes here", "Caveat 2 goes here")
 footer_style_names <- c("footer", "footer")
