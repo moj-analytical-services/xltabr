@@ -15,7 +15,7 @@ git config user.email "travis"
 git checkout dev
 
 # On the dev branch we want to convert vignettes/readme.Rmd to readme.md
-r -f travis.R
+Rscript -f travis.R
 
 git add README.md
 git commit -m "readme update by travis after $TRAVIS_COMMIT"
