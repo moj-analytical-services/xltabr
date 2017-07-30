@@ -1,15 +1,18 @@
 #!/bin/bash
 
-GH_REPO="@github.com/moj-analytical-services/xltabr.git"
-FULL_REPO="https://$GH_TOKEN$GH_REPO"
+GH_REPO="git@github.com:moj-analytical-services/xltabr.git"
+
 
 mkdir out
 cd out
 
+# Start ssh agent and add key
+eval "$(ssh-agent -s)" # Start the ssh agent
+chmod 600 deploy_rsa
+ssh-add deploy_rsa
+
 # Checkout repo so we have all the files we need to build
-git init
-git remote add origin $FULL_REPO
-git fetch
+git clone $GH_REPO
 git config user.name "xltabr-travis"
 git config user.email "travis"
 git checkout dev
