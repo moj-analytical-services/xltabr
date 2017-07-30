@@ -40,7 +40,6 @@ openxlsx::openXL(wb)
 ```
 
 
-
 ### Options 
 
 ```{r include=FALSE}
