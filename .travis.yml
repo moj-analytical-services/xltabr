@@ -9,4 +9,4 @@ after_success:
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "dev" && bash readme_updater.sh
 before_install:
 - openssl aes-256-cbc -K $encrypted_92e990fc8647_key -iv $encrypted_92e990fc8647_iv
-  -in deploy_rsa.enc -out deploy_rsa -d
+  -in deploy_rsa.enc -out ~/.ssh/deploy_rsa -d
