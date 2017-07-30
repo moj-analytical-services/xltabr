@@ -2,19 +2,22 @@
 
 GH_REPO="git@github.com:moj-analytical-services/xltabr.git"
 
-
-mkdir out
-cd out
-
 # Start ssh agent and add key
 eval "$(ssh-agent -s)" # Start the ssh agent
 chmod 600 deploy_rsa
 ssh-add deploy_rsa
 
+mkdir out
+cd out
+
+
 # Checkout repo so we have all the files we need to build
-git clone $GH_REPO
+
 git config user.name "xltabr-travis"
 git config user.email "travis"
+
+git clone $GH_REPO
+cd xltabr
 git checkout dev
 
 # On the dev branch we want to convert vignettes/readme.Rmd to readme.md
