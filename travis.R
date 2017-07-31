@@ -7,4 +7,4 @@ if (length(new_packages)) {
 
 
 library(rmarkdown)
-rmarkdown::render("vignettes/readme.Rmd", output_format = "md_document", output_file = "README.md", output_options = list("variant" = "markdown_github"))
+rmarkdown::render("vignettes/readme.Rmd", output_format = "md_document", output_file = "../README.md", output_options = list("variant" = "markdown_github"))
