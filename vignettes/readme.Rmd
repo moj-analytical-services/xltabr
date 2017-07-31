@@ -43,11 +43,13 @@ openxlsx::openXL(wb)
 ### Options 
 
 ```{r include=FALSE}
-devtools::document()
+suppressMessages(devtools::document())
 tools::Rd2txt_options(underline_titles = FALSE)
-tools::Rd2txt("man/auto_crosstab_to_xl.Rd")
 ```
 
+```{r echo=FALSE}
+tools::Rd2txt("../man/auto_crosstab_to_wb.Rd")
+```
 ## Advanced usage
 
 The simple examples above wrap lower-level functions.  These functions can be used to customise the output in a number of ways.
