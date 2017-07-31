@@ -20,4 +20,5 @@ openxlsx::openXL(tab$wb)
 
 ct <- reshape2::dcast(mtcars, am + gear ~ cyl, value.var= "mpg", margins=c("am", "gear"), fun.aggregate = mean)
 
-xltabr::auto_crosstab_to_xl(ct)
+wb  <- xltabr::auto_crosstab_to_xl(ct)
+
