@@ -1,8 +1,25 @@
 # Use default .xlsx style catalogue to initialise the catalogue of styles
 style_catalogue_initialise <- function (tab) {
   path <- system.file("extdata", "styles.xlsx", package = "xltabr")
-
+  path_num <- system.file("extdata", "style_to_excel_number_format.csv", package = "xltabr")
   tab <- style_catalogue_xlsx_import(tab, path)
+  tab <- style_catalogue_import_num_formats(tab, path_num)
+  tab
+}
+
+style_catalogue_import_num_formats <- function(tab, path){
+  # This lookup table coverts
+
+  lookup_df <- read.csv(path, stringsAsFactors = FALSE)
+
+  # Convert dataframe into two vectors
+  style_keys <- paste0("numFmt_", lookup_df$excel_format)
+  style_names <- lookup_df$style_name
+
+  for (i in 1:length(style_names)){
+    tab$style_catalogue[[style_names[i]]] <- style_keys[i]
+  }
+
   tab
 }
 
@@ -113,6 +130,17 @@ build_style <- function(cell_style_definition, style_catalogue){
 
   # Convert cell style inheritence string into an array
   seperated_style_definition <- unlist(strsplit(cell_style_definition, "\\|"))
+
+  ## Run a check (that all base styles referenced in cell_style_definition exist in style_catalogue)
+  # Get array of base styles (i.e. styles that are not a combination of multiple styles (no pipes in names))
+  base_styles <- names(tab$style_catalogue)[!grepl("\\|",names(tab$style_catalogue))]
+  ussd <- unique(seperated_style_definition)
+  style_check <- ussd %in% base_styles
+  if(!all(style_check)){
+    stop(paste("The following style names:",  paste0(ussd[!style_check], collapse = ", "), "are not in the style_catalogue please add then maunally or specify them in style.xlsx"))
+  }
+  ##
+
   if (length(seperated_style_definition) <= 1){
     return (style_catalogue[[seperated_style_definition]])
   }
@@ -175,7 +203,7 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
       fontName = style[["fontName"]],
       fontSize = style[["fontSize"]],
       fontColour = font_colour_input,
-      numFmt = "GENERAL",
+      numFmt = style[["numFmt"]],
       border = NULL,
       borderColour = getOption("openxlsx.borderColour", "black"),
       borderStyle = getOption("openxlsx.borderStyle", "thin"),
@@ -200,7 +228,8 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
     out_style[["fontName"]] <- style$style$fontName
     out_style[["fontSize"]] <- style$style$fontSize
     out_style[["fontColour"]] <- style$style$fontColour
-    out_style[["numFmt"]] <- style$style$numFmt
+    ## Number formats are read differently
+    # out_style[["numFmt"]] <- "GENERAL"
     # border not yet supported due to weird way it converts on style
     # out_style[["border"]] <- style$style$border
     # borderColour - not yet supported

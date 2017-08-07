@@ -14,11 +14,11 @@ auto_style_number_formatting <- function(tab, overrides = list()) {
   col_classes <- sapply(tab$body$body_df_to_write, class)
 
   # This lookup table coverts
-  path <- system.file("extdata", "class_to_excel_number_format.csv", package = "xltabr" )
+  path <- system.file("extdata", "number_format_defaults.csv", package = "xltabr" )
 
   lookup_df <- read.csv(path, stringsAsFactors = FALSE)
   # Convert to a named vector that can be used as a lookup
-  lookup <- lookup_df$excel_format
+  lookup <- lookup_df$style_name
   names(lookup) <- lookup_df$class
 
   # Iterate through body columns applying lookup or override if exists
