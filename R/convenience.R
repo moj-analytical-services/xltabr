@@ -33,11 +33,12 @@ auto_df_to_wb <- function(df, auto_number_format = TRUE, titles = NULL, footers 
 
   tab <- write_all_elements_to_wb(tab)
 
+  tab <- xltabr:::add_styles_to_wb(tab)
+
   if (auto_open) {
     openxlsx::openXL(tab$wb)
   }
 
-  tab <- xltabr:::add_styles_to_wb(tab)
 
   if (return_tab) {
     return(tab)

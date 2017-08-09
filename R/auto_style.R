@@ -103,7 +103,8 @@ auto_detect_left_headers <- function(tab, keyword = "(all)") {
 
 }
 
-get_inv_title_count <- function(left_headers_df, keyword) {
+# For title level
+get_inv_title_count_title <- function(left_headers_df, keyword) {
 
   to_count <- (left_headers_df == keyword)
   all_count <- rowSums(to_count)
@@ -116,12 +117,25 @@ get_inv_title_count <- function(left_headers_df, keyword) {
 
 }
 
+# For indent level
+get_inv_title_count_indent <- function(left_headers_df, keyword) {
+
+  to_count <- (left_headers_df == keyword)
+  all_count <- rowSums(to_count)
+
+  #rows with higher (all) count should have a lower title value because title_1 is the most emphasized
+  all_count_inv <- max(all_count) - all_count
+
+  all_count_inv
+
+}
+
 # Autodetect the 'title level' e.g. title 1 is most prominent, title 2 next etc.
 auto_detect_body_title_level <- function(tab, keyword = "(all)") {
 
   left_headers_df <- tab$body$body_df_to_write[tab$body$left_header_colnames]
 
-  all_count_inv <- get_inv_title_count(left_headers_df, keyword)
+  all_count_inv <- get_inv_title_count_title(left_headers_df, keyword)
 
   # Append title level to both meta_row_ and meta_left_title_row_
   col <- tab$body$body_df$meta_row_[not_na(all_count_inv)]
@@ -140,13 +154,13 @@ auto_detect_body_title_level <- function(tab, keyword = "(all)") {
 
 # Consolidate the header columns into one, taking the rightmost value and applying indent
 # e.g. a | b | (all) -> b
-auto_style_indent <- function(tab, keyword = "(all)") {
+# e.g. (all) | (all) | (all) -> Grand Total
+auto_style_indent <- function(tab, keyword = "(all)", total_text = "Grand Total") {
 
   if (is.null(tab$body$left_header_colnames )) {
-    Stop("You've called auto_style_indent, but there are no left_header_colnames to work with/")
+    Stop("You've called auto_style_indent, but there are no left_header_colnames to work with")
   }
 
-  # scan from right to left finding first column that does not contain (all)
   left_headers_df <- tab$body$body_df_to_write[tab$body$left_header_colnames]
 
   # count '(all)'
@@ -155,31 +169,32 @@ auto_style_indent <- function(tab, keyword = "(all)") {
 
   # paste together all left headers
   concat <- do.call(paste, c(left_headers_df, sep="=|="))
-  concat <- gsub("\\(all\\)","", concat)
-  # Get last
-  #|(^|)|(all)
+  # concat <- gsub("\\(all\\)","", concat)
+
+  # Split concatenated string into elements, and find last element that's not (all)
   elems <- strsplit(concat, "=\\|=", perl=TRUE)
 
   last_elem <- lapply(elems, function(x) {
-    x <- x[x != ""]
+    x <- x[x != keyword]
     if (length(x) == 0) {
-      x <- ""
+      x <- total_text
     }
     tail(x,1)
   })
 
   new_left_headers <- unlist(last_elem)
 
-  # Remove original left_header_columns
+  # Remove original left_header_columns and replace with new
   cols <- !(names(tab$body$body_df_to_write) %in% tab$body$left_header_colnames)
   tab$body$body_df_to_write <- tab$body$body_df_to_write[cols]
   tab$body$body_df_to_write  <- cbind(new_left_headers = new_left_headers, tab$body$body_df_to_write, stringsAsFactors = FALSE)
   tab$body$left_header_colnames <- "new_left_headers"
 
+  # Now need to fix meta_left_header_row_ to include indents
   #Set meta_left_header_row_ to include relevant indents
-  all_count_inv <- get_inv_title_count(left_headers_df, keyword = keyword)
+  all_count_inv <- get_inv_title_count_indent(left_headers_df, keyword = keyword)
 
-  col <- tab$body$body_df$meta_left_header_row_[not_na(all_count_inv)]
+  col <- tab$body$body_df$meta_left_header_row_
   concat <- all_count_inv[not_na(all_count_inv)]
   concat <- paste0("indent_", concat)
   tab$body$body_df[not_na(all_count_inv),"meta_left_header_row_"] <- paste(col, concat,sep = "|")
