@@ -199,6 +199,10 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
       style[["indent"]] <- as.integer(style[["indent"]])
     }
 
+    if(is.null(style[["numFmt"]])){
+      style[["numFmt"]] <- "GENERAL"
+    }
+
     out_style <- openxlsx::createStyle(
       fontName = style[["fontName"]],
       fontSize = style[["fontSize"]],
