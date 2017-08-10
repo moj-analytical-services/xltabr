@@ -1,0 +1,1405 @@
+drive,age,colour,type,date,value
+Electric,0-5 years,Yellow,Sport,2016-03-31,1.5334840175401645
+Electric,0-5 years,Yellow,Sport,2016-04-30,-1.1048295767826668
+Electric,0-5 years,Yellow,Sport,2016-05-31,0.03669532130926114
+Electric,0-5 years,Yellow,Sport,2016-06-30,-0.0704679771560556
+Electric,0-5 years,Yellow,Sport,2016-07-31,0.7741067058870679
+Electric,0-5 years,Yellow,Sport,2016-08-31,-0.7690593689225426
+Electric,0-5 years,Yellow,Sport,2016-09-30,-0.11594993302316209
+Electric,0-5 years,Yellow,Sport,2016-10-31,1.0960188386142813
+Electric,0-5 years,Yellow,Sport,2016-11-30,0.3375632821080372
+Electric,0-5 years,Yellow,Sport,2016-12-31,-0.8038695762627458
+Electric,0-5 years,Yellow,Sport,2017-01-31,-0.001587486577224705
+Electric,0-5 years,Yellow,Sport,2017-02-28,-2.4631879524145295
+Electric,0-5 years,Yellow,Sport,2017-03-31,0.4097529127450238
+Electric,0-5 years,Yellow,Sedan,2016-03-31,-1.2549332454479365
+Electric,0-5 years,Yellow,Sedan,2016-04-30,-0.9658731852688552
+Electric,0-5 years,Yellow,Sedan,2016-05-31,-1.3799292475679157
+Electric,0-5 years,Yellow,Sedan,2016-06-30,-0.7404821184237089
+Electric,0-5 years,Yellow,Sedan,2016-07-31,0.21335500468577562
+Electric,0-5 years,Yellow,Sedan,2016-08-31,-0.034863292102361956
+Electric,0-5 years,Yellow,Sedan,2016-09-30,2.73399725129323
+Electric,0-5 years,Yellow,Sedan,2016-10-31,-0.33566961162557235
+Electric,0-5 years,Yellow,Sedan,2016-11-30,-0.1745985828505462
+Electric,0-5 years,Yellow,Sedan,2016-12-31,-0.43817093551296277
+Electric,0-5 years,Yellow,Sedan,2017-01-31,0.6925150412709037
+Electric,0-5 years,Yellow,Sedan,2017-02-28,0.0077093866975489625
+Electric,0-5 years,Yellow,Sedan,2017-03-31,1.2621470951748763
+Electric,0-5 years,Yellow,Supermini,2016-03-31,-0.3029484993406615
+Electric,0-5 years,Yellow,Supermini,2016-04-30,-0.4631276199871605
+Electric,0-5 years,Yellow,Supermini,2016-05-31,-0.3283495464004416
+Electric,0-5 years,Yellow,Supermini,2016-06-30,-0.918101312852563
+Electric,0-5 years,Yellow,Supermini,2016-07-31,0.4109804373412157
+Electric,0-5 years,Yellow,Supermini,2016-08-31,-0.0959269390774703
+Electric,0-5 years,Yellow,Supermini,2016-09-30,0.6578675508967633
+Electric,0-5 years,Yellow,Supermini,2016-10-31,-0.6436078622231602
+Electric,0-5 years,Yellow,Supermini,2016-11-30,-1.177253583901125
+Electric,0-5 years,Yellow,Supermini,2016-12-31,0.13287292591276523
+Electric,0-5 years,Yellow,Supermini,2017-01-31,-0.0753977097396237
+Electric,0-5 years,Yellow,Supermini,2017-02-28,2.7143097482844882
+Electric,0-5 years,Yellow,Supermini,2017-03-31,-0.7579128958863638
+Electric,0-5 years,Blue,Sport,2016-03-31,-0.9310961450359961
+Electric,0-5 years,Blue,Sport,2016-04-30,1.2525095106409578
+Electric,0-5 years,Blue,Sport,2016-05-31,-0.9597610961071419
+Electric,0-5 years,Blue,Sport,2016-06-30,-2.07514892080069
+Electric,0-5 years,Blue,Sport,2016-07-31,-0.04948305400800402
+Electric,0-5 years,Blue,Sport,2016-08-31,1.617683056009402
+Electric,0-5 years,Blue,Sport,2016-09-30,-0.2708373741784048
+Electric,0-5 years,Blue,Sport,2016-10-31,-0.5347696409634981
+Electric,0-5 years,Blue,Sport,2016-11-30,-0.7656910273013459
+Electric,0-5 years,Blue,Sport,2016-12-31,1.0204571474774595
+Electric,0-5 years,Blue,Sport,2017-01-31,-0.3663459148594215
+Electric,0-5 years,Blue,Sport,2017-02-28,-0.03538457602465594
+Electric,0-5 years,Blue,Sport,2017-03-31,-0.4566588457206288
+Electric,0-5 years,Blue,Sedan,2016-03-31,0.41519431408929686
+Electric,0-5 years,Blue,Sedan,2016-04-30,0.12261616822819443
+Electric,0-5 years,Blue,Sedan,2016-05-31,0.8785351057714512
+Electric,0-5 years,Blue,Sedan,2016-06-30,0.6240652872208072
+Electric,0-5 years,Blue,Sedan,2016-07-31,-0.7064853740600385
+Electric,0-5 years,Blue,Sedan,2016-08-31,1.3759481975394887
+Electric,0-5 years,Blue,Sedan,2016-09-30,-0.5997113782028213
+Electric,0-5 years,Blue,Sedan,2016-10-31,-1.090656263147005
+Electric,0-5 years,Blue,Sedan,2016-11-30,-0.8122629755692643
+Electric,0-5 years,Blue,Sedan,2016-12-31,0.9988662503283855
+Electric,0-5 years,Blue,Sedan,2017-01-31,1.2849303470608862
+Electric,0-5 years,Blue,Sedan,2017-02-28,-0.9302036720685095
+Electric,0-5 years,Blue,Sedan,2017-03-31,0.8008028687622826
+Electric,0-5 years,Blue,Supermini,2016-03-31,0.9547448325617307
+Electric,0-5 years,Blue,Supermini,2016-04-30,-0.6287241537755439
+Electric,0-5 years,Blue,Supermini,2016-05-31,1.2714091716219393
+Electric,0-5 years,Blue,Supermini,2016-06-30,-1.5801891611116063
+Electric,0-5 years,Blue,Supermini,2016-07-31,-0.4138090855028948
+Electric,0-5 years,Blue,Supermini,2016-08-31,0.3771365781836007
+Electric,0-5 years,Blue,Supermini,2016-09-30,0.9925847246110582
+Electric,0-5 years,Blue,Supermini,2016-10-31,-0.5678412864805508
+Electric,0-5 years,Blue,Supermini,2016-11-30,2.1668404747102827
+Electric,0-5 years,Blue,Supermini,2016-12-31,-1.101432058042423
+Electric,0-5 years,Blue,Supermini,2017-01-31,-1.0652874236232786
+Electric,0-5 years,Blue,Supermini,2017-02-28,-0.13111470558263408
+Electric,0-5 years,Blue,Supermini,2017-03-31,0.5944456981945622
+Electric,0-5 years,Green,Sport,2016-03-31,-0.7838152308819749
+Electric,0-5 years,Green,Sport,2016-04-30,-1.3936717909447185
+Electric,0-5 years,Green,Sport,2016-05-31,1.4283745085283037
+Electric,0-5 years,Green,Sport,2016-06-30,-0.8487336617645573
+Electric,0-5 years,Green,Sport,2016-07-31,-0.35917833383202113
+Electric,0-5 years,Green,Sport,2016-08-31,-0.383016765863572
+Electric,0-5 years,Green,Sport,2016-09-30,-0.8530700377798288
+Electric,0-5 years,Green,Sport,2016-10-31,-1.0357209096267526
+Electric,0-5 years,Green,Sport,2016-11-30,1.0261672736662475
+Electric,0-5 years,Green,Sport,2016-12-31,-0.4070073250299612
+Electric,0-5 years,Green,Sport,2017-01-31,-0.2546894154489571
+Electric,0-5 years,Green,Sport,2017-02-28,0.6434415362692597
+Electric,0-5 years,Green,Sport,2017-03-31,3.2378177693381056e-4
+Electric,0-5 years,Green,Sedan,2016-03-31,1.0373263111108193
+Electric,0-5 years,Green,Sedan,2016-04-30,-1.2514838374115056
+Electric,0-5 years,Green,Sedan,2016-05-31,-1.2523533709815085
+Electric,0-5 years,Green,Sedan,2016-06-30,-0.36538204695221366
+Electric,0-5 years,Green,Sedan,2016-07-31,1.5975570477039374
+Electric,0-5 years,Green,Sedan,2016-08-31,-1.1394266558096953
+Electric,0-5 years,Green,Sedan,2016-09-30,-1.3860190869324898
+Electric,0-5 years,Green,Sedan,2016-10-31,-2.4129088942949273
+Electric,0-5 years,Green,Sedan,2016-11-30,-0.7682182178765075
+Electric,0-5 years,Green,Sedan,2016-12-31,-0.7123419010843651
+Electric,0-5 years,Green,Sedan,2017-01-31,0.11696007342886042
+Electric,0-5 years,Green,Sedan,2017-02-28,0.2719044627331541
+Electric,0-5 years,Green,Sedan,2017-03-31,-0.48733709601429054
+Electric,0-5 years,Green,Supermini,2016-03-31,-0.49686019972792234
+Electric,0-5 years,Green,Supermini,2016-04-30,-0.28507457347309983
+Electric,0-5 years,Green,Supermini,2016-05-31,-1.1022474863030325
+Electric,0-5 years,Green,Supermini,2016-06-30,-0.7246996227206556
+Electric,0-5 years,Green,Supermini,2016-07-31,0.26500881930770137
+Electric,0-5 years,Green,Supermini,2016-08-31,-1.3813819297994947
+Electric,0-5 years,Green,Supermini,2016-09-30,0.5873468364570394
+Electric,0-5 years,Green,Supermini,2016-10-31,2.106298660901959
+Electric,0-5 years,Green,Supermini,2016-11-30,0.5730462899518544
+Electric,0-5 years,Green,Supermini,2016-12-31,0.7318933042027508
+Electric,0-5 years,Green,Supermini,2017-01-31,0.5500614375460292
+Electric,0-5 years,Green,Supermini,2017-02-28,1.3493368612501433
+Electric,0-5 years,Green,Supermini,2017-03-31,0.15428229279966474
+Electric,0-5 years,Black,Sport,2016-03-31,0.17560177636903823
+Electric,0-5 years,Black,Sport,2016-04-30,-1.135052688239399
+Electric,0-5 years,Black,Sport,2016-05-31,-0.8044585550944954
+Electric,0-5 years,Black,Sport,2016-06-30,-1.4167082483880555
+Electric,0-5 years,Black,Sport,2016-07-31,-1.7776142553988694
+Electric,0-5 years,Black,Sport,2016-08-31,0.3107965554920641
+Electric,0-5 years,Black,Sport,2016-09-30,0.1355607162887367
+Electric,0-5 years,Black,Sport,2016-10-31,-0.7793010129811847
+Electric,0-5 years,Black,Sport,2016-11-30,-1.4107040931578307
+Electric,0-5 years,Black,Sport,2016-12-31,-0.15036829474880378
+Electric,0-5 years,Black,Sport,2017-01-31,1.6670917364204225
+Electric,0-5 years,Black,Sport,2017-02-28,0.7868290989301395
+Electric,0-5 years,Black,Sport,2017-03-31,1.1233676279169156
+Electric,0-5 years,Black,Sedan,2016-03-31,0.5280347115505467
+Electric,0-5 years,Black,Sedan,2016-04-30,0.5835935225029769
+Electric,0-5 years,Black,Sedan,2016-05-31,2.0456332507862975
+Electric,0-5 years,Black,Sedan,2016-06-30,-2.224273108625182
+Electric,0-5 years,Black,Sedan,2016-07-31,-0.047565606573394204
+Electric,0-5 years,Black,Sedan,2016-08-31,-0.8483318356253372
+Electric,0-5 years,Black,Sedan,2016-09-30,-0.06386934385699322
+Electric,0-5 years,Black,Sedan,2016-10-31,1.418028412946332
+Electric,0-5 years,Black,Sedan,2016-11-30,0.023388787543436897
+Electric,0-5 years,Black,Sedan,2016-12-31,-0.25734057393840165
+Electric,0-5 years,Black,Sedan,2017-01-31,-0.8358879667244734
+Electric,0-5 years,Black,Sedan,2017-02-28,-1.3679138120468002
+Electric,0-5 years,Black,Sedan,2017-03-31,-0.5672137747117543
+Electric,0-5 years,Black,Supermini,2016-03-31,2.3041559069137834
+Electric,0-5 years,Black,Supermini,2016-04-30,-1.3039999176339634
+Electric,0-5 years,Black,Supermini,2016-05-31,-0.4192741071120301
+Electric,0-5 years,Black,Supermini,2016-06-30,0.9038955722784545
+Electric,0-5 years,Black,Supermini,2016-07-31,-0.997315833763135
+Electric,0-5 years,Black,Supermini,2016-08-31,2.221652745242441
+Electric,0-5 years,Black,Supermini,2016-09-30,-0.17559329760387693
+Electric,0-5 years,Black,Supermini,2016-10-31,-0.5688074237699465
+Electric,0-5 years,Black,Supermini,2016-11-30,-0.6507814411180691
+Electric,0-5 years,Black,Supermini,2016-12-31,0.3912429618111071
+Electric,0-5 years,Black,Supermini,2017-01-31,-0.10976409432747847
+Electric,0-5 years,Black,Supermini,2017-02-28,0.13490932576824188
+Electric,0-5 years,Black,Supermini,2017-03-31,0.9129507977883843
+Electric,5 years +,Yellow,Sport,2016-03-31,-0.7479465626252881
+Electric,5 years +,Yellow,Sport,2016-04-30,1.068971318264979
+Electric,5 years +,Yellow,Sport,2016-05-31,-0.018095028483141984
+Electric,5 years +,Yellow,Sport,2016-06-30,-0.7182645036501439
+Electric,5 years +,Yellow,Sport,2016-07-31,-1.9475008114562609
+Electric,5 years +,Yellow,Sport,2016-08-31,0.5798334910320231
+Electric,5 years +,Yellow,Sport,2016-09-30,-0.733904054207857
+Electric,5 years +,Yellow,Sport,2016-10-31,-0.8172134141022209
+Electric,5 years +,Yellow,Sport,2016-11-30,-0.11389691538054593
+Electric,5 years +,Yellow,Sport,2016-12-31,-1.3292102305999798
+Electric,5 years +,Yellow,Sport,2017-01-31,-1.5082148578567371
+Electric,5 years +,Yellow,Sport,2017-02-28,-1.6039458922517558
+Electric,5 years +,Yellow,Sport,2017-03-31,1.2169900580719062
+Electric,5 years +,Yellow,Sedan,2016-03-31,0.8732748438755562
+Electric,5 years +,Yellow,Sedan,2016-04-30,-1.0513625007868417
+Electric,5 years +,Yellow,Sedan,2016-05-31,-0.8324407896847984
+Electric,5 years +,Yellow,Sedan,2016-06-30,1.4850254308285138
+Electric,5 years +,Yellow,Sedan,2016-07-31,0.6420080301672526
+Electric,5 years +,Yellow,Sedan,2016-08-31,-1.101487957092954
+Electric,5 years +,Yellow,Sedan,2016-09-30,0.5151450993770852
+Electric,5 years +,Yellow,Sedan,2016-10-31,-0.02834281620856746
+Electric,5 years +,Yellow,Sedan,2016-11-30,-0.11700784846658858
+Electric,5 years +,Yellow,Sedan,2016-12-31,-0.6813097328551233
+Electric,5 years +,Yellow,Sedan,2017-01-31,-1.260873418494852
+Electric,5 years +,Yellow,Sedan,2017-02-28,1.5239751852627137
+Electric,5 years +,Yellow,Sedan,2017-03-31,0.7896421248687108
+Electric,5 years +,Yellow,Supermini,2016-03-31,-1.7687639886106485
+Electric,5 years +,Yellow,Supermini,2016-04-30,-0.5375911394643695
+Electric,5 years +,Yellow,Supermini,2016-05-31,1.082590059570939
+Electric,5 years +,Yellow,Supermini,2016-06-30,-1.0345593937154318
+Electric,5 years +,Yellow,Supermini,2016-07-31,-0.3935739878793337
+Electric,5 years +,Yellow,Supermini,2016-08-31,-0.23271479830718275
+Electric,5 years +,Yellow,Supermini,2016-09-30,0.05592046459305433
+Electric,5 years +,Yellow,Supermini,2016-10-31,0.11604947033905265
+Electric,5 years +,Yellow,Supermini,2016-11-30,-0.4279612050214159
+Electric,5 years +,Yellow,Supermini,2016-12-31,0.39077323042674755
+Electric,5 years +,Yellow,Supermini,2017-01-31,1.4106267829011219
+Electric,5 years +,Yellow,Supermini,2017-02-28,-0.8956615705857762
+Electric,5 years +,Yellow,Supermini,2017-03-31,0.3294227687381489
+Electric,5 years +,Blue,Sport,2016-03-31,1.53570480520509
+Electric,5 years +,Blue,Sport,2016-04-30,-0.7123857486385982
+Electric,5 years +,Blue,Sport,2016-05-31,-0.603996824039397
+Electric,5 years +,Blue,Sport,2016-06-30,0.7210489530944547
+Electric,5 years +,Blue,Sport,2016-07-31,-0.5982807475284551
+Electric,5 years +,Blue,Sport,2016-08-31,-1.519718981234423
+Electric,5 years +,Blue,Sport,2016-09-30,-0.40331394146805377
+Electric,5 years +,Blue,Sport,2016-10-31,0.455175756152181
+Electric,5 years +,Blue,Sport,2016-11-30,1.536991733332093
+Electric,5 years +,Blue,Sport,2016-12-31,-0.27905319252280103
+Electric,5 years +,Blue,Sport,2017-01-31,-0.8053081269098235
+Electric,5 years +,Blue,Sport,2017-02-28,0.8831593906164742
+Electric,5 years +,Blue,Sport,2017-03-31,0.27851046638815896
+Electric,5 years +,Blue,Sedan,2016-03-31,-0.029031912270120877
+Electric,5 years +,Blue,Sedan,2016-04-30,-0.5068245779474547
+Electric,5 years +,Blue,Sedan,2016-05-31,0.1257285765418778
+Electric,5 years +,Blue,Sedan,2016-06-30,0.5032313645901796
+Electric,5 years +,Blue,Sedan,2016-07-31,0.9651384339505655
+Electric,5 years +,Blue,Sedan,2016-08-31,0.4425657074821609
+Electric,5 years +,Blue,Sedan,2016-09-30,-1.1739207958387299
+Electric,5 years +,Blue,Sedan,2016-10-31,-2.4456588085680173
+Electric,5 years +,Blue,Sedan,2016-11-30,-1.2177128068257494
+Electric,5 years +,Blue,Sedan,2016-12-31,0.06957762240558943
+Electric,5 years +,Blue,Sedan,2017-01-31,1.3576469330157437
+Electric,5 years +,Blue,Sedan,2017-02-28,0.4542193747322811
+Electric,5 years +,Blue,Sedan,2017-03-31,0.6334837915639064
+Electric,5 years +,Blue,Supermini,2016-03-31,0.5895538813499068
+Electric,5 years +,Blue,Supermini,2016-04-30,0.7392203139152294
+Electric,5 years +,Blue,Supermini,2016-05-31,0.6966441317782321
+Electric,5 years +,Blue,Supermini,2016-06-30,-2.223371916048808
+Electric,5 years +,Blue,Supermini,2016-07-31,-0.5302019357155304
+Electric,5 years +,Blue,Supermini,2016-08-31,-0.4954348897487614
+Electric,5 years +,Blue,Supermini,2016-09-30,0.9232307930141195
+Electric,5 years +,Blue,Supermini,2016-10-31,-0.8626153896556408
+Electric,5 years +,Blue,Supermini,2016-11-30,1.8406300461098009
+Electric,5 years +,Blue,Supermini,2016-12-31,-1.1843844649084023
+Electric,5 years +,Blue,Supermini,2017-01-31,-0.5541144466201299
+Electric,5 years +,Blue,Supermini,2017-02-28,1.4549874475925975
+Electric,5 years +,Blue,Supermini,2017-03-31,1.2500342277609195
+Electric,5 years +,Green,Sport,2016-03-31,1.0053297398771321
+Electric,5 years +,Green,Sport,2016-04-30,0.3916162777860601
+Electric,5 years +,Green,Sport,2016-05-31,-0.5770433369522173
+Electric,5 years +,Green,Sport,2016-06-30,-0.23064166431445363
+Electric,5 years +,Green,Sport,2016-07-31,1.0260516147990237
+Electric,5 years +,Green,Sport,2016-08-31,-0.2774311233368241
+Electric,5 years +,Green,Sport,2016-09-30,1.8420010111765601
+Electric,5 years +,Green,Sport,2016-10-31,0.11070255136234676
+Electric,5 years +,Green,Sport,2016-11-30,2.223888826498257
+Electric,5 years +,Green,Sport,2016-12-31,-1.4794918611226178
+Electric,5 years +,Green,Sport,2017-01-31,0.7176477137966055
+Electric,5 years +,Green,Sport,2017-02-28,-0.76310137099181
+Electric,5 years +,Green,Sport,2017-03-31,0.41947747239650707
+Electric,5 years +,Green,Sedan,2016-03-31,0.13029368656649648
+Electric,5 years +,Green,Sedan,2016-04-30,-0.07752420266568097
+Electric,5 years +,Green,Sedan,2016-05-31,0.056964540895546124
+Electric,5 years +,Green,Sedan,2016-06-30,0.7358416630138848
+Electric,5 years +,Green,Sedan,2016-07-31,-0.006495712354469708
+Electric,5 years +,Green,Sedan,2016-08-31,-1.0419471583483104
+Electric,5 years +,Green,Sedan,2016-09-30,1.3576184877582136
+Electric,5 years +,Green,Sedan,2016-10-31,0.7270248308079994
+Electric,5 years +,Green,Sedan,2016-11-30,-0.45681844709296193
+Electric,5 years +,Green,Sedan,2016-12-31,1.63010127525237
+Electric,5 years +,Green,Sedan,2017-01-31,0.4942864255152593
+Electric,5 years +,Green,Sedan,2017-02-28,1.087090552520111
+Electric,5 years +,Green,Sedan,2017-03-31,0.2751965848222523
+Electric,5 years +,Green,Supermini,2016-03-31,0.37222533552420356
+Electric,5 years +,Green,Supermini,2016-04-30,-1.2853180949479421
+Electric,5 years +,Green,Supermini,2016-05-31,-1.8599643846712568
+Electric,5 years +,Green,Supermini,2016-06-30,1.1173583284020283
+Electric,5 years +,Green,Supermini,2016-07-31,1.167253564470602
+Electric,5 years +,Green,Supermini,2016-08-31,-0.11882108196587793
+Electric,5 years +,Green,Supermini,2016-09-30,0.5270434926659135
+Electric,5 years +,Green,Supermini,2016-10-31,-0.8802811012481415
+Electric,5 years +,Green,Supermini,2016-11-30,2.060626005534487
+Electric,5 years +,Green,Supermini,2016-12-31,-1.767576828266712
+Electric,5 years +,Green,Supermini,2017-01-31,-0.3858722146031611
+Electric,5 years +,Green,Supermini,2017-02-28,0.7679098539805207
+Electric,5 years +,Green,Supermini,2017-03-31,-0.8887932448044233
+Electric,5 years +,Black,Sport,2016-03-31,-1.7654791083169479
+Electric,5 years +,Black,Sport,2016-04-30,0.6399761115418124
+Electric,5 years +,Black,Sport,2016-05-31,-0.03981584086512613
+Electric,5 years +,Black,Sport,2016-06-30,0.3267165901178166
+Electric,5 years +,Black,Sport,2016-07-31,1.3608518668754055
+Electric,5 years +,Black,Sport,2016-08-31,0.6060874143395704
+Electric,5 years +,Black,Sport,2016-09-30,-1.4514605656484774
+Electric,5 years +,Black,Sport,2016-10-31,-1.7166144845427318
+Electric,5 years +,Black,Sport,2016-11-30,-2.511798348628378
+Electric,5 years +,Black,Sport,2016-12-31,-1.8635394924735436
+Electric,5 years +,Black,Sport,2017-01-31,-0.4716376925570628
+Electric,5 years +,Black,Sport,2017-02-28,0.27099599292666343
+Electric,5 years +,Black,Sport,2017-03-31,0.5056180117356395
+Electric,5 years +,Black,Sedan,2016-03-31,0.2520356847393536
+Electric,5 years +,Black,Sedan,2016-04-30,-1.7058100537850867
+Electric,5 years +,Black,Sedan,2016-05-31,1.0796500858158269
+Electric,5 years +,Black,Sedan,2016-06-30,-0.7515197115880657
+Electric,5 years +,Black,Sedan,2016-07-31,-0.7018139266375096
+Electric,5 years +,Black,Sedan,2016-08-31,0.19037817593461612
+Electric,5 years +,Black,Sedan,2016-09-30,-1.1676259931144106
+Electric,5 years +,Black,Sedan,2016-10-31,0.030407516905746758
+Electric,5 years +,Black,Sedan,2016-11-30,0.775846460013416
+Electric,5 years +,Black,Sedan,2016-12-31,-0.10497424133477179
+Electric,5 years +,Black,Sedan,2017-01-31,-0.37242975286187213
+Electric,5 years +,Black,Sedan,2017-02-28,-0.6917955393070521
+Electric,5 years +,Black,Sedan,2017-03-31,-1.0326370664650697
+Electric,5 years +,Black,Supermini,2016-03-31,0.490544371261078
+Electric,5 years +,Black,Supermini,2016-04-30,1.0992955444500947
+Electric,5 years +,Black,Supermini,2016-05-31,0.760624113214989
+Electric,5 years +,Black,Supermini,2016-06-30,-1.0371631377405326
+Electric,5 years +,Black,Supermini,2016-07-31,0.5235198579473008
+Electric,5 years +,Black,Supermini,2016-08-31,-1.1919601297390554
+Electric,5 years +,Black,Supermini,2016-09-30,0.43792141184730776
+Electric,5 years +,Black,Supermini,2016-10-31,-0.5400756114202506
+Electric,5 years +,Black,Supermini,2016-11-30,0.6114402489875452
+Electric,5 years +,Black,Supermini,2016-12-31,0.2762768655790353
+Electric,5 years +,Black,Supermini,2017-01-31,0.3944506658404031
+Electric,5 years +,Black,Supermini,2017-02-28,0.15918554478413324
+Electric,5 years +,Black,Supermini,2017-03-31,0.5277335460691892
+Electric,Brand new,Yellow,Sport,2016-03-31,-0.5962845422672048
+Electric,Brand new,Yellow,Sport,2016-04-30,-0.5905837045965564
+Electric,Brand new,Yellow,Sport,2016-05-31,0.48959548940261166
+Electric,Brand new,Yellow,Sport,2016-06-30,1.5651474388675528
+Electric,Brand new,Yellow,Sport,2016-07-31,-0.7213984555454395
+Electric,Brand new,Yellow,Sport,2016-08-31,1.132511556283719
+Electric,Brand new,Yellow,Sport,2016-09-30,0.9844805510342627
+Electric,Brand new,Yellow,Sport,2016-10-31,-0.7611435660157833
+Electric,Brand new,Yellow,Sport,2016-11-30,-0.7148074873232972
+Electric,Brand new,Yellow,Sport,2016-12-31,0.15370578351143913
+Electric,Brand new,Yellow,Sport,2017-01-31,-0.7747997922291306
+Electric,Brand new,Yellow,Sport,2017-02-28,2.579674565277528
+Electric,Brand new,Yellow,Sport,2017-03-31,1.5107170039882158
+Electric,Brand new,Yellow,Sedan,2016-03-31,-0.3365490734353025
+Electric,Brand new,Yellow,Sedan,2016-04-30,-0.5980588536238244
+Electric,Brand new,Yellow,Sedan,2016-05-31,-0.5677217522646726
+Electric,Brand new,Yellow,Sedan,2016-06-30,-0.4834362693803905
+Electric,Brand new,Yellow,Sedan,2016-07-31,-0.41773334240186016
+Electric,Brand new,Yellow,Sedan,2016-08-31,-1.2480106837763236
+Electric,Brand new,Yellow,Sedan,2016-09-30,0.8960714328453967
+Electric,Brand new,Yellow,Sedan,2016-10-31,1.7084827378630492
+Electric,Brand new,Yellow,Sedan,2016-11-30,-1.8878662528735448
+Electric,Brand new,Yellow,Sedan,2016-12-31,0.6100847456022358
+Electric,Brand new,Yellow,Sedan,2017-01-31,1.1280221934178472
+Electric,Brand new,Yellow,Sedan,2017-02-28,0.12350717581510161
+Electric,Brand new,Yellow,Sedan,2017-03-31,1.0637365233527734
+Electric,Brand new,Yellow,Supermini,2016-03-31,-0.6967634639216541
+Electric,Brand new,Yellow,Supermini,2016-04-30,-0.6150848503618392
+Electric,Brand new,Yellow,Supermini,2016-05-31,0.19406387805780143
+Electric,Brand new,Yellow,Supermini,2016-06-30,-1.4070267731551507
+Electric,Brand new,Yellow,Supermini,2016-07-31,-0.9746853210280589
+Electric,Brand new,Yellow,Supermini,2016-08-31,-1.5580119393323113
+Electric,Brand new,Yellow,Supermini,2016-09-30,-1.0631475936459494
+Electric,Brand new,Yellow,Supermini,2016-10-31,0.45039351928074095
+Electric,Brand new,Yellow,Supermini,2016-11-30,0.21075644491662357
+Electric,Brand new,Yellow,Supermini,2016-12-31,-0.4900355921397722
+Electric,Brand new,Yellow,Supermini,2017-01-31,-0.5309310853083802
+Electric,Brand new,Yellow,Supermini,2017-02-28,0.30590195661323505
+Electric,Brand new,Yellow,Supermini,2017-03-31,-1.0500795182051894
+Electric,Brand new,Blue,Sport,2016-03-31,-1.6892514962717686
+Electric,Brand new,Blue,Sport,2016-04-30,0.4636877675937838
+Electric,Brand new,Blue,Sport,2016-05-31,1.6951296067243804
+Electric,Brand new,Blue,Sport,2016-06-30,0.6654061202453817
+Electric,Brand new,Blue,Sport,2016-07-31,0.9672876238358858
+Electric,Brand new,Blue,Sport,2016-08-31,-0.04112189356394787
+Electric,Brand new,Blue,Sport,2016-09-30,0.3344474946287797
+Electric,Brand new,Blue,Sport,2016-10-31,1.4316650373437858
+Electric,Brand new,Blue,Sport,2016-11-30,-0.33432645602511335
+Electric,Brand new,Blue,Sport,2016-12-31,-0.7149499836727633
+Electric,Brand new,Blue,Sport,2017-01-31,0.03919127831629811
+Electric,Brand new,Blue,Sport,2017-02-28,-0.13772171903852115
+Electric,Brand new,Blue,Sport,2017-03-31,-0.3623587915347989
+Electric,Brand new,Blue,Sedan,2016-03-31,-0.4578704280739174
+Electric,Brand new,Blue,Sedan,2016-04-30,-0.5542975327676363
+Electric,Brand new,Blue,Sedan,2016-05-31,0.976565962117246
+Electric,Brand new,Blue,Sedan,2016-06-30,-0.12978190842205697
+Electric,Brand new,Blue,Sedan,2016-07-31,-0.47252460236367533
+Electric,Brand new,Blue,Sedan,2016-08-31,0.7149039552769408
+Electric,Brand new,Blue,Sedan,2016-09-30,0.21998379453384342
+Electric,Brand new,Blue,Sedan,2016-10-31,0.40903765446638013
+Electric,Brand new,Blue,Sedan,2016-11-30,-0.7883631620419344
+Electric,Brand new,Blue,Sedan,2016-12-31,-0.6205172260557019
+Electric,Brand new,Blue,Sedan,2017-01-31,0.5187117656673811
+Electric,Brand new,Blue,Sedan,2017-02-28,-1.3213914545001237
+Electric,Brand new,Blue,Sedan,2017-03-31,-0.0842892750885794
+Electric,Brand new,Blue,Supermini,2016-03-31,0.36777598227896385
+Electric,Brand new,Blue,Supermini,2016-04-30,-0.23673684386953744
+Electric,Brand new,Blue,Supermini,2016-05-31,-2.0256721144019014
+Electric,Brand new,Blue,Supermini,2016-06-30,-0.6795699099608099
+Electric,Brand new,Blue,Supermini,2016-07-31,0.18835914149593203
+Electric,Brand new,Blue,Supermini,2016-08-31,1.5018645608082355
+Electric,Brand new,Blue,Supermini,2016-09-30,-0.8986043159567321
+Electric,Brand new,Blue,Supermini,2016-10-31,0.6030816424369656
+Electric,Brand new,Blue,Supermini,2016-11-30,0.0258699976796512
+Electric,Brand new,Blue,Supermini,2016-12-31,1.1296377192310896
+Electric,Brand new,Blue,Supermini,2017-01-31,0.14958984952185747
+Electric,Brand new,Blue,Supermini,2017-02-28,0.42897846998563743
+Electric,Brand new,Blue,Supermini,2017-03-31,0.09671021880673857
+Electric,Brand new,Green,Sport,2016-03-31,-0.4604231654008979
+Electric,Brand new,Green,Sport,2016-04-30,-0.4349887487246982
+Electric,Brand new,Green,Sport,2016-05-31,0.3471433948605935
+Electric,Brand new,Green,Sport,2016-06-30,-0.2986515675354072
+Electric,Brand new,Green,Sport,2016-07-31,0.221963009544774
+Electric,Brand new,Green,Sport,2016-08-31,0.9138175938761912
+Electric,Brand new,Green,Sport,2016-09-30,1.3715564870547063
+Electric,Brand new,Green,Sport,2016-10-31,-0.9311857651537467
+Electric,Brand new,Green,Sport,2016-11-30,0.27003221424303053
+Electric,Brand new,Green,Sport,2016-12-31,0.047086458047712054
+Electric,Brand new,Green,Sport,2017-01-31,1.185350739871575
+Electric,Brand new,Green,Sport,2017-02-28,-0.8484807483441273
+Electric,Brand new,Green,Sport,2017-03-31,-1.093745118886267
+Electric,Brand new,Green,Sedan,2016-03-31,-1.6645898736567837
+Electric,Brand new,Green,Sedan,2016-04-30,-0.05388466240334893
+Electric,Brand new,Green,Sedan,2016-05-31,0.037777873596192356
+Electric,Brand new,Green,Sedan,2016-06-30,0.8871067854556967
+Electric,Brand new,Green,Sedan,2016-07-31,0.3015083365924902
+Electric,Brand new,Green,Sedan,2016-08-31,0.32790373356145613
+Electric,Brand new,Green,Sedan,2016-09-30,-0.3318531029024814
+Electric,Brand new,Green,Sedan,2016-10-31,-1.259742258076097
+Electric,Brand new,Green,Sedan,2016-11-30,-0.472916869888939
+Electric,Brand new,Green,Sedan,2016-12-31,-1.2981752236794086
+Electric,Brand new,Green,Sedan,2017-01-31,-2.1478920514147415
+Electric,Brand new,Green,Sedan,2017-02-28,-0.1424417849047535
+Electric,Brand new,Green,Sedan,2017-03-31,-0.6464266382911542
+Electric,Brand new,Green,Supermini,2016-03-31,0.17748226684727564
+Electric,Brand new,Green,Supermini,2016-04-30,-0.0062231333877895605
+Electric,Brand new,Green,Supermini,2016-05-31,-0.17534395840483355
+Electric,Brand new,Green,Supermini,2016-06-30,-0.13168205914440262
+Electric,Brand new,Green,Supermini,2016-07-31,0.6220150763733221
+Electric,Brand new,Green,Supermini,2016-08-31,-0.4747524097143807
+Electric,Brand new,Green,Supermini,2016-09-30,2.0689828306882228
+Electric,Brand new,Green,Supermini,2016-10-31,-0.5702312903976844
+Electric,Brand new,Green,Supermini,2016-11-30,0.21024403965454025
+Electric,Brand new,Green,Supermini,2016-12-31,-0.20361274451854514
+Electric,Brand new,Green,Supermini,2017-01-31,-0.9451091631254539
+Electric,Brand new,Green,Supermini,2017-02-28,0.5129810877534189
+Electric,Brand new,Green,Supermini,2017-03-31,1.8250550844640019
+Electric,Brand new,Black,Sport,2016-03-31,0.6820462324794931
+Electric,Brand new,Black,Sport,2016-04-30,1.0259378124092764
+Electric,Brand new,Black,Sport,2016-05-31,-1.2253705064864333
+Electric,Brand new,Black,Sport,2016-06-30,0.9085087513617842
+Electric,Brand new,Black,Sport,2016-07-31,0.03796747137489632
+Electric,Brand new,Black,Sport,2016-08-31,-0.9952639016619954
+Electric,Brand new,Black,Sport,2016-09-30,-0.8050391079701682
+Electric,Brand new,Black,Sport,2016-10-31,1.2192029370813566
+Electric,Brand new,Black,Sport,2016-11-30,-1.2176002110133712
+Electric,Brand new,Black,Sport,2016-12-31,0.774911818103345
+Electric,Brand new,Black,Sport,2017-01-31,2.1380732295078344
+Electric,Brand new,Black,Sport,2017-02-28,-1.6185622112637343
+Electric,Brand new,Black,Sport,2017-03-31,-0.6364744821380866
+Electric,Brand new,Black,Sedan,2016-03-31,1.2888739408458705
+Electric,Brand new,Black,Sedan,2016-04-30,0.18922966046308065
+Electric,Brand new,Black,Sedan,2016-05-31,-0.00791627842208351
+Electric,Brand new,Black,Sedan,2016-06-30,0.7027947472524274
+Electric,Brand new,Black,Sedan,2016-07-31,-1.789686283962645
+Electric,Brand new,Black,Sedan,2016-08-31,1.6280249264525237
+Electric,Brand new,Black,Sedan,2016-09-30,0.808694912704269
+Electric,Brand new,Black,Sedan,2016-10-31,-0.3743909004251237
+Electric,Brand new,Black,Sedan,2016-11-30,0.2708696452795673
+Electric,Brand new,Black,Sedan,2016-12-31,1.2652225901620355
+Electric,Brand new,Black,Sedan,2017-01-31,0.5326262044782816
+Electric,Brand new,Black,Sedan,2017-02-28,1.2000673390617567
+Electric,Brand new,Black,Sedan,2017-03-31,0.47526838374024405
+Electric,Brand new,Black,Supermini,2016-03-31,-0.4231609352438187
+Electric,Brand new,Black,Supermini,2016-04-30,-0.2600917542427514
+Electric,Brand new,Black,Supermini,2016-05-31,-1.5536538188119775
+Electric,Brand new,Black,Supermini,2016-06-30,-0.6313006552093714
+Electric,Brand new,Black,Supermini,2016-07-31,-0.8937838670270326
+Electric,Brand new,Black,Supermini,2016-08-31,-0.09584523905810806
+Electric,Brand new,Black,Supermini,2016-09-30,0.6862956763134291
+Electric,Brand new,Black,Supermini,2016-10-31,-0.2237398889845446
+Electric,Brand new,Black,Supermini,2016-11-30,-0.6717921615681897
+Electric,Brand new,Black,Supermini,2016-12-31,-0.06625914302474083
+Electric,Brand new,Black,Supermini,2017-01-31,0.01667223607874963
+Electric,Brand new,Black,Supermini,2017-02-28,-1.6371145668870928
+Electric,Brand new,Black,Supermini,2017-03-31,-0.3056331607898737
+Internal combustion,0-5 years,Yellow,Sport,2016-03-31,0.8445134224880471
+Internal combustion,0-5 years,Yellow,Sport,2016-04-30,-0.14130449848860369
+Internal combustion,0-5 years,Yellow,Sport,2016-05-31,-0.6072381666970368
+Internal combustion,0-5 years,Yellow,Sport,2016-06-30,-0.9941882662435786
+Internal combustion,0-5 years,Yellow,Sport,2016-07-31,1.5482029749640693
+Internal combustion,0-5 years,Yellow,Sport,2016-08-31,-1.4275874581289318
+Internal combustion,0-5 years,Yellow,Sport,2016-09-30,0.9755604610920418
+Internal combustion,0-5 years,Yellow,Sport,2016-10-31,1.144089658861105
+Internal combustion,0-5 years,Yellow,Sport,2016-11-30,1.605019362200639
+Internal combustion,0-5 years,Yellow,Sport,2016-12-31,0.3283974576618922
+Internal combustion,0-5 years,Yellow,Sport,2017-01-31,1.3822601684572264
+Internal combustion,0-5 years,Yellow,Sport,2017-02-28,-1.5474037773665732
+Internal combustion,0-5 years,Yellow,Sport,2017-03-31,-1.358563068608609
+Internal combustion,0-5 years,Yellow,Sedan,2016-03-31,0.13033284636920384
+Internal combustion,0-5 years,Yellow,Sedan,2016-04-30,0.7137225727616227
+Internal combustion,0-5 years,Yellow,Sedan,2016-05-31,-1.1897199619591956
+Internal combustion,0-5 years,Yellow,Sedan,2016-06-30,0.033814175394857884
+Internal combustion,0-5 years,Yellow,Sedan,2016-07-31,0.004959210806249623
+Internal combustion,0-5 years,Yellow,Sedan,2016-08-31,0.24217669854180415
+Internal combustion,0-5 years,Yellow,Sedan,2016-09-30,0.06039027917315956
+Internal combustion,0-5 years,Yellow,Sedan,2016-10-31,-1.207646862963265
+Internal combustion,0-5 years,Yellow,Sedan,2016-11-30,-1.5059786751475872
+Internal combustion,0-5 years,Yellow,Sedan,2016-12-31,-1.4641793474431735
+Internal combustion,0-5 years,Yellow,Sedan,2017-01-31,0.08790172491034812
+Internal combustion,0-5 years,Yellow,Sedan,2017-02-28,0.06856950939565998
+Internal combustion,0-5 years,Yellow,Sedan,2017-03-31,-0.11120240905514797
+Internal combustion,0-5 years,Yellow,Supermini,2016-03-31,1.3512581988499597
+Internal combustion,0-5 years,Yellow,Supermini,2016-04-30,0.9701481549186988
+Internal combustion,0-5 years,Yellow,Supermini,2016-05-31,0.39633428195617193
+Internal combustion,0-5 years,Yellow,Supermini,2016-06-30,0.646977677401295
+Internal combustion,0-5 years,Yellow,Supermini,2016-07-31,-0.7242417565864505
+Internal combustion,0-5 years,Yellow,Supermini,2016-08-31,-1.919963644578011
+Internal combustion,0-5 years,Yellow,Supermini,2016-09-30,0.008598291463043363
+Internal combustion,0-5 years,Yellow,Supermini,2016-10-31,0.5257079749571738
+Internal combustion,0-5 years,Yellow,Supermini,2016-11-30,0.09248927811645172
+Internal combustion,0-5 years,Yellow,Supermini,2016-12-31,-0.4023069999221857
+Internal combustion,0-5 years,Yellow,Supermini,2017-01-31,-0.9040385386561344
+Internal combustion,0-5 years,Yellow,Supermini,2017-02-28,0.8959554913916231
+Internal combustion,0-5 years,Yellow,Supermini,2017-03-31,-1.3278126259827352
+Internal combustion,0-5 years,Blue,Sport,2016-03-31,0.22340676173090512
+Internal combustion,0-5 years,Blue,Sport,2016-04-30,-1.9896792259320597
+Internal combustion,0-5 years,Blue,Sport,2016-05-31,-0.17748453000101505
+Internal combustion,0-5 years,Blue,Sport,2016-06-30,-0.028306964761550125
+Internal combustion,0-5 years,Blue,Sport,2016-07-31,0.41545186560456465
+Internal combustion,0-5 years,Blue,Sport,2016-08-31,0.7583937394290503
+Internal combustion,0-5 years,Blue,Sport,2016-09-30,0.23631519679256827
+Internal combustion,0-5 years,Blue,Sport,2016-10-31,-1.9581939752095578
+Internal combustion,0-5 years,Blue,Sport,2016-11-30,1.600365602389961
+Internal combustion,0-5 years,Blue,Sport,2016-12-31,0.20886744265469764
+Internal combustion,0-5 years,Blue,Sport,2017-01-31,0.8421572678291693
+Internal combustion,0-5 years,Blue,Sport,2017-02-28,0.2188671361234475
+Internal combustion,0-5 years,Blue,Sport,2017-03-31,-0.6306348121938429
+Internal combustion,0-5 years,Blue,Sedan,2016-03-31,-0.08638526212487273
+Internal combustion,0-5 years,Blue,Sedan,2016-04-30,-0.41728759214816435
+Internal combustion,0-5 years,Blue,Sedan,2016-05-31,0.44035709486684177
+Internal combustion,0-5 years,Blue,Sedan,2016-06-30,0.7923006958725723
+Internal combustion,0-5 years,Blue,Sedan,2016-07-31,1.984962215243875
+Internal combustion,0-5 years,Blue,Sedan,2016-08-31,1.0374710961676956
+Internal combustion,0-5 years,Blue,Sedan,2016-09-30,0.1034943738783329
+Internal combustion,0-5 years,Blue,Sedan,2016-10-31,1.0560007071488688
+Internal combustion,0-5 years,Blue,Sedan,2016-11-30,-1.6898056644070782
+Internal combustion,0-5 years,Blue,Sedan,2016-12-31,0.025756829044657353
+Internal combustion,0-5 years,Blue,Sedan,2017-01-31,0.8508710797685117
+Internal combustion,0-5 years,Blue,Sedan,2017-02-28,0.7110503322208894
+Internal combustion,0-5 years,Blue,Sedan,2017-03-31,-0.054557805122586206
+Internal combustion,0-5 years,Blue,Supermini,2016-03-31,-0.8794300120550524
+Internal combustion,0-5 years,Blue,Supermini,2016-04-30,0.42591142420426575
+Internal combustion,0-5 years,Blue,Supermini,2016-05-31,0.5785512363340847
+Internal combustion,0-5 years,Blue,Supermini,2016-06-30,-1.580182971317414
+Internal combustion,0-5 years,Blue,Supermini,2016-07-31,-0.2828253787476478
+Internal combustion,0-5 years,Blue,Supermini,2016-08-31,0.014933373372946344
+Internal combustion,0-5 years,Blue,Supermini,2016-09-30,2.626795035716514
+Internal combustion,0-5 years,Blue,Supermini,2016-10-31,-0.6332076587766486
+Internal combustion,0-5 years,Blue,Supermini,2016-11-30,-0.10095230904874618
+Internal combustion,0-5 years,Blue,Supermini,2016-12-31,0.3381654768904536
+Internal combustion,0-5 years,Blue,Supermini,2017-01-31,1.2547658574967986
+Internal combustion,0-5 years,Blue,Supermini,2017-02-28,-0.766274315304953
+Internal combustion,0-5 years,Blue,Supermini,2017-03-31,0.35216292327883536
+Internal combustion,0-5 years,Green,Sport,2016-03-31,-0.6429559707135024
+Internal combustion,0-5 years,Green,Sport,2016-04-30,0.33561473891831145
+Internal combustion,0-5 years,Green,Sport,2016-05-31,-0.5286465162288132
+Internal combustion,0-5 years,Green,Sport,2016-06-30,0.9438260502583238
+Internal combustion,0-5 years,Green,Sport,2016-07-31,1.4648803164968325
+Internal combustion,0-5 years,Green,Sport,2016-08-31,0.5204509884632269
+Internal combustion,0-5 years,Green,Sport,2016-09-30,2.381144307088848
+Internal combustion,0-5 years,Green,Sport,2016-10-31,-0.6460087962350246
+Internal combustion,0-5 years,Green,Sport,2016-11-30,-1.2364131667772404
+Internal combustion,0-5 years,Green,Sport,2016-12-31,1.4484987484566534
+Internal combustion,0-5 years,Green,Sport,2017-01-31,0.574633019502084
+Internal combustion,0-5 years,Green,Sport,2017-02-28,0.6442081736673163
+Internal combustion,0-5 years,Green,Sport,2017-03-31,-0.38985751625839626
+Internal combustion,0-5 years,Green,Sedan,2016-03-31,-2.2402735044768654
+Internal combustion,0-5 years,Green,Sedan,2016-04-30,0.6013007038057185
+Internal combustion,0-5 years,Green,Sedan,2016-05-31,1.007545270562797
+Internal combustion,0-5 years,Green,Sedan,2016-06-30,-0.5826787498518267
+Internal combustion,0-5 years,Green,Sedan,2016-07-31,-0.5322611445637905
+Internal combustion,0-5 years,Green,Sedan,2016-08-31,0.5516410692571606
+Internal combustion,0-5 years,Green,Sedan,2016-09-30,0.22771392682146968
+Internal combustion,0-5 years,Green,Sedan,2016-10-31,-0.44688687932155297
+Internal combustion,0-5 years,Green,Sedan,2016-11-30,-0.6411662072329022
+Internal combustion,0-5 years,Green,Sedan,2016-12-31,-2.328878176787722
+Internal combustion,0-5 years,Green,Sedan,2017-01-31,0.3495395018907604
+Internal combustion,0-5 years,Green,Sedan,2017-02-28,2.1130461406333243
+Internal combustion,0-5 years,Green,Sedan,2017-03-31,2.2097061509844256
+Internal combustion,0-5 years,Green,Supermini,2016-03-31,-0.09618982884910503
+Internal combustion,0-5 years,Green,Supermini,2016-04-30,1.7236140093872845
+Internal combustion,0-5 years,Green,Supermini,2016-05-31,-0.9114298330236779
+Internal combustion,0-5 years,Green,Supermini,2016-06-30,0.7154175363429783
+Internal combustion,0-5 years,Green,Supermini,2016-07-31,0.4571906027160805
+Internal combustion,0-5 years,Green,Supermini,2016-08-31,-0.8885423849511216
+Internal combustion,0-5 years,Green,Supermini,2016-09-30,-0.9170587813612825
+Internal combustion,0-5 years,Green,Supermini,2016-10-31,0.5620387308569891
+Internal combustion,0-5 years,Green,Supermini,2016-11-30,-0.22529003944470882
+Internal combustion,0-5 years,Green,Supermini,2016-12-31,-1.1914641963718358
+Internal combustion,0-5 years,Green,Supermini,2017-01-31,-0.8986716430600593
+Internal combustion,0-5 years,Green,Supermini,2017-02-28,1.1623917381736464
+Internal combustion,0-5 years,Green,Supermini,2017-03-31,0.45427544359192046
+Internal combustion,0-5 years,Black,Sport,2016-03-31,-0.42368307375363934
+Internal combustion,0-5 years,Black,Sport,2016-04-30,0.5084271969036065
+Internal combustion,0-5 years,Black,Sport,2016-05-31,2.9161457643246953
+Internal combustion,0-5 years,Black,Sport,2016-06-30,1.8355778710871449
+Internal combustion,0-5 years,Black,Sport,2016-07-31,0.7456436851348052
+Internal combustion,0-5 years,Black,Sport,2016-08-31,0.8680984972470904
+Internal combustion,0-5 years,Black,Sport,2016-09-30,0.6366812563726035
+Internal combustion,0-5 years,Black,Sport,2016-10-31,1.2630923320655276
+Internal combustion,0-5 years,Black,Sport,2016-11-30,-0.5039153354393854
+Internal combustion,0-5 years,Black,Sport,2016-12-31,0.4639631525681164
+Internal combustion,0-5 years,Black,Sport,2017-01-31,-0.5373458801415575
+Internal combustion,0-5 years,Black,Sport,2017-02-28,-1.4419782458689343
+Internal combustion,0-5 years,Black,Sport,2017-03-31,-1.1135996581694183
+Internal combustion,0-5 years,Black,Sedan,2016-03-31,-0.4974771731241164
+Internal combustion,0-5 years,Black,Sedan,2016-04-30,0.8920109815553827
+Internal combustion,0-5 years,Black,Sedan,2016-05-31,1.36378730163381
+Internal combustion,0-5 years,Black,Sedan,2016-06-30,1.5979576270834015
+Internal combustion,0-5 years,Black,Sedan,2016-07-31,0.2926301715125989
+Internal combustion,0-5 years,Black,Sedan,2016-08-31,-1.2476164204357274
+Internal combustion,0-5 years,Black,Sedan,2016-09-30,1.4916874912684226
+Internal combustion,0-5 years,Black,Sedan,2016-10-31,1.16801841115846
+Internal combustion,0-5 years,Black,Sedan,2016-11-30,0.806171182214125
+Internal combustion,0-5 years,Black,Sedan,2016-12-31,-0.3981249684733992
+Internal combustion,0-5 years,Black,Sedan,2017-01-31,-1.057707198672881
+Internal combustion,0-5 years,Black,Sedan,2017-02-28,-0.20807856401696545
+Internal combustion,0-5 years,Black,Sedan,2017-03-31,-1.098886827972773
+Internal combustion,0-5 years,Black,Supermini,2016-03-31,1.1331200708010103
+Internal combustion,0-5 years,Black,Supermini,2016-04-30,-0.11295768006716517
+Internal combustion,0-5 years,Black,Supermini,2016-05-31,-0.08723610998326047
+Internal combustion,0-5 years,Black,Supermini,2016-06-30,0.8265315368364236
+Internal combustion,0-5 years,Black,Supermini,2016-07-31,2.642673114790711
+Internal combustion,0-5 years,Black,Supermini,2016-08-31,-0.9976094169992891
+Internal combustion,0-5 years,Black,Supermini,2016-09-30,-1.8996044162185264
+Internal combustion,0-5 years,Black,Supermini,2016-10-31,0.53854488526395
+Internal combustion,0-5 years,Black,Supermini,2016-11-30,0.49959456915424566
+Internal combustion,0-5 years,Black,Supermini,2016-12-31,0.3022789571561422
+Internal combustion,0-5 years,Black,Supermini,2017-01-31,-1.1218564502944677
+Internal combustion,0-5 years,Black,Supermini,2017-02-28,0.8928551913275837
+Internal combustion,0-5 years,Black,Supermini,2017-03-31,-1.141403137360055
+Internal combustion,5 years +,Yellow,Sport,2016-03-31,-0.6512795351661526
+Internal combustion,5 years +,Yellow,Sport,2016-04-30,1.9348227852542763
+Internal combustion,5 years +,Yellow,Sport,2016-05-31,1.0500219431377098
+Internal combustion,5 years +,Yellow,Sport,2016-06-30,-0.6166993533800758
+Internal combustion,5 years +,Yellow,Sport,2016-07-31,0.3974528268113512
+Internal combustion,5 years +,Yellow,Sport,2016-08-31,-1.542914743460307
+Internal combustion,5 years +,Yellow,Sport,2016-09-30,-1.7435030972697763
+Internal combustion,5 years +,Yellow,Sport,2016-10-31,0.6147560992065229
+Internal combustion,5 years +,Yellow,Sport,2016-11-30,-0.4136743805457177
+Internal combustion,5 years +,Yellow,Sport,2016-12-31,0.653631365673762
+Internal combustion,5 years +,Yellow,Sport,2017-01-31,0.3031014589417656
+Internal combustion,5 years +,Yellow,Sport,2017-02-28,-7.181501537763701e-4
+Internal combustion,5 years +,Yellow,Sport,2017-03-31,0.37351870963471434
+Internal combustion,5 years +,Yellow,Sedan,2016-03-31,0.6845767774108369
+Internal combustion,5 years +,Yellow,Sedan,2016-04-30,1.1293708708845154
+Internal combustion,5 years +,Yellow,Sedan,2016-05-31,0.7802481923184972
+Internal combustion,5 years +,Yellow,Sedan,2016-06-30,-1.4504277058948918
+Internal combustion,5 years +,Yellow,Sedan,2016-07-31,0.01338452110672846
+Internal combustion,5 years +,Yellow,Sedan,2016-08-31,-0.8413186838587455
+Internal combustion,5 years +,Yellow,Sedan,2016-09-30,1.72461020969294
+Internal combustion,5 years +,Yellow,Sedan,2016-10-31,1.669232530320598
+Internal combustion,5 years +,Yellow,Sedan,2016-11-30,-0.406894607922616
+Internal combustion,5 years +,Yellow,Sedan,2016-12-31,-1.2775900303543988
+Internal combustion,5 years +,Yellow,Sedan,2017-01-31,0.24154945861942217
+Internal combustion,5 years +,Yellow,Sedan,2017-02-28,0.11211236765862699
+Internal combustion,5 years +,Yellow,Sedan,2017-03-31,0.13751940584507638
+Internal combustion,5 years +,Yellow,Supermini,2016-03-31,0.8173454852465311
+Internal combustion,5 years +,Yellow,Supermini,2016-04-30,-0.3548550057816769
+Internal combustion,5 years +,Yellow,Supermini,2016-05-31,-0.08102755803808424
+Internal combustion,5 years +,Yellow,Supermini,2016-06-30,-0.5175815376458442
+Internal combustion,5 years +,Yellow,Supermini,2016-07-31,-1.8402973719845506
+Internal combustion,5 years +,Yellow,Supermini,2016-08-31,0.39107406339579653
+Internal combustion,5 years +,Yellow,Supermini,2016-09-30,-2.3632264554301323
+Internal combustion,5 years +,Yellow,Supermini,2016-10-31,-0.3002216692026337
+Internal combustion,5 years +,Yellow,Supermini,2016-11-30,-1.1844628969991065
+Internal combustion,5 years +,Yellow,Supermini,2016-12-31,0.08657812503336877
+Internal combustion,5 years +,Yellow,Supermini,2017-01-31,-0.6268400513945358
+Internal combustion,5 years +,Yellow,Supermini,2017-02-28,0.22745646926683227
+Internal combustion,5 years +,Yellow,Supermini,2017-03-31,-0.6827674942047625
+Internal combustion,5 years +,Blue,Sport,2016-03-31,-1.174960876415438
+Internal combustion,5 years +,Blue,Sport,2016-04-30,-0.03898470605705614
+Internal combustion,5 years +,Blue,Sport,2016-05-31,-0.5240436633640642
+Internal combustion,5 years +,Blue,Sport,2016-06-30,-1.0783410200158572
+Internal combustion,5 years +,Blue,Sport,2016-07-31,-0.2670573850464454
+Internal combustion,5 years +,Blue,Sport,2016-08-31,-2.447116119828262
+Internal combustion,5 years +,Blue,Sport,2016-09-30,-0.3874052701919785
+Internal combustion,5 years +,Blue,Sport,2016-10-31,0.14108863345869221
+Internal combustion,5 years +,Blue,Sport,2016-11-30,0.877730673543222
+Internal combustion,5 years +,Blue,Sport,2016-12-31,1.5209932726307729
+Internal combustion,5 years +,Blue,Sport,2017-01-31,-0.3217349639207167
+Internal combustion,5 years +,Blue,Sport,2017-02-28,0.3049463242793369
+Internal combustion,5 years +,Blue,Sport,2017-03-31,1.5627871800509274
+Internal combustion,5 years +,Blue,Sedan,2016-03-31,-0.7021676672614151
+Internal combustion,5 years +,Blue,Sedan,2016-04-30,-1.6288614491398845
+Internal combustion,5 years +,Blue,Sedan,2016-05-31,1.1830791830959493
+Internal combustion,5 years +,Blue,Sedan,2016-06-30,-0.17589862041931384
+Internal combustion,5 years +,Blue,Sedan,2016-07-31,2.7204046813682066
+Internal combustion,5 years +,Blue,Sedan,2016-08-31,-2.0749695850743732
+Internal combustion,5 years +,Blue,Sedan,2016-09-30,-1.7058546461236974
+Internal combustion,5 years +,Blue,Sedan,2016-10-31,0.17030314635285693
+Internal combustion,5 years +,Blue,Sedan,2016-11-30,-0.6263330211756873
+Internal combustion,5 years +,Blue,Sedan,2016-12-31,-2.2811057135620523
+Internal combustion,5 years +,Blue,Sedan,2017-01-31,0.5224027635780448
+Internal combustion,5 years +,Blue,Sedan,2017-02-28,-1.3663813731035668
+Internal combustion,5 years +,Blue,Sedan,2017-03-31,-0.3363555192031528
+Internal combustion,5 years +,Blue,Supermini,2016-03-31,0.5550203771075448
+Internal combustion,5 years +,Blue,Supermini,2016-04-30,-1.566805420904318
+Internal combustion,5 years +,Blue,Supermini,2016-05-31,-0.049099264978194036
+Internal combustion,5 years +,Blue,Supermini,2016-06-30,0.35699971000756003
+Internal combustion,5 years +,Blue,Supermini,2016-07-31,-0.6813135912818277
+Internal combustion,5 years +,Blue,Supermini,2016-08-31,-1.6578888410365036
+Internal combustion,5 years +,Blue,Supermini,2016-09-30,0.3940529626542704
+Internal combustion,5 years +,Blue,Supermini,2016-10-31,-1.8434302587070743
+Internal combustion,5 years +,Blue,Supermini,2016-11-30,0.44887883998191824
+Internal combustion,5 years +,Blue,Supermini,2016-12-31,0.8645515401224076
+Internal combustion,5 years +,Blue,Supermini,2017-01-31,-0.8403375765273112
+Internal combustion,5 years +,Blue,Supermini,2017-02-28,0.6880866321899876
+Internal combustion,5 years +,Blue,Supermini,2017-03-31,0.6601432930475284
+Internal combustion,5 years +,Green,Sport,2016-03-31,0.47949110013169716
+Internal combustion,5 years +,Green,Sport,2016-04-30,0.7731333636789475
+Internal combustion,5 years +,Green,Sport,2016-05-31,-0.19018194759885734
+Internal combustion,5 years +,Green,Sport,2016-06-30,0.8658080110282848
+Internal combustion,5 years +,Green,Sport,2016-07-31,-1.5924374951768738
+Internal combustion,5 years +,Green,Sport,2016-08-31,-0.06110470240147442
+Internal combustion,5 years +,Green,Sport,2016-09-30,1.4613368441548154
+Internal combustion,5 years +,Green,Sport,2016-10-31,-0.17491100113707483
+Internal combustion,5 years +,Green,Sport,2016-11-30,0.2519181584834043
+Internal combustion,5 years +,Green,Sport,2016-12-31,0.6779102530065253
+Internal combustion,5 years +,Green,Sport,2017-01-31,-0.08636145356430373
+Internal combustion,5 years +,Green,Sport,2017-02-28,-1.810819930030378
+Internal combustion,5 years +,Green,Sport,2017-03-31,1.431266462338912
+Internal combustion,5 years +,Green,Sedan,2016-03-31,-0.7857446391762223
+Internal combustion,5 years +,Green,Sedan,2016-04-30,-0.5594018967584328
+Internal combustion,5 years +,Green,Sedan,2016-05-31,-0.8410534663009952
+Internal combustion,5 years +,Green,Sedan,2016-06-30,1.3211467739005809
+Internal combustion,5 years +,Green,Sedan,2016-07-31,-0.2886393837667065
+Internal combustion,5 years +,Green,Sedan,2016-08-31,0.9006875282562677
+Internal combustion,5 years +,Green,Sedan,2016-09-30,-1.4861562709563132
+Internal combustion,5 years +,Green,Sedan,2016-10-31,-0.2290938753551821
+Internal combustion,5 years +,Green,Sedan,2016-11-30,0.45310639068173036
+Internal combustion,5 years +,Green,Sedan,2016-12-31,0.20627829949307286
+Internal combustion,5 years +,Green,Sedan,2017-01-31,-0.09569241350159523
+Internal combustion,5 years +,Green,Sedan,2017-02-28,0.4430830568616302
+Internal combustion,5 years +,Green,Sedan,2017-03-31,0.6480736863935024
+Internal combustion,5 years +,Green,Supermini,2016-03-31,-1.0487703927707268
+Internal combustion,5 years +,Green,Supermini,2016-04-30,1.2985743414610125
+Internal combustion,5 years +,Green,Supermini,2016-05-31,0.14367574982919532
+Internal combustion,5 years +,Green,Supermini,2016-06-30,-0.17345878472171367
+Internal combustion,5 years +,Green,Supermini,2016-07-31,-0.8295731705225153
+Internal combustion,5 years +,Green,Supermini,2016-08-31,0.5481658580406457
+Internal combustion,5 years +,Green,Supermini,2016-09-30,1.5197637533571693
+Internal combustion,5 years +,Green,Supermini,2016-10-31,-0.1849429612810312
+Internal combustion,5 years +,Green,Supermini,2016-11-30,-0.08928146315961441
+Internal combustion,5 years +,Green,Supermini,2016-12-31,-0.51641312820854
+Internal combustion,5 years +,Green,Supermini,2017-01-31,-0.038836141204138606
+Internal combustion,5 years +,Green,Supermini,2017-02-28,-0.8043643616682667
+Internal combustion,5 years +,Green,Supermini,2017-03-31,-0.1532107554354611
+Internal combustion,5 years +,Black,Sport,2016-03-31,-1.8852183207877602
+Internal combustion,5 years +,Black,Sport,2016-04-30,-0.9884694085079925
+Internal combustion,5 years +,Black,Sport,2016-05-31,0.34901739772604945
+Internal combustion,5 years +,Black,Sport,2016-06-30,-0.05759648786465727
+Internal combustion,5 years +,Black,Sport,2016-07-31,0.158699083569987
+Internal combustion,5 years +,Black,Sport,2016-08-31,-0.8857213830740424
+Internal combustion,5 years +,Black,Sport,2016-09-30,-0.35935290422732197
+Internal combustion,5 years +,Black,Sport,2016-10-31,0.4766767125933877
+Internal combustion,5 years +,Black,Sport,2016-11-30,0.028304317006727836
+Internal combustion,5 years +,Black,Sport,2016-12-31,1.5445366346209333
+Internal combustion,5 years +,Black,Sport,2017-01-31,-0.9191805026484774
+Internal combustion,5 years +,Black,Sport,2017-02-28,-0.20024827076912446
+Internal combustion,5 years +,Black,Sport,2017-03-31,1.5599307207380484
+Internal combustion,5 years +,Black,Sedan,2016-03-31,0.5018081270552381
+Internal combustion,5 years +,Black,Sedan,2016-04-30,0.39993522066008896
+Internal combustion,5 years +,Black,Sedan,2016-05-31,-0.9247262599339373
+Internal combustion,5 years +,Black,Sedan,2016-06-30,-0.34524918257774073
+Internal combustion,5 years +,Black,Sedan,2016-07-31,0.5849392452208407
+Internal combustion,5 years +,Black,Sedan,2016-08-31,-0.998425907184256
+Internal combustion,5 years +,Black,Sedan,2016-09-30,2.0181624149897566
+Internal combustion,5 years +,Black,Sedan,2016-10-31,1.7409966735713494
+Internal combustion,5 years +,Black,Sedan,2016-11-30,-1.1607811298504822
+Internal combustion,5 years +,Black,Sedan,2016-12-31,-2.3970522168883988
+Internal combustion,5 years +,Black,Sedan,2017-01-31,-0.5430585139540988
+Internal combustion,5 years +,Black,Sedan,2017-02-28,-0.39729545795625015
+Internal combustion,5 years +,Black,Sedan,2017-03-31,0.7373527802538417
+Internal combustion,5 years +,Black,Supermini,2016-03-31,-0.576657033074049
+Internal combustion,5 years +,Black,Supermini,2016-04-30,1.6858446614362128
+Internal combustion,5 years +,Black,Supermini,2016-05-31,-1.4197269909454469
+Internal combustion,5 years +,Black,Supermini,2016-06-30,0.31652975684884416
+Internal combustion,5 years +,Black,Supermini,2016-07-31,0.3254587676434467
+Internal combustion,5 years +,Black,Supermini,2016-08-31,0.3356627879133732
+Internal combustion,5 years +,Black,Supermini,2016-09-30,0.2579952966131246
+Internal combustion,5 years +,Black,Supermini,2016-10-31,0.5723881283407736
+Internal combustion,5 years +,Black,Supermini,2016-11-30,-0.022550031949907103
+Internal combustion,5 years +,Black,Supermini,2016-12-31,0.9463574777060935
+Internal combustion,5 years +,Black,Supermini,2017-01-31,-1.3226343616033767
+Internal combustion,5 years +,Black,Supermini,2017-02-28,-0.23855524648190152
+Internal combustion,5 years +,Black,Supermini,2017-03-31,1.0789764032558136
+Internal combustion,Brand new,Yellow,Sport,2016-03-31,1.72006753043412
+Internal combustion,Brand new,Yellow,Sport,2016-04-30,-0.7928911924443225
+Internal combustion,Brand new,Yellow,Sport,2016-05-31,1.726161360200706
+Internal combustion,Brand new,Yellow,Sport,2016-06-30,-0.2398024168332347
+Internal combustion,Brand new,Yellow,Sport,2016-07-31,-0.9133183109279501
+Internal combustion,Brand new,Yellow,Sport,2016-08-31,0.6009061250240296
+Internal combustion,Brand new,Yellow,Sport,2016-09-30,0.9589038202670911
+Internal combustion,Brand new,Yellow,Sport,2016-10-31,-0.729651002073219
+Internal combustion,Brand new,Yellow,Sport,2016-11-30,0.9258273950656289
+Internal combustion,Brand new,Yellow,Sport,2016-12-31,1.6131031069830732
+Internal combustion,Brand new,Yellow,Sport,2017-01-31,0.10493751849708739
+Internal combustion,Brand new,Yellow,Sport,2017-02-28,0.38642768762295415
+Internal combustion,Brand new,Yellow,Sport,2017-03-31,-1.5207859207648347
+Internal combustion,Brand new,Yellow,Sedan,2016-03-31,-0.42995304118882743
+Internal combustion,Brand new,Yellow,Sedan,2016-04-30,-2.136139614701662
+Internal combustion,Brand new,Yellow,Sedan,2016-05-31,-1.9241063704354084
+Internal combustion,Brand new,Yellow,Sedan,2016-06-30,-1.177137714205798
+Internal combustion,Brand new,Yellow,Sedan,2016-07-31,-0.52460597052926
+Internal combustion,Brand new,Yellow,Sedan,2016-08-31,-0.41816617898916514
+Internal combustion,Brand new,Yellow,Sedan,2016-09-30,-0.514154713203067
+Internal combustion,Brand new,Yellow,Sedan,2016-10-31,-1.2347778319803302
+Internal combustion,Brand new,Yellow,Sedan,2016-11-30,1.679057826620741
+Internal combustion,Brand new,Yellow,Sedan,2016-12-31,2.3164275175314395
+Internal combustion,Brand new,Yellow,Sedan,2017-01-31,0.37137142403782863
+Internal combustion,Brand new,Yellow,Sedan,2017-02-28,-0.6010782168485699
+Internal combustion,Brand new,Yellow,Sedan,2017-03-31,-0.4976499609855013
+Internal combustion,Brand new,Yellow,Supermini,2016-03-31,-1.6565872742381385
+Internal combustion,Brand new,Yellow,Supermini,2016-04-30,-0.10436156319956949
+Internal combustion,Brand new,Yellow,Supermini,2016-05-31,1.105732035099553
+Internal combustion,Brand new,Yellow,Supermini,2016-06-30,-1.639264361591556
+Internal combustion,Brand new,Yellow,Supermini,2016-07-31,0.2069567644203963
+Internal combustion,Brand new,Yellow,Supermini,2016-08-31,-0.6998424578573056
+Internal combustion,Brand new,Yellow,Supermini,2016-09-30,-0.7594858220971317
+Internal combustion,Brand new,Yellow,Supermini,2016-10-31,0.7973463168691406
+Internal combustion,Brand new,Yellow,Supermini,2016-11-30,2.0804805492024263
+Internal combustion,Brand new,Yellow,Supermini,2016-12-31,-0.2685606549160499
+Internal combustion,Brand new,Yellow,Supermini,2017-01-31,0.7763548968860456
+Internal combustion,Brand new,Yellow,Supermini,2017-02-28,-0.032115944376548786
+Internal combustion,Brand new,Yellow,Supermini,2017-03-31,-0.02725992206218888
+Internal combustion,Brand new,Blue,Sport,2016-03-31,1.1960169612950649
+Internal combustion,Brand new,Blue,Sport,2016-04-30,0.5415398496597474
+Internal combustion,Brand new,Blue,Sport,2016-05-31,-0.9987992499999652
+Internal combustion,Brand new,Blue,Sport,2016-06-30,0.7784368486761749
+Internal combustion,Brand new,Blue,Sport,2016-07-31,-1.7012724625581115
+Internal combustion,Brand new,Blue,Sport,2016-08-31,-0.4400972972782818
+Internal combustion,Brand new,Blue,Sport,2016-09-30,-1.7363737226903966
+Internal combustion,Brand new,Blue,Sport,2016-10-31,-1.2390247420925642
+Internal combustion,Brand new,Blue,Sport,2016-11-30,-0.8724690778039887
+Internal combustion,Brand new,Blue,Sport,2016-12-31,2.4521375706961264
+Internal combustion,Brand new,Blue,Sport,2017-01-31,2.4607399396913556
+Internal combustion,Brand new,Blue,Sport,2017-02-28,-0.3363250815522457
+Internal combustion,Brand new,Blue,Sport,2017-03-31,-0.4223834780069751
+Internal combustion,Brand new,Blue,Sedan,2016-03-31,0.8989431927775211
+Internal combustion,Brand new,Blue,Sedan,2016-04-30,2.0520167487660896
+Internal combustion,Brand new,Blue,Sedan,2016-05-31,-1.2102657538362427
+Internal combustion,Brand new,Blue,Sedan,2016-06-30,1.5025379558836145
+Internal combustion,Brand new,Blue,Sedan,2016-07-31,-0.5142576452719295
+Internal combustion,Brand new,Blue,Sedan,2016-08-31,-2.3092133781271094
+Internal combustion,Brand new,Blue,Sedan,2016-09-30,1.238233258410787
+Internal combustion,Brand new,Blue,Sedan,2016-10-31,0.4281959640162919
+Internal combustion,Brand new,Blue,Sedan,2016-11-30,0.8502933325040648
+Internal combustion,Brand new,Blue,Sedan,2016-12-31,-0.6413193164350707
+Internal combustion,Brand new,Blue,Sedan,2017-01-31,2.0155106470634148
+Internal combustion,Brand new,Blue,Sedan,2017-02-28,-1.943158890519001
+Internal combustion,Brand new,Blue,Sedan,2017-03-31,0.2469170221476942
+Internal combustion,Brand new,Blue,Supermini,2016-03-31,-2.335717138021778
+Internal combustion,Brand new,Blue,Supermini,2016-04-30,0.4040919593214379
+Internal combustion,Brand new,Blue,Supermini,2016-05-31,0.058282816580980557
+Internal combustion,Brand new,Blue,Supermini,2016-06-30,-0.19011260107253947
+Internal combustion,Brand new,Blue,Supermini,2016-07-31,-0.06284902305365796
+Internal combustion,Brand new,Blue,Supermini,2016-08-31,-0.20183481368279216
+Internal combustion,Brand new,Blue,Supermini,2016-09-30,0.14370601556226908
+Internal combustion,Brand new,Blue,Supermini,2016-10-31,1.8989527644396147
+Internal combustion,Brand new,Blue,Supermini,2016-11-30,-0.5303091410621298
+Internal combustion,Brand new,Blue,Supermini,2016-12-31,1.7800104334201998
+Internal combustion,Brand new,Blue,Supermini,2017-01-31,-1.1885706602748423
+Internal combustion,Brand new,Blue,Supermini,2017-02-28,-0.4942923313974874
+Internal combustion,Brand new,Blue,Supermini,2017-03-31,0.8856932822793702
+Internal combustion,Brand new,Green,Sport,2016-03-31,1.0942615855066733
+Internal combustion,Brand new,Green,Sport,2016-04-30,0.9726425809709299
+Internal combustion,Brand new,Green,Sport,2016-05-31,-1.3630436080238633
+Internal combustion,Brand new,Green,Sport,2016-06-30,-0.17978970987155588
+Internal combustion,Brand new,Green,Sport,2016-07-31,0.06429646089641251
+Internal combustion,Brand new,Green,Sport,2016-08-31,-0.37547481043264486
+Internal combustion,Brand new,Green,Sport,2016-09-30,-0.9370129368030988
+Internal combustion,Brand new,Green,Sport,2016-10-31,0.8075733735577981
+Internal combustion,Brand new,Green,Sport,2016-11-30,-1.0518724867730578
+Internal combustion,Brand new,Green,Sport,2016-12-31,0.5030260806083328
+Internal combustion,Brand new,Green,Sport,2017-01-31,0.832042178627288
+Internal combustion,Brand new,Green,Sport,2017-02-28,0.16103194290958964
+Internal combustion,Brand new,Green,Sport,2017-03-31,-0.09028458443327571
+Internal combustion,Brand new,Green,Sedan,2016-03-31,-1.9023526266810418
+Internal combustion,Brand new,Green,Sedan,2016-04-30,0.8604777156013491
+Internal combustion,Brand new,Green,Sedan,2016-05-31,-1.321969281058814
+Internal combustion,Brand new,Green,Sedan,2016-06-30,1.3531797298709276
+Internal combustion,Brand new,Green,Sedan,2016-07-31,-2.883955134870551
+Internal combustion,Brand new,Green,Sedan,2016-08-31,-0.11963617422890696
+Internal combustion,Brand new,Green,Sedan,2016-09-30,0.9329816672317478
+Internal combustion,Brand new,Green,Sedan,2016-10-31,-0.5316282198791317
+Internal combustion,Brand new,Green,Sedan,2016-11-30,-0.953100470654393
+Internal combustion,Brand new,Green,Sedan,2016-12-31,-1.6249115347499479
+Internal combustion,Brand new,Green,Sedan,2017-01-31,-0.30639413846197733
+Internal combustion,Brand new,Green,Sedan,2017-02-28,0.16919606531060233
+Internal combustion,Brand new,Green,Sedan,2017-03-31,-0.5087646275849941
+Internal combustion,Brand new,Green,Supermini,2016-03-31,0.19716601248126814
+Internal combustion,Brand new,Green,Supermini,2016-04-30,1.0064157976132726
+Internal combustion,Brand new,Green,Supermini,2016-05-31,-1.9929805668680387
+Internal combustion,Brand new,Green,Supermini,2016-06-30,-0.8475092499193784
+Internal combustion,Brand new,Green,Supermini,2016-07-31,-2.8148708464378864
+Internal combustion,Brand new,Green,Supermini,2016-08-31,-0.13811762535053343
+Internal combustion,Brand new,Green,Supermini,2016-09-30,-0.11456680456356122
+Internal combustion,Brand new,Green,Supermini,2016-10-31,-1.6534981207839723
+Internal combustion,Brand new,Green,Supermini,2016-11-30,-0.01518821792346524
+Internal combustion,Brand new,Green,Supermini,2016-12-31,-1.715702858658202
+Internal combustion,Brand new,Green,Supermini,2017-01-31,-2.407723169554211
+Internal combustion,Brand new,Green,Supermini,2017-02-28,-0.20616916532091925
+Internal combustion,Brand new,Green,Supermini,2017-03-31,-1.1203324091497455
+Internal combustion,Brand new,Black,Sport,2016-03-31,-0.04114439495905849
+Internal combustion,Brand new,Black,Sport,2016-04-30,-1.4890966077285548
+Internal combustion,Brand new,Black,Sport,2016-05-31,0.10476961721928676
+Internal combustion,Brand new,Black,Sport,2016-06-30,-0.3338690638458325
+Internal combustion,Brand new,Black,Sport,2016-07-31,-0.20242308659176253
+Internal combustion,Brand new,Black,Sport,2016-08-31,0.9055565004440829
+Internal combustion,Brand new,Black,Sport,2016-09-30,-0.5049966063477718
+Internal combustion,Brand new,Black,Sport,2016-10-31,0.5129411358012645
+Internal combustion,Brand new,Black,Sport,2016-11-30,-0.9993829365911129
+Internal combustion,Brand new,Black,Sport,2016-12-31,-0.2781701262079309
+Internal combustion,Brand new,Black,Sport,2017-01-31,-0.6944850227443241
+Internal combustion,Brand new,Black,Sport,2017-02-28,1.2963925515096013
+Internal combustion,Brand new,Black,Sport,2017-03-31,-2.146108362256549
+Internal combustion,Brand new,Black,Sedan,2016-03-31,0.8286221211485042
+Internal combustion,Brand new,Black,Sedan,2016-04-30,-0.7385094862877714
+Internal combustion,Brand new,Black,Sedan,2016-05-31,-0.5442337055990343
+Internal combustion,Brand new,Black,Sedan,2016-06-30,-0.8395073022168905
+Internal combustion,Brand new,Black,Sedan,2016-07-31,0.7550863454770971
+Internal combustion,Brand new,Black,Sedan,2016-08-31,0.4303806886542215
+Internal combustion,Brand new,Black,Sedan,2016-09-30,1.5385767089140674
+Internal combustion,Brand new,Black,Sedan,2016-10-31,-0.04047024723780956
+Internal combustion,Brand new,Black,Sedan,2016-11-30,-0.8464367170430654
+Internal combustion,Brand new,Black,Sedan,2016-12-31,0.10605110874401186
+Internal combustion,Brand new,Black,Sedan,2017-01-31,0.24729122671260162
+Internal combustion,Brand new,Black,Sedan,2017-02-28,0.6607307951612362
+Internal combustion,Brand new,Black,Sedan,2017-03-31,-0.9154257278614418
+Internal combustion,Brand new,Black,Supermini,2016-03-31,0.7863337409418798
+Internal combustion,Brand new,Black,Supermini,2016-04-30,1.316424058282373
+Internal combustion,Brand new,Black,Supermini,2016-05-31,1.3014096469850178
+Internal combustion,Brand new,Black,Supermini,2016-06-30,-0.03500174496881017
+Internal combustion,Brand new,Black,Supermini,2016-07-31,0.7917145388175519
+Internal combustion,Brand new,Black,Supermini,2016-08-31,0.725682734591358
+Internal combustion,Brand new,Black,Supermini,2016-09-30,0.6659012208821621
+Internal combustion,Brand new,Black,Supermini,2016-10-31,-1.0984928132080662
+Internal combustion,Brand new,Black,Supermini,2016-11-30,0.5366468732775569
+Internal combustion,Brand new,Black,Supermini,2016-12-31,-0.4594781887489884
+Internal combustion,Brand new,Black,Supermini,2017-01-31,1.1648556460744617
+Internal combustion,Brand new,Black,Supermini,2017-02-28,0.26094521107584356
+Internal combustion,Brand new,Black,Supermini,2017-03-31,1.0707129135320386
+Hybrid,0-5 years,Yellow,Sport,2016-03-31,0.6916215259317509
+Hybrid,0-5 years,Yellow,Sport,2016-04-30,-0.2986248220497348
+Hybrid,0-5 years,Yellow,Sport,2016-05-31,-0.5773102730097541
+Hybrid,0-5 years,Yellow,Sport,2016-06-30,0.8159321188677996
+Hybrid,0-5 years,Yellow,Sport,2016-07-31,0.03809950852458737
+Hybrid,0-5 years,Yellow,Sport,2016-08-31,0.04044647833985308
+Hybrid,0-5 years,Yellow,Sport,2016-09-30,0.05577284782287558
+Hybrid,0-5 years,Yellow,Sport,2016-10-31,-0.1551306926987882
+Hybrid,0-5 years,Yellow,Sport,2016-11-30,-0.9733120595277046
+Hybrid,0-5 years,Yellow,Sport,2016-12-31,-0.3294663991240693
+Hybrid,0-5 years,Yellow,Sport,2017-01-31,1.9618057484141165
+Hybrid,0-5 years,Yellow,Sport,2017-02-28,-1.218678499692405
+Hybrid,0-5 years,Yellow,Sport,2017-03-31,0.4754536285711257
+Hybrid,0-5 years,Yellow,Sedan,2016-03-31,-0.05478391063556534
+Hybrid,0-5 years,Yellow,Sedan,2016-04-30,0.46209825348965927
+Hybrid,0-5 years,Yellow,Sedan,2016-05-31,0.3215666540755553
+Hybrid,0-5 years,Yellow,Sedan,2016-06-30,1.3182318256827756
+Hybrid,0-5 years,Yellow,Sedan,2016-07-31,-1.967361292693452
+Hybrid,0-5 years,Yellow,Sedan,2016-08-31,-0.07042516505918629
+Hybrid,0-5 years,Yellow,Sedan,2016-09-30,1.5530333986116043
+Hybrid,0-5 years,Yellow,Sedan,2016-10-31,1.046769304428584
+Hybrid,0-5 years,Yellow,Sedan,2016-11-30,-1.3894293317832072
+Hybrid,0-5 years,Yellow,Sedan,2016-12-31,0.23815058246672516
+Hybrid,0-5 years,Yellow,Sedan,2017-01-31,-1.0674264796496975
+Hybrid,0-5 years,Yellow,Sedan,2017-02-28,0.5437122384550196
+Hybrid,0-5 years,Yellow,Sedan,2017-03-31,0.7313776897895625
+Hybrid,0-5 years,Yellow,Supermini,2016-03-31,-0.045870032631059314
+Hybrid,0-5 years,Yellow,Supermini,2016-04-30,-1.5421910442072235
+Hybrid,0-5 years,Yellow,Supermini,2016-05-31,-0.5445179156286761
+Hybrid,0-5 years,Yellow,Supermini,2016-06-30,0.11884091591497334
+Hybrid,0-5 years,Yellow,Supermini,2016-07-31,-2.310114294762802
+Hybrid,0-5 years,Yellow,Supermini,2016-08-31,1.399434177242775
+Hybrid,0-5 years,Yellow,Supermini,2016-09-30,0.5665923778154058
+Hybrid,0-5 years,Yellow,Supermini,2016-10-31,-0.10384963745359777
+Hybrid,0-5 years,Yellow,Supermini,2016-11-30,-1.5557698198085061
+Hybrid,0-5 years,Yellow,Supermini,2016-12-31,0.4944779885312175
+Hybrid,0-5 years,Yellow,Supermini,2017-01-31,-0.07501492258703095
+Hybrid,0-5 years,Yellow,Supermini,2017-02-28,1.4867484639086954
+Hybrid,0-5 years,Yellow,Supermini,2017-03-31,-0.376130113394205
+Hybrid,0-5 years,Blue,Sport,2016-03-31,-0.40437144999580216
+Hybrid,0-5 years,Blue,Sport,2016-04-30,-0.2343887743896553
+Hybrid,0-5 years,Blue,Sport,2016-05-31,0.053127305397734345
+Hybrid,0-5 years,Blue,Sport,2016-06-30,0.739178894451304
+Hybrid,0-5 years,Blue,Sport,2016-07-31,0.5724923022519287
+Hybrid,0-5 years,Blue,Sport,2016-08-31,1.1131965730508546
+Hybrid,0-5 years,Blue,Sport,2016-09-30,-1.0189781792378834
+Hybrid,0-5 years,Blue,Sport,2016-10-31,1.3071463882498455
+Hybrid,0-5 years,Blue,Sport,2016-11-30,0.11049736492033875
+Hybrid,0-5 years,Blue,Sport,2016-12-31,-1.508718013741887
+Hybrid,0-5 years,Blue,Sport,2017-01-31,0.2862296003246915
+Hybrid,0-5 years,Blue,Sport,2017-02-28,-0.9302152889505411
+Hybrid,0-5 years,Blue,Sport,2017-03-31,1.0054242371574407
+Hybrid,0-5 years,Blue,Sedan,2016-03-31,-1.2870078100883053
+Hybrid,0-5 years,Blue,Sedan,2016-04-30,-0.09675421319490164
+Hybrid,0-5 years,Blue,Sedan,2016-05-31,-0.7957594681314496
+Hybrid,0-5 years,Blue,Sedan,2016-06-30,-0.6143306726003519
+Hybrid,0-5 years,Blue,Sedan,2016-07-31,-0.5522339775070263
+Hybrid,0-5 years,Blue,Sedan,2016-08-31,-0.63001167068820485
+Hybrid,0-5 years,Blue,Sedan,2016-09-30,0.11958773717794802
+Hybrid,0-5 years,Blue,Sedan,2016-10-31,-1.222667100945641
+Hybrid,0-5 years,Blue,Sedan,2016-11-30,0.3120239208681967
+Hybrid,0-5 years,Blue,Sedan,2016-12-31,-0.82994806330471
+Hybrid,0-5 years,Blue,Sedan,2017-01-31,-1.9349993407797494
+Hybrid,0-5 years,Blue,Sedan,2017-02-28,0.8467138563798584
+Hybrid,0-5 years,Blue,Sedan,2017-03-31,0.2408104622012757
+Hybrid,0-5 years,Blue,Supermini,2016-03-31,2.90320089310008
+Hybrid,0-5 years,Blue,Supermini,2016-04-30,-0.11728970433748144
+Hybrid,0-5 years,Blue,Supermini,2016-05-31,1.4443837299642481
+Hybrid,0-5 years,Blue,Supermini,2016-06-30,-0.74907222144969
+Hybrid,0-5 years,Blue,Supermini,2016-07-31,3.08940896371768
+Hybrid,0-5 years,Blue,Supermini,2016-08-31,0.5026147280878089
+Hybrid,0-5 years,Blue,Supermini,2016-09-30,1.2760416868768893
+Hybrid,0-5 years,Blue,Supermini,2016-10-31,-0.5016237695868352
+Hybrid,0-5 years,Blue,Supermini,2016-11-30,0.783462683486793
+Hybrid,0-5 years,Blue,Supermini,2016-12-31,-0.812115442056452
+Hybrid,0-5 years,Blue,Supermini,2017-01-31,-0.45507307812632275
+Hybrid,0-5 years,Blue,Supermini,2017-02-28,0.55773120338278
+Hybrid,0-5 years,Blue,Supermini,2017-03-31,0.5590790054124002
+Hybrid,0-5 years,Green,Sport,2016-03-31,0.814372858859452
+Hybrid,0-5 years,Green,Sport,2016-04-30,0.7509692496193532
+Hybrid,0-5 years,Green,Sport,2016-05-31,0.9585931748464329
+Hybrid,0-5 years,Green,Sport,2016-06-30,0.9819156034231815
+Hybrid,0-5 years,Green,Sport,2016-07-31,-1.1779881385423854
+Hybrid,0-5 years,Green,Sport,2016-08-31,-0.44702257652096744
+Hybrid,0-5 years,Green,Sport,2016-09-30,0.7969689383047923
+Hybrid,0-5 years,Green,Sport,2016-10-31,0.6272396318412353
+Hybrid,0-5 years,Green,Sport,2016-11-30,0.3428642808919041
+Hybrid,0-5 years,Green,Sport,2016-12-31,-0.6769281765524224
+Hybrid,0-5 years,Green,Sport,2017-01-31,2.0722146012930867
+Hybrid,0-5 years,Green,Sport,2017-02-28,-0.40778773930035905
+Hybrid,0-5 years,Green,Sport,2017-03-31,-1.8592707166238447
+Hybrid,0-5 years,Green,Sedan,2016-03-31,1.1878723493279104
+Hybrid,0-5 years,Green,Sedan,2016-04-30,-0.035145581684855855
+Hybrid,0-5 years,Green,Sedan,2016-05-31,-0.1935515984810396
+Hybrid,0-5 years,Green,Sedan,2016-06-30,0.8917180984336119
+Hybrid,0-5 years,Green,Sedan,2016-07-31,-0.9042841262915322
+Hybrid,0-5 years,Green,Sedan,2016-08-31,0.7553554055086895
+Hybrid,0-5 years,Green,Sedan,2016-09-30,1.7628099021830943
+Hybrid,0-5 years,Green,Sedan,2016-10-31,1.565260921428519
+Hybrid,0-5 years,Green,Sedan,2016-11-30,-0.96866139625537
+Hybrid,0-5 years,Green,Sedan,2016-12-31,0.3474350420965393
+Hybrid,0-5 years,Green,Sedan,2017-01-31,-1.8455784957097656
+Hybrid,0-5 years,Green,Sedan,2017-02-28,-0.8832443877683186
+Hybrid,0-5 years,Green,Sedan,2017-03-31,-0.772601650071885
+Hybrid,0-5 years,Green,Supermini,2016-03-31,0.24537068927266334
+Hybrid,0-5 years,Green,Supermini,2016-04-30,0.022907048161691916
+Hybrid,0-5 years,Green,Supermini,2016-05-31,-0.6192775230112617
+Hybrid,0-5 years,Green,Supermini,2016-06-30,0.10855050711722798
+Hybrid,0-5 years,Green,Supermini,2016-07-31,0.07473264672809381
+Hybrid,0-5 years,Green,Supermini,2016-08-31,-0.06825864557931681
+Hybrid,0-5 years,Green,Supermini,2016-09-30,1.3243905281030686
+Hybrid,0-5 years,Green,Supermini,2016-10-31,0.6654697283399091
+Hybrid,0-5 years,Green,Supermini,2016-11-30,-0.17931100189360882
+Hybrid,0-5 years,Green,Supermini,2016-12-31,-0.4177195604508575
+Hybrid,0-5 years,Green,Supermini,2017-01-31,0.40341017560664344
+Hybrid,0-5 years,Green,Supermini,2017-02-28,0.6224800907932625
+Hybrid,0-5 years,Green,Supermini,2017-03-31,-1.2480114334463772
+Hybrid,0-5 years,Black,Sport,2016-03-31,-0.4180821477423016
+Hybrid,0-5 years,Black,Sport,2016-04-30,-0.3104791154900977
+Hybrid,0-5 years,Black,Sport,2016-05-31,0.09336365601355139
+Hybrid,0-5 years,Black,Sport,2016-06-30,0.7013941350261229
+Hybrid,0-5 years,Black,Sport,2016-07-31,0.6051022437355443
+Hybrid,0-5 years,Black,Sport,2016-08-31,1.0709003053787816
+Hybrid,0-5 years,Black,Sport,2016-09-30,-0.6567411206859168
+Hybrid,0-5 years,Black,Sport,2016-10-31,0.7295529925847755
+Hybrid,0-5 years,Black,Sport,2016-11-30,1.4229395223421635
+Hybrid,0-5 years,Black,Sport,2016-12-31,1.3958173811662302
+Hybrid,0-5 years,Black,Sport,2017-01-31,-0.5510489605117737
+Hybrid,0-5 years,Black,Sport,2017-02-28,1.667879980112544
+Hybrid,0-5 years,Black,Sport,2017-03-31,2.2510133165576214
+Hybrid,0-5 years,Black,Sedan,2016-03-31,-0.4052917641198405
+Hybrid,0-5 years,Black,Sedan,2016-04-30,-0.507345220754748
+Hybrid,0-5 years,Black,Sedan,2016-05-31,-0.34306097649305695
+Hybrid,0-5 years,Black,Sedan,2016-06-30,-0.09851264977862331
+Hybrid,0-5 years,Black,Sedan,2016-07-31,0.6461174130672689
+Hybrid,0-5 years,Black,Sedan,2016-08-31,1.5103835654521658
+Hybrid,0-5 years,Black,Sedan,2016-09-30,0.37292810215086347
+Hybrid,0-5 years,Black,Sedan,2016-10-31,-0.7274219469344613
+Hybrid,0-5 years,Black,Sedan,2016-11-30,0.6373078893278582
+Hybrid,0-5 years,Black,Sedan,2016-12-31,0.16342220270105368
+Hybrid,0-5 years,Black,Sedan,2017-01-31,-1.1891415051971175
+Hybrid,0-5 years,Black,Sedan,2017-02-28,1.3412512247887232
+Hybrid,0-5 years,Black,Sedan,2017-03-31,1.4261512701557058
+Hybrid,0-5 years,Black,Supermini,2016-03-31,0.3738439272008415
+Hybrid,0-5 years,Black,Supermini,2016-04-30,-0.29074613600363153
+Hybrid,0-5 years,Black,Supermini,2016-05-31,-1.0877857871926198
+Hybrid,0-5 years,Black,Supermini,2016-06-30,0.3306157957682847
+Hybrid,0-5 years,Black,Supermini,2016-07-31,1.4237926352589085
+Hybrid,0-5 years,Black,Supermini,2016-08-31,1.191509706958005
+Hybrid,0-5 years,Black,Supermini,2016-09-30,-1.2185462615668723
+Hybrid,0-5 years,Black,Supermini,2016-10-31,-0.21963533249088477
+Hybrid,0-5 years,Black,Supermini,2016-11-30,-1.8261152199540756
+Hybrid,0-5 years,Black,Supermini,2016-12-31,1.487141610054848
+Hybrid,0-5 years,Black,Supermini,2017-01-31,-0.7266359042522397
+Hybrid,0-5 years,Black,Supermini,2017-02-28,0.5252838807412766
+Hybrid,0-5 years,Black,Supermini,2017-03-31,-0.45924565227306047
+Hybrid,5 years +,Yellow,Sport,2016-03-31,-0.3769465973178294
+Hybrid,5 years +,Yellow,Sport,2016-04-30,1.299313516608611
+Hybrid,5 years +,Yellow,Sport,2016-05-31,0.4281715737811021
+Hybrid,5 years +,Yellow,Sport,2016-06-30,-2.6362558926138924
+Hybrid,5 years +,Yellow,Sport,2016-07-31,0.33062924630544144
+Hybrid,5 years +,Yellow,Sport,2016-08-31,0.15064626189371302
+Hybrid,5 years +,Yellow,Sport,2016-09-30,0.12244704088910568
+Hybrid,5 years +,Yellow,Sport,2016-10-31,1.2431675030844678
+Hybrid,5 years +,Yellow,Sport,2016-11-30,-0.6776317470762625
+Hybrid,5 years +,Yellow,Sport,2016-12-31,-0.8377785283697463
+Hybrid,5 years +,Yellow,Sport,2017-01-31,-0.838560167165927
+Hybrid,5 years +,Yellow,Sport,2017-02-28,0.6485028084558913
+Hybrid,5 years +,Yellow,Sport,2017-03-31,-1.5149554423006866
+Hybrid,5 years +,Yellow,Sedan,2016-03-31,0.14794883568259898
+Hybrid,5 years +,Yellow,Sedan,2016-04-30,-0.7474117228618572
+Hybrid,5 years +,Yellow,Sedan,2016-05-31,1.3135888522898693
+Hybrid,5 years +,Yellow,Sedan,2016-06-30,0.9853121058836655
+Hybrid,5 years +,Yellow,Sedan,2016-07-31,-0.4822848241836812
+Hybrid,5 years +,Yellow,Sedan,2016-08-31,-0.5198245437507417
+Hybrid,5 years +,Yellow,Sedan,2016-09-30,-0.010353637639403371
+Hybrid,5 years +,Yellow,Sedan,2016-10-31,0.3516194705449726
+Hybrid,5 years +,Yellow,Sedan,2016-11-30,0.3264740913187792
+Hybrid,5 years +,Yellow,Sedan,2016-12-31,-1.3416488632244314
+Hybrid,5 years +,Yellow,Sedan,2017-01-31,-0.6866423060086221
+Hybrid,5 years +,Yellow,Sedan,2017-02-28,0.26625349471065735
+Hybrid,5 years +,Yellow,Sedan,2017-03-31,-0.6906105883716706
+Hybrid,5 years +,Yellow,Supermini,2016-03-31,0.44481591824272354
+Hybrid,5 years +,Yellow,Supermini,2016-04-30,1.637160768695091
+Hybrid,5 years +,Yellow,Supermini,2016-05-31,0.7057779957242453
+Hybrid,5 years +,Yellow,Supermini,2016-06-30,0.2627329960809644
+Hybrid,5 years +,Yellow,Supermini,2016-07-31,-1.232650712262482
+Hybrid,5 years +,Yellow,Supermini,2016-08-31,-0.2729581471641902
+Hybrid,5 years +,Yellow,Supermini,2016-09-30,-0.2021345262389078
+Hybrid,5 years +,Yellow,Supermini,2016-10-31,0.13999666811698017
+Hybrid,5 years +,Yellow,Supermini,2016-11-30,0.2653415739112479
+Hybrid,5 years +,Yellow,Supermini,2016-12-31,1.155339206728623
+Hybrid,5 years +,Yellow,Supermini,2017-01-31,0.09028435770261813
+Hybrid,5 years +,Yellow,Supermini,2017-02-28,0.16145559860730932
+Hybrid,5 years +,Yellow,Supermini,2017-03-31,0.6163201247404771
+Hybrid,5 years +,Blue,Sport,2016-03-31,0.5042431929609758
+Hybrid,5 years +,Blue,Sport,2016-04-30,0.5171377507750367
+Hybrid,5 years +,Blue,Sport,2016-05-31,1.2175925935209795
+Hybrid,5 years +,Blue,Sport,2016-06-30,0.8366290168383556
+Hybrid,5 years +,Blue,Sport,2016-07-31,-1.7756277350264824
+Hybrid,5 years +,Blue,Sport,2016-08-31,0.24007745043375353
+Hybrid,5 years +,Blue,Sport,2016-09-30,-0.18233649049385256
+Hybrid,5 years +,Blue,Sport,2016-10-31,-1.3977619012437443
+Hybrid,5 years +,Blue,Sport,2016-11-30,-0.4148721594545648
+Hybrid,5 years +,Blue,Sport,2016-12-31,0.6282914201514666
+Hybrid,5 years +,Blue,Sport,2017-01-31,-1.0370058212426705
+Hybrid,5 years +,Blue,Sport,2017-02-28,1.5237015613288611
+Hybrid,5 years +,Blue,Sport,2017-03-31,0.17709457114364296
+Hybrid,5 years +,Blue,Sedan,2016-03-31,1.2603679863661597
+Hybrid,5 years +,Blue,Sedan,2016-04-30,0.5168379514558489
+Hybrid,5 years +,Blue,Sedan,2016-05-31,-0.0968465929177348
+Hybrid,5 years +,Blue,Sedan,2016-06-30,1.0284904239677581
+Hybrid,5 years +,Blue,Sedan,2016-07-31,0.4823805654472866
+Hybrid,5 years +,Blue,Sedan,2016-08-31,0.12623123160522204
+Hybrid,5 years +,Blue,Sedan,2016-09-30,0.012490225572460175
+Hybrid,5 years +,Blue,Sedan,2016-10-31,-0.3710923780636373
+Hybrid,5 years +,Blue,Sedan,2016-11-30,-0.5391147679367045
+Hybrid,5 years +,Blue,Sedan,2016-12-31,-2.2085554967794114
+Hybrid,5 years +,Blue,Sedan,2017-01-31,0.1979375154182348
+Hybrid,5 years +,Blue,Sedan,2017-02-28,0.27109732657533714
+Hybrid,5 years +,Blue,Sedan,2017-03-31,0.6333128262544597
+Hybrid,5 years +,Blue,Supermini,2016-03-31,0.3641836085752569
+Hybrid,5 years +,Blue,Supermini,2016-04-30,-0.3991326601971407
+Hybrid,5 years +,Blue,Supermini,2016-05-31,0.09883415392031679
+Hybrid,5 years +,Blue,Supermini,2016-06-30,2.269228347136329
+Hybrid,5 years +,Blue,Supermini,2016-07-31,0.32387555006091956
+Hybrid,5 years +,Blue,Supermini,2016-08-31,-0.4602455389665655
+Hybrid,5 years +,Blue,Supermini,2016-09-30,1.4266691102076556
+Hybrid,5 years +,Blue,Supermini,2016-10-31,1.0811683519158501
+Hybrid,5 years +,Blue,Supermini,2016-11-30,2.063068408954854
+Hybrid,5 years +,Blue,Supermini,2016-12-31,-0.6075659414652439
+Hybrid,5 years +,Blue,Supermini,2017-01-31,-0.22424367817046087
+Hybrid,5 years +,Blue,Supermini,2017-02-28,-0.31143591907247703
+Hybrid,5 years +,Blue,Supermini,2017-03-31,1.8790309211753045
+Hybrid,5 years +,Green,Sport,2016-03-31,-0.36541146963484417
+Hybrid,5 years +,Green,Sport,2016-04-30,-0.6622874294715637
+Hybrid,5 years +,Green,Sport,2016-05-31,0.05790664879510812
+Hybrid,5 years +,Green,Sport,2016-06-30,-1.1128640928708446
+Hybrid,5 years +,Green,Sport,2016-07-31,0.9507566087202499
+Hybrid,5 years +,Green,Sport,2016-08-31,0.8542311701485612
+Hybrid,5 years +,Green,Sport,2016-09-30,0.42497629633065076
+Hybrid,5 years +,Green,Sport,2016-10-31,-0.028687009229155028
+Hybrid,5 years +,Green,Sport,2016-11-30,-1.4709668306175128
+Hybrid,5 years +,Green,Sport,2016-12-31,-0.6316536842082374
+Hybrid,5 years +,Green,Sport,2017-01-31,2.053769687626667
+Hybrid,5 years +,Green,Sport,2017-02-28,-0.7076046890520163
+Hybrid,5 years +,Green,Sport,2017-03-31,-2.5048297815374814
+Hybrid,5 years +,Green,Sedan,2016-03-31,1.3570493948506606
+Hybrid,5 years +,Green,Sedan,2016-04-30,0.964152435810521
+Hybrid,5 years +,Green,Sedan,2016-05-31,-0.433803590340847
+Hybrid,5 years +,Green,Sedan,2016-06-30,0.046029790084553907
+Hybrid,5 years +,Green,Sedan,2016-07-31,0.09455340610001423
+Hybrid,5 years +,Green,Sedan,2016-08-31,0.03704278368921432
+Hybrid,5 years +,Green,Sedan,2016-09-30,0.3843357694735096
+Hybrid,5 years +,Green,Sedan,2016-10-31,0.7805907752585383
+Hybrid,5 years +,Green,Sedan,2016-11-30,-0.038595937918699676
+Hybrid,5 years +,Green,Sedan,2016-12-31,-1.641770987103612
+Hybrid,5 years +,Green,Sedan,2017-01-31,-1.5044266810135198
+Hybrid,5 years +,Green,Sedan,2017-02-28,1.6926837931561554
+Hybrid,5 years +,Green,Sedan,2017-03-31,1.4891508022560753
+Hybrid,5 years +,Green,Supermini,2016-03-31,-0.29459899973285136
+Hybrid,5 years +,Green,Supermini,2016-04-30,0.8382605252441763
+Hybrid,5 years +,Green,Supermini,2016-05-31,0.40558277789836866
+Hybrid,5 years +,Green,Supermini,2016-06-30,-0.2501865542584325
+Hybrid,5 years +,Green,Supermini,2016-07-31,0.5629476866139514
+Hybrid,5 years +,Green,Supermini,2016-08-31,-0.6114728057478226
+Hybrid,5 years +,Green,Supermini,2016-09-30,0.7178539511476287
+Hybrid,5 years +,Green,Supermini,2016-10-31,-0.022365805904710594
+Hybrid,5 years +,Green,Supermini,2016-11-30,0.504108030799214
+Hybrid,5 years +,Green,Supermini,2016-12-31,-1.2401680980079657
+Hybrid,5 years +,Green,Supermini,2017-01-31,0.6247476971110871
+Hybrid,5 years +,Green,Supermini,2017-02-28,0.12128990595254306
+Hybrid,5 years +,Green,Supermini,2017-03-31,-0.4532999366184357
+Hybrid,5 years +,Black,Sport,2016-03-31,0.2540559970108765
+Hybrid,5 years +,Black,Sport,2016-04-30,-0.18247255946851274
+Hybrid,5 years +,Black,Sport,2016-05-31,-0.558226897962825
+Hybrid,5 years +,Black,Sport,2016-06-30,0.8131088376697041
+Hybrid,5 years +,Black,Sport,2016-07-31,-1.6729742281091482
+Hybrid,5 years +,Black,Sport,2016-08-31,-2.545135350094735
+Hybrid,5 years +,Black,Sport,2016-09-30,1.3025827797746694
+Hybrid,5 years +,Black,Sport,2016-10-31,0.26478013760712366
+Hybrid,5 years +,Black,Sport,2016-11-30,0.2466279509036779
+Hybrid,5 years +,Black,Sport,2016-12-31,-0.014614999088138644
+Hybrid,5 years +,Black,Sport,2017-01-31,-1.8667610882997132
+Hybrid,5 years +,Black,Sport,2017-02-28,-0.5108230625155845
+Hybrid,5 years +,Black,Sport,2017-03-31,0.5718575270063254
+Hybrid,5 years +,Black,Sedan,2016-03-31,0.7508480749553754
+Hybrid,5 years +,Black,Sedan,2016-04-30,-0.5513829561195432
+Hybrid,5 years +,Black,Sedan,2016-05-31,1.3889183061500714
+Hybrid,5 years +,Black,Sedan,2016-06-30,-0.5279737519101124
+Hybrid,5 years +,Black,Sedan,2016-07-31,1.3171333428014351
+Hybrid,5 years +,Black,Sedan,2016-08-31,1.0607058139591423
+Hybrid,5 years +,Black,Sedan,2016-09-30,-0.2224081047008812
+Hybrid,5 years +,Black,Sedan,2016-10-31,0.570881648277879
+Hybrid,5 years +,Black,Sedan,2016-11-30,0.5179556765623252
+Hybrid,5 years +,Black,Sedan,2016-12-31,-0.027926344506065785
+Hybrid,5 years +,Black,Sedan,2017-01-31,-1.1093206306968915
+Hybrid,5 years +,Black,Sedan,2017-02-28,-0.001530055914749314
+Hybrid,5 years +,Black,Sedan,2017-03-31,-0.006618287489684183
+Hybrid,5 years +,Black,Supermini,2016-03-31,1.0094209919681558
+Hybrid,5 years +,Black,Supermini,2016-04-30,-0.14610154358034866
+Hybrid,5 years +,Black,Supermini,2016-05-31,-0.6975971900431901
+Hybrid,5 years +,Black,Supermini,2016-06-30,-0.5040757468472327
+Hybrid,5 years +,Black,Supermini,2016-07-31,-0.7799821355025947
+Hybrid,5 years +,Black,Supermini,2016-08-31,1.843087637579447
+Hybrid,5 years +,Black,Supermini,2016-09-30,0.7335393653214891
+Hybrid,5 years +,Black,Supermini,2016-10-31,1.5620181918369649
+Hybrid,5 years +,Black,Supermini,2016-11-30,0.48148343341849403
+Hybrid,5 years +,Black,Supermini,2016-12-31,-0.1594219059341428
+Hybrid,5 years +,Black,Supermini,2017-01-31,-0.4460767951948696
+Hybrid,5 years +,Black,Supermini,2017-02-28,0.1424137979095184
+Hybrid,5 years +,Black,Supermini,2017-03-31,1.1933766900302822
+Hybrid,Brand new,Yellow,Sport,2016-03-31,0.3886734619668789
+Hybrid,Brand new,Yellow,Sport,2016-04-30,-0.4550037736716104
+Hybrid,Brand new,Yellow,Sport,2016-05-31,2.154307347398275
+Hybrid,Brand new,Yellow,Sport,2016-06-30,0.6923161885212138
+Hybrid,Brand new,Yellow,Sport,2016-07-31,-0.35428256378123996
+Hybrid,Brand new,Yellow,Sport,2016-08-31,1.0792055854096854
+Hybrid,Brand new,Yellow,Sport,2016-09-30,0.3431165445555455
+Hybrid,Brand new,Yellow,Sport,2016-10-31,1.093313169984925
+Hybrid,Brand new,Yellow,Sport,2016-11-30,0.2999608625288041
+Hybrid,Brand new,Yellow,Sport,2016-12-31,-2.530332352485166
+Hybrid,Brand new,Yellow,Sport,2017-01-31,0.009436766783598291
+Hybrid,Brand new,Yellow,Sport,2017-02-28,0.8646780291746395
+Hybrid,Brand new,Yellow,Sport,2017-03-31,-0.104849673071259
+Hybrid,Brand new,Yellow,Sedan,2016-03-31,-0.9672428853053875
+Hybrid,Brand new,Yellow,Sedan,2016-04-30,1.306851459242304
+Hybrid,Brand new,Yellow,Sedan,2016-05-31,-0.024610244873102982
+Hybrid,Brand new,Yellow,Sedan,2016-06-30,-0.43269102848578345
+Hybrid,Brand new,Yellow,Sedan,2016-07-31,-0.3403822097135939
+Hybrid,Brand new,Yellow,Sedan,2016-08-31,0.2239720697608821
+Hybrid,Brand new,Yellow,Sedan,2016-09-30,-0.031133145934154043
+Hybrid,Brand new,Yellow,Sedan,2016-10-31,1.3029214463335759
+Hybrid,Brand new,Yellow,Sedan,2016-11-30,0.5557267655047321
+Hybrid,Brand new,Yellow,Sedan,2016-12-31,-0.7213841077829104
+Hybrid,Brand new,Yellow,Sedan,2017-01-31,-0.9962353492087801
+Hybrid,Brand new,Yellow,Sedan,2017-02-28,-0.3688128564799677
+Hybrid,Brand new,Yellow,Sedan,2017-03-31,1.4155083945096447
+Hybrid,Brand new,Yellow,Supermini,2016-03-31,0.4185644408587018
+Hybrid,Brand new,Yellow,Supermini,2016-04-30,0.467880803082719
+Hybrid,Brand new,Yellow,Supermini,2016-05-31,-0.10615715753371836
+Hybrid,Brand new,Yellow,Supermini,2016-06-30,-0.5074760823759478
+Hybrid,Brand new,Yellow,Supermini,2016-07-31,-0.08721217843036243
+Hybrid,Brand new,Yellow,Supermini,2016-08-31,-2.159437537406149
+Hybrid,Brand new,Yellow,Supermini,2016-09-30,-0.5773585087898208
+Hybrid,Brand new,Yellow,Supermini,2016-10-31,-0.48896053032080794
+Hybrid,Brand new,Yellow,Supermini,2016-11-30,2.7827268301773307
+Hybrid,Brand new,Yellow,Supermini,2016-12-31,0.7031416888729985
+Hybrid,Brand new,Yellow,Supermini,2017-01-31,0.45530430747037853
+Hybrid,Brand new,Yellow,Supermini,2017-02-28,0.4054069965236698
+Hybrid,Brand new,Yellow,Supermini,2017-03-31,-0.8621183275797605
+Hybrid,Brand new,Blue,Sport,2016-03-31,-0.5853749081403044
+Hybrid,Brand new,Blue,Sport,2016-04-30,0.41646126490526597
+Hybrid,Brand new,Blue,Sport,2016-05-31,-0.06135578747352638
+Hybrid,Brand new,Blue,Sport,2016-06-30,1.0739250321418174
+Hybrid,Brand new,Blue,Sport,2016-07-31,-2.063212248089436
+Hybrid,Brand new,Blue,Sport,2016-08-31,0.2342889198174759
+Hybrid,Brand new,Blue,Sport,2016-09-30,-0.13193268873304917
+Hybrid,Brand new,Blue,Sport,2016-10-31,1.8804443442249539
+Hybrid,Brand new,Blue,Sport,2016-11-30,-0.13729702367046182
+Hybrid,Brand new,Blue,Sport,2016-12-31,1.8092342496410063
+Hybrid,Brand new,Blue,Sport,2017-01-31,0.7887680250618707
+Hybrid,Brand new,Blue,Sport,2017-02-28,-2.0761212365199633
+Hybrid,Brand new,Blue,Sport,2017-03-31,0.0827872353542986
+Hybrid,Brand new,Blue,Sedan,2016-03-31,-0.14780030900740446
+Hybrid,Brand new,Blue,Sedan,2016-04-30,-0.7788066566132726
+Hybrid,Brand new,Blue,Sedan,2016-05-31,-0.14588818965015957
+Hybrid,Brand new,Blue,Sedan,2016-06-30,-0.48051313387089595
+Hybrid,Brand new,Blue,Sedan,2016-07-31,-0.5448074561778015
+Hybrid,Brand new,Blue,Sedan,2016-08-31,-0.6219092098181319
+Hybrid,Brand new,Blue,Sedan,2016-09-30,-1.271018488546169
+Hybrid,Brand new,Blue,Sedan,2016-10-31,1.1088324877219686
+Hybrid,Brand new,Blue,Sedan,2016-11-30,0.26479756359472273
+Hybrid,Brand new,Blue,Sedan,2016-12-31,-0.40659280281930865
+Hybrid,Brand new,Blue,Sedan,2017-01-31,-0.5058621957690141
+Hybrid,Brand new,Blue,Sedan,2017-02-28,0.3122639327082306
+Hybrid,Brand new,Blue,Sedan,2017-03-31,-0.4908327319600771
+Hybrid,Brand new,Blue,Supermini,2016-03-31,0.33168530240451477
+Hybrid,Brand new,Blue,Supermini,2016-04-30,0.7778642158039406
+Hybrid,Brand new,Blue,Supermini,2016-05-31,-0.006896771444841133
+Hybrid,Brand new,Blue,Supermini,2016-06-30,1.347782413682526
+Hybrid,Brand new,Blue,Supermini,2016-07-31,-0.7409479455592509
+Hybrid,Brand new,Blue,Supermini,2016-08-31,-0.8402970932551752
+Hybrid,Brand new,Blue,Supermini,2016-09-30,0.8244053430280918
+Hybrid,Brand new,Blue,Supermini,2016-10-31,1.1238554360769355
+Hybrid,Brand new,Blue,Supermini,2016-11-30,-1.3486347602356314
+Hybrid,Brand new,Blue,Supermini,2016-12-31,2.974811361368389
+Hybrid,Brand new,Blue,Supermini,2017-01-31,1.4769630519721204
+Hybrid,Brand new,Blue,Supermini,2017-02-28,-0.04489802408124542
+Hybrid,Brand new,Blue,Supermini,2017-03-31,1.3400726683629527
+Hybrid,Brand new,Green,Sport,2016-03-31,1.1744086242713125
+Hybrid,Brand new,Green,Sport,2016-04-30,1.3249492081062786
+Hybrid,Brand new,Green,Sport,2016-05-31,-0.1288979429334487
+Hybrid,Brand new,Green,Sport,2016-06-30,0.6601603391306404
+Hybrid,Brand new,Green,Sport,2016-07-31,-0.2922137176412755
+Hybrid,Brand new,Green,Sport,2016-08-31,-1.0319586861645007
+Hybrid,Brand new,Green,Sport,2016-09-30,-0.473125798805853
+Hybrid,Brand new,Green,Sport,2016-10-31,1.374333068254742
+Hybrid,Brand new,Green,Sport,2016-11-30,0.8948839859402723
+Hybrid,Brand new,Green,Sport,2016-12-31,0.33561800679988346
+Hybrid,Brand new,Green,Sport,2017-01-31,-0.14636659049068781
+Hybrid,Brand new,Green,Sport,2017-02-28,-1.427918934852753
+Hybrid,Brand new,Green,Sport,2017-03-31,0.24158799410676277
+Hybrid,Brand new,Green,Sedan,2016-03-31,0.22970593596839342
+Hybrid,Brand new,Green,Sedan,2016-04-30,-0.725772541423499
+Hybrid,Brand new,Green,Sedan,2016-05-31,-0.20933274557558357
+Hybrid,Brand new,Green,Sedan,2016-06-30,0.9209436284034981
+Hybrid,Brand new,Green,Sedan,2016-07-31,-0.43377597407501095
+Hybrid,Brand new,Green,Sedan,2016-08-31,-0.09532374904412405
+Hybrid,Brand new,Green,Sedan,2016-09-30,-0.23680931025949514
+Hybrid,Brand new,Green,Sedan,2016-10-31,0.6083083503898652
+Hybrid,Brand new,Green,Sedan,2016-11-30,-0.39192042201026134
+Hybrid,Brand new,Green,Sedan,2016-12-31,0.7043491851110196
+Hybrid,Brand new,Green,Sedan,2017-01-31,-0.12058909759126948
+Hybrid,Brand new,Green,Sedan,2017-02-28,1.823054903050174
+Hybrid,Brand new,Green,Sedan,2017-03-31,1.828509632830936
+Hybrid,Brand new,Green,Supermini,2016-03-31,-1.1122393367672558
+Hybrid,Brand new,Green,Supermini,2016-04-30,1.1764764890730062
+Hybrid,Brand new,Green,Supermini,2016-05-31,-0.730182344278019
+Hybrid,Brand new,Green,Supermini,2016-06-30,0.3990193654185619
+Hybrid,Brand new,Green,Supermini,2016-07-31,-0.4104030894565507
+Hybrid,Brand new,Green,Supermini,2016-08-31,0.15861602733477825
+Hybrid,Brand new,Green,Supermini,2016-09-30,1.336651209166667
+Hybrid,Brand new,Green,Supermini,2016-10-31,-0.7599065110339355
+Hybrid,Brand new,Green,Supermini,2016-11-30,-0.023391860129917712
+Hybrid,Brand new,Green,Supermini,2016-12-31,0.8260768602345145
+Hybrid,Brand new,Green,Supermini,2017-01-31,-0.0632866040553652
+Hybrid,Brand new,Green,Supermini,2017-02-28,-1.5102321722916032
+Hybrid,Brand new,Green,Supermini,2017-03-31,2.3312974821392407
+Hybrid,Brand new,Black,Sport,2016-03-31,-0.22540516113320508
+Hybrid,Brand new,Black,Sport,2016-04-30,1.5178684840365222
+Hybrid,Brand new,Black,Sport,2016-05-31,-0.37347286075326624
+Hybrid,Brand new,Black,Sport,2016-06-30,-0.6017042824545247
+Hybrid,Brand new,Black,Sport,2016-07-31,1.0176389372419936
+Hybrid,Brand new,Black,Sport,2016-08-31,0.6297450306683405
+Hybrid,Brand new,Black,Sport,2016-09-30,0.8620536017352041
+Hybrid,Brand new,Black,Sport,2016-10-31,-0.022104503666376004
+Hybrid,Brand new,Black,Sport,2016-11-30,0.7892075347363094
+Hybrid,Brand new,Black,Sport,2016-12-31,1.1007442578215076
+Hybrid,Brand new,Black,Sport,2017-01-31,1.3711472319892926
+Hybrid,Brand new,Black,Sport,2017-02-28,1.5869048167534912
+Hybrid,Brand new,Black,Sport,2017-03-31,-1.766477132926246
+Hybrid,Brand new,Black,Sedan,2016-03-31,-0.5545652852529399
+Hybrid,Brand new,Black,Sedan,2016-04-30,2.981173181856706
+Hybrid,Brand new,Black,Sedan,2016-05-31,-0.2909690045038318
+Hybrid,Brand new,Black,Sedan,2016-06-30,2.4389990926549148
+Hybrid,Brand new,Black,Sedan,2016-07-31,0.617492593218261
+Hybrid,Brand new,Black,Sedan,2016-08-31,0.057093890136543396
+Hybrid,Brand new,Black,Sedan,2016-09-30,2.0259457572631328
+Hybrid,Brand new,Black,Sedan,2016-10-31,-1.8605145135046357
+Hybrid,Brand new,Black,Sedan,2016-11-30,1.0687860859002918
+Hybrid,Brand new,Black,Sedan,2016-12-31,0.1591989476484011
+Hybrid,Brand new,Black,Sedan,2017-01-31,1.2126644656186483
+Hybrid,Brand new,Black,Sedan,2017-02-28,-0.885849525055079
+Hybrid,Brand new,Black,Sedan,2017-03-31,0.694929920714083
+Hybrid,Brand new,Black,Supermini,2016-03-31,0.8307576808392659
+Hybrid,Brand new,Black,Supermini,2016-04-30,-1.0006684914905244
+Hybrid,Brand new,Black,Supermini,2016-05-31,0.27069534266962264
+Hybrid,Brand new,Black,Supermini,2016-06-30,-0.2530787847936389
+Hybrid,Brand new,Black,Supermini,2016-07-31,-1.7082631042059577
+Hybrid,Brand new,Black,Supermini,2016-08-31,-1.795521613458224
+Hybrid,Brand new,Black,Supermini,2016-09-30,-0.4764397958513653
+Hybrid,Brand new,Black,Supermini,2016-10-31,0.2888428172257211
+Hybrid,Brand new,Black,Supermini,2016-11-30,-0.8649319465332947
+Hybrid,Brand new,Black,Supermini,2016-12-31,1.0830194843559233
+Hybrid,Brand new,Black,Supermini,2017-01-31,1.1990706321373958
+Hybrid,Brand new,Black,Supermini,2017-02-28,-1.0194782680459256
+Hybrid,Brand new,Black,Supermini,2017-03-31,-1.3462805193810998
