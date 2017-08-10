@@ -163,6 +163,8 @@ auto_style_indent <- function(tab, keyword = "(all)", total_text = "Grand Total"
 
   left_headers_df <- tab$body$body_df_to_write[tab$body$left_header_colnames]
 
+  orig_left_header_colnames <- tab$body$left_header_colnames
+
   # count '(all)'
   to_count <- (left_headers_df == keyword)
   all_count <- rowSums(to_count)
@@ -188,7 +190,8 @@ auto_style_indent <- function(tab, keyword = "(all)", total_text = "Grand Total"
   cols <- !(names(tab$body$body_df_to_write) %in% tab$body$left_header_colnames)
   tab$body$body_df_to_write <- tab$body$body_df_to_write[cols]
   tab$body$body_df_to_write  <- cbind(new_left_headers = new_left_headers, tab$body$body_df_to_write, stringsAsFactors = FALSE)
-  tab$body$left_header_colnames <- "new_left_headers"
+
+  tab$body$left_header_colnames <- c("new_left_headers")
 
   # Now need to fix meta_left_header_row_ to include indents
   #Set meta_left_header_row_ to include relevant indents
@@ -202,6 +205,22 @@ auto_style_indent <- function(tab, keyword = "(all)", total_text = "Grand Total"
   # Update body$meta_col_
   tab$body$meta_col_ <- c("new_left_headers" = "", tab$body$meta_col_[cols])
 
+  # Finally, if tab$top_headers has too many cols, remove the extra cols, removing from 2:n
+  if (not_null(tab$top_headers$top_headers_list)) {
+    len_th_cols <- length(tab$top_headers$top_headers_list[[1]])
+    if (len_th_cols > length(colnames(tab$body$body_df_to_write))) {
 
+      cols_to_delete <- 2:length(orig_left_header_colnames)
+      cols_to_retain <- !(1:len_th_cols %in% cols_to_delete)
+
+      tab$top_headers$top_headers_col_style_names <- tab$top_headers$top_headers_col_style_names[cols_to_retain]
+      for (r in length(tab$top_headers$top_headers_list)) {
+
+        tab$top_headers$top_headers_list[[r]] <- tab$top_headers$top_headers_list[[r]] [cols_to_retain]
+        tab$top_headers$top_headers_list[[r]][1] <- "new_left_headers"
+      }
+
+    }
+  }
   tab
 }

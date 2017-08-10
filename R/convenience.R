@@ -61,7 +61,9 @@ auto_df_to_wb <- function(df, auto_number_format = TRUE, titles = NULL, footers 
 #' @export
 auto_crosstab_to_wb <- function(df,  auto_number_format = TRUE, top_headers = NULL, titles = NULL, footers = NULL, auto_open = FALSE, indent = TRUE, left_header_colnames = NULL, return_tab = FALSE) {
 
+  top_header_provided <- TRUE
   if (is.null(top_headers)) {
+    top_header_provided <- FALSE
     top_headers  <- names(df)
   }
 
@@ -85,6 +87,7 @@ auto_crosstab_to_wb <- function(df,  auto_number_format = TRUE, top_headers = NU
 
   if (indent) {
     tab <- xltabr:::auto_style_indent(tab)
+
   }
 
   if (not_null(footers)) {
