@@ -19,7 +19,6 @@ style_catalogue_import_num_formats <- function(tab, path){
   for (i in 1:length(style_names)){
     tab$style_catalogue[[style_names[i]]] <- style_keys[i]
   }
-
   tab
 }
 

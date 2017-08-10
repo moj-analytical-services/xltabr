@@ -1,5 +1,6 @@
 class,style_name
 numeric,number1
-integer,number1
+integer,integer1
 character,text1
 Date,date1
+POSIXct,datetime1

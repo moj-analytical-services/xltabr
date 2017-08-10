@@ -20,7 +20,6 @@ openxlsx::openXL(tab$wb)
 # Test 2
 ct <- reshape2::dcast(mtcars, am + gear ~ cyl, value.var= "mpg", margins=c("am", "gear"), fun.aggregate = mean)
 headers <- colnames(ct)
-
 tab <- xltabr::initialise()
 tab <- xltabr::add_top_headers(tab, headers)
 tab <- xltabr::add_body(tab, ct)
@@ -44,6 +43,18 @@ path <- system.file("extdata", "synthetic_data.csv", package="xltabr")
 df <- read.csv(path, stringsAsFactors = FALSE)
 ct <- reshape2::dcast(df, drive + age + colour + type ~ date, value.var= "value", margins=c("drive", "age", "colour", "type"), fun.aggregate = mean)
 tab <- xltabr::auto_crosstab_to_wb(ct, indent = TRUE, return_tab = TRUE)
+
+openxlsx::openXL(tab$wb)
+
+# Test 5
+path <- system.file("extdata", "synthetic_data.csv", package="xltabr")
+df <- read.csv(path, stringsAsFactors = FALSE)
+df$date <- as.Date(df$date)
+ct <- reshape2::dcast(df, drive + age + colour ~ type, value.var= "date", margins=c("drive", "age", "colour"), fun.aggregate = min)
+
+tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE)
+
 View(tail(tab$body$body_df))
 
 openxlsx::openXL(tab$wb)
+
