@@ -1,5 +1,8 @@
 style_name, excel_format
-number1,NUMBER
+number1,"#,0.0####"
+integer1,"#,#"
 text1,TEXT
 date1,"yyyy-mm-dd"
+datetime1,"yyyy-mm-dd hh:mm:ss"
 general,GENERAL
+

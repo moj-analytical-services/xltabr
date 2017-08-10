@@ -29,9 +29,11 @@ auto_style_number_formatting <- function(tab, overrides = list()) {
     if (this_col_name %in% names(overrides)) {
       this_style <- overrides[[this_col_name]]
     } else {
-      this_style <- lookup[col_classes[this_col_name]]
+      this_style <- lookup[col_classes[[this_col_name]][1]]
+      if (is.na(this_style)) {
+        stop(paste0("Trying to autoformat column of class ", col_classes[[this_col_name]], "but no style defined in number_format_defaults.csv"))
+      }
     }
-
 
     if (is_null_or_blank(tab$body$meta_col_[this_col_name])) {
       tab$body$meta_col_[this_col_name] <- this_style
@@ -40,6 +42,8 @@ auto_style_number_formatting <- function(tab, overrides = list()) {
     }
 
   }
+
+
 
   tab
 
@@ -203,7 +207,7 @@ auto_style_indent <- function(tab, keyword = "(all)", total_text = "Grand Total"
   tab$body$body_df[not_na(all_count_inv),"meta_left_header_row_"] <- paste(col, concat,sep = "|")
 
   # Update body$meta_col_
-  tab$body$meta_col_ <- c("new_left_headers" = "", tab$body$meta_col_[cols])
+  tab$body$meta_col_ <- c("new_left_headers" = tab$body$meta_col_[[1]], tab$body$meta_col_[cols])
 
   # Finally, if tab$top_headers has too many cols, remove the extra cols, removing from 2:n
   if (not_null(tab$top_headers$top_headers_list)) {

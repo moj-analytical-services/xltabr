@@ -80,3 +80,8 @@ test_that("Test that indent/coalesce works correctly", {
 
 
 })
+
+
+test_that("Test that when we indent, we make the leftmost top header blank if nothing was provided by the user", {
+
+})

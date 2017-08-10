@@ -23,11 +23,13 @@ is_null_or_blank <- function(x) {
     Stop("You passed something of length > 1 to is_null_or_blank")
   }
 
-  if (x == "") {
+  if (is.null(x)) {
     return(TRUE)
   }
 
-  if (is_null(x)) {
+
+
+  if (x == "") {
     return(TRUE)
   }
 

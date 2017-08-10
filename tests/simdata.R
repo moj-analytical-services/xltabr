@@ -56,3 +56,14 @@ df["value"] <- rnorm(nrow(df))
 
 readr::write_csv(df, 'inst/extdata/synthetic_data.csv')
 
+text_col <- c("text1", "text2")
+date_col <- as.Date(c("2017-01-01", "2017-02-01"))
+datetime_col <- c(Sys.time(), Sys.time())
+int_col <- c(1L,2L)
+f1_col <- c(0.001, 0.002)
+f2_col <- c(1.1, 1.2)
+f3_col <- c(1e8, 2e10)
+
+df <- data.frame(text_col, date_col, datetime_col, int_col, f1_col, f2_col, f3_col)
+lapply(df, class)
+saveRDS(df, 'inst/extdata/number_types.rds')
