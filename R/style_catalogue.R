@@ -30,26 +30,35 @@ style_catalogue_xlsx_import <- function(tab, path) {
   tab$style_catalogue <- list()
 
   wb <- openxlsx::loadWorkbook(path)
-  openxlsx::readWorkbook(wb)
+  listed_styles <- openxlsx::readWorkbook(wb, colNames = FALSE)
 
   for (i in wb$styleObjects) {
-    r <- i$rows
-    c <- i$cols
-    cell <- openxlsx::readWorkbook(wb, rows = r, cols = c, colNames = FALSE, rowNames = FALSE)
+    for (iter in 1:length(i$rows)){
+      r <- i$rows[iter]
+      c <- i$cols[iter]
+      cell <- openxlsx::readWorkbook(wb, rows = r, cols = c, colNames = FALSE, rowNames = FALSE)
 
-    value <- cell[1, 1]
+      value <- cell[1, 1]
 
-    tmp_list <- list()
-    tmp_list$style <- i$style
+      tmp_list <- list()
+      tmp_list$style <- i$style
 
-    cell <- openxlsx::readWorkbook(wb, rows = r, cols = c + 1, colNames = FALSE, rowNames = FALSE)
-    tmp_list$rowHeight <- cell[1, 1]
+      cell <- openxlsx::readWorkbook(wb, rows = r, cols = c + 1, colNames = FALSE, rowNames = FALSE)
+      tmp_list$rowHeight <- cell[1, 1]
 
-    style_key <- create_style_key(convert_style_object(tmp_list))
+      style_key <- create_style_key(convert_style_object(tmp_list))
 
-    # If the style_key does not exist in the style_dictionary values then S4 object to style catalogue
-    if (!value %in% names(tab$style_catalogue)){
-      tab$style_catalogue[[value]] <- style_key
+      if (!value %in% names(tab$style_catalogue)){
+        tab$style_catalogue[[value]] <- style_key
+      }
+    }
+  }
+
+  # Add in a checker to catch default style objects
+  for (style_name in listed_styles$X1){
+    if (!style_name %in% names(tab$style_catalogue)){
+      style_key <- "numFmt_GENERAL"
+      tab$style_catalogue[[style_name]] <- style_key
     }
   }
 
