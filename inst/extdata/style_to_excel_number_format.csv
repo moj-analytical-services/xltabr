@@ -1,5 +1,5 @@
 style_name, excel_format
-number1,"#,##0;;-"
+number1,NUMBER
 text1,TEXT
 date1,"yyyy-mm-dd"
 general,GENERAL

@@ -138,6 +138,7 @@ top_headers_write_rows <- function(tab) {
   col <- min(top_headers_get_wb_cols(tab))
   row <- min(top_headers_get_wb_rows(tab))
 
+
   openxlsx::writeData(tab$wb, ws_name, data, startRow = row, startCol = col, colNames = FALSE)
 
   tab
