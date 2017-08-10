@@ -296,25 +296,19 @@ add_styles_to_wb <- function(tab, add_from = c("title","headers","body")){
   }
 
   # Get a unique vector of style_name from full_table
-  unique_styles_definitions <- full_table %>%
-    dplyr::select(style_name) %>%
-    dplyr::distinct()
-  unique_styles_definitions <- as.character(unique_styles_definitions[,1])
+  unique_styles_definitions <- unique(full_table$style_name)
 
   # Add unique style_name vector to style catalogue
   tab$style_catalogue <- add_style_defintions_to_catelogue(tab$style_catalogue, unique_styles_definitions)
 
   # add the style_key to each style name in full table
-  full_table <- dplyr::mutate(full_table, style_key = unlist(tab$style_catalogue[style_name]))
+  full_table$style_key <- unlist(tab$style_catalogue[full_table$style_name])
 
   # iterate over a unique list of style_keys for and apply them to the workbook for each row col
-  unique_style_keys <- full_table %>%
-    dplyr::select(style_key) %>%
-    dplyr::distinct()
-  unique_style_keys <- as.character(unique_style_keys[,1])
+  unique_style_keys <- unique(full_table$style_key)
 
   for (sk in unique_style_keys){
-    row_col_styles <- full_table %>% dplyr::filter(style_key == sk)
+    row_col_styles <- full_table[full_table$style_key == sk,]
     rows <- row_col_styles$row
     cols <- row_col_styles$col
 

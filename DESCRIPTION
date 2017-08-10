@@ -2,7 +2,7 @@ Package: xltabr
 Type: Package
 Title: Writes crosstabulations created in R to Excel, and formats them.
 Version: 0.0.1
-Author: Robin Linacre <robinlinacre@hotmail.com>, Karik Isichei
+Author: Robin Linacre <robinlinacre@hotmail.com>, Karik Isichei <karik.isichei@gmail.com>
 Maintainer: Robin Linacre <robinlinacre@hotmail.com>
 Description: xltabr allows you to write formatted cross tabulations to Excel usign openxlsx. 
     It has been developed to help automate the process of publishing official statistics.
@@ -14,6 +14,5 @@ LazyData: true
 RoxygenNote: 6.0.1
 Imports:
   magrittr,
-  openxlsx,
-  dplyr
+  openxlsx
 Suggests: testthat
