@@ -83,6 +83,10 @@ auto_crosstab_to_wb <- function(df,  auto_number_format = TRUE, top_headers = NU
     tab <- xltabr::add_title(tab, titles)
   }
 
+  if (indent) {
+    tab <- xltabr:::auto_style_indent(tab)
+  }
+
   if (not_null(footers)) {
     tab <- xltabr::add_footer(tab, footers)
   }
