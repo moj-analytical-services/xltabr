@@ -134,7 +134,7 @@ style_key_parser <- function(style_key){
 }
 
 # looks at the cell_style_definition and build a final style_key for that cell
-build_style <- function(cell_style_definition, style_catalogue){
+build_style <- function(tab, cell_style_definition){
 
   # Convert cell style inheritence string into an array
   seperated_style_definition <- unlist(strsplit(cell_style_definition, "\\|"))
@@ -150,13 +150,13 @@ build_style <- function(cell_style_definition, style_catalogue){
   ##
 
   if (length(seperated_style_definition) <= 1){
-    return (style_catalogue[[seperated_style_definition]])
+    return (tab$style_catalogue[[seperated_style_definition]])
   }
   else{
     # Otherwise build final style
-    previous_style <- style_key_parser(style_catalogue[[seperated_style_definition[1]]])
+    previous_style <- style_key_parser(tab$style_catalogue[[seperated_style_definition[1]]])
     for (i in 2:length(seperated_style_definition)){
-      current_style <- style_key_parser(style_catalogue[[seperated_style_definition[i]]])
+      current_style <- style_key_parser(tab$style_catalogue[[seperated_style_definition[i]]])
       for (property_name in names(current_style)){
         previous_style[property_name] <- current_style[property_name]
       }
@@ -165,23 +165,19 @@ build_style <- function(cell_style_definition, style_catalogue){
   return (create_style_key(previous_style))
 }
 
-add_style_defintions_to_catelogue <- function(style_catalogue, style_definitions){
+add_style_defintions_to_catelogue <- function(tab, style_definitions){
 
   for (style_def in style_definitions){
-    style_key <- build_style(style_def, style_catalogue)
+    style_key <- build_style(tab, style_def)
 
     # Always log the key value pair in the style dictionary
-    if (!style_def %in% names(style_catalogue)){
-      style_catalogue[[style_def]] <- style_key
+    if (!style_def %in% names(tab$style_catalogue)){
+      tab$style_catalogue[[style_def]] <- style_key
     }
   }
 
-  style_catalogue
+  tab
 }
-
-# style_key <- tab$style_catalogue[["body|indent_0"]]
-# style <- style_key
-# convert_to_S4 = T
 
 convert_style_object <- function(style, convert_to_S4 = FALSE){
   if(convert_to_S4){
@@ -298,7 +294,7 @@ add_styles_to_wb <- function(tab, add_from = c("title","headers","body")){
   unique_styles_definitions <- unique(full_table$style_name)
 
   # Add unique style_name vector to style catalogue
-  tab$style_catalogue <- add_style_defintions_to_catelogue(tab$style_catalogue, unique_styles_definitions)
+  tab <- add_style_defintions_to_catelogue(tab, unique_styles_definitions)
 
   # add the style_key to each style name in full table
   full_table$style_key <- unlist(tab$style_catalogue[full_table$style_name])
