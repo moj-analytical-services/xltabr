@@ -90,9 +90,14 @@ create_style_key <- function(style_list){
                         property_to_key(style_list, "fontSize"),
                         property_to_key(style_list, "fontColour"),
                         property_to_key(style_list, "numFmt"),
-                        property_to_key(style_list, "border"),
-                        property_to_key(style_list, "borderColour"),
-                        property_to_key(style_list, "borders"),
+                        property_to_key(style_list, "borderBottom"),
+                        property_to_key(style_list, "borderBottomColour"),
+                        property_to_key(style_list, "borderTop"),
+                        property_to_key(style_list, "borderTopColour"),
+                        property_to_key(style_list, "borderLeft"),
+                        property_to_key(style_list, "borderLeftColour"),
+                        property_to_key(style_list, "borderRight"),
+                        property_to_key(style_list, "borderRightColour"),
                         property_to_key(style_list, "bgFill"),
                         property_to_key(style_list, "fgFill"),
                         property_to_key(style_list, "halign"),
@@ -241,8 +246,6 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
       fontColour = font_colour_input,
       numFmt = style[["numFmt"]],
       border = NULL,
-      borderColour = getOption("openxlsx.borderColour", "black"),
-      borderStyle = getOption("openxlsx.borderStyle", "thin"),
       bgFill = bg_fill_input,
       fgFill = fg_fill_input,
       halign = style[["halign"]],
@@ -263,6 +266,17 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
       out_style$fill$fillFg <- style[["fgFill"]]
     }
 
+    # Do borders
+    out_style$borderBottom <- style$borderBottom
+    out_style$borderBottomColour <- style$borderBottomColour
+    out_style$borderTop <- style$borderTop
+    out_style$borderTopColour <- style$borderTopColour
+    out_style$borderLeft <- style$borderLeft
+    out_style$borderLeftColour <- style$borderLeftColour
+    out_style$borderRight <- style$borderRight
+    out_style$borderRightColour <- style$borderRightColour
+
+
     return(out_style)
   } else {
 
@@ -273,10 +287,17 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
     out_style[["fontColour"]] <- style$style$fontColour
     ## Number formats are read differently
     # out_style[["numFmt"]] <- "GENERAL"
-    # border not yet supported due to weird way it converts on style
-    # out_style[["border"]] <- style$style$border
-    # borderColour - not yet supported
-    # borderStyle - not yet supported
+
+    # Do border properties
+    out_style[["borderBottom"]] <- style$style$borderBottom
+    out_style[["borderBottomColour"]] <- style$style$borderBottomColour
+    out_style[["borderTop"]] <- style$style$borderTop
+    out_style[["borderTopColour"]] <- style$style$borderTopColour
+    out_style[["borderLeft"]] <- style$style$borderLeft
+    out_style[["borderLeftColour"]] <- style$style$borderLeftColour
+    out_style[["borderRight"]] <- style$style$borderRight
+    out_style[["borderRightColour"]] <- style$style$borderRightColour
+
     out_style[["bgFill"]] <- style$style$fill$fillBg
     out_style[["fgFill"]] <- style$style$fill$fillFg
     out_style[["halign"]] <- style$style$halign
