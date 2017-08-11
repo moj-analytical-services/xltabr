@@ -1,5 +1,5 @@
 # Need some unit tests that
-
+open_output <- TRUE
 library(magrittr)
 
 # Test 1
@@ -15,8 +15,10 @@ tab <- xltabr:::auto_style_indent(tab)
 tab <- xltabr::auto_style_number_formatting(tab)
 tab <- xltabr:::write_all_elements_to_wb(tab)
 tab <- xltabr:::add_styles_to_wb(tab)
-openxlsx::openXL(tab$wb)
-
+if (open_output) openxlsx::openXL(tab$wb) else {
+  if (file.exists("test1.xlsx")) file.remove("test1.xlsx")
+  openxlsx::saveWorkbook(tab$wb, "test1.xlsx")
+}
 # Test 2
 ct <- reshape2::dcast(mtcars, am + gear ~ cyl, value.var= "mpg", margins=c("am", "gear"), fun.aggregate = mean)
 headers <- colnames(ct)
@@ -30,12 +32,18 @@ tab <- xltabr:::auto_style_indent(tab)
 tab <- xltabr::auto_style_number_formatting(tab)
 tab <- xltabr:::write_all_elements_to_wb(tab)
 tab <- xltabr:::add_styles_to_wb(tab)
-openxlsx::openXL(tab$wb)
+if (open_output) openxlsx::openXL(tab$wb) else {
+  if (file.exists("test2.xlsx")) file.remove("test2.xlsx")
+  openxlsx::saveWorkbook(tab$wb, "test2.xlsx")
+}
 
 # Test 3
 ct <- reshape2::dcast(mtcars, am + gear ~ cyl, value.var= "mpg", margins=c("am", "gear"), fun.aggregate = mean)
 tab <- xltabr::auto_crosstab_to_wb(ct, indent = TRUE, return_tab = TRUE)
-openxlsx::openXL(tab$wb)
+if (open_output) openxlsx::openXL(tab$wb) else {
+  if (file.exists("test3.xlsx")) file.remove("test3.xlsx")
+  openxlsx::saveWorkbook(tab$wb, "test3.xlsx")
+}
 xltabr:::body_get_cell_styles_table(tab)
 
 # Test 4
@@ -44,7 +52,10 @@ df <- read.csv(path, stringsAsFactors = FALSE)
 ct <- reshape2::dcast(df, drive + age + colour + type ~ date, value.var= "value", margins=c("drive", "age", "colour", "type"), fun.aggregate = mean)
 tab <- xltabr::auto_crosstab_to_wb(ct, indent = TRUE, return_tab = TRUE)
 
-openxlsx::openXL(tab$wb)
+if (open_output) openxlsx::openXL(tab$wb) else {
+  if (file.exists("test4.xlsx")) file.remove("test4.xlsx")
+  openxlsx::saveWorkbook(tab$wb, "test4.xlsx")
+}
 
 # Test 5
 path <- system.file("extdata", "synthetic_data.csv", package="xltabr")
@@ -56,5 +67,7 @@ tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE)
 
 View(tail(tab$body$body_df))
 
-openxlsx::openXL(tab$wb)
-
+if (open_output) openxlsx::openXL(tab$wb) else {
+  if (file.exists("test5.xlsx")) file.remove("test5.xlsx")
+  openxlsx::saveWorkbook(tab$wb, "test5.xlsx")
+}

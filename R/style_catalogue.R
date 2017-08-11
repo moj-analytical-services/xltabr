@@ -188,9 +188,10 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
 
     # Do convertions for correct createStyle inputs
     font_colour_input <- NULL
+    font_colour_is_theme <- FALSE
     if(!is.null(style[["fontColour"]])){
-      # if(style[["fontColour"]] "1") style[["fontColour"]] <- "black"
-      if(suppressWarnings(is.na(as.integer(style[["fontColour"]])))){
+      font_colour_is_theme <- suppressWarnings(!is.na(as.integer(style[["fontColour"]])))
+      if(!font_colour_is_theme){
         font_colour_input <- style[["fontColour"]]
       }
     }
@@ -224,7 +225,7 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
       textRotation = NULL,
       indent = style[["indent"]])
 
-    if(suppressWarnings(!is.na(as.integer(style[["fontColour"]])))){
+    if(font_colour_is_theme){
       out_style$fontColour <- c(theme = style[["fontColour"]])
     }
 
