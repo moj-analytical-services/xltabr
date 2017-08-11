@@ -1,5 +1,5 @@
 # Need some unit tests that
-open_output <- TRUE
+open_output <- F
 library(magrittr)
 
 # Test 1

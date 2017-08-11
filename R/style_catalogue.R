@@ -126,8 +126,8 @@ style_key_parser <- function(style_key){
   # Can interate through style categories in order to get inherited changes from left to right.
   style_categories <- list()
   for (i in 1:length(specs)){
-    seperate_property <- unlist(strsplit(specs[[i]], "_"))
-    style_categories[seperate_property[1]] <- unlist(strsplit(seperate_property[2], "%"))
+    seperate_property <- unlist(strsplit(specs[i], "_"))
+    style_categories[[seperate_property[1]]] <- unlist(strsplit(seperate_property[2], "%"))
   }
 
   style_categories
@@ -196,6 +196,33 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
       }
     }
 
+    # Do check for type of fgFill
+    fg_fill_input <- NULL
+    fg_fill_is_theme <- FALSE
+    if(!is.null(style[["fgFill"]])){
+      fg_fill_is_theme <- suppressWarnings(!is.na(as.integer(style[["fgFill"]][1])))
+      if(length(style[["fgFill"]]) == 1){
+        names(style[["fgFill"]]) <- c("theme")
+      } else {
+        names(style[["fgFill"]]) <- c("theme","tint")
+      }
+      if(!fg_fill_is_theme & length(style[["fgFill"]]) == 1){
+        fg_fill_input <- style[["fgFill"]]
+      }
+    }
+
+    bg_fill_input <- NULL
+    bg_fill_is_theme <- FALSE
+    if(!is.null(style[["bgFill"]])){
+      if(length(style[["bgFill"]]) == 1){
+        names(style[["bgFill"]]) <- c("indexed")
+      }
+      bg_fill_is_theme <- suppressWarnings(!is.na(as.integer(style[["bgFill"]][1])))
+      if(!bg_fill_is_theme & length(style[["bgFill"]]) == 1){
+        bg_fill_is_theme <- style[["bgFill"]]
+      }
+    }
+
     if(!is.null(style[["fontSize"]])){
       style[["fontSize"]] <- as.integer(style[["fontSize"]])
     }
@@ -216,8 +243,8 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
       border = NULL,
       borderColour = getOption("openxlsx.borderColour", "black"),
       borderStyle = getOption("openxlsx.borderStyle", "thin"),
-      bgFill =NULL,
-      fgFill = NULL,
+      bgFill = bg_fill_input,
+      fgFill = fg_fill_input,
       halign = style[["halign"]],
       valign = style[["valign"]],
       textDecoration = style[["textDecoration"]],
@@ -225,8 +252,15 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
       textRotation = NULL,
       indent = style[["indent"]])
 
+    # Do additonal addons
     if(font_colour_is_theme){
       out_style$fontColour <- c(theme = style[["fontColour"]])
+    }
+    if(bg_fill_is_theme){
+      out_style$fill$fillBg <- style[["bgFill"]]
+    }
+    if(fg_fill_is_theme){
+      out_style$fill$fillFg <- style[["fgFill"]]
     }
 
     return(out_style)
@@ -243,8 +277,8 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
     # out_style[["border"]] <- style$style$border
     # borderColour - not yet supported
     # borderStyle - not yet supported
-    # out_style[["bgFill"]] <- style$style$bgFill
-    # out_style[["fgFill"]] <- style$style$fgFill
+    out_style[["bgFill"]] <- style$style$fill$fillBg
+    out_style[["fgFill"]] <- style$style$fill$fillFg
     out_style[["halign"]] <- style$style$halign
     out_style[["valign"]] <- style$style$valign
     if(length(style$style$fontDecoration) == 0){
