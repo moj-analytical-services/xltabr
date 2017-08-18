@@ -1,7 +1,16 @@
 # Use default .xlsx style catalogue to initialise the catalogue of styles
-style_catalogue_initialise <- function (tab) {
-  path <- system.file("extdata", "styles.xlsx", package = "xltabr")
-  path_num <- system.file("extdata", "style_to_excel_number_format.csv", package = "xltabr")
+style_catalogue_initialise <- function(tab, styles_xlsx, num_styles_csv) {
+  if (is.null(styles_xlsx)) {
+    path <- system.file("extdata", "styles.xlsx", package = "xltabr")
+  } else {
+    path <- styles_xlsx
+  }
+
+  if (is.null(num_styles_csv)) {
+    path_num <- system.file("extdata", "style_to_excel_number_format.csv", package = "xltabr")
+  } else {
+    path_num <- num_styles_csv
+  }
   tab <- style_catalogue_xlsx_import(tab, path)
   tab <- style_catalogue_import_num_formats(tab, path_num)
   tab
@@ -38,6 +47,10 @@ style_catalogue_xlsx_import <- function(tab, path) {
       cell <- openxlsx::readWorkbook(wb, rows = r, cols = c, colNames = FALSE, rowNames = FALSE)
 
       value <- cell[1, 1]
+
+      if (is.null(value)) {
+        next
+      }
 
       tmp_list <- list()
       tmp_list$style <- i$style

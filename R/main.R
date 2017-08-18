@@ -6,7 +6,7 @@
 #' @importFrom magrittr %>%
 #' @name %>%#'
 #' @export
-initialise <- function(wb = openxlsx::createWorkbook(), ws_name = "Sheet1", topleft_row = 1, topleft_col = 1) {
+initialise <- function(wb = openxlsx::createWorkbook(), ws_name = "Sheet1", styles_xlsx = NULL, num_styles_csv = NULL, topleft_row = 1, topleft_col = 1) {
 
   # Main object
   tab <- list()
@@ -15,7 +15,7 @@ initialise <- function(wb = openxlsx::createWorkbook(), ws_name = "Sheet1", topl
   tab <- title_initialise(tab)
   tab <- body_initialise(tab)
 
-  tab <- style_catalogue_initialise(tab)
+  tab <- style_catalogue_initialise(tab, styles_xlsx = styles_xlsx, num_styles_csv = num_styles_csv)
   tab <- wb_initialise(tab, wb, ws_name)
 
 
