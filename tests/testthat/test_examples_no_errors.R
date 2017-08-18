@@ -30,7 +30,7 @@ test_that("Test cross tab from synthetic data 2", {
 
 test_that("Test basic table", {
   tab <- xltabr::auto_df_to_wb(mtcars, return_tab=TRUE)
-  openxlsx::openXL(tab$wb)
+
 })
 
 test_that("Test table numtypes", {

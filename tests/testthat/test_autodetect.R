@@ -19,15 +19,15 @@ test_that("Test meta columns are populated", {
 
   tab <- xltabr:::auto_detect_body_title_level(tab)
 
-  t1 = all(tab$body$body_df$meta_row_ ==c("body|title_1", "body|title_2", "body|title_3", "body"))
-  t2 = all(tab$body$body_df$meta_left_header_row_ == c("body|left_header|title_1", "body|left_header|title_2", "body|left_header|title_3",
+  t1 = all(tab$body$body_df$meta_row_ ==c("body|title_3", "body|title_4", "body|title_5", "body"))
+  t2 = all(tab$body$body_df$meta_left_header_row_ == c("body|left_header|title_3", "body|left_header|title_4", "body|left_header|title_5",
                                                   "body|left_header"))
   expect_true(t1)
   expect_true(t2)
 
   tab <- auto_style_number_formatting(tab)
 
-  t1 <- all(tab$body$meta_col_ == c("text1", "text1", "text1", "number1",
+  t1 <- all(tab$body$meta_col_ == c("text1", "text1", "text1", "integer1",
                              "number1", "date1"))
 
   expect_true(t1)
@@ -66,11 +66,11 @@ test_that("Test that indent/coalesce works correctly", {
   tab <- xltabr:::auto_style_indent(tab)
 
   #Check it's autodetected left_header_coluns correctly
-  t1 = tab$body$left_header_colnames == "new_left_headers"
+  t1 = tab$body$left_header_colnames == tab$misc$coalesce_left_header_colname 
   testthat::expect_true(t1)
 
-  t1 = all(tab$body$body_df$meta_left_header_row_ ==  c("body|left_header|title_1|indent_0", "body|left_header|title_2|indent_1",
-                                              "body|left_header|title_3|indent_2", "body|left_header|indent_3"))
+  t1 = all(tab$body$body_df$meta_left_header_row_ ==  c("body|left_header|title_3", "body|left_header|title_4|indent_1",
+                                              "body|left_header|title_5|indent_2", "body|left_header|indent_3"))
   testthat::expect_true(t1)
 
   t1 = all(tab$body$body_df_to_write$new_left_headers == c("Grand Total", "a", "b", "c"))
