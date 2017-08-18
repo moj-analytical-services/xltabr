@@ -249,3 +249,14 @@ auto_style_indent <- function(tab, keyword = "(all)", total_text = "Grand Total"
 
   tab
 }
+
+add_left_header_vertical_border <- function(tab, stylename = "right_border") {
+
+  # What's the right most cell in the
+  right_most <- length(tab$body$left_header_colnames)
+
+  tab$body$meta_col_[right_most] <- paste(tab$body$meta_col_[right_most], stylename, sep="|")
+
+  tab
+
+}

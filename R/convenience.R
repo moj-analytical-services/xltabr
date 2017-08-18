@@ -59,7 +59,7 @@ auto_df_to_wb <- function(df, auto_number_format = TRUE, titles = NULL, footers 
 #'
 #' @example auto_df_to_xl(mtcars, titles="the mtcars data", footers="note, this data is now quite old", auto_open=TRUE, auto_number_format = FALSE)
 #' @export
-auto_crosstab_to_wb <- function(df,  auto_number_format = TRUE, top_headers = NULL, titles = NULL, footers = NULL, auto_open = FALSE, indent = TRUE, left_header_colnames = NULL, return_tab = FALSE) {
+auto_crosstab_to_wb <- function(df,  auto_number_format = TRUE, top_headers = NULL, titles = NULL, footers = NULL, auto_open = FALSE, indent = TRUE, left_header_colnames = NULL,  vertical_border = TRUE, styles_xlsx = NULL, num_styles_csv = NULL, return_tab = FALSE) {
 
   top_header_provided <- TRUE
   if (is.null(top_headers)) {
@@ -67,7 +67,7 @@ auto_crosstab_to_wb <- function(df,  auto_number_format = TRUE, top_headers = NU
     top_headers  <- names(df)
   }
 
-  tab <- xltabr::initialise() %>%
+  tab <- xltabr::initialise(styles_xlsx = styles_xlsx, num_styles_csv = num_styles_csv) %>%
     xltabr::add_top_headers(top_headers) %>%
     xltabr::add_body(df,left_header_colnames = left_header_colnames)
 
@@ -87,7 +87,10 @@ auto_crosstab_to_wb <- function(df,  auto_number_format = TRUE, top_headers = NU
 
   if (indent) {
     tab <- xltabr:::auto_style_indent(tab)
+  }
 
+  if (vertical_border) {
+    tab <- xltabr:::add_left_header_vertical_border(tab)
   }
 
   if (not_null(footers)) {
