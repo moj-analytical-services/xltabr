@@ -54,13 +54,18 @@ if (open_output) openxlsx::openXL(tab$wb) else {
 xltabr:::body_get_cell_styles_table(tab)
 
 # Test 4
+library(xltabr)
+library(dplyr)
+
 path <- system.file("extdata", "synthetic_data.csv", package="xltabr")
 df <- read.csv(path, stringsAsFactors = FALSE)
 ct <- reshape2::dcast(df, drive + age + colour + type ~ date, value.var= "value", margins=c("drive", "age", "colour", "type"), fun.aggregate = mean)
 ct <- ct %>% dplyr::arrange(-row_number())
+
+
 path <- system.file("extdata", "styles.xlsx", package = "xltabr")
 num_path <- system.file("extdata", "style_to_excel_number_format_alt.csv", package = "xltabr")
-tab <- xltabr::auto_crosstab_to_wb(ct, indent = TRUE, return_tab = TRUE, styles_xlsx = path, num_styles_csv = num_path)
+tab <- xltabr::auto_crosstab_to_wb(ct, indent = TRUE, return_tab = TRUE, styles_xlsx = path, num_styles_csv = num_path, titles = "This is the title")
 openxlsx::openXL(tab$wb)
 
 if (open_output) openxlsx::openXL(tab$wb) else {

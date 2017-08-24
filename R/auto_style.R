@@ -173,7 +173,7 @@ auto_detect_body_title_level <- function(tab, keyword = "(all)") {
 # Consolidate the header columns into one, taking the rightmost value and applying indent
 # e.g. a | b | (all) -> b
 # e.g. (all) | (all) | (all) -> Grand Total
-auto_style_indent <- function(tab, keyword = "(all)", total_text = "Grand Total", left_header_colname = "-") {
+auto_style_indent <- function(tab, keyword = "(all)", total_text = "Grand Total", left_header_colname = " ") {
 
   tab$misc$coalesce_left_header_colname = left_header_colname
   if (is.null(tab$body$left_header_colnames )) {
