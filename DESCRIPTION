@@ -15,4 +15,7 @@ RoxygenNote: 6.0.1
 Imports:
   magrittr,
   openxlsx
-Suggests: testthat
+Suggests: 
+  testthat, 
+  reshape2
+
