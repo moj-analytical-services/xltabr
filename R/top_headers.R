@@ -100,17 +100,17 @@ top_headers_get_cell_styles_table <- function(tab) {
   rows <- top_headers_get_wb_rows(tab)
 
   if (length(rows) == 0) {
-    df <- data.frame("row" = integer(0), "col" = integer(0), "style_name" = integer(0))
+    df <- data.frame("row" = integer(0), "col" = integer(0), "style_name" = character(0), stringsAsFactors = FALSE)
     return(df)
   }
 
   rs <- tab$top_headers$top_headers_row_style_names
-  df1 <- data.frame(rs, row = rows)
+  df1 <- data.frame(rs, row = rows, stringsAsFactors = FALSE)
 
   cs <- tab$top_headers$top_headers_col_style_names
   cols <-  top_headers_get_wb_cols(tab)
 
-  df2 <- data.frame(cs, col = cols)
+  df2 <- data.frame(cs, col = cols, stringsAsFactors = FALSE)
   df <- merge(df1, df2)
 
   df$style_name <- paste(df$rs, df$cs, sep="|")
