@@ -370,3 +370,20 @@ add_styles_to_wb <- function(tab, add_from = c("title","headers","body")){
   tab
 }
 
+compare_style_lists <- function(a, b){
+  a_names <- sort(names(a))
+  b_names <- sort(names(b))
+
+  if(length(a_names) != length(b_names)) return(FALSE)
+  if(!all(a_names == b_names)) return(FALSE)
+
+  final_check <- TRUE
+  for (prop in a_names){
+    if(!identical(a[prop], b[prop])){
+        final_check <- FALSE
+        break;
+    }
+  }
+  return(final_check)
+}
+
