@@ -175,7 +175,11 @@ build_style <- function(tab, cell_style_definition){
     for (i in 2:length(seperated_style_definition)){
       current_style <- style_key_parser(tab$style_catalogue[[seperated_style_definition[i]]])
       for (property_name in names(current_style)){
-        previous_style[property_name] <- current_style[property_name]
+        if(property_name == "textDecoration"){
+          previous_style[[property_name]] <- unique(c(previous_style[[property_name]], current_style[[property_name]]))
+        } else {
+          previous_style[property_name] <- current_style[property_name]
+        }
       }
     }
   }
