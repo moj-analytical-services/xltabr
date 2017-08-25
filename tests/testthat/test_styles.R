@@ -11,5 +11,4 @@ test_that("style conversion functions work as expected", {
 
   expect_true(xltabr:::create_style_key(t1) == style_key_test)
 
-
 })
