@@ -134,7 +134,7 @@ body_get_cell_styles_table <- function(tab) {
   rows <- body_get_wb_rows(tab)
 
   if (length(rows) == 0) {
-    df <- data.frame("row" = integer(0), "col" = integer(0), "style_name" = integer(0))
+    df <- data.frame("row" = integer(0), "col" = integer(0), "style_name" = character(0))
     return(df)
   }
 
@@ -149,7 +149,7 @@ body_get_cell_styles_table <- function(tab) {
   df <- expand.grid(row = r, col = c_body_no_lh)
 
   #All cells get body
-  df_br <- data.frame(row = r, style_name = tab$body$body_df$meta_row_) #br stands for body row
+  df_br <- data.frame(row = r, style_name = tab$body$body_df$meta_row_, stringsAsFactors = FALSE) #br stands for body row
   df <- merge(df, df_br, by="row") #At this point, df has all row col combos for the body, but not the left columns, and the given row style
 
   #If left header columns actually exist
@@ -157,14 +157,14 @@ body_get_cell_styles_table <- function(tab) {
     #a table containing each row and its associated style for the header rows
     df_lhc_r <- data.frame(row = r, style_name = tab$body$body_df$meta_left_header_row_, stringsAsFactors = FALSE)
 
-    hcs <- data.frame(col = lh_cols)
+    hcs <- data.frame(col = lh_cols, stringsAsFactors = FALSE)
     df_hcs <- merge(df_lhc_r, hcs) # a df that contains |rowcol|left_header style for all cols and rows of left headers,
 
     df <- rbind(df, df_hcs)
   }
 
   #Add a final column that includes the column style information - i.e. top header styles
-  df_th <- data.frame(col = c_all_body, top_header_style = tab$body$meta_col_)
+  df_th <- data.frame(col = c_all_body, top_header_style = tab$body$meta_col_, stringsAsFactors = FALSE)
   df <- merge(df, df_th, by="col")
 
   df$style_name <- paste(df$style_name, df$top_header_style, sep="|")

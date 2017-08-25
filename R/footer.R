@@ -81,7 +81,7 @@ footer_get_cell_styles_table <- function(tab) {
   rows <- footer_get_wb_rows(tab)
 
   if (length(rows) == 0) {
-    df <- data.frame("row" = integer(0), "col" = integer(0), "style_name" = integer(0))
+    df <- data.frame("row" = integer(0), "col" = integer(0), "style_name" = character(0), stringsAsFactors = FALSE)
     return(df)
   }
 
@@ -89,8 +89,8 @@ footer_get_cell_styles_table <- function(tab) {
   styles <- tab$footer$footer_style_names
   cols <- footer_get_wb_cols(tab)
 
-  df <- data.frame(row = rows, style_name = styles)
-  df <- merge(df, data.frame(col = cols)) #merge with no join column creates cartesian product
+  df <- data.frame(row = rows, style_name = styles, stringsAsFactors = FALSE)
+  df <- merge(df, data.frame(col = cols, stringsAsFactors = FALSE)) #merge with no join column creates cartesian product
   df <- df[,c("row", "col", "style_name")]
   df
 }
