@@ -10,7 +10,7 @@
 #'
 #' @example auto_df_to_xl(mtcars, titles="the mtcars data", footers="note, this data is now quite old", auto_open=TRUE, auto_number_format = FALSE)
 #' @export
-auto_df_to_wb <- function(df, auto_number_format = TRUE, titles = NULL, footers = NULL, auto_open = FALSE, return_tab = FALSE) {
+auto_df_to_wb <- function(df, auto_number_format = TRUE, titles = NULL, footers = NULL, auto_open = FALSE, return_tab = FALSE, auto_merge = TRUE) {
 
   #Get headers from table
   headers <- names(df)
@@ -32,6 +32,11 @@ auto_df_to_wb <- function(df, auto_number_format = TRUE, titles = NULL, footers 
   }
 
   tab <- write_all_elements_to_wb(tab)
+
+  if (auto_merge) {
+    tab <- xltabr::auto_merge_title_cells(tab)
+    tab <- xltabr::auto_merge_footer_cells(tab)
+  }
 
   tab <- xltabr:::add_styles_to_wb(tab)
 
@@ -59,7 +64,7 @@ auto_df_to_wb <- function(df, auto_number_format = TRUE, titles = NULL, footers 
 #'
 #' @example auto_df_to_xl(mtcars, titles="the mtcars data", footers="note, this data is now quite old", auto_open=TRUE, auto_number_format = FALSE)
 #' @export
-auto_crosstab_to_wb <- function(df,  auto_number_format = TRUE, top_headers = NULL, titles = NULL, footers = NULL, auto_open = FALSE, indent = TRUE, left_header_colnames = NULL,  vertical_border = TRUE, styles_xlsx = NULL, num_styles_csv = NULL, return_tab = FALSE) {
+auto_crosstab_to_wb <- function(df,  auto_number_format = TRUE, top_headers = NULL, titles = NULL, footers = NULL, auto_open = FALSE, indent = TRUE, left_header_colnames = NULL,  vertical_border = TRUE, styles_xlsx = NULL, num_styles_csv = NULL, return_tab = FALSE, auto_merge = TRUE) {
 
   top_header_provided <- TRUE
   if (is.null(top_headers)) {
@@ -95,6 +100,11 @@ auto_crosstab_to_wb <- function(df,  auto_number_format = TRUE, top_headers = NU
 
   if (not_null(footers)) {
     tab <- xltabr::add_footer(tab, footers)
+  }
+
+  if (auto_merge) {
+    tab <- xltabr::auto_merge_title_cells(tab)
+    tab <- xltabr::auto_merge_footer_cells(tab)
   }
 
   tab <- write_all_elements_to_wb(tab)

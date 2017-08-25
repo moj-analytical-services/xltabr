@@ -14,7 +14,12 @@ title_initialise <- function(tab) {
 #' @param title_text A character vector.  Each element is a row of the title
 #' @param title_style_names A character vector.  Each elemment is a style_name
 #' @export
-add_title <- function(tab, title_text, title_style_names = "title") {
+add_title <- function(tab, title_text, title_style_names = NULL) {
+
+  if (is.null(title_style_names)) {
+    title_style_names = rep("subtitle", length(title_text))
+    title_style_names[1] = "title"
+  }
 
   tab$title$title_text <- title_text
   tab$title$title_style_names <- title_style_names
@@ -83,10 +88,17 @@ title_get_cell_styles_table <- function(tab) {
   }
 
   rows <- title_get_wb_rows(tab)
+
   styles <- tab$title$title_style_names
-  cols <- title_get_wb_cols(tab)
+
+  if (not_null(tab$body)) {
+    cols <- body_get_wb_cols(tab)
+  } else {
+    xols <- title_get_wb_cols(tab)
+  }
 
   df <- data.frame(row = rows, style_name = styles, stringsAsFactors = FALSE)
+
   df <- merge(df, data.frame(col = cols)) #merge with no join column creates cartesian product
   df <- df[,c("row", "col", "style_name")]
   df

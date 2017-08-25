@@ -39,7 +39,6 @@ test_that("Test elements not null", {
   testthat::expect_true(t3)
   testthat::expect_true(t4)
 
-  t1 = all(xltabr:::footer_get_cell_styles_table(tab) == data.frame(row=1, col=1, style_name="footer", stringsAsFactors = FALSE))
-  testthat::expect_true(t1)
+
 
 })

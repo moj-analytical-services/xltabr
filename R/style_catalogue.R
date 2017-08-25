@@ -334,11 +334,8 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
 add_styles_to_wb <- function(tab, add_from = c("title","headers","body")){
 
   add_from <- tolower(add_from)
-  full_table <- NULL
-  # build up a table of cell style tables based on add_from
-  if("title" %in% add_from) full_table <- rbind(full_table, title_get_cell_styles_table(tab))
-  if("headers" %in% add_from) full_table <- rbind(full_table, top_headers_get_cell_styles_table(tab))
-  if("body" %in% add_from) full_table <- rbind(full_table, body_get_cell_styles_table(tab))
+
+  full_table <- xltabr:::combine_all_styles(tab)
 
   if(is.null(full_table)) stop("Please ensure add_from has appropriate values and a table has been added to tab")
 

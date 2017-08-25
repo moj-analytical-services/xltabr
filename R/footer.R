@@ -87,7 +87,12 @@ footer_get_cell_styles_table <- function(tab) {
 
   rows <- footer_get_wb_rows(tab)
   styles <- tab$footer$footer_style_names
-  cols <- footer_get_wb_cols(tab)
+
+  if (not_null(tab$body)) {
+    cols <- body_get_wb_cols(tab)
+  } else {
+    cols <- footer_get_wb_cols(tab)
+  }
 
   df <- data.frame(row = rows, style_name = styles, stringsAsFactors = FALSE)
   df <- merge(df, data.frame(col = cols, stringsAsFactors = FALSE)) #merge with no join column creates cartesian product
