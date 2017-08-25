@@ -16,7 +16,7 @@ wb <- xltabr::auto_crosstab_to_wb(ct, titles = titles, footers = footers)
 openxlsx::openXL(wb)
 ```
 
-![image](vignettes/example_1.png)
+![image](vignettes/example_1.png?raw=true)
 
 This readme provides a variety of examples of increasing complexity. It is based on a simulated dataset built into the package, which you can see [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/synthetic_data.csv).
 
@@ -47,7 +47,7 @@ wb <- xltabr::auto_crosstab_to_wb(ct)  #wb is an openxlsx workbook object
 openxlsx::openXL(wb)
 ```
 
-![image](vignettes/example_2.png)
+![image](vignettes/example_2.png?raw=true)
 
 ### Example 2: Simple cross tabulation to Excel
 
@@ -58,7 +58,7 @@ wb <- xltabr::auto_df_to_wb(mtcars)
 openxlsx::openXL(wb)
 ```
 
-![image](vignettes/example_3.png)
+![image](vignettes/example_3.png?raw=true)
 
 ### Example 3: Add in some titles and footers
 
@@ -69,7 +69,7 @@ wb <- xltabr::auto_crosstab_to_wb(ct, titles = titles, footers = footers)
 openxlsx::openXL(wb)
 ```
 
-![image](vignettes/example_1.png)
+![image](vignettes/example_1.png?raw=true)
 
 ### Example 4: Output more than one table
 
