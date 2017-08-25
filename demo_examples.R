@@ -9,8 +9,8 @@ ct <- ct %>% dplyr::arrange(-row_number())
 
 
 # Example 1: default settings
-wb <- xltabr::auto_crosstab_to_wb(ct, titles = "This is the title")
-openxlsx::openXL(wb)
+tab <- xltabr::auto_crosstab_to_wb(ct, titles = "This is the title", return_tab = TRUE)
+openxlsx::openXL(tab$wb)
 
 # Example 2:  User provides their own formatting options
 
@@ -24,8 +24,12 @@ openxlsx::openXL(tab$wb)
 # Example 3:  Different pivot
 ct <- reshape2::dcast(df, drive  + type ~ colour, value.var= "value", margins=c("drive",  "type"), fun.aggregate = sum)
 ct <- ct %>% dplyr::arrange(-row_number())
-wb <- xltabr::auto_crosstab_to_wb(ct, titles = title)
-openxlsx::openXL(wb)
+tab <- xltabr::auto_crosstab_to_wb(ct, titles = title, footers = c("footer", ""), return_tab = TRUE)
+
+ct <- reshape2::dcast(df, drive ~ type + colour, value.var= "value", margins=c("drive"), fun.aggregate = sum)
+ct <- ct %>% dplyr::arrange(-row_number())
+tab <- xltabr::auto_crosstab_to_wb(ct, titles = title, return_tab = TRUE, insert_below_tab = tab, styles_xlsx = path, num_styles_csv = num_path)
+openxlsx::openXL(tab$wb)
 
 # Example 4:
 ct <- reshape2::dcast(df, drive  + type ~ colour, value.var= "value", margins=c("drive",  "type"), fun.aggregate = sum)
