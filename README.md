@@ -3,20 +3,22 @@
 Introduction
 ------------
 
-xltabr allows you to write formatted cross tabulations to Excel using [`openxlsx`](https://github.com/awalker89/openxlsx). It has been developed to help automate the process of publishing official statistics.
+`xltabr` allows you to write formatted cross tabulations to Excel using [`openxlsx`](https://github.com/awalker89/openxlsx). It has been developed to help automate the process of publishing Official Statistics.
 
-The user provides a dataframe, which is outputted to Excel with various types of rich formatting, which the user can control.
+The package works best when the input dataframe is the output of a crosstabulation performed by `reshape2:dcast`. This allows the package to autorecognise various elements of the cross tabulation, which can be styled accordingly.
 
 For example, given a crosstabulation `ct` produced by `reshape2`, the following code produces the table shown.
 
-    titles = c("Breakdown of car statistics", "Cross tabulation of drive and age against type*")
-    footers = "*age as of January 2015"
-    wb <- xltabr::auto_crosstab_to_wb(ct, titles = titles, footers = footers)
-    openxlsx::openXL(wb)
+``` r
+titles = c("Breakdown of car statistics", "Cross tabulation of drive and age against type*")
+footers = "*age as of January 2015"
+wb <- xltabr::auto_crosstab_to_wb(ct, titles = titles, footers = footers)
+openxlsx::openXL(wb)
+```
 
 ![image](vignettes/example_1.png)
 
-The package works best when the input dataframe is the output of a crosstabulation performed by `reshape2:dcast`. This allows the package to autorecognise key elements of a cross tabulation, such as which element form the body, and which elements form the headers.
+This readme provides a variety of examples of increasing complexity. It is based on a simulated dataset built into the package, which you can see [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/synthetic_data.csv).
 
 Getting started
 ---------------
@@ -25,20 +27,55 @@ Much of `xltabr` utility comes from its ability to automatically format cross ta
 
 The package provides a core convenience function called `xltabr::auto_crosstab_to_xl`. This wraps more advanced functionality, at the cost of reducing flexibility.
 
-A simple example is as follows
+The following code assumes you've read in the synthetic data as follows:
 
 ``` r
-ct <- reshape2::dcast(mtcars, am + gear ~ cyl, value.var= "mpg", margins=c("am", "gear"), fun.aggregate = mean)
-wb <- xltabr::auto_crosstab_to_xl(ct)
+# Read in data 
+path <- system.file("extdata", "synthetic_data.csv", package="xltabr")
+df <- read.csv(path, stringsAsFactors = FALSE)
+```
+
+### Example 1: Simple cross tabulation to Excel
+
+``` r
+# Create a cross tabulation using reshape2
+ct <- reshape2::dcast(df, drive + age  ~ type, value.var= "value", margins=c("drive", "age"), fun.aggregate = sum)
+ct <- dplyr::arrange(ct, -row_number())
+
+# Use the main convenience function from xltabr to output to excel
+wb <- xltabr::auto_crosstab_to_wb(ct)  #wb is an openxlsx workbook object
 openxlsx::openXL(wb)
 ```
 
-The simplest use is to write an aribtary data.frame to an in memory openxlsx workbook, ready to be written to disk:
+![image](vignettes/example_2.png)
+
+### Example 2: Simple cross tabulation to Excel
+
+There is also a convenience function to write a standard data.frame to Excel:
 
 ``` r
-wb <- xltabr::auto_df_to_xl(mtcars)
+wb <- xltabr::auto_df_to_wb(mtcars)
 openxlsx::openXL(wb)
 ```
+
+![image](vignettes/example_3.png)
+
+### Example 3: Add in some titles and footers
+
+``` r
+titles = c("Breakdown of car statistics", "Cross tabulation of drive and age against type*")
+footers = "*age as of January 2015"
+wb <- xltabr::auto_crosstab_to_wb(ct, titles = titles, footers = footers)
+openxlsx::openXL(wb)
+```
+
+![image](vignettes/example_1.png)
+
+### Example 4: Output more than one table
+
+### Example 5: Output more than one table
+
+### Example 6: Combine all of this.
 
 ### Options
 
