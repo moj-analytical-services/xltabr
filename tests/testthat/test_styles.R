@@ -5,7 +5,9 @@ test_that("Run through style_catalogue functions from reading style sheet to add
 
   tab <- style_catalogue_initialise(list(), styles_xlsx = path, num_styles_csv = num_path)
 
-  style_key_test <- "fontName_Calibri|fontSize_12|textDecoration_BOLD%ITALIC"
+  base_style_names <- c("border1", "border2", "bg1", "bg2", "text_colour1", "text_colour2", "font1", "font2")
+  names(tab$style_catalogue) %in% base_style_names
+
 
   t1 <- xltabr:::style_key_parser(style_key_test)
 
