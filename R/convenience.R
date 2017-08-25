@@ -3,14 +3,25 @@
 #' Take a data.frame in r and output an openxlsx wb objet
 #'
 #' @param df The data.frame to convert to Excel
-#' @param auto_number_format Whether to automatically detect number format
-#' @param title The title.  A character vector.  One element per row of title
-#' @param footer Table footers.  A character vector.  One element per row of footer.
-#' @param auto_open Automatically open Excel?
+#' @param auto_number_format Boolean. Whether to automatically detect number formats of columns
+#' @param title The title.  A character vector.  One element per row of title.
+#' @param footera Table footers.  A character vector.  One element per row of footer.
+#' @param auto_open Boolean. Automatically open Excel output.
+#' @param return_tab  Boolean.  Return a tab object rather than a openxlsx workbook object
+#' @param auto_merge Boolean.  Whether to merge cells in the title and footers to width of body
+#' @param insert_below_tab. A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.
 #'
 #' @example auto_df_to_xl(mtcars, titles="the mtcars data", footers="note, this data is now quite old", auto_open=TRUE, auto_number_format = FALSE)
 #' @export
-auto_df_to_wb <- function(df, auto_number_format = TRUE, titles = NULL, footers = NULL, auto_open = FALSE, return_tab = FALSE, auto_merge = TRUE, insert_below_tab = NULL) {
+auto_df_to_wb <-
+  function(df,
+           auto_number_format = TRUE,
+           titles = NULL,
+           footers = NULL,
+           auto_open = FALSE,
+           return_tab = FALSE,
+           auto_merge = TRUE,
+           insert_below_tab = NULL) {
 
   #Get headers from table
   headers <- names(df)
@@ -53,18 +64,39 @@ auto_df_to_wb <- function(df, auto_number_format = TRUE, titles = NULL, footers 
 
 }
 
-#' Take a cross tabulation produced by `reshape2::dcast` and output a formatted openxlsx wb objet
+#' Take a cross tabulation produced by `reshape2::dcast` and output a formatted openxlsx wb object
 #'
 #' @param df A data.frame.  The cross tabulation to convert to Excel
-#' @param top_headers. A list.  Custom top headers.
 #' @param auto_number_format Whether to automatically detect number format
+#' @param top_headers A list.  Custom top headers. See [add_top_headers()]
 #' @param title The title.  A character vector.  One element per row of title
-#' @param footer Table footers.  A character vector.  One element per row of footer.
-#' @param auto_open Automatically open Excel?
+#' @param footers Table footers.  A character vector.  One element per row of footer.
+#' @param auto_open Boolean. Automatically open Excel output.
+#' @param indent Automatically detect level of indentation of each row
+#' @param left_header_colnames  The names of the columns that you want to designate as left headers
+#' @param vertical_border Boolean. Do you want a left border?
+#' @param styles_xlsx File path (string).  If provided, the styles defined in this xlsx are used rather than the default. See [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/styles.xlsx) for template.
+#' @param num_styles_csv.  File path.  If provided, overrides the default number styles, which can be found [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/style_to_excel_number_format.csv).
+#' @param return_tab  Boolean.  Return a tab object rather than a openxlsx workbook object
+#' @param auto_merge Boolean.  Whether to merge cells in the title and footers to width of body
+#' @param insert_below_tab A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.
 #'
-#' @example auto_df_to_xl(mtcars, titles="the mtcars data", footers="note, this data is now quite old", auto_open=TRUE, auto_number_format = FALSE)
 #' @export
-auto_crosstab_to_wb <- function(df,  auto_number_format = TRUE, top_headers = NULL, titles = NULL, footers = NULL, auto_open = FALSE, indent = TRUE, left_header_colnames = NULL,  vertical_border = TRUE, styles_xlsx = NULL, num_styles_csv = NULL, return_tab = FALSE, auto_merge = TRUE, insert_below_tab = NULL) {
+auto_crosstab_to_wb <-
+  function(df,
+           auto_number_format = TRUE,
+           top_headers = NULL,
+           titles = NULL,
+           footers = NULL,
+           auto_open = FALSE,
+           indent = TRUE,
+           left_header_colnames = NULL,
+           vertical_border = TRUE,
+           styles_xlsx = NULL,
+           num_styles_csv = NULL,
+           return_tab = FALSE,
+           auto_merge = TRUE,
+           insert_below_tab = NULL) {
 
   top_header_provided <- TRUE
   if (is.null(top_headers)) {
