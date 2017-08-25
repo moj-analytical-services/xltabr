@@ -49,7 +49,7 @@ openxlsx::openXL(wb)
 
 ![image](vignettes/example_2.png?raw=true)
 
-### Example 2: Simple cross tabulation to Excel
+### Example 2: Standard data frame to Excel
 
 There is also a convenience function to write a standard data.frame to Excel:
 
@@ -60,7 +60,7 @@ openxlsx::openXL(wb)
 
 ![image](vignettes/example_3.png?raw=true)
 
-### Example 3: Add in some titles and footers
+### Example 3: Add in titles and footers
 
 ``` r
 titles = c("Breakdown of car statistics", "Cross tabulation of drive and age against type*")
@@ -71,21 +71,55 @@ openxlsx::openXL(wb)
 
 ![image](vignettes/example_1.png?raw=true)
 
-### Example 4: Output more than one table
+### Example 4: Supply custom styles
+
+``` r
+path <- system.file("extdata", "styles_pub.xlsx", package = "xltabr")
+num_path <- system.file("extdata", "style_to_excel_number_format_alt.csv", package = "xltabr")
+wb <- xltabr::auto_crosstab_to_wb(ct, styles_xlsx = path, num_styles_csv = num_path)
+openxlsx::openXL(wb)
+```
+
+![image](vignettes/example_5.png?raw=true)
 
 ### Example 5: Output more than one table
 
-### Example 6: Combine all of this.
+``` r
+# Create second crosstab
+ct2 <- reshape2::dcast(df, drive + age ~ colour, value.var= "value", margins=c("drive", "age"), fun.aggregate = sum)
+ct2 <- dplyr::arrange(ct2, -row_number())
 
-### Options
+tab <- xltabr::auto_crosstab_to_wb(ct, titles = titles, footers = c(footers, ""), return_tab = TRUE)
+
+titles2 = c("Table 2: More car statistics", "Cross tabulation of drive and age against colour*")
+footers2 = "*age as of January 2015"
+wb <- xltabr::auto_crosstab_to_wb(ct2, titles = titles2, footers = footers2, insert_below_tab = tab)
+openxlsx::openXL(wb)
+```
+
+![image](vignettes/example_4.png?raw=true)
+
+### Example 6: Output more than one table, with different styles
+
+``` r
+tab <- xltabr::auto_crosstab_to_wb(ct, titles = titles, footers = c(footers, ""), return_tab = TRUE)
+wb <- xltabr::auto_crosstab_to_wb(ct2, titles = titles2, footers = footers2, insert_below_tab = tab, styles_xlsx = path, num_styles_csv = num_path)
+openxlsx::openXL(wb)
+```
+
+![image](vignettes/example_5.png?raw=true)
+
+### auto\_crosstab\_to\_wb options
+
+The following provides a list of all the options you can provide to `auto_crosstab_to_wb`
 
     ## Take a cross tabulation produced by 'reshape2::dcast' and output a
-    ## formatted openxlsx wb objet
+    ## formatted openxlsx wb object
     ## 
     ## Description:
     ## 
-    ##      Take a cross tabulation produced by `reshape2::dcast` and output a
-    ##      formatted openxlsx wb objet
+    ##      Take a cross tabulation produced by 'reshape2::dcast' and output a
+    ##      formatted openxlsx wb object
     ## 
     ## Usage:
     ## 
@@ -101,14 +135,37 @@ openxlsx::openXL(wb)
     ## 
     ## auto_number_format: Whether to automatically detect number format
     ## 
-    ## auto_open: Automatically open Excel?
+    ## top_headers: A list.  Custom top headers. See 'add_top_headers()'
     ## 
-    ## top_headers.: A list.  Custom top headers.
+    ##  footers: Table footers.  A character vector.  One element per row of
+    ##           footer.
+    ## 
+    ## auto_open: Boolean. Automatically open Excel output.
+    ## 
+    ##   indent: Automatically detect level of indentation of each row
+    ## 
+    ## left_header_colnames: The names of the columns that you want to
+    ##           designate as left headers
+    ## 
+    ## vertical_border: Boolean. Do you want a left border?
+    ## 
+    ## styles_xlsx: File path (string).  If provided, the styles defined in
+    ##           this xlsx are used rather than the default. See here for
+    ##           template.
+    ## 
+    ## return_tab: Boolean.  Return a tab object rather than a openxlsx
+    ##           workbook object
+    ## 
+    ## auto_merge: Boolean.  Whether to merge cells in the title and footers
+    ##           to width of body
+    ## 
+    ## insert_below_tab: A existing tab object.  If provided, this table will
+    ##           be written on the same sheet, below the provided tab.
     ## 
     ##    title: The title.  A character vector.  One element per row of title
     ## 
-    ##   footer: Table footers.  A character vector.  One element per row of
-    ##           footer.
+    ## num_styles_csv.: File path.  If provided, overrides the default number
+    ##           styles, which can be found here.
 
 Advanced usage
 --------------
