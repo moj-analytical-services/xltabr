@@ -5,7 +5,16 @@ Introduction
 
 xltabr allows you to write formatted cross tabulations to Excel using [`openxlsx`](https://github.com/awalker89/openxlsx). It has been developed to help automate the process of publishing official statistics.
 
-The user provides a dataframe, which is outputted to Excel with various types of rich formatting such as totals and subtotals shown with various degrees of emphasis, number formatting, etc.
+The user provides a dataframe, which is outputted to Excel with various types of rich formatting, which the user can control.
+
+For example, given a crosstabulation `ct` produced by `reshape2`, the following code produces the table shown.
+
+    titles = c("Breakdown of car statistics", "Cross tabulation of drive and age against type*")
+    footers = "*age as of January 2015"
+    wb <- xltabr::auto_crosstab_to_wb(ct, titles = titles, footers = footers)
+    openxlsx::openXL(wb)
+
+![image](vignettes/example_1.png)
 
 The package works best when the input dataframe is the output of a crosstabulation performed by `reshape2:dcast`. This allows the package to autorecognise key elements of a cross tabulation, such as which element form the body, and which elements form the headers.
 
@@ -45,7 +54,9 @@ openxlsx::openXL(wb)
     ## 
     ##      auto_crosstab_to_wb(df, auto_number_format = TRUE, top_headers = NULL,
     ##        titles = NULL, footers = NULL, auto_open = FALSE, indent = TRUE,
-    ##        left_header_colnames = NULL, return_tab = FALSE)
+    ##        left_header_colnames = NULL, vertical_border = TRUE, styles_xlsx = NULL,
+    ##        num_styles_csv = NULL, return_tab = FALSE, auto_merge = TRUE,
+    ##        insert_below_tab = NULL)
     ##      
     ## Arguments:
     ## 
@@ -89,4 +100,4 @@ Some diagrams
 
 See [here](https://drive.google.com/file/d/0BwYwuy7YhhdxY2hGQnVGNFN6QkE/view?usp=sharing)
 
-This documentation was automatically generated on 31 July, 2017 by [Travis CI](https://travis-ci.org/).
+This documentation was automatically generated on 25 August, 2017 by [Travis CI](https://travis-ci.org/).
