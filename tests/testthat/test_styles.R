@@ -1,4 +1,9 @@
-test_that("style conversion functions work as expected", {
+test_that("Run through style_catalogue functions from reading style sheet to adding to final style_catalogue and wb", {
+
+  path <- system.file("extdata", "styles.xlsx", package = "xltabr")
+  num_path <- system.file("extdata", "style_to_excel_number_format_alt.csv", package = "xltabr")
+
+  tab <- style_catalogue_initialise(list(), styles_xlsx = path, num_styles_csv = num_path)
 
   style_key_test <- "fontName_Calibri|fontSize_12|textDecoration_BOLD%ITALIC"
 
@@ -12,3 +17,4 @@ test_that("style conversion functions work as expected", {
   expect_true(xltabr:::create_style_key(t1) == style_key_test)
 
 })
+

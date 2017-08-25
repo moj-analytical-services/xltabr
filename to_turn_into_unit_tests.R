@@ -2,7 +2,6 @@
 open_output <- T
 library(magrittr)
 
-
 ct <- reshape2::dcast(mtcars, am + gear ~ cyl, value.var= "mpg", margins=c("am", "gear"), fun.aggregate = mean)
 headers <- colnames(ct)
 tab <- xltabr::initialise()
