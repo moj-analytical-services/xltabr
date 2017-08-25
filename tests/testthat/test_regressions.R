@@ -14,3 +14,14 @@ test_that("test styles table does not have factors", {
   t1 = (class(df$style_name) == "character")
   testthat::expect_true(t1)
 })
+
+
+test_that("test no warning are issued from style_catalogue_xlsx_import", {
+
+  path <- system.file("extdata", "styles_pub.xlsx", package = "xltabr")
+  tab <- list()
+
+  # Expect no warning is issued https://stackoverflow.com/questions/22003306/is-there-something-in-testthat-like-expect-no-warnings
+  expect_warning(xltabr:::style_catalogue_xlsx_import(tab, path), regexp = NA)
+
+})

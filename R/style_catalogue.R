@@ -44,7 +44,7 @@ style_catalogue_xlsx_import <- function(tab, path) {
     for (iter in 1:length(i$rows)){
       r <- i$rows[iter]
       c <- i$cols[iter]
-      cell <- openxlsx::readWorkbook(wb, rows = r, cols = c, colNames = FALSE, rowNames = FALSE)
+      suppressWarnings(cell <- openxlsx::readWorkbook(wb, rows = r, cols = c, colNames = FALSE, rowNames = FALSE))
 
       value <- cell[1, 1]
 
@@ -118,8 +118,7 @@ create_style_key <- function(style_list){
                         property_to_key(style_list, "textDecoration"),
                         property_to_key(style_list, "wrapText"),
                         property_to_key(style_list, "textRotation"),
-                        property_to_key(style_list, "indent"),
-                        property_to_key(style_list, "rowHeight"))
+                        property_to_key(style_list, "indent"))
 
   style_key <- paste(style_properties, collapse = "|")
 
