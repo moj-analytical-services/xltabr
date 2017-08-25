@@ -10,14 +10,14 @@
 #'
 #' @example auto_df_to_xl(mtcars, titles="the mtcars data", footers="note, this data is now quite old", auto_open=TRUE, auto_number_format = FALSE)
 #' @export
-auto_df_to_wb <- function(df, auto_number_format = TRUE, titles = NULL, footers = NULL, auto_open = FALSE, return_tab = FALSE, auto_merge = TRUE) {
+auto_df_to_wb <- function(df, auto_number_format = TRUE, titles = NULL, footers = NULL, auto_open = FALSE, return_tab = FALSE, auto_merge = TRUE, insert_below_tab = NULL) {
 
   #Get headers from table
   headers <- names(df)
 
-  tab <- xltabr::initialise() %>%
-         xltabr::add_top_headers(headers) %>%
-         xltabr::add_body(df)
+  tab <- xltabr::initialise(insert_below_tab = insert_below_tab) %>%
+    xltabr::add_top_headers(headers) %>%
+    xltabr::add_body(df)
 
   if (auto_number_format) {
     tab <- xltabr::auto_style_number_formatting(tab)
@@ -64,7 +64,7 @@ auto_df_to_wb <- function(df, auto_number_format = TRUE, titles = NULL, footers 
 #'
 #' @example auto_df_to_xl(mtcars, titles="the mtcars data", footers="note, this data is now quite old", auto_open=TRUE, auto_number_format = FALSE)
 #' @export
-auto_crosstab_to_wb <- function(df,  auto_number_format = TRUE, top_headers = NULL, titles = NULL, footers = NULL, auto_open = FALSE, indent = TRUE, left_header_colnames = NULL,  vertical_border = TRUE, styles_xlsx = NULL, num_styles_csv = NULL, return_tab = FALSE, auto_merge = TRUE) {
+auto_crosstab_to_wb <- function(df,  auto_number_format = TRUE, top_headers = NULL, titles = NULL, footers = NULL, auto_open = FALSE, indent = TRUE, left_header_colnames = NULL,  vertical_border = TRUE, styles_xlsx = NULL, num_styles_csv = NULL, return_tab = FALSE, auto_merge = TRUE, insert_below_tab = NULL) {
 
   top_header_provided <- TRUE
   if (is.null(top_headers)) {
@@ -72,7 +72,8 @@ auto_crosstab_to_wb <- function(df,  auto_number_format = TRUE, top_headers = NU
     top_headers  <- names(df)
   }
 
-  tab <- xltabr::initialise(styles_xlsx = styles_xlsx, num_styles_csv = num_styles_csv) %>%
+
+  tab <- xltabr::initialise(styles_xlsx = styles_xlsx, num_styles_csv = num_styles_csv, insert_below_tab = insert_below_tab) %>%
     xltabr::add_top_headers(top_headers) %>%
     xltabr::add_body(df,left_header_colnames = left_header_colnames)
 

@@ -1,39 +1,40 @@
 #' Create a new xltabr object for cross tabulation
 #'
 #' @param df The dataframe you want to output to Excel
+#' @param insert_below_tab If given, the new tab will be inserted immediately below this one
 #'
 #' @return A list which contains the dataframe
 #' @importFrom magrittr %>%
 #' @name %>%#'
 #' @export
-initialise <- function(wb = openxlsx::createWorkbook(), ws_name = "Sheet1", styles_xlsx = NULL, num_styles_csv = NULL, topleft_row = 1, topleft_col = 1) {
+initialise <- function(wb = openxlsx::createWorkbook(), ws_name = "Sheet1", styles_xlsx = NULL, num_styles_csv = NULL, topleft_row = 1, topleft_col = 1, insert_below_tab = NULL) {
 
   # Main object
   tab <- list()
 
+  # If a 'insert below tab' is provided, the user is saying 'put this new table below this existing table'
+  if (not_null(insert_below_tab)) {
+    ws_name <- insert_below_tab$misc$ws_name
+    topleft_row <- xltabr:::extent_get_bottom_wb_row(insert_below_tab) + 1
+    topleft_col <- xltabr:::extent_get_cols(insert_below_tab)[1]
+  }
+
+
+
   tab <- extent_initialise(tab, topleft_row, topleft_col)
-  tab <- title_initialise(tab)
-  tab <- body_initialise(tab)
+
 
   tab <- style_catalogue_initialise(tab, styles_xlsx = styles_xlsx, num_styles_csv = num_styles_csv)
-  tab <- wb_initialise(tab, wb, ws_name)
 
+  if (not_null(insert_below_tab)) {
+    tab <- wb_initialise(tab, insert_below_tab$wb, ws_name)
+  } else {
+    tab <- wb_initialise(tab, wb, ws_name)
+  }
 
   tab$misc$ws_name <- ws_name
 
   tab
 
 
-}
-
-initialise_debug <- function(wb = openxlsx::createWorkbook(), ws_name = "Sheet1", topleft_row = 1, topleft_col = 1) {
-
-  # Main object
-  tab <- list()
-
-  tab <- extent_initialise(tab, topleft_row, topleft_col)
-  tab <- title_initialise(tab)
-  tab <- body_initialise(tab)
-
-  tab
 }
