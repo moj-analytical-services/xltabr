@@ -107,19 +107,17 @@ wb <- xltabr::auto_crosstab_to_wb(ct2, titles = titles2, footers = footers2, ins
 openxlsx::openXL(wb)
 ```
 
-![image](vignettes/example_5.png?raw=true)
+![image](vignettes/example_6.png?raw=true)
 
 ### auto\_crosstab\_to\_wb options
 
 The following provides a list of all the options you can provide to `auto_crosstab_to_wb`
 
-    ## Take a cross tabulation produced by 'reshape2::dcast' and output a
-    ## formatted openxlsx wb object
+    ## Take a cross tabulation produced by 'reshape2::dcast' and output a formatted openxlsx wb object
     ## 
     ## Description:
     ## 
-    ##      Take a cross tabulation produced by 'reshape2::dcast' and output a
-    ##      formatted openxlsx wb object
+    ##      Take a cross tabulation produced by 'reshape2::dcast' and output a formatted openxlsx wb object
     ## 
     ## Usage:
     ## 
@@ -137,35 +135,28 @@ The following provides a list of all the options you can provide to `auto_crosst
     ## 
     ## top_headers: A list.  Custom top headers. See 'add_top_headers()'
     ## 
-    ##  footers: Table footers.  A character vector.  One element per row of
-    ##           footer.
+    ##  footers: Table footers.  A character vector.  One element per row of footer.
     ## 
     ## auto_open: Boolean. Automatically open Excel output.
     ## 
     ##   indent: Automatically detect level of indentation of each row
     ## 
-    ## left_header_colnames: The names of the columns that you want to
-    ##           designate as left headers
+    ## left_header_colnames: The names of the columns that you want to designate as left headers
     ## 
     ## vertical_border: Boolean. Do you want a left border?
     ## 
-    ## styles_xlsx: File path (string).  If provided, the styles defined in
-    ##           this xlsx are used rather than the default. See here for
+    ## styles_xlsx: File path (string).  If provided, the styles defined in this xlsx are used rather than the default. See here for
     ##           template.
     ## 
-    ## return_tab: Boolean.  Return a tab object rather than a openxlsx
-    ##           workbook object
+    ## return_tab: Boolean.  Return a tab object rather than a openxlsx workbook object
     ## 
-    ## auto_merge: Boolean.  Whether to merge cells in the title and footers
-    ##           to width of body
+    ## auto_merge: Boolean.  Whether to merge cells in the title and footers to width of body
     ## 
-    ## insert_below_tab: A existing tab object.  If provided, this table will
-    ##           be written on the same sheet, below the provided tab.
+    ## insert_below_tab: A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.
     ## 
     ##    title: The title.  A character vector.  One element per row of title
     ## 
-    ## num_styles_csv.: File path.  If provided, overrides the default number
-    ##           styles, which can be found here.
+    ## num_styles_csv.: File path.  If provided, overrides the default number styles, which can be found here.
 
 Advanced usage
 --------------
@@ -182,16 +173,14 @@ tab <- xltabr::initialise() %>%  #Options here for providing an existing workboo
   xltabr::add_footer(footer_text) %>% # Optional footer_style_names
   xltabr:::auto_detect_left_headers() %>% # Auto detect left headers through presence of keyword, default = '(all)'
   xltabr:::auto_detect_body_title_level() %>% # Auto detect level of emphasis of each row in body, through presence of keyword
-  xltabr:::auto_style_indent() # Consolidate all left headers into a single column, with indentation to signify emphasis level
+  xltabr:::auto_style_indent() %>% # Consolidate all left headers into a single column, with indentation to signify emphasis level
+  xltabr::auto_merge_title_cells() %>% # merge the cells in the title
+  xltabr::auto_merge_footer_cells() # merge the cells in the footer
 ```
 
-### Additional style customisation
+The convenience functions contain further examples of how to build up a tab. See [here](https://github.com/moj-analytical-services/xltabr/blob/dev/R/convenience.R).
 
-The default styles can be found in an Excel workbook bundled with the package, at `system.file("extdata", "styles.xlsx", package="xltabr")` or [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/styles.xlsx).
-
-Some diagrams
--------------
+Implementation diagrams.
+------------------------
 
 See [here](https://drive.google.com/file/d/0BwYwuy7YhhdxY2hGQnVGNFN6QkE/view?usp=sharing)
-
-This documentation was automatically generated on 25 August, 2017 by [Travis CI](https://travis-ci.org/).

@@ -117,7 +117,7 @@ wb <- xltabr::auto_crosstab_to_wb(ct2, titles = titles2, footers = footers2, ins
 openxlsx::openXL(wb)
 ```
 
-![image](vignettes/example_5.png?raw=true)
+![image](vignettes/example_6.png?raw=true)
 
 ### auto_crosstab_to_wb options 
 
@@ -125,7 +125,7 @@ The following provides a list of all the options you can provide to `auto_crosst
 
 ```{r include=FALSE}
 suppressMessages(devtools::document())
-tools::Rd2txt_options(underline_titles = FALSE)
+tools::Rd2txt_options(underline_titles = FALSE, width = 140)
 ```
 
 ```{r echo=FALSE}
@@ -147,15 +147,15 @@ tab <- xltabr::initialise() %>%  #Options here for providing an existing workboo
   xltabr::add_footer(footer_text) %>% # Optional footer_style_names
   xltabr:::auto_detect_left_headers() %>% # Auto detect left headers through presence of keyword, default = '(all)'
   xltabr:::auto_detect_body_title_level() %>% # Auto detect level of emphasis of each row in body, through presence of keyword
-  xltabr:::auto_style_indent() # Consolidate all left headers into a single column, with indentation to signify emphasis level
+  xltabr:::auto_style_indent() %>% # Consolidate all left headers into a single column, with indentation to signify emphasis level
+  xltabr::auto_merge_title_cells() %>% # merge the cells in the title
+  xltabr::auto_merge_footer_cells() # merge the cells in the footer
 ```
 
-### Additional style customisation
 
-The default styles can be found in an Excel workbook bundled with the package, at `system.file("extdata", "styles.xlsx", package="xltabr")` or [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/styles.xlsx).
+The convenience functions contain further examples of how to build up a tab.  See [here](https://github.com/moj-analytical-services/xltabr/blob/dev/R/convenience.R). 
 
-## Some diagrams
+
+## Implementation diagrams.
 
 See [here](https://drive.google.com/file/d/0BwYwuy7YhhdxY2hGQnVGNFN6QkE/view?usp=sharing)
-
-This documentation was automatically generated on `r format(Sys.time(), '%d %B, %Y')` by [Travis CI](https://travis-ci.org/).
