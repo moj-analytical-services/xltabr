@@ -119,6 +119,16 @@ openxlsx::openXL(wb)
 
 ![image](vignettes/example_6.png?raw=true)
 
+### Example 7:  Auoindent off
+
+```{r}
+ct <- reshape2::dcast(df, drive + age  ~ type, value.var= "value",  fun.aggregate = sum)
+wb <- xltabr::auto_crosstab_to_wb(ct, titles = titles, footers = c(footers, ""), indent = FALSE, left_header_colnames = c("drive", "age"))
+openxlsx::openXL(wb)
+```
+
+![image](vignettes/example_7.png?raw=true)
+
 ### auto_crosstab_to_wb options 
 
 The following provides a list of all the options you can provide to `auto_crosstab_to_wb`

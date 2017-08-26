@@ -109,6 +109,16 @@ openxlsx::openXL(wb)
 
 ![image](vignettes/example_6.png?raw=true)
 
+### Example 7: Auoindent off
+
+``` r
+ct <- reshape2::dcast(df, drive + age  ~ type, value.var= "value",  fun.aggregate = sum)
+wb <- xltabr::auto_crosstab_to_wb(ct, titles = titles, footers = c(footers, ""), indent = FALSE, left_header_colnames = c("drive", "age"))
+openxlsx::openXL(wb)
+```
+
+![image](vignettes/example_7.png?raw=true)
+
 ### auto\_crosstab\_to\_wb options
 
 The following provides a list of all the options you can provide to `auto_crosstab_to_wb`
@@ -145,8 +155,7 @@ The following provides a list of all the options you can provide to `auto_crosst
     ## 
     ## vertical_border: Boolean. Do you want a left border?
     ## 
-    ## styles_xlsx: File path (string).  If provided, the styles defined in this xlsx are used rather than the default. See here for
-    ##           template.
+    ## styles_xlsx: File path (string).  If provided, the styles defined in this xlsx are used rather than the default. See here for template.
     ## 
     ## return_tab: Boolean.  Return a tab object rather than a openxlsx workbook object
     ## 
