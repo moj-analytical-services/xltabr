@@ -11,7 +11,7 @@
 #' @param auto_merge Boolean.  Whether to merge cells in the title and footers to width of body
 #' @param insert_below_tab. A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.
 #'
-#' @example auto_df_to_xl(mtcars, titles="the mtcars data", footers="note, this data is now quite old", auto_open=TRUE, auto_number_format = FALSE)
+#' @examples auto_df_to_xl(mtcars, titles="the mtcars data", footers="note, this data is now quite old", auto_open=TRUE, auto_number_format = FALSE)
 #' @export
 auto_df_to_wb <-
   function(df,
