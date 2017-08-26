@@ -1,3 +1,5 @@
+context("Test styles")
+
 test_that("style conversion functions work as expected", {
 
   style_key_test <- "fontName_Calibri|fontSize_12|textDecoration_BOLD%ITALIC"
