@@ -1,5 +1,5 @@
 # Use default .xlsx style catalogue to initialise the catalogue of styles
-style_catalogue_initialise <- function(tab, styles_xlsx, num_styles_csv) {
+style_catalogue_initialise <- function(tab, styles_xlsx = NULL, num_styles_csv = NULL) {
   if (is.null(styles_xlsx)) {
     path <- system.file("extdata", "styles.xlsx", package = "xltabr")
   } else {
@@ -22,11 +22,11 @@ style_catalogue_import_num_formats <- function(tab, path){
   lookup_df <- read.csv(path, stringsAsFactors = FALSE)
 
   # Convert dataframe into two vectors
-  style_keys <- paste0("numFmt_", lookup_df$excel_format)
+  style_keys <- lookup_df$excel_format
   style_names <- lookup_df$style_name
 
   for (i in 1:length(style_names)){
-    tab$style_catalogue[[style_names[i]]] <- style_keys[i]
+    tab$style_catalogue[[style_names[i]]] <- create_style_key(list(numFmt = style_keys[i]))
   }
   tab
 }
@@ -52,13 +52,14 @@ style_catalogue_xlsx_import <- function(tab, path) {
         next
       }
 
-      tmp_list <- list()
-      tmp_list$style <- i$style
+      # tmp_list <- list()
+      # tmp_list$style <- i$style
 
-      cell <- openxlsx::readWorkbook(wb, rows = r, cols = c + 1, colNames = FALSE, rowNames = FALSE)
-      tmp_list$rowHeight <- cell[1, 1]
+      # cell <- openxlsx::readWorkbook(wb, rows = r, cols = c + 1, colNames = FALSE, rowNames = FALSE)
+      # tmp_list$rowHeight <- cell[1, 1]
 
-      style_key <- create_style_key(convert_style_object(tmp_list))
+      style_list <- convert_style_object(i$style)
+      style_key <- create_style_key(style_list)
 
       if (!value %in% names(tab$style_catalogue)){
         tab$style_catalogue[[value]] <- style_key
@@ -69,8 +70,7 @@ style_catalogue_xlsx_import <- function(tab, path) {
   # Add in a checker to catch default style objects
   for (style_name in listed_styles$X1){
     if (!style_name %in% names(tab$style_catalogue)){
-      style_key <- "numFmt_GENERAL"
-      tab$style_catalogue[[style_name]] <- style_key
+      tab$style_catalogue[[style_name]] <- create_style_key(convert_style_object(openxlsx::createStyle()))
     }
   }
 
@@ -97,35 +97,12 @@ style_catalogue_override_styles <- function(tab, path_to_xlsx) {
 # add_to_dictionary
 # returns a style_key string based on our style catelogue objects (should also work with default R lists)
 create_style_key <- function(style_list){
-
-  # NULL returns from property_to_key are automatically removed from vector
-  style_properties <- c(property_to_key(style_list, "fontName"),
-                        property_to_key(style_list, "fontSize"),
-                        property_to_key(style_list, "fontColour"),
-                        property_to_key(style_list, "numFmt"),
-                        property_to_key(style_list, "borderBottom"),
-                        property_to_key(style_list, "borderBottomColour"),
-                        property_to_key(style_list, "borderTop"),
-                        property_to_key(style_list, "borderTopColour"),
-                        property_to_key(style_list, "borderLeft"),
-                        property_to_key(style_list, "borderLeftColour"),
-                        property_to_key(style_list, "borderRight"),
-                        property_to_key(style_list, "borderRightColour"),
-                        property_to_key(style_list, "bgFill"),
-                        property_to_key(style_list, "fgFill"),
-                        property_to_key(style_list, "halign"),
-                        property_to_key(style_list, "valign"),
-                        property_to_key(style_list, "textDecoration"),
-                        property_to_key(style_list, "wrapText"),
-                        property_to_key(style_list, "textRotation"),
-                        property_to_key(style_list, "indent"))
-
-  style_key <- paste(style_properties, collapse = "|")
+  style_key <- gsub(' +', ' ', paste0(utils::capture.output(dput(style_list)), collapse = ""))
 
   style_key
 }
 
-# Converts style object property to string representation (used in create_style_key function)
+# Converts style object property to string representation (used in create_style_key function) Depreciated
 property_to_key <- function(style_object, property){
   if(is.null(style_object[[property]])){
     return(NULL)
@@ -137,17 +114,8 @@ property_to_key <- function(style_object, property){
 
 # Converts style_key to style_list
 style_key_parser <- function(style_key){
-
-  specs <- unlist(strsplit(style_key, "\\|"))
-
-  # Can interate through style categories in order to get inherited changes from left to right.
-  style_categories <- list()
-  for (i in 1:length(specs)){
-    seperate_property <- unlist(strsplit(specs[i], "_"))
-    style_categories[[seperate_property[1]]] <- unlist(strsplit(seperate_property[2], "%"))
-  }
-
-  style_categories
+  style_list <- eval(parse(text=style_key))
+  style_list
 }
 
 # looks at the cell_style_definition and build a final style_key for that cell
@@ -175,7 +143,7 @@ build_style <- function(tab, cell_style_definition){
     for (i in 2:length(seperated_style_definition)){
       current_style <- style_key_parser(tab$style_catalogue[[seperated_style_definition[i]]])
       for (property_name in names(current_style)){
-        if(property_name == "textDecoration"){
+        if(property_name == "fontDecoration"){
           previous_style[[property_name]] <- unique(c(previous_style[[property_name]], current_style[[property_name]]))
         } else {
           previous_style[property_name] <- current_style[property_name]
@@ -207,139 +175,38 @@ convert_style_object <- function(style, convert_to_S4 = FALSE){
       style <- style_key_parser(style)
     }
 
-    # Do convertions for correct createStyle inputs
-    font_colour_input <- NULL
-    font_colour_is_theme <- FALSE
-    if(!is.null(style[["fontColour"]])){
-      font_colour_is_theme <- suppressWarnings(!is.na(as.integer(style[["fontColour"]])))
-      if(!font_colour_is_theme){
-        font_colour_input <- style[["fontColour"]]
-      }
+    style_properties <- names(style)
+
+    if("numFmt" %in% style_properties){
+      style_properties <- style_properties[!("numFmt" == style_properties)]
+      out_style <- openxlsx::createStyle(numFmt = style[["numFmt"]])
+    } else{
+      out_style <- openxlsx::createStyle()
     }
 
-    # Do check for type of fgFill
-    fg_fill_input <- NULL
-    fg_fill_is_theme <- FALSE
-    if(!is.null(style[["fgFill"]])){
-      fg_fill_is_theme <- suppressWarnings(!is.na(as.integer(style[["fgFill"]][1])))
-      if(length(style[["fgFill"]]) == 1){
-        names(style[["fgFill"]]) <- c("theme")
-      } else {
-        names(style[["fgFill"]]) <- c("theme","tint")
-      }
-      if(!fg_fill_is_theme & length(style[["fgFill"]]) == 1){
-        fg_fill_input <- style[["fgFill"]]
-      }
+    for (prop in style_properties){
+      out_style[[prop]] <- style[[prop]]
     }
-
-    bg_fill_input <- NULL
-    bg_fill_is_theme <- FALSE
-    if(!is.null(style[["bgFill"]])){
-      if(length(style[["bgFill"]]) == 1){
-        names(style[["bgFill"]]) <- c("indexed")
-      }
-      bg_fill_is_theme <- suppressWarnings(!is.na(as.integer(style[["bgFill"]][1])))
-      if(!bg_fill_is_theme & length(style[["bgFill"]]) == 1){
-        bg_fill_is_theme <- style[["bgFill"]]
-      }
-    }
-
-    if(!is.null(style[["fontSize"]])){
-      style[["fontSize"]] <- as.integer(style[["fontSize"]])
-    }
-
-    if(!is.null(style[["indent"]])){
-      style[["indent"]] <- as.integer(style[["indent"]])
-    }
-
-    if(is.null(style[["numFmt"]])){
-      style[["numFmt"]] <- "GENERAL"
-    }
-
-    out_style <- openxlsx::createStyle(
-      fontName = style[["fontName"]],
-      fontSize = style[["fontSize"]],
-      fontColour = font_colour_input,
-      numFmt = style[["numFmt"]],
-      border = NULL,
-      bgFill = bg_fill_input,
-      fgFill = fg_fill_input,
-      halign = style[["halign"]],
-      valign = style[["valign"]],
-      textDecoration = style[["textDecoration"]],
-      wrapText = FALSE,
-      textRotation = NULL,
-      indent = style[["indent"]])
-
-    # Do additonal addons
-    if(font_colour_is_theme){
-      out_style$fontColour <- c(theme = style[["fontColour"]])
-    }
-    if(bg_fill_is_theme){
-      out_style$fill$fillBg <- style[["bgFill"]]
-    }
-    if(fg_fill_is_theme){
-      out_style$fill$fillFg <- style[["fgFill"]]
-    }
-
-    # Do borders
-    out_style$borderBottom <- style$borderBottom
-    out_style$borderBottomColour <- style$borderBottomColour
-    out_style$borderTop <- style$borderTop
-    out_style$borderTopColour <- style$borderTopColour
-    out_style$borderLeft <- style$borderLeft
-    out_style$borderLeftColour <- style$borderLeftColour
-    out_style$borderRight <- style$borderRight
-    out_style$borderRightColour <- style$borderRightColour
-
 
     return(out_style)
+
   } else {
+    out_style <- style$as.list()
 
-    out_style <- list()
-
-    out_style[["fontName"]] <- style$style$fontName
-    out_style[["fontSize"]] <- style$style$fontSize
-    out_style[["fontColour"]] <- style$style$fontColour
-    ## Number formats are read differently
-    # out_style[["numFmt"]] <- "GENERAL"
-
-    # Do border properties
-    out_style[["borderBottom"]] <- style$style$borderBottom
-    out_style[["borderBottomColour"]] <- style$style$borderBottomColour
-    out_style[["borderTop"]] <- style$style$borderTop
-    out_style[["borderTopColour"]] <- style$style$borderTopColour
-    out_style[["borderLeft"]] <- style$style$borderLeft
-    out_style[["borderLeftColour"]] <- style$style$borderLeftColour
-    out_style[["borderRight"]] <- style$style$borderRight
-    out_style[["borderRightColour"]] <- style$style$borderRightColour
-
-    out_style[["bgFill"]] <- style$style$fill$fillBg
-    out_style[["fgFill"]] <- style$style$fill$fillFg
-    out_style[["halign"]] <- style$style$halign
-    out_style[["valign"]] <- style$style$valign
-    if(length(style$style$fontDecoration) == 0){
-      out_style["textDecoration"] <- NULL
-    } else {
-      out_style["textDecoration"] <- style$style$fontDecoration
+    # For some reason fills do not export properly so workaround is added here
+    if(any(c("fillFg", "fillBg") %in% names(out_style))){
+      out_style[["fill"]] <- list(fillFg = out_style[["fillFg"]], fillBg = out_style[["fillBg"]])
+      out_style[["fillFg"]] <- NULL
+      out_style[["fillBg"]] <- NULL
     }
-    # wrapText - not yet supported
-    # textRotation - not yet supported
-    out_style["indent"] <- style$style$indent
-
-    # Additional variables to convert
-    out_style["rowHeight"] <- style$rowHeight
-
     return(out_style)
   }
 }
 
 
-add_styles_to_wb <- function(tab, add_from = c("title","headers","body")){
+add_styles_to_wb <- function(tab){
 
-  add_from <- tolower(add_from)
-
-  full_table <- xltabr:::combine_all_styles(tab)
+  full_table <- combine_all_styles(tab)
 
   if(is.null(full_table)) stop("Please ensure add_from has appropriate values and a table has been added to tab")
 
@@ -368,5 +235,22 @@ add_styles_to_wb <- function(tab, add_from = c("title","headers","body")){
   }
 
   tab
+}
+
+compare_style_lists <- function(a, b){
+  a_names <- sort(names(a))
+  b_names <- sort(names(b))
+
+  if(length(a_names) != length(b_names)) return(FALSE)
+  if(!all(a_names == b_names)) return(FALSE)
+
+  final_check <- TRUE
+  for (prop in a_names){
+    if(!identical(a[prop], b[prop])){
+      final_check <- FALSE
+      break;
+    }
+  }
+  return(final_check)
 }
 
