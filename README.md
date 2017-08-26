@@ -5,6 +5,8 @@ Introduction
 
 `xltabr` allows you to write formatted cross tabulations to Excel using [`openxlsx`](https://github.com/awalker89/openxlsx). It has been developed to help automate the process of publishing Official Statistics.
 
+**`xltabr` is in early development. Please raise an [issue](https://github.com/moj-analytical-services/xltabr/issues) if you find any bugs**
+
 The package works best when the input dataframe is the output of a crosstabulation performed by `reshape2:dcast`. This allows the package to autorecognise various elements of the cross tabulation, which can be styled accordingly.
 
 For example, given a crosstabulation `ct` produced by `reshape2`, the following code produces the table shown.
