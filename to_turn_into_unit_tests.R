@@ -65,7 +65,6 @@ ct <- ct %>% dplyr::arrange(-row_number())
 path <- system.file("extdata", "styles.xlsx", package = "xltabr")
 num_path <- system.file("extdata", "style_to_excel_number_format_alt.csv", package = "xltabr")
 tab <- xltabr::auto_crosstab_to_wb(ct, indent = TRUE, return_tab = TRUE, styles_xlsx = path, num_styles_csv = num_path, titles = "This is the title")
-openxlsx::openXL(tab$wb)
 
 if (open_output) openxlsx::openXL(tab$wb) else {
   if (file.exists("test4.xlsx")) file.remove("test4.xlsx")
@@ -105,8 +104,8 @@ tab <- xltabr:::add_styles_to_wb(tab)
 xltabr:::combine_all_styles(tab)
 
 if (open_output) openxlsx::openXL(tab$wb) else {
-  if (file.exists("test5.xlsx")) file.remove("test5.xlsx")
-  openxlsx::saveWorkbook(tab$wb, "test5.xlsx")
+  if (file.exists("test6.xlsx")) file.remove("test6.xlsx")
+  openxlsx::saveWorkbook(tab$wb, "test6.xlsx")
 }
 xltabr:::combine_all_styles(tab)
 df
