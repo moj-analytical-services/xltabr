@@ -125,7 +125,7 @@ The following provides a list of all the options you can provide to `auto_crosst
 
 ```{r include=FALSE}
 suppressMessages(devtools::document())
-tools::Rd2txt_options(underline_titles = FALSE, width = 140)
+tools::Rd2txt_options(underline_titles = FALSE, width = 300)
 ```
 
 ```{r echo=FALSE}
