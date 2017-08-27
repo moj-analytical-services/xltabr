@@ -2,14 +2,14 @@ context("Test styles")
 
 test_that("style conversion functions work as expected", {
 
-  style_key_test <- "fontName_Calibri|fontSize_12|textDecoration_BOLD%ITALIC"
+  style_key_test <- "structure(list(fontName = structure(list(val = \"Calibri\"), .Names = \"val\"), fontSize = structure(list(val = 12), .Names = \"val\"), fontDecoration = c(\"BOLD\", \"ITALIC\")), .Names = c(\"fontName\", \"fontSize\", \"fontDecoration\"))"
 
   t1 <- xltabr:::style_key_parser(style_key_test)
 
-  expect_true(all(names(t1) == c("fontName", "fontSize", "textDecoration")))
+  expect_true(all(names(t1) == c("fontName", "fontSize", "fontDecoration")))
   expect_true(t1[["fontName"]] == "Calibri")
-  expect_true(t1[["fontSize"]] == "12")
-  expect_true(all(t1[["textDecoration"]] == c("BOLD","ITALIC")))
+  expect_true(t1[["fontSize"]] == 12)
+  expect_true(all(t1[["fontDecoration"]] == c("BOLD","ITALIC")))
 
   expect_true(xltabr:::create_style_key(t1) == style_key_test)
 
