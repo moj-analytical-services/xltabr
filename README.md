@@ -20,7 +20,7 @@ openxlsx::openXL(wb)
 
 ![image](vignettes/example_1.png?raw=true)
 
-This readme provides a variety of examples of increasing complexity. It is based on a simulated dataset built into the package, which you can see [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/synthetic_data.csv).
+This readme provides a variety of examples of increasing complexity. It is based on a simulated dataset built into the package, which you can see [here](https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/synthetic_data.csv).
 
 Getting started
 ---------------
