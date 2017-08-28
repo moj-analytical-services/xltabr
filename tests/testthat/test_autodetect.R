@@ -10,7 +10,6 @@ test_that("Test meta columns are populated", {
   tab <- xltabr::initialise() %>%
     xltabr::add_body(df)
 
-
   tab <- xltabr:::auto_detect_left_headers(tab)
 
   t1 <- all(tab$body$left_header_colnames == c("a", "b", "c"))
@@ -66,7 +65,7 @@ test_that("Test that indent/coalesce works correctly", {
   tab <- xltabr:::auto_style_indent(tab)
 
   #Check it's autodetected left_header_coluns correctly
-  t1 = tab$body$left_header_colnames == tab$misc$coalesce_left_header_colname 
+  t1 = tab$body$left_header_colnames == tab$misc$coalesce_left_header_colname
   testthat::expect_true(t1)
 
   t1 = all(tab$body$body_df$meta_left_header_row_ ==  c("body|left_header|title_3", "body|left_header|title_4|indent_1",
@@ -82,6 +81,34 @@ test_that("Test that indent/coalesce works correctly", {
 })
 
 
-test_that("Test that when we indent, we make the leftmost top header blank if nothing was provided by the user", {
+test_that("Test second autodetect dataset", {
+  path <- system.file("extdata", "test_autodetect_2.csv", package="xltabr")
+
+  df <- read.csv(path, stringsAsFactors = FALSE)
+  df$g <- as.Date(df$g)
+
+  cols <- colnames(df)
+  tab <- xltabr::initialise() %>%
+    xltabr::add_top_headers(cols) %>%
+    xltabr::add_body(df)
+
+  tab <- xltabr:::auto_detect_left_headers(tab)
+
+  t1 <- all(tab$body$left_header_colnames == c("a", "b", "c", "d"))
+  testthat::expect_true(t1)
+
+  tab <- xltabr:::auto_detect_body_title_level(tab)
+  tab <- xltabr:::auto_style_indent(tab)
+  t1 = all(tab$body$body_df$meta_left_header_row_ == c("body|left_header|title_2", "body|left_header|title_3|indent_1",
+                                              "body|left_header|title_4|indent_2", "body|left_header|title_5|indent_3",
+                                              "body|left_header|indent_4"))
+
+  testthat::expect_true(t1)
+
+  t1 = (tab$body$left_header_colnames == " ")
+  testthat::expect_true(t1)
+
+  t1 = all(tab$top_headers$top_headers_list[[1]] == c(" ", "e", "f", "g"))
+  testthat::expect_true(t1)
 
 })
