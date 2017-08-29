@@ -5,7 +5,9 @@
 #' @param df The data.frame to convert to Excel
 #' @param auto_number_format Boolean. Whether to automatically detect number formats of columns
 #' @param title The title.  A character vector.  One element per row of title.
-#' @param footera Table footers.  A character vector.  One element per row of footer.
+#' @param footers Table footers.  A character vector.  One element per row of footer.
+#' @param left_header_colnames  The names of the columns that you want to designate as left headers
+#' @param vertical_border Boolean. Do you want a left border?
 #' @param auto_open Boolean. Automatically open Excel output.
 #' @param return_tab  Boolean.  Return a tab object rather than a openxlsx workbook object
 #' @param auto_merge Boolean.  Whether to merge cells in the title and footers to width of body
@@ -18,17 +20,24 @@ auto_df_to_wb <-
            auto_number_format = TRUE,
            titles = NULL,
            footers = NULL,
+           left_header_colnames = NULL,
+           vertical_border = TRUE,
            auto_open = FALSE,
            return_tab = FALSE,
            auto_merge = TRUE,
-           insert_below_tab = NULL) {
+           insert_below_tab = NULL
+           ) {
 
   #Get headers from table
   headers <- names(df)
 
   tab <- xltabr::initialise(insert_below_tab = insert_below_tab) %>%
     xltabr::add_top_headers(headers) %>%
-    xltabr::add_body(df)
+    xltabr::add_body(df,left_header_colnames = left_header_colnames)
+
+  if (is.null(left_header_colnames)) {
+    tab <- xltabr:::auto_detect_left_headers(tab)
+  }
 
   if (auto_number_format) {
     tab <- xltabr::auto_style_number_formatting(tab)
@@ -47,6 +56,10 @@ auto_df_to_wb <-
   if (auto_merge) {
     tab <- xltabr::auto_merge_title_cells(tab)
     tab <- xltabr::auto_merge_footer_cells(tab)
+  }
+
+  if (vertical_border) {
+    tab <- xltabr:::add_left_header_vertical_border(tab)
   }
 
   tab <- xltabr:::add_styles_to_wb(tab)
