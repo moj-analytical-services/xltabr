@@ -77,6 +77,12 @@ auto_detect_left_headers <- function(tab, keyword = "(all)") {
   col_classes <- sapply(tab$body$body_df_to_write, class)
 
   rightmost_character <- min(which(col_classes != "character")) -1
+
+  if (rightmost_character == 0) {
+    tab$body$left_header_colnames = NULL
+    return(tab)
+  }
+
   rightmost_character_cols <- rightmost_character:1
 
   found <- FALSE
