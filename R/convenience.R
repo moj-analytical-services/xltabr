@@ -93,6 +93,7 @@ auto_df_to_wb <-
 #' @param return_tab  Boolean.  Return a tab object rather than a openxlsx workbook object
 #' @param auto_merge Boolean.  Whether to merge cells in the title and footers to width of body
 #' @param insert_below_tab A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.
+#' @param total_text.  The text that is used for the 'grand total' of a cross tabulation
 #'
 #' @export
 auto_crosstab_to_wb <-
@@ -109,7 +110,8 @@ auto_crosstab_to_wb <-
            num_styles_csv = NULL,
            return_tab = FALSE,
            auto_merge = TRUE,
-           insert_below_tab = NULL) {
+           insert_below_tab = NULL,
+           total_text = NULL) {
 
   top_header_provided <- TRUE
   if (is.null(top_headers)) {
@@ -137,7 +139,7 @@ auto_crosstab_to_wb <-
   }
 
   if (indent) {
-    tab <- xltabr:::auto_style_indent(tab)
+    tab <- xltabr:::auto_style_indent(tab, total_text = total_text)
   }
 
   if (vertical_border) {
