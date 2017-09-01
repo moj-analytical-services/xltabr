@@ -95,6 +95,7 @@ auto_df_to_wb <-
 #' @param insert_below_tab A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.
 #' @param total_text.  The text that is used for the 'grand total' of a cross tabulation
 #' @param include_header_rows  Boolean - whether to include or omit the header rows
+#' @param number_format_overrides e.g. list("colname1" = "currency1") see [auto_style_number_formatting]
 #'
 #' @export
 auto_crosstab_to_wb <-
@@ -113,7 +114,8 @@ auto_crosstab_to_wb <-
            auto_merge = TRUE,
            insert_below_tab = NULL,
            total_text = NULL,
-           include_header_rows = TRUE ) {
+           include_header_rows = TRUE,
+           number_format_overrides = list()) {
 
   top_header_provided <- TRUE
   if (is.null(top_headers)) {
@@ -137,7 +139,7 @@ auto_crosstab_to_wb <-
   tab <- xltabr:::auto_detect_body_title_level(tab)
 
   if (auto_number_format) {
-    tab <- xltabr::auto_style_number_formatting(tab)
+    tab <- xltabr::auto_style_number_formatting(tab, overrides = number_format_overrides)
   }
 
   if (not_null(titles)) {
