@@ -5,4 +5,4 @@ text1,TEXT
 date1,"yyyy-mm-dd"
 datetime1,"yyyy-mm-dd hh:mm:ss"
 general,GENERAL
-
+percent1, "#,0.0%"
