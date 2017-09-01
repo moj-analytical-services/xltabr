@@ -20,7 +20,7 @@ test_that("Run through style_catalogue functions from reading style sheet to add
   path <- system.file("extdata", "tester_styles.xlsx", package = "xltabr")
   num_path <- system.file("extdata", "style_to_excel_number_format_alt.csv", package = "xltabr")
 
-  expected_style_names <- c("border1", "border2", "bg1", "text_colour1", "font1", "font2", "bg2", "text_colour2","number1","integer1","text1","date1","datetime1","general")
+  expected_style_names <- c("border1", "border2", "bg1", "text_colour1", "font1", "font2", "bg2", "text_colour2","number1","integer1","text1","date1","datetime1","general", "percent1")
 
   tab <- xltabr:::style_catalogue_initialise(list(), styles_xlsx = path, num_styles_csv = num_path)
 
