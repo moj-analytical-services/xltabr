@@ -7,10 +7,19 @@
 #' @importFrom magrittr %>%
 #' @name %>%#'
 #' @export
-initialise <- function(wb = openxlsx::createWorkbook(), ws_name = "Sheet1", styles_xlsx = NULL, num_styles_csv = NULL, topleft_row = 1, topleft_col = 1, insert_below_tab = NULL) {
+initialise <- function(wb = NULL, ws_name = NULL, styles_xlsx = NULL, num_styles_csv = NULL, topleft_row = 1, topleft_col = 1, insert_below_tab = NULL) {
 
   # Main object
   tab <- list()
+
+  if (is.null(ws_name)) {
+    ws_name <- "Sheet1"
+  }
+
+  if (is.null(wb)) {
+    wb <- openxlsx::createWorkbook()
+  }
+
 
   # If a 'insert below tab' is provided, the user is saying 'put this new table below this existing table'
   if (not_null(insert_below_tab)) {
