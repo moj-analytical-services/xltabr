@@ -94,6 +94,7 @@ auto_df_to_wb <-
 #' @param auto_merge Boolean.  Whether to merge cells in the title and footers to width of body
 #' @param insert_below_tab A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.
 #' @param total_text.  The text that is used for the 'grand total' of a cross tabulation
+#' @param include_header_rows  Boolean - whether to include or omit the header rows
 #'
 #' @export
 auto_crosstab_to_wb <-
@@ -111,7 +112,8 @@ auto_crosstab_to_wb <-
            return_tab = FALSE,
            auto_merge = TRUE,
            insert_below_tab = NULL,
-           total_text = NULL) {
+           total_text = NULL,
+           include_header_rows = TRUE ) {
 
   top_header_provided <- TRUE
   if (is.null(top_headers)) {
@@ -120,9 +122,13 @@ auto_crosstab_to_wb <-
   }
 
 
-  tab <- xltabr::initialise(styles_xlsx = styles_xlsx, num_styles_csv = num_styles_csv, insert_below_tab = insert_below_tab) %>%
-    xltabr::add_top_headers(top_headers) %>%
-    xltabr::add_body(df,left_header_colnames = left_header_colnames)
+  tab <- xltabr::initialise(styles_xlsx = styles_xlsx, num_styles_csv = num_styles_csv, insert_below_tab = insert_below_tab)
+
+  if (include_header_rows) {
+    tab <- xltabr::add_top_headers(tab, top_headers)
+  }
+
+  tab <- xltabr::add_body(tab, df,left_header_colnames = left_header_colnames)
 
   if (is.null(left_header_colnames)) {
     tab <- xltabr:::auto_detect_left_headers(tab)
