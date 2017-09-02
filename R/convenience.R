@@ -116,7 +116,7 @@ auto_crosstab_to_wb <-
            total_text = NULL,
            include_header_rows = TRUE,
            wb = NULL,
-           ws_name = NULL), 
+           ws_name = NULL, 
            number_format_overrides = list()) {
 
   top_header_provided <- TRUE
