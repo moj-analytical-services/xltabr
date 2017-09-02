@@ -15,6 +15,3 @@ auto_style_number_formatting(tab, overrides = list())
 \description{
 Note this reads currency styling from the styles defined \href{https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/number_formats.xlsx?raw=true}{here}
 }
-\examples{
-auto_style_number_formatting(overrides = list("colname1" = "currency1"))
-}
