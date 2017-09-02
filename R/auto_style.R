@@ -6,7 +6,6 @@
 #' Note this reads currency styling from the styles defined [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/number_formats.xlsx?raw=true)
 #' @param tab a table object
 #' @param overrides a list containing any manual overrides where the user wants to provide their own style name
-#' @examples auto_style_number_formatting(overrides = list("colname1" = "currency1"))
 #' @export
 auto_style_number_formatting <- function(tab, overrides = list()) {
 
