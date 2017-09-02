@@ -115,6 +115,8 @@ auto_crosstab_to_wb <-
            insert_below_tab = NULL,
            total_text = NULL,
            include_header_rows = TRUE,
+           wb = NULL,
+           ws_name = NULL, 
            number_format_overrides = list()) {
 
   top_header_provided <- TRUE
@@ -124,7 +126,7 @@ auto_crosstab_to_wb <-
   }
 
 
-  tab <- xltabr::initialise(styles_xlsx = styles_xlsx, num_styles_csv = num_styles_csv, insert_below_tab = insert_below_tab)
+  tab <- xltabr::initialise(styles_xlsx = styles_xlsx, num_styles_csv = num_styles_csv, insert_below_tab = insert_below_tab, wb = wb, ws_name = ws_name)
 
   if (include_header_rows) {
     tab <- xltabr::add_top_headers(tab, top_headers)

@@ -231,7 +231,7 @@ add_styles_to_wb <- function(tab){
     cols <- row_col_styles$col
 
     created_style <- convert_style_object(sk, convert_to_S4 = TRUE)
-    openxlsx::addStyle(tab$wb, tab$wb$sheet_names[1], created_style, rows, cols)
+    openxlsx::addStyle(tab$wb, tab$misc$ws_name, created_style, rows, cols)
   }
 
   tab
