@@ -34,5 +34,5 @@ auto_df_to_wb(df, auto_number_format = TRUE, titles = NULL,
 Take a data.frame in r and output an openxlsx wb objet
 }
 \examples{
-auto_df_to_wb(mtcars, titles="the mtcars data", footers="note, this data is now quite old", auto_open=TRUE, auto_number_format = FALSE)
+auto_df_to_wb(mtcars, titles="the mtcars data", footers="note, this data is now quite old", auto_number_format = FALSE)
 }
