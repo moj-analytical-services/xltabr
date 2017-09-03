@@ -2,10 +2,13 @@
 % Please edit documentation in R/title.R
 \name{title_get_wb_cols}
 \alias{title_get_wb_cols}
-\title{Get the column occupied by the title in the wb}
+\title{Get the columns occupied by the title in the workbook}
 \usage{
 title_get_wb_cols(tab)
 }
+\arguments{
+\item{tab}{The core tab object}
+}
 \description{
-Get the column occupied by the title in the wb
+Get the columns occupied by the title in the workbook
 }

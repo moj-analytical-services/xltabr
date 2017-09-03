@@ -2,10 +2,13 @@
 % Please edit documentation in R/title.R
 \name{title_write_rows}
 \alias{title_write_rows}
-\title{Write all the required data (but no styles)}
+\title{Write all the title data to the workbook (but do not write style data)}
 \usage{
 title_write_rows(tab)
 }
+\arguments{
+\item{tab}{The core tab object}
+}
 \description{
-Write all the required data (but no styles)
+Write all the title data to the workbook (but do not write style data)
 }

@@ -2,10 +2,13 @@
 % Please edit documentation in R/title.R
 \name{title_get_rightmost_wb_col}
 \alias{title_get_rightmost_wb_col}
-\title{Get the rightmost column of the titles in the wb}
+\title{Get the rightmost column occupied by the titles in the workbook}
 \usage{
 title_get_rightmost_wb_col(tab)
 }
+\arguments{
+\item{tab}{The core tab object}
+}
 \description{
-Get the rightmost column of the titles in the wb
+Get the rightmost column occupied by the titles in the workbook
 }

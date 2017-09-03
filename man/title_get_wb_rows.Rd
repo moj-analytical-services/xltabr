@@ -2,10 +2,13 @@
 % Please edit documentation in R/title.R
 \name{title_get_wb_rows}
 \alias{title_get_wb_rows}
-\title{Get the rows occupied by the title in the wb}
+\title{Get the rows occupied by the title in the workbook}
 \usage{
 title_get_wb_rows(tab)
 }
+\arguments{
+\item{tab}{The core tab object}
+}
 \description{
-Get the rows occupied by the title in the wb
+Get the rows occupied by the title in the workbook
 }
