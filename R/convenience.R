@@ -82,20 +82,22 @@ auto_df_to_wb <-
 #' @param df A data.frame.  The cross tabulation to convert to Excel
 #' @param auto_number_format Whether to automatically detect number format
 #' @param top_headers A list.  Custom top headers. See [add_top_headers()]
-#' @param title The title.  A character vector.  One element per row of title
+#' @param titles The title.  A character vector.  One element per row of title
 #' @param footers Table footers.  A character vector.  One element per row of footer.
 #' @param auto_open Boolean. Automatically open Excel output.
 #' @param indent Automatically detect level of indentation of each row
 #' @param left_header_colnames  The names of the columns that you want to designate as left headers
 #' @param vertical_border Boolean. Do you want a left border?
 #' @param styles_xlsx File path (string).  If provided, the styles defined in this xlsx are used rather than the default. See [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/styles.xlsx) for template.
-#' @param num_styles_csv.  File path.  If provided, overrides the default number styles, which can be found [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/style_to_excel_number_format.csv).
+#' @param num_styles_csv  File path.  If provided, overrides the default number styles, which can be found [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/style_to_excel_number_format.csv).
 #' @param return_tab  Boolean.  Return a tab object rather than a openxlsx workbook object
 #' @param auto_merge Boolean.  Whether to merge cells in the title and footers to width of body
 #' @param insert_below_tab A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.
-#' @param total_text.  The text that is used for the 'grand total' of a cross tabulation
+#' @param total_text  The text that is used for the 'grand total' of a cross tabulation
 #' @param include_header_rows  Boolean - whether to include or omit the header rows
 #' @param number_format_overrides e.g. list("colname1" = "currency1") see [auto_style_number_formatting]
+#' @param wb A existing openxlsx workbook.  If not provided, a new one will be created
+#' @param ws_name The name of the worksheet you want to write to
 #'
 #' @export
 auto_crosstab_to_wb <-

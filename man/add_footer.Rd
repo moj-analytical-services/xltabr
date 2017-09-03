@@ -7,6 +7,8 @@
 add_footer(tab, footer_text, footer_style_names = "footer")
 }
 \arguments{
+\item{tab}{The core tab object}
+
 \item{footer_text}{A character vector.  Each element is a row of the footer}
 
 \item{footer_style_names}{A character vector.  Each elemment is a style_name}

@@ -11,6 +11,8 @@ add_top_headers(tab, top_headers, col_style_names = "",
   row_style_names = "body|top_header_1")
 }
 \arguments{
+\item{tab}{The core tab object}
+
 \item{col_style_names}{A character vector, with and elemment for each column of the top header.  Each element is a style name. Col styles in inherit from row_styles.}
 
 \item{row_style_names}{A character vector, with an element for each row of the top header.  Each element is a style_name (i.e. a key in the style catalogue)}

@@ -8,10 +8,17 @@ add_body(tab, df, left_header_colnames = NULL, row_style_names = NULL,
   left_header_style_names = NULL, col_style_names = NULL)
 }
 \arguments{
-\item{df}{For a single top_header row, a character vector.  For multiple top_header rows, a list of character vectors.}
+\item{tab}{The core tab object}
 
-\item{left_header_colnames}{The names of the columns in the df which are left headers, as opposed to the main body
-of the table}
+\item{df}{A data frame containing the data you want to write to write to Excel}
+
+\item{left_header_colnames}{The names of the columns in the df which are left headers, as opposed to the main body}
+
+\item{row_style_names}{Manually specify the styles that apply to each row (as opposed to using the autodetect functions).  Styles provided must be present in the style catalogue}
+
+\item{left_header_style_names}{Manually specify the addition styles that will apply to cells in the left headers.  Must be present in styles catalogue}
+
+\item{col_style_names}{Manually specify the additional styles that will be applied to each column.  Must be present in styles catalogue}
 }
 \description{
 Add a table body (a df) to the tab.
