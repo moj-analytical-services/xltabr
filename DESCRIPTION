@@ -1,6 +1,6 @@
 Package: xltabr
 Type: Package
-Title: Writes crosstabulations created in R to Excel, and formats them.
+Title: Writes crosstabulations created in R to Excel, and formats them
 Version: 0.1.0
 Author: Robin Linacre <robinlinacre@hotmail.com>, Karik Isichei <karik.isichei@gmail.com>
 Maintainer: Robin Linacre <robinlinacre@hotmail.com>
