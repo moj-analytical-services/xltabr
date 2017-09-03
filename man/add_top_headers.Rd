@@ -13,11 +13,11 @@ add_top_headers(tab, top_headers, col_style_names = "",
 \arguments{
 \item{tab}{The core tab object}
 
+\item{top_headers}{For a single top_header row, a character vector.  For multiple top_header rows, a list of character vectors.}
+
 \item{col_style_names}{A character vector, with and elemment for each column of the top header.  Each element is a style name. Col styles in inherit from row_styles.}
 
 \item{row_style_names}{A character vector, with an element for each row of the top header.  Each element is a style_name (i.e. a key in the style catalogue)}
-
-\item{top_header}{For a single top_header row, a character vector.  For multiple top_header rows, a list of character vectors.}
 }
 \description{
 Add top headers to the tab.  The top headers are provided as a character vector.

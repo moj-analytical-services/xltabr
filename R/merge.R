@@ -1,6 +1,6 @@
 #' Take a tab and merge the title rows
 #'
-#' @param df A tab
+#' @param tab The core tab object
 #'
 #' @export
 auto_merge_title_cells <- function(tab) {
@@ -18,7 +18,7 @@ auto_merge_title_cells <- function(tab) {
 
 #' Take a tab and merge the footer rows
 #'
-#' @param df A tab
+#' @param tab The core tab object
 #'
 #' @export
 auto_merge_footer_cells <- function(tab) {

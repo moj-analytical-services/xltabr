@@ -18,6 +18,8 @@ auto_crosstab_to_wb(df, auto_number_format = TRUE, top_headers = NULL,
 
 \item{top_headers}{A list.  Custom top headers. See \code{\link[=add_top_headers]{add_top_headers()}}}
 
+\item{titles}{The title.  A character vector.  One element per row of title}
+
 \item{footers}{Table footers.  A character vector.  One element per row of footer.}
 
 \item{auto_open}{Boolean. Automatically open Excel output.}
@@ -30,21 +32,23 @@ auto_crosstab_to_wb(df, auto_number_format = TRUE, top_headers = NULL,
 
 \item{styles_xlsx}{File path (string).  If provided, the styles defined in this xlsx are used rather than the default. See \href{https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/styles.xlsx}{here} for template.}
 
+\item{num_styles_csv}{File path.  If provided, overrides the default number styles, which can be found \href{https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/style_to_excel_number_format.csv}{here}.}
+
 \item{return_tab}{Boolean.  Return a tab object rather than a openxlsx workbook object}
 
 \item{auto_merge}{Boolean.  Whether to merge cells in the title and footers to width of body}
 
 \item{insert_below_tab}{A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.}
 
+\item{total_text}{The text that is used for the 'grand total' of a cross tabulation}
+
 \item{include_header_rows}{Boolean - whether to include or omit the header rows}
 
+\item{wb}{A existing openxlsx workbook.  If not provided, a new one will be created}
+
+\item{ws_name}{The name of the worksheet you want to write to}
+
 \item{number_format_overrides}{e.g. list("colname1" = "currency1") see \link{auto_style_number_formatting}}
-
-\item{title}{The title.  A character vector.  One element per row of title}
-
-\item{num_styles_csv.}{File path.  If provided, overrides the default number styles, which can be found \href{https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/style_to_excel_number_format.csv}{here}.}
-
-\item{total_text.}{The text that is used for the 'grand total' of a cross tabulation}
 }
 \description{
 Take a cross tabulation produced by \code{reshape2::dcast} and output a formatted openxlsx wb object

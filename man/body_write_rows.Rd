@@ -6,6 +6,9 @@
 \usage{
 body_write_rows(tab)
 }
+\arguments{
+\item{tab}{The core tab object}
+}
 \description{
 Write all the required data (but no styles)
 }

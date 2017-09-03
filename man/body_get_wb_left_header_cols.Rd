@@ -6,6 +6,9 @@
 \usage{
 body_get_wb_left_header_cols(tab)
 }
+\arguments{
+\item{tab}{The core tab object}
+}
 \description{
 Get the subset of body columns which are left header columns
 }

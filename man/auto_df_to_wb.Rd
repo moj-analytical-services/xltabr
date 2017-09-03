@@ -14,6 +14,8 @@ auto_df_to_wb(df, auto_number_format = TRUE, titles = NULL,
 
 \item{auto_number_format}{Boolean. Whether to automatically detect number formats of columns}
 
+\item{titles}{Character vector of titles. One element per row of title.}
+
 \item{footers}{Table footers.  A character vector.  One element per row of footer.}
 
 \item{left_header_colnames}{The names of the columns that you want to designate as left headers}
@@ -26,9 +28,7 @@ auto_df_to_wb(df, auto_number_format = TRUE, titles = NULL,
 
 \item{auto_merge}{Boolean.  Whether to merge cells in the title and footers to width of body}
 
-\item{title}{The title.  A character vector.  One element per row of title.}
-
-\item{insert_below_tab.}{A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.}
+\item{insert_below_tab}{A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.}
 }
 \description{
 Take a data.frame in r and output an openxlsx wb objet
