@@ -2,7 +2,7 @@
 % Please edit documentation in R/body.R
 \name{body_get_wb_left_header_cols}
 \alias{body_get_wb_left_header_cols}
-\title{Get the subset of body columns which are left header columns}
+\title{Compute the columns of the workbook which are occupied by the left header columns (which are a subset of the body columns)}
 \usage{
 body_get_wb_left_header_cols(tab)
 }
@@ -10,5 +10,5 @@ body_get_wb_left_header_cols(tab)
 \item{tab}{The core tab object}
 }
 \description{
-Get the subset of body columns which are left header columns
+Compute the columns of the workbook which are occupied by the left header columns (which are a subset of the body columns)
 }

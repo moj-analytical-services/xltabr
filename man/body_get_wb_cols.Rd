@@ -2,7 +2,7 @@
 % Please edit documentation in R/body.R
 \name{body_get_wb_cols}
 \alias{body_get_wb_cols}
-\title{Body includes body and left header data.}
+\title{Compute the columns of the workbook which are occupied by the body}
 \usage{
 body_get_wb_cols(tab)
 }
@@ -10,5 +10,5 @@ body_get_wb_cols(tab)
 \item{tab}{The core tab object}
 }
 \description{
-Body includes body and left header data.
+Compute the columns of the workbook which are occupied by the body
 }
