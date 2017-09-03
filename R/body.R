@@ -7,6 +7,7 @@ body_initialise <- function(tab) {
   # with two additional columns that store styling information, called
   # meta_row_ and meta_left_header_row_.  We create a duplicate that
   # contains only the data that we want to write to the worksheet, called body_df_to_write
+  # so we don't accidentally write the meta data to the Excel worksheet
   tab$body$body_df<- NULL
   tab$body$body_df_to_write <- NULL #This is the df that's actually written to wb
 
@@ -16,12 +17,21 @@ body_initialise <- function(tab) {
 
 #' Add a table body (a df) to the tab.
 #'
-#' @param df For a single top_header row, a character vector.  For multiple top_header rows, a list of character vectors.
+#' @param tab The core tab object
+#' @param df A data frame containing the data you want to write to write to Excel
 #' @param left_header_colnames The names of the columns in the df which are left headers, as opposed to the main body
-#' of the table
+#' @param row_style_names Manually specify the styles that apply to each row (as opposed to using the autodetect functions).  Styles provided must be present in the style catalogue
+#' @param left_header_style_names Manually specify the addition styles that will apply to cells in the left headers.  Must be present in styles catalogue
+#' @param col_style_names Manually specify the additional styles that will be applied to each column.  Must be present in styles catalogue
 #'
 #' @export
-add_body <- function(tab, df, left_header_colnames = NULL, row_style_names = NULL, left_header_style_names = NULL, col_style_names = NULL) {
+add_body <-
+  function(tab,
+           df,
+           left_header_colnames = NULL,
+           row_style_names = NULL,
+           left_header_style_names = NULL,
+           col_style_names = NULL) {
 
   # Make all factors character
   i <- sapply(df, is.factor)
@@ -138,10 +148,10 @@ body_get_cell_styles_table <- function(tab) {
     return(df)
   }
 
-  r <- xltabr:::body_get_wb_rows(tab)
-  c_all_body <- xltabr:::body_get_wb_cols(tab)
+  r <- body_get_wb_rows(tab)
+  c_all_body <- body_get_wb_cols(tab)
   #Left headers only
-  lh_cols <- xltabr:::body_get_wb_left_header_cols(tab)
+  lh_cols <- body_get_wb_left_header_cols(tab)
 
   #c_all_body is all body cells - for body styling we need to remove header rows
   c_body_no_lh <- c_all_body[!(c_all_body %in% lh_cols)]

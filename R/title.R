@@ -11,6 +11,7 @@ title_initialise <- function(tab) {
 
 #' Add titles to the tab.  Title text is provided as a character vector, with each element being a row of the title
 #'
+#' @param tab The core tab object
 #' @param title_text A character vector.  Each element is a row of the title
 #' @param title_style_names A character vector.  Each elemment is a style_name
 #' @export

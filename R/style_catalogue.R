@@ -19,7 +19,7 @@ style_catalogue_initialise <- function(tab, styles_xlsx = NULL, num_styles_csv =
 style_catalogue_import_num_formats <- function(tab, path){
   # This lookup table coverts
 
-  lookup_df <- read.csv(path, stringsAsFactors = FALSE)
+  lookup_df <- utils::read.csv(path, stringsAsFactors = FALSE)
 
   # Convert dataframe into two vectors
   style_keys <- lookup_df$excel_format

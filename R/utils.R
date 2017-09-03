@@ -20,19 +20,16 @@ remove_leading_trailing_pipe <- function(x) {
 
 is_null_or_blank <- function(x) {
   if (length(x) > 1) {
-    Stop("You passed something of length > 1 to is_null_or_blank")
+    stop("You passed something of length > 1 to is_null_or_blank")
   }
 
   if (is.null(x)) {
     return(TRUE)
   }
 
-
-
   if (x == "") {
     return(TRUE)
   }
 
   return(FALSE)
-
 }
