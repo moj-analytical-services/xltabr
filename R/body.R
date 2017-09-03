@@ -1,4 +1,6 @@
-#' Create all the required properties for the top headers on the tab object
+#' Initialise the body, creating all the required properties the core tab object
+#'
+#' @param tab The core tab object
 body_initialise <- function(tab) {
 
   tab$body <- list()
@@ -8,8 +10,9 @@ body_initialise <- function(tab) {
   # meta_row_ and meta_left_header_row_.  We create a duplicate that
   # contains only the data that we want to write to the worksheet, called body_df_to_write
   # so we don't accidentally write the meta data to the Excel worksheet
-  tab$body$body_df<- NULL
-  tab$body$body_df_to_write <- NULL #This is the df that's actually written to wb
+  tab$body$body_df<- NULL  # This will include a column for meta_row_ and meta_left_header_row_
+  tab$body$body_df_to_write <- NULL # This is the df that's actually written to wb
+  tab$body$left_header_colnames <- NULL # This will contain the column names for each of the columns which are left headers
 
   tab
 }
@@ -75,7 +78,9 @@ add_body <-
   tab
 }
 
-#' Body includes body and left header data.
+#' Compute the columns of the workbook which are occupied by the body
+#'
+#' @param tab The core tab object
 body_get_wb_cols <- function(tab) {
 
   if (is.null(tab$body$body_df)) {
@@ -91,7 +96,9 @@ body_get_wb_cols <- function(tab) {
   wb_cols
 }
 
-#' Get the subset of body columns which are left header columns
+#' Compute the columns of the workbook which are occupied by the left header columns (which are a subset of the body columns)
+#'
+#' @param tab The core tab object
 body_get_wb_left_header_cols <- function(tab){
 
   if (is.null(tab$body$body_df)) {
@@ -105,10 +112,11 @@ body_get_wb_left_header_cols <- function(tab){
   wb_cols <- seq_along(cols_vec) + tlc - 1
 
   wb_cols
-
-
 }
 
+#' Compute the rows of the workbook which are occupied by the body
+#'
+#' @param tab The core tab object
 body_get_wb_rows <- function(tab) {
   if (is.null(tab$body$body_df)) {
     return(NULL)
@@ -119,15 +127,20 @@ body_get_wb_rows <- function(tab) {
 
 
 
-
+#' Compute the bottom (lowest) row of the workbook occupied by the body
+#' If the body does not exist, returns the last row of the previous element (the top header)
+#'
+#' @param tab The core tab object
 body_get_bottom_wb_row <- function(tab) {
   top_headers_bottom <- top_headers_get_bottom_wb_row(tab)
   b_rows <- body_get_wb_rows(tab)
 
   max(c(top_headers_bottom, b_rows))
-
 }
 
+#' Compute the rightmost column of the workbook which is occupied by the body
+#'
+#' @param tab The core tab object
 body_get_rightmost_wb_col <- function(tab) {
   rightmost_th <- top_headers_get_rightmost_wb_col(tab)
   b_cols <- body_get_wb_cols(tab)
@@ -135,7 +148,9 @@ body_get_rightmost_wb_col <- function(tab) {
   max(c(rightmost_th, b_cols))
 }
 
-#' Create table |row|col|style name| containing the styles names
+#' Create table with columns |row|col|style name| containing the styles names for each cell of the body
+#'
+#' @param tab The core tab object
 body_get_cell_styles_table <- function(tab) {
 
   # Approach is to start by creating a table of |row|col|body_style|left_header_style|top_header_style
@@ -182,10 +197,11 @@ body_get_cell_styles_table <- function(tab) {
   df$style_name <- remove_leading_trailing_pipe(df$style_name)
 
   df
-
 }
 
-#' Write all the required data (but no styles)
+#' Write all the body data to the workbook (but do not write style information)
+#'
+#' @param tab The core tab object
 body_write_rows <- function(tab) {
 
   if (is.null(tab$body$body_df_to_write)) {
@@ -202,5 +218,4 @@ body_write_rows <- function(tab) {
     openxlsx::writeData(tab$wb, ws_name, data, startRow = row, startCol = col, colNames = FALSE)
 
     tab
-
 }

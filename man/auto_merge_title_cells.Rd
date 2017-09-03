@@ -7,7 +7,7 @@
 auto_merge_title_cells(tab)
 }
 \arguments{
-\item{df}{A tab}
+\item{tab}{The core tab object}
 }
 \description{
 Take a tab and merge the title rows

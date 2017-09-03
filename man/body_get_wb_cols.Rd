@@ -6,6 +6,9 @@
 \usage{
 body_get_wb_cols(tab)
 }
+\arguments{
+\item{tab}{The core tab object}
+}
 \description{
 Body includes body and left header data.
 }

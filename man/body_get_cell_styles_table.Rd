@@ -6,6 +6,9 @@
 \usage{
 body_get_cell_styles_table(tab)
 }
+\arguments{
+\item{tab}{The core tab object}
+}
 \description{
 Create table |row|col|style name| containing the styles names
 }

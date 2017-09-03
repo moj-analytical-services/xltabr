@@ -6,6 +6,9 @@
 \usage{
 body_initialise(tab)
 }
+\arguments{
+\item{tab}{The core tab object}
+}
 \description{
 Create all the required properties for the top headers on the tab object
 }

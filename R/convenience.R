@@ -4,14 +4,14 @@
 #'
 #' @param df The data.frame to convert to Excel
 #' @param auto_number_format Boolean. Whether to automatically detect number formats of columns
-#' @param title The title.  A character vector.  One element per row of title.
+#' @param titles Character vector of titles. One element per row of title.
 #' @param footers Table footers.  A character vector.  One element per row of footer.
 #' @param left_header_colnames  The names of the columns that you want to designate as left headers
 #' @param vertical_border Boolean. Do you want a left border?
 #' @param auto_open Boolean. Automatically open Excel output.
 #' @param return_tab  Boolean.  Return a tab object rather than a openxlsx workbook object
 #' @param auto_merge Boolean.  Whether to merge cells in the title and footers to width of body
-#' @param insert_below_tab. A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.
+#' @param insert_below_tab A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.
 #'
 #' @examples auto_df_to_wb(mtcars, titles="the mtcars data", footers="note, this data is now quite old", auto_number_format = FALSE)
 #' @export
