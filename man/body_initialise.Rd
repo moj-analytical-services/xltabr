@@ -2,7 +2,7 @@
 % Please edit documentation in R/body.R
 \name{body_initialise}
 \alias{body_initialise}
-\title{Create all the required properties for the top headers on the tab object}
+\title{Initialise the body, creating all the required properties the core tab object}
 \usage{
 body_initialise(tab)
 }
@@ -10,5 +10,5 @@ body_initialise(tab)
 \item{tab}{The core tab object}
 }
 \description{
-Create all the required properties for the top headers on the tab object
+Initialise the body, creating all the required properties the core tab object
 }
