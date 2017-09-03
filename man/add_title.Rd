@@ -7,6 +7,8 @@
 add_title(tab, title_text, title_style_names = NULL)
 }
 \arguments{
+\item{tab}{The core tab object}
+
 \item{title_text}{A character vector.  Each element is a row of the title}
 
 \item{title_style_names}{A character vector.  Each elemment is a style_name}
