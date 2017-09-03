@@ -31,38 +31,38 @@ auto_df_to_wb <-
   #Get headers from table
   headers <- names(df)
 
-  tab <- xltabr::initialise(insert_below_tab = insert_below_tab) %>%
-    xltabr::add_top_headers(headers) %>%
-    xltabr::add_body(df,left_header_colnames = left_header_colnames)
+  tab <- initialise(insert_below_tab = insert_below_tab) %>%
+    add_top_headers(headers) %>%
+    add_body(df,left_header_colnames = left_header_colnames)
 
   if (is.null(left_header_colnames)) {
-    tab <- xltabr:::auto_detect_left_headers(tab)
+    tab <- auto_detect_left_headers(tab)
   }
 
   if (auto_number_format) {
-    tab <- xltabr::auto_style_number_formatting(tab)
+    tab <- auto_style_number_formatting(tab)
   }
 
   if (not_null(titles)) {
-    tab <- xltabr::add_title(tab, titles)
+    tab <- add_title(tab, titles)
   }
 
   if (not_null(footers)) {
-    tab <- xltabr::add_footer(tab, footers)
+    tab <- add_footer(tab, footers)
   }
 
   tab <- write_all_elements_to_wb(tab)
 
   if (auto_merge) {
-    tab <- xltabr::auto_merge_title_cells(tab)
-    tab <- xltabr::auto_merge_footer_cells(tab)
+    tab <- auto_merge_title_cells(tab)
+    tab <- auto_merge_footer_cells(tab)
   }
 
   if (vertical_border) {
-    tab <- xltabr:::add_left_header_vertical_border(tab)
+    tab <- add_left_header_vertical_border(tab)
   }
 
-  tab <- xltabr:::add_styles_to_wb(tab)
+  tab <- add_styles_to_wb(tab)
 
   if (auto_open) {
     openxlsx::openXL(tab$wb)
@@ -126,43 +126,43 @@ auto_crosstab_to_wb <-
   }
 
 
-  tab <- xltabr::initialise(styles_xlsx = styles_xlsx, num_styles_csv = num_styles_csv, insert_below_tab = insert_below_tab, wb = wb, ws_name = ws_name)
+  tab <- initialise(styles_xlsx = styles_xlsx, num_styles_csv = num_styles_csv, insert_below_tab = insert_below_tab, wb = wb, ws_name = ws_name)
 
   if (include_header_rows) {
-    tab <- xltabr::add_top_headers(tab, top_headers)
+    tab <- add_top_headers(tab, top_headers)
   }
 
-  tab <- xltabr::add_body(tab, df,left_header_colnames = left_header_colnames)
+  tab <- add_body(tab, df,left_header_colnames = left_header_colnames)
 
   if (is.null(left_header_colnames)) {
-    tab <- xltabr:::auto_detect_left_headers(tab)
+    tab <- auto_detect_left_headers(tab)
   }
 
-  tab <- xltabr:::auto_detect_body_title_level(tab)
+  tab <- auto_detect_body_title_level(tab)
 
   if (auto_number_format) {
-    tab <- xltabr::auto_style_number_formatting(tab, overrides = number_format_overrides)
+    tab <- auto_style_number_formatting(tab, overrides = number_format_overrides)
   }
 
   if (not_null(titles)) {
-    tab <- xltabr::add_title(tab, titles)
+    tab <- add_title(tab, titles)
   }
 
   if (indent) {
-    tab <- xltabr:::auto_style_indent(tab, total_text = total_text)
+    tab <- auto_style_indent(tab, total_text = total_text)
   }
 
   if (vertical_border) {
-    tab <- xltabr:::add_left_header_vertical_border(tab)
+    tab <- add_left_header_vertical_border(tab)
   }
 
   if (not_null(footers)) {
-    tab <- xltabr::add_footer(tab, footers)
+    tab <- add_footer(tab, footers)
   }
 
   if (auto_merge) {
-    tab <- xltabr::auto_merge_title_cells(tab)
-    tab <- xltabr::auto_merge_footer_cells(tab)
+    tab <- auto_merge_title_cells(tab)
+    tab <- auto_merge_footer_cells(tab)
   }
 
   tab <- write_all_elements_to_wb(tab)
@@ -171,7 +171,7 @@ auto_crosstab_to_wb <-
     openxlsx::openXL(tab$wb)
   }
 
-  tab <- xltabr:::add_styles_to_wb(tab)
+  tab <- add_styles_to_wb(tab)
 
   if (return_tab) {
     return(tab)

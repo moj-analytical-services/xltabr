@@ -5,5 +5,4 @@
 ^codecov\.yml$
 .Rprofile
 .Rhistory
-travis.R
-
+^travis\.R$

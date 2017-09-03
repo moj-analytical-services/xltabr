@@ -15,7 +15,7 @@ auto_style_number_formatting <- function(tab, overrides = list()) {
   # This lookup table coverts
   path <- system.file("extdata", "number_format_defaults.csv", package = "xltabr" )
 
-  lookup_df <- read.csv(path, stringsAsFactors = FALSE)
+  lookup_df <- utils::read.csv(path, stringsAsFactors = FALSE)
   # Convert to a named vector that can be used as a lookup
   lookup <- lookup_df$style_name
   names(lookup) <- lookup_df$class
@@ -186,7 +186,7 @@ auto_style_indent <- function(tab, keyword = "(all)", total_text = NULL, left_he
 
   tab$misc$coalesce_left_header_colname = left_header_colname
   if (is.null(tab$body$left_header_colnames )) {
-    Stop("You've called auto_style_indent, but there are no left_header_colnames to work with")
+    stop("You've called auto_style_indent, but there are no left_header_colnames to work with")
   }
 
   left_headers_df <- tab$body$body_df_to_write[tab$body$left_header_colnames]
@@ -208,7 +208,7 @@ auto_style_indent <- function(tab, keyword = "(all)", total_text = NULL, left_he
     if (length(x) == 0) {
       x <- total_text
     }
-    tail(x,1)
+    utils::tail(x,1)
   })
 
   new_left_headers <- unlist(last_elem)

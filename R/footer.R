@@ -11,6 +11,7 @@ footer_initialise <- function(tab) {
 
 #' Add footers to the tab.  Footer text is provided as a character vector, with each element being a row of the footer
 #'
+#' @param tab The core tab object
 #' @param footer_text A character vector.  Each element is a row of the footer
 #' @param footer_style_names A character vector.  Each elemment is a style_name
 #' @export
