@@ -2,10 +2,13 @@
 % Please edit documentation in R/top_headers.R
 \name{top_headers_write_rows}
 \alias{top_headers_write_rows}
-\title{Write all the required data (but no styles)}
+\title{Write all the top header data to the workbook (but do not write style information)}
 \usage{
 top_headers_write_rows(tab)
 }
+\arguments{
+\item{tab}{The core tab object}
+}
 \description{
-Write all the required data (but no styles)
+Write all the top header data to the workbook (but do not write style information)
 }

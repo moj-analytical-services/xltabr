@@ -68,7 +68,10 @@ title_get_wb_rows <- function(tab) {
   title_rows
 }
 
-#' Get the bottom row which the title occupy in the workbook
+#' Get the bottom row which the titles occupy in the workbook
+#' If no titles have been provided, return the cell above the topleft row of the extent.
+#' The next element (top headers, body or whatever it is) will want to be positioned
+#' in the cell below this
 #'
 #' @param tab The core tab object
 title_get_bottom_wb_row <- function(tab) {

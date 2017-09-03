@@ -1,9 +1,12 @@
 #' Create all the required properties for the top headers on the tab object
+#'
+#' @param tab The core tab object
 top_headers_initialise <- function(tab) {
 
   tab$top_headers <- list()
 
   # The top headers are a list of character vectors, each one representing a row
+  # This allows the user to provide more than one level of top headers
   tab$top_headers$top_headers_list <- NULL
   tab$top_headers$top_headers_row_style_names <- NULL
   tab$top_headers$top_headers_col_style_names <- NULL
@@ -41,9 +44,12 @@ add_top_headers <- function(tab, top_headers, col_style_names="", row_style_name
   tab$top_headers$top_headers_col_style_names <- col_style_names
 
   tab
-
 }
 
+
+#' Compute the columns of the workbook which are occupied by the top headers
+#'
+#' @param tab The core tab object
 top_headers_get_wb_cols <- function(tab) {
 
   if (is.null(tab$top_headers$top_headers_list)) {
@@ -57,10 +63,11 @@ top_headers_get_wb_cols <- function(tab) {
   wb_cols <- seq_along(header_cols_vec) + tlc - 1
 
   wb_cols
-
-
 }
 
+#' Compute the rows of the workbook which are occupied by the top headers
+#'
+#' @param tab The core tab object
 top_headers_get_wb_rows <- function(tab) {
 
   if (is.null(tab$top_headers$top_headers_list)) {
@@ -73,6 +80,10 @@ top_headers_get_wb_rows <- function(tab) {
 
 }
 
+#' Compute the bottom (lowest) row of the workbook occupied by the top headers
+#' If the top headers do not exist, returns the last row of the previous element (the titles)
+#'
+#' @param tab The core tab object
 top_headers_get_bottom_wb_row <- function(tab) {
 
   title_bottom <- title_get_bottom_wb_row(tab)
@@ -82,6 +93,9 @@ top_headers_get_bottom_wb_row <- function(tab) {
 
 }
 
+#' Compute the rightmost column of the workbook which is occupied by the top headers
+#'
+#' @param tab The core tab object
 top_headers_get_rightmost_wb_col <- function(tab) {
 
   th_cols <- top_headers_get_wb_cols(tab)
@@ -91,11 +105,13 @@ top_headers_get_rightmost_wb_col <- function(tab) {
   } else {
     return(max(th_cols))
   }
-
-
 }
 
-#' Create table |row|col|style name| containing the styles names
+
+
+#' Create table with columns |row|col|style name| containing the styles names for each cell of the top headers
+#'
+#' @param tab The core tab object
 top_headers_get_cell_styles_table <- function(tab) {
 
   rows <- top_headers_get_wb_rows(tab)
@@ -118,11 +134,11 @@ top_headers_get_cell_styles_table <- function(tab) {
   df$style_name <- remove_leading_trailing_pipe(df$style_name)
 
   df[, c("row", "col", "style_name")]
-
-
 }
 
-#' Write all the required data (but no styles)
+#' Write all the top header data to the workbook (but do not write style information)
+#'
+#' @param tab The core tab object
 top_headers_write_rows <- function(tab) {
 
   if (is.null(tab$top_headers$top_headers_list)) {
@@ -139,9 +155,7 @@ top_headers_write_rows <- function(tab) {
   col <- min(top_headers_get_wb_cols(tab))
   row <- min(top_headers_get_wb_rows(tab))
 
-
   openxlsx::writeData(tab$wb, ws_name, data, startRow = row, startCol = col, colNames = FALSE)
 
   tab
-
 }
