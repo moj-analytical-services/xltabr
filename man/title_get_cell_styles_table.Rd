@@ -2,10 +2,13 @@
 % Please edit documentation in R/title.R
 \name{title_get_cell_styles_table}
 \alias{title_get_cell_styles_table}
-\title{Create table |row|col|style name| containing the styles names}
+\title{Create table with columns |row|col|style name| that contains the styles names}
 \usage{
 title_get_cell_styles_table(tab)
 }
+\arguments{
+\item{tab}{The core tab object}
+}
 \description{
-Create table |row|col|style name| containing the styles names
+Create table with columns |row|col|style name| that contains the styles names
 }

@@ -1,10 +1,12 @@
 #' Create all the required properties for the title on the tab object
+#'
+#' @param The core tab object
 title_initialise <- function(tab) {
 
   tab$title <- list()
 
-  tab$title$title_text <- NULL
-  tab$title$title_style_names <- NULL
+  tab$title$title_text <- NULL  # A character vector containing the text of the title, one element per row
+  tab$title$title_style_names <- NULL # A character vector containing the style names for each row of the titles
   tab
 }
 
@@ -30,12 +32,13 @@ add_title <- function(tab, title_text, title_style_names = NULL) {
 
 }
 
-#' Get the column occupied by the title in the wb
+#' Get the columns occupied by the title in the workbook
+#'
+#' @param tab The core tab object
 title_get_wb_cols <- function(tab) {
 
   num_rows <- length(tab$title$title_text)
 
-  #TODO: If body exists, then use body_get_wb_cols here, because this means we can merge title cells to the right width
   tlc <- tab$extent$topleft_col
 
   if (num_rows == 0) {
@@ -47,7 +50,9 @@ title_get_wb_cols <- function(tab) {
   title_cols
 }
 
-#' Get the rows occupied by the title in the wb
+#' Get the rows occupied by the title in the workbook
+#'
+#' @param tab The core tab object
 title_get_wb_rows <- function(tab) {
 
   num_rows <- length(tab$title$title_text)
@@ -61,10 +66,11 @@ title_get_wb_rows <- function(tab) {
   }
 
   title_rows
-
 }
 
-#' Get the bottom row of the titles in the wb
+#' Get the bottom row which the title occupy in the workbook
+#'
+#' @param tab The core tab object
 title_get_bottom_wb_row <- function(tab) {
   title_rows <- title_get_wb_rows(tab)
 
@@ -72,13 +78,17 @@ title_get_bottom_wb_row <- function(tab) {
   max(c(title_rows, tab$extent$topleft_row - 1))
 }
 
-#' Get the rightmost column of the titles in the wb
+#' Get the rightmost column occupied by the titles in the workbook
+#'
+#' @param tab The core tab object
 title_get_rightmost_wb_col <- function(tab) {
   title_cols <- title_get_wb_cols(tab)
   max(c(title_cols, tab$extent$topleft_col -1))
 }
 
-#' Create table |row|col|style name| containing the styles names
+#' Create table with columns |row|col|style name| that contains the styles names
+#'
+#' @param tab The core tab object
 title_get_cell_styles_table <- function(tab) {
 
   rows <- title_get_wb_rows(tab)
@@ -95,7 +105,7 @@ title_get_cell_styles_table <- function(tab) {
   if (not_null(tab$body)) {
     cols <- body_get_wb_cols(tab)
   } else {
-    xols <- title_get_wb_cols(tab)
+    cols <- title_get_wb_cols(tab)
   }
 
   df <- data.frame(row = rows, style_name = styles, stringsAsFactors = FALSE)
@@ -105,7 +115,9 @@ title_get_cell_styles_table <- function(tab) {
   df
 }
 
-#' Write all the required data (but no styles)
+#' Write all the title data to the workbook (but do not write style data)
+#'
+#' @param tab The core tab object
 title_write_rows <- function(tab) {
 
   if (is.null(tab$title$title_text)) {
@@ -125,6 +137,5 @@ title_write_rows <- function(tab) {
   }
 
   tab
-
 }
 

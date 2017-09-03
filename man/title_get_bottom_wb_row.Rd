@@ -2,10 +2,13 @@
 % Please edit documentation in R/title.R
 \name{title_get_bottom_wb_row}
 \alias{title_get_bottom_wb_row}
-\title{Get the bottom row of the titles in the wb}
+\title{Get the bottom row which the title occupy in the workbook}
 \usage{
 title_get_bottom_wb_row(tab)
 }
+\arguments{
+\item{tab}{The core tab object}
+}
 \description{
-Get the bottom row of the titles in the wb
+Get the bottom row which the title occupy in the workbook
 }
