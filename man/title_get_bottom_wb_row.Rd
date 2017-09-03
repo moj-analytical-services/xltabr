@@ -2,7 +2,10 @@
 % Please edit documentation in R/title.R
 \name{title_get_bottom_wb_row}
 \alias{title_get_bottom_wb_row}
-\title{Get the bottom row which the title occupy in the workbook}
+\title{Get the bottom row which the titles occupy in the workbook
+If no titles have been provided, return the cell above the topleft row of the extent.
+The next element (top headers, body or whatever it is) will want to be positioned
+in the cell below this}
 \usage{
 title_get_bottom_wb_row(tab)
 }
@@ -10,5 +13,8 @@ title_get_bottom_wb_row(tab)
 \item{tab}{The core tab object}
 }
 \description{
-Get the bottom row which the title occupy in the workbook
+Get the bottom row which the titles occupy in the workbook
+If no titles have been provided, return the cell above the topleft row of the extent.
+The next element (top headers, body or whatever it is) will want to be positioned
+in the cell below this
 }

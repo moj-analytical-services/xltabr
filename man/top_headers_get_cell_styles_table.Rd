@@ -2,10 +2,13 @@
 % Please edit documentation in R/top_headers.R
 \name{top_headers_get_cell_styles_table}
 \alias{top_headers_get_cell_styles_table}
-\title{Create table |row|col|style name| containing the styles names}
+\title{Create table with columns |row|col|style name| containing the styles names for each cell of the top headers}
 \usage{
 top_headers_get_cell_styles_table(tab)
 }
+\arguments{
+\item{tab}{The core tab object}
+}
 \description{
-Create table |row|col|style name| containing the styles names
+Create table with columns |row|col|style name| containing the styles names for each cell of the top headers
 }
