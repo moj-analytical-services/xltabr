@@ -25,14 +25,10 @@ initialise <- function(wb = NULL, ws_name = NULL, styles_xlsx = NULL, num_styles
   if (not_null(insert_below_tab)) {
     ws_name <- insert_below_tab$misc$ws_name
     topleft_row <- extent_get_bottom_wb_row(insert_below_tab) + 1
-    topleft_col <- extent_get_cols(insert_below_tab)[1]
+    topleft_col <- extent_get_rightmost_wb_col(tab)
 
     # Make sure we don't try to write to an impossible column
-    if (topleft_col == 0) {
-      topleft_col = 1
-    }
-
-    if (is.null(topleft_col)) {
+    if (topleft_col == 0){
       topleft_col = 1
     }
 
