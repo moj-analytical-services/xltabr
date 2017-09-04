@@ -31,6 +31,11 @@ initialise <- function(wb = NULL, ws_name = NULL, topleft_row = 1, topleft_col =
     if (topleft_col == 0) {
       topleft_col = 1
     }
+
+    if (is.null(topleft_col)) {
+      topleft_col = 1
+    }
+
   }
 
 
