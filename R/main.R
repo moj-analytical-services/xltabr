@@ -25,10 +25,10 @@ initialise <- function(wb = NULL, ws_name = NULL, topleft_row = 1, topleft_col =
   if (not_null(insert_below_tab)) {
     ws_name <- insert_below_tab$misc$ws_name
     topleft_row <- extent_get_bottom_wb_row(insert_below_tab) + 1
-    topleft_col <- extent_get_rightmost_wb_col(insert_below_tab)
+    topleft_col <- extent_get_cols(insert_below_tab)[1]
 
     # Make sure we don't try to write to an impossible column
-    if (topleft_col == 0){
+    if (is.null(topleft_col)) {
       topleft_col = 1
     }
 
