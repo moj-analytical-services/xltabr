@@ -26,6 +26,11 @@ initialise <- function(wb = NULL, ws_name = NULL, topleft_row = 1, topleft_col =
     ws_name <- insert_below_tab$misc$ws_name
     topleft_row <- extent_get_bottom_wb_row(insert_below_tab) + 1
     topleft_col <- extent_get_cols(insert_below_tab)[1]
+
+    # Make sure we don't try to write to an impossible column
+    if (topleft_col == 0) {
+      topleft_col = 1
+    }
   }
 
 
