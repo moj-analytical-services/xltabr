@@ -80,9 +80,13 @@ style_catalogue_xlsx_import <- function(tab) {
 #'
 #' @return The tab
 #' @export
-style_catalogue_override_styles <- function(tab, path_to_xlsx) {
+style_catalogue_override_styles <- function(tab) {
   # Code here to override styles from Excel document provided by user
-  tab <- style_catalogue_xlsx_import(tab, path_to_xlsx)
+  if(file.exists(xltabr:::get_style_override_path())) {
+    tab <- style_catalogue_xlsx_import(tab, path_to_xlsx)
+  } else {
+    stop("You need to set the style_override using set_style_override_path()")
+  }
   tab
 }
 

@@ -15,7 +15,6 @@ auto_style_number_formatting <- function(tab, overrides = list()) {
   # This lookup table coverts
   path <- xltabr:::get_num_format_path()
 
-  # KARIK
   lookup_df <- utils::read.csv(path, stringsAsFactors = FALSE)
   # Convert to a named vector that can be used as a lookup
   lookup <- lookup_df$style_name
