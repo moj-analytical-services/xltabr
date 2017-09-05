@@ -18,11 +18,17 @@ tab$style_catalogue$footer
 
 # Example 2:  User provides their own formatting options
 path <- system.file("extdata", "styles_pub.xlsx", package = "xltabr")
-num_path <- system.file("extdata", "style_to_excel_number_format_alt.csv", package = "xltabr")
+cell_path <- system.file("extdata", "style_to_excel_number_format_alt.csv", package = "xltabr")
+xltabr::set_style_path(path)
+xltabr::set_cell_format_path(cell_path)
+
 title <- "This is the title"
 footers <- c("Footer information 1", "Footer information 2")
-tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE, styles_xlsx = path, num_styles_csv = num_path, titles = title, footers = footers)
+tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE, titles = title, footers = footers)
 openxlsx::openXL(tab$wb)
+
+xltabr::set_style_path()
+xltabr::set_cell_format_path()
 
 # Example 3:  Different pivot
 ct <- reshape2::dcast(df, drive  + type ~ colour, value.var= "value", margins=c("drive",  "type"), fun.aggregate = sum)

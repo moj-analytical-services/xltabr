@@ -73,27 +73,6 @@ style_catalogue_xlsx_import <- function(tab) {
   tab
 }
 
-#' Allows the user to provide a .xlsx with custom defined styles
-#' Use [this](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/styles.xlsx?raw=true) file as a basis
-#'
-#' @param path a file path to the .xlsx file you want to use to override styles
-#'
-#' @return The tab
-#' @export
-style_catalogue_override_styles <- function(tab) {
-  # Code here to override styles from Excel document provided by user
-  if(file.exists(xltabr:::get_style_override_path())) {
-    tab <- style_catalogue_xlsx_import(tab, path_to_xlsx)
-  } else {
-    stop("You need to set the style_override using set_style_override_path()")
-  }
-  tab
-}
-
-# # # # # Added functions by Karik # # # # #
-
-# # # # # # # # # # # # # # # # # # # #
-
 # add_to_dictionary
 # returns a style_key string based on our style catelogue objects (should also work with default R lists)
 create_style_key <- function(style_list){
