@@ -88,8 +88,6 @@ auto_df_to_wb <-
 #' @param indent Automatically detect level of indentation of each row
 #' @param left_header_colnames  The names of the columns that you want to designate as left headers
 #' @param vertical_border Boolean. Do you want a left border?
-#' @param styles_xlsx File path (string).  If provided, the styles defined in this xlsx are used rather than the default. See [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/styles.xlsx) for template.
-#' @param num_styles_csv  File path.  If provided, overrides the default number styles, which can be found [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/style_to_excel_number_format.csv).
 #' @param return_tab  Boolean.  Return a tab object rather than a openxlsx workbook object
 #' @param auto_merge Boolean.  Whether to merge cells in the title and footers to width of body
 #' @param insert_below_tab A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.
@@ -110,8 +108,6 @@ auto_crosstab_to_wb <-
            indent = TRUE,
            left_header_colnames = NULL,
            vertical_border = TRUE,
-           styles_xlsx = NULL,
-           num_styles_csv = NULL,
            return_tab = FALSE,
            auto_merge = TRUE,
            insert_below_tab = NULL,
@@ -128,7 +124,7 @@ auto_crosstab_to_wb <-
   }
 
 
-  tab <- initialise(styles_xlsx = styles_xlsx, num_styles_csv = num_styles_csv, insert_below_tab = insert_below_tab, wb = wb, ws_name = ws_name)
+  tab <- initialise(insert_below_tab = insert_below_tab, wb = wb, ws_name = ws_name)
 
   if (include_header_rows) {
     tab <- add_top_headers(tab, top_headers)

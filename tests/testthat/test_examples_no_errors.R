@@ -7,6 +7,7 @@ test_that("Test cross tab from synthetic data 1", {
   ct <- reshape2::dcast(df, drive + age + colour ~ type, value.var= "value", margins=c("drive", "age", "colour"), fun.aggregate = mean)
   tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE)
 
+  openxlsx::openXL(tab$wb)
 })
 
 

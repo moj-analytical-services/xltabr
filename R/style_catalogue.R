@@ -1,25 +1,19 @@
 # Use default .xlsx style catalogue to initialise the catalogue of styles
-style_catalogue_initialise <- function(tab, styles_xlsx = NULL, num_styles_csv = NULL) {
-  if (is.null(styles_xlsx)) {
-    path <- system.file("extdata", "styles.xlsx", package = "xltabr")
-  } else {
-    path <- styles_xlsx
-  }
+style_catalogue_initialise <- function(tab) {
 
-  if (is.null(num_styles_csv)) {
-    path_num <- system.file("extdata", "style_to_excel_number_format.csv", package = "xltabr")
-  } else {
-    path_num <- num_styles_csv
-  }
-  tab <- style_catalogue_xlsx_import(tab, path)
-  tab <- style_catalogue_import_num_formats(tab, path_num)
+  path <- xltabr:::get_style_path()
+
+  path_num <- xltabr:::get_num_format_path()
+
+  tab <- style_catalogue_xlsx_import(tab)
+  tab <- style_catalogue_import_num_formats(tab)
   tab
 }
 
-style_catalogue_import_num_formats <- function(tab, path){
+style_catalogue_import_num_formats <- function(tab){
   # This lookup table coverts
 
-  lookup_df <- utils::read.csv(path, stringsAsFactors = FALSE)
+  lookup_df <- xltabr:::get_cell_format_df()
 
   # Convert dataframe into two vectors
   style_keys <- lookup_df$excel_format
@@ -32,10 +26,12 @@ style_catalogue_import_num_formats <- function(tab, path){
 }
 
 # Iterate through the default style workbook, adding them to the styles catalogue
-style_catalogue_xlsx_import <- function(tab, path) {
+style_catalogue_xlsx_import <- function(tab) {
 
   # if initialising style_catalogue do we want to reset it with line below?
   tab$style_catalogue <- list()
+
+  path <- xltabr:::get_style_path()
 
   wb <- openxlsx::loadWorkbook(path)
   listed_styles <- openxlsx::readWorkbook(wb, colNames = FALSE)
