@@ -7,7 +7,6 @@ test_that("Test cross tab from synthetic data 1", {
   ct <- reshape2::dcast(df, drive + age + colour ~ type, value.var= "value", margins=c("drive", "age", "colour"), fun.aggregate = mean)
   tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE)
 
-  openxlsx::openXL(tab$wb)
 })
 
 
@@ -27,7 +26,7 @@ test_that("Test cross tab from synthetic data 2", {
   tab <- xltabr:::write_all_elements_to_wb(tab)
   tab <- xltabr:::add_styles_to_wb(tab)
 
-  openxlsx::openXL(tab$wb)
+
 
 })
 
@@ -47,5 +46,5 @@ test_that("Test table numtypes", {
 
   tab <- xltabr::auto_df_to_wb(df, return_tab=TRUE)
 
-  openxlsx::openXL(tab$wb)
+
 })
