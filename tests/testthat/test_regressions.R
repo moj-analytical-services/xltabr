@@ -19,9 +19,11 @@ test_that("test styles table does not have factors", {
 test_that("test no warning are issued from style_catalogue_xlsx_import", {
 
   path <- system.file("extdata", "styles_pub.xlsx", package = "xltabr")
+  xltabr::set_style_path(path)
   tab <- list()
 
   # Expect no warning is issued https://stackoverflow.com/questions/22003306/is-there-something-in-testthat-like-expect-no-warnings
   expect_warning(xltabr:::style_catalogue_xlsx_import(tab, path), regexp = NA)
 
+  xltabr::set_style_path()
 })

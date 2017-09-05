@@ -63,8 +63,11 @@ ct <- ct %>% dplyr::arrange(-row_number())
 
 
 path <- system.file("extdata", "styles.xlsx", package = "xltabr")
-num_path <- system.file("extdata", "style_to_excel_number_format_alt.csv", package = "xltabr")
-tab <- xltabr::auto_crosstab_to_wb(ct, indent = TRUE, return_tab = TRUE, styles_xlsx = path, num_styles_csv = num_path, titles = "This is the title")
+cell_path <- system.file("extdata", "style_to_excel_number_format_alt.csv", package = "xltabr")
+xltabr::set_style_path(path)
+xltabr::set_cell_format_path(cell_path)
+
+tab <- xltabr::auto_crosstab_to_wb(ct, indent = TRUE, return_tab = TRUE, titles = "This is the title")
 openxlsx::openXL(tab$wb)
 
 if (open_output) openxlsx::openXL(tab$wb) else {
@@ -73,6 +76,9 @@ if (open_output) openxlsx::openXL(tab$wb) else {
 }
 
 tab$body$body_df$meta_left_header_row_
+
+xltabr::set_style_path()
+xltabr::set_cell_format_path()
 
 # Test 5
 path <- system.file("extdata", "synthetic_data.csv", package="xltabr")

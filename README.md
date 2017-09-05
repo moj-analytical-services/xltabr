@@ -77,9 +77,17 @@ openxlsx::openXL(wb)
 
 ``` r
 path <- system.file("extdata", "styles_pub.xlsx", package = "xltabr")
-num_path <- system.file("extdata", "style_to_excel_number_format_alt.csv", package = "xltabr")
-wb <- xltabr::auto_crosstab_to_wb(ct, styles_xlsx = path, num_styles_csv = num_path)
+cell_path <- system.file("extdata", "style_to_excel_number_format_alt.csv", package = "xltabr")
+
+xltabr::set_style_path(path)
+xltabr::set_cell_format_path(cell_path)
+
+wb <- xltabr::auto_crosstab_to_wb(ct)
 openxlsx::openXL(wb)
+
+# Set paths back to default
+xltabr::set_style_path()
+xltabr::set_cell_format_path()
 ```
 
 ![image](vignettes/example_5.png?raw=true)
@@ -105,8 +113,15 @@ openxlsx::openXL(wb)
 
 ``` r
 tab <- xltabr::auto_crosstab_to_wb(ct, titles = titles, footers = c(footers, ""), return_tab = TRUE)
-wb <- xltabr::auto_crosstab_to_wb(ct2, titles = titles2, footers = footers2, insert_below_tab = tab, styles_xlsx = path, num_styles_csv = num_path)
+
+xltabr::set_style_path(path)
+xltabr::set_cell_format_path(cell_path)
+wb <- xltabr::auto_crosstab_to_wb(ct2, titles = titles2, footers = footers2, insert_below_tab = tab)
 openxlsx::openXL(wb)
+
+# Change back to default
+xltabr::set_style_path()
+xltabr::set_cell_format_path()
 ```
 
 ![image](vignettes/example_6.png?raw=true)

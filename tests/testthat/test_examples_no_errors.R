@@ -27,7 +27,7 @@ test_that("Test cross tab from synthetic data 2", {
   tab <- xltabr:::write_all_elements_to_wb(tab)
   tab <- xltabr:::add_styles_to_wb(tab)
 
-
+  openxlsx::openXL(tab$wb)
 
 })
 
@@ -47,5 +47,5 @@ test_that("Test table numtypes", {
 
   tab <- xltabr::auto_df_to_wb(df, return_tab=TRUE)
 
-
+  openxlsx::openXL(tab$wb)
 })
