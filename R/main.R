@@ -7,7 +7,7 @@
 #' @importFrom magrittr %>%
 #' @name %>%#'
 #' @export
-initialise <- function(wb = NULL, ws_name = NULL, styles_xlsx = NULL, num_styles_csv = NULL, topleft_row = 1, topleft_col = 1, insert_below_tab = NULL) {
+initialise <- function(wb = NULL, ws_name = NULL, topleft_row = 1, topleft_col = 1, insert_below_tab = NULL) {
 
   # Main object
   tab <- list()
@@ -33,7 +33,7 @@ initialise <- function(wb = NULL, ws_name = NULL, styles_xlsx = NULL, num_styles
   tab <- extent_initialise(tab, topleft_row, topleft_col)
 
 
-  tab <- style_catalogue_initialise(tab, styles_xlsx = styles_xlsx, num_styles_csv = num_styles_csv)
+  tab <- style_catalogue_initialise(tab)
 
   if (not_null(insert_below_tab)) {
     tab <- wb_initialise(tab, insert_below_tab$wb, ws_name)
