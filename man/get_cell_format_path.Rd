@@ -7,6 +7,6 @@
 get_cell_format_path()
 }
 \description{
-Returns path to cell format definitions which is set in global options. To change this path see \link\link{xltabr}{set_cell_format_path}.
+Returns path to cell format definitions which is set in global options. To change this path see set_cell_format_path.
 Default cell format used by package is \href{https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/style_to_excel_number_format.csv?raw=true}{here}
 }
