@@ -23,7 +23,7 @@ test_that("test no warning are issued from style_catalogue_xlsx_import", {
   tab <- list()
 
   # Expect no warning is issued https://stackoverflow.com/questions/22003306/is-there-something-in-testthat-like-expect-no-warnings
-  expect_warning(xltabr:::style_catalogue_xlsx_import(tab, path), regexp = NA)
+  expect_warning(xltabr:::style_catalogue_xlsx_import(tab), regexp = NA)
 
   xltabr::set_style_path()
 })
