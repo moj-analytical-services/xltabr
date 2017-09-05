@@ -6,10 +6,10 @@
 \usage{
 auto_crosstab_to_wb(df, auto_number_format = TRUE, top_headers = NULL,
   titles = NULL, footers = NULL, auto_open = FALSE, indent = TRUE,
-  left_header_colnames = NULL, vertical_border = TRUE, styles_xlsx = NULL,
-  num_styles_csv = NULL, return_tab = FALSE, auto_merge = TRUE,
-  insert_below_tab = NULL, total_text = NULL, include_header_rows = TRUE,
-  wb = NULL, ws_name = NULL, number_format_overrides = list())
+  left_header_colnames = NULL, vertical_border = TRUE, return_tab = FALSE,
+  auto_merge = TRUE, insert_below_tab = NULL, total_text = NULL,
+  include_header_rows = TRUE, wb = NULL, ws_name = NULL,
+  number_format_overrides = list())
 }
 \arguments{
 \item{df}{A data.frame.  The cross tabulation to convert to Excel}
@@ -29,10 +29,6 @@ auto_crosstab_to_wb(df, auto_number_format = TRUE, top_headers = NULL,
 \item{left_header_colnames}{The names of the columns that you want to designate as left headers}
 
 \item{vertical_border}{Boolean. Do you want a left border?}
-
-\item{styles_xlsx}{File path (string).  If provided, the styles defined in this xlsx are used rather than the default. See \href{https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/styles.xlsx}{here} for template.}
-
-\item{num_styles_csv}{File path.  If provided, overrides the default number styles, which can be found \href{https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/style_to_excel_number_format.csv}{here}.}
 
 \item{return_tab}{Boolean.  Return a tab object rather than a openxlsx workbook object}
 

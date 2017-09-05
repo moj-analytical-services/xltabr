@@ -5,8 +5,7 @@
 \alias{initialise}
 \title{Create a new xltabr object for cross tabulation}
 \usage{
-initialise(wb = NULL, ws_name = NULL, styles_xlsx = NULL,
-  num_styles_csv = NULL, topleft_row = 1, topleft_col = 1,
+initialise(wb = NULL, ws_name = NULL, topleft_row = 1, topleft_col = 1,
   insert_below_tab = NULL)
 }
 \arguments{
