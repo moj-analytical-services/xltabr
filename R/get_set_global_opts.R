@@ -60,7 +60,3 @@ set_num_format_path <- function(path = NULL){
   if(is.null(path)) path <- system.file("extdata", "number_format_defaults.csv", package = "xltabr")
   if(file.exists(path)) options(list(xltabr.number.format.path = path)) else stop("Speficied file path does not exist")
 }
-
-get_cell_format_df <- function(){
-  return(utils::read.csv(get_cell_format_path(), stringsAsFactors = FALSE, quote = "\"'"))
-}

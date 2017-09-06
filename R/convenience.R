@@ -96,6 +96,8 @@ auto_df_to_wb <-
 #' @param number_format_overrides e.g. list("colname1" = "currency1") see [auto_style_number_formatting]
 #' @param wb A existing openxlsx workbook.  If not provided, a new one will be created
 #' @param ws_name The name of the worksheet you want to write to
+#' @param replace_na_with Manually specify a string to replace any NAs with in workbook. Default leaves NAs as blank cells
+#' @param replace_nan_with Manually specify a string to replace any NANs with in workbook. Default leaves NANs as "#NUM!"
 #'
 #' @export
 auto_crosstab_to_wb <-
@@ -115,7 +117,9 @@ auto_crosstab_to_wb <-
            include_header_rows = TRUE,
            wb = NULL,
            ws_name = NULL,
-           number_format_overrides = list()) {
+           number_format_overrides = list(),
+           fill_na_with = NULL,
+           fill_nan_with = NULL) {
 
   top_header_provided <- TRUE
   if (is.null(top_headers)) {
@@ -130,7 +134,7 @@ auto_crosstab_to_wb <-
     tab <- add_top_headers(tab, top_headers)
   }
 
-  tab <- add_body(tab, df,left_header_colnames = left_header_colnames)
+  tab <- add_body(tab, df,left_header_colnames = left_header_colnames, fill_na_with = fill_na_with, fill_nan_with = fill_nan_with)
 
   if (is.null(left_header_colnames)) {
     tab <- auto_detect_left_headers(tab)
