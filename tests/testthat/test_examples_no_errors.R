@@ -5,10 +5,20 @@ test_that("Test cross tab from synthetic data 1", {
   path <- system.file("extdata", "synthetic_data.csv", package="xltabr")
   df <- read.csv(path, stringsAsFactors = FALSE)
   ct <- reshape2::dcast(df, drive + age + colour ~ type, value.var= "value", margins=c("drive", "age", "colour"), fun.aggregate = mean)
-  tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE)
+  tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE, fill_na_with = "**", fill_nan_with = "..")
 
 })
 
+test_that("Test cross tab from synthetic data 1.5 (adding NA and NaN)", {
+
+  path <- system.file("extdata", "synthetic_data.csv", package="xltabr")
+  df <- read.csv(path, stringsAsFactors = FALSE)
+  ct <- reshape2::dcast(df, drive + age + colour ~ type, value.var= "value", margins=c("drive", "age", "colour"), fun.aggregate = mean)
+  ct[4,4] <- NA
+  ct[5,4] <- NaN
+  tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE, fill_na_with = "**", fill_nan_with = "..")
+
+})
 
 test_that("Test cross tab from synthetic data 2", {
 
@@ -25,8 +35,6 @@ test_that("Test cross tab from synthetic data 2", {
   tab <- xltabr::auto_style_number_formatting(tab)
   tab <- xltabr:::write_all_elements_to_wb(tab)
   tab <- xltabr:::add_styles_to_wb(tab)
-
-
 
 })
 
