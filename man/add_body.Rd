@@ -5,7 +5,8 @@
 \title{Add a table body (a df) to the tab.}
 \usage{
 add_body(tab, df, left_header_colnames = NULL, row_style_names = NULL,
-  left_header_style_names = NULL, col_style_names = NULL)
+  left_header_style_names = NULL, col_style_names = NULL,
+  fill_na_with = NULL, fill_nan_with = NULL)
 }
 \arguments{
 \item{tab}{The core tab object}
@@ -19,6 +20,10 @@ add_body(tab, df, left_header_colnames = NULL, row_style_names = NULL,
 \item{left_header_style_names}{Manually specify the addition styles that will apply to cells in the left headers.  Must be present in styles catalogue}
 
 \item{col_style_names}{Manually specify the additional styles that will be applied to each column.  Must be present in styles catalogue}
+
+\item{fill_na_with}{Manually specify a string to replace any NAs with in workbook. Default leaves NAs as blank cells}
+
+\item{fill_nan_with}{Manually specify a string to replace any NANs with in workbook. Default leaves NANs as "#NUM!"}
 }
 \description{
 Add a table body (a df) to the tab.

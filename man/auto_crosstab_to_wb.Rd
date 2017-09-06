@@ -9,7 +9,8 @@ auto_crosstab_to_wb(df, auto_number_format = TRUE, top_headers = NULL,
   left_header_colnames = NULL, vertical_border = TRUE, return_tab = FALSE,
   auto_merge = TRUE, insert_below_tab = NULL, total_text = NULL,
   include_header_rows = TRUE, wb = NULL, ws_name = NULL,
-  number_format_overrides = list())
+  number_format_overrides = list(), fill_na_with = NULL,
+  fill_nan_with = NULL)
 }
 \arguments{
 \item{df}{A data.frame.  The cross tabulation to convert to Excel}
@@ -45,6 +46,10 @@ auto_crosstab_to_wb(df, auto_number_format = TRUE, top_headers = NULL,
 \item{ws_name}{The name of the worksheet you want to write to}
 
 \item{number_format_overrides}{e.g. list("colname1" = "currency1") see \link{auto_style_number_formatting}}
+
+\item{replace_na_with}{Manually specify a string to replace any NAs with in workbook. Default leaves NAs as blank cells}
+
+\item{replace_nan_with}{Manually specify a string to replace any NANs with in workbook. Default leaves NANs as "#NUM!"}
 }
 \description{
 Take a cross tabulation produced by \code{reshape2::dcast} and output a formatted openxlsx wb object

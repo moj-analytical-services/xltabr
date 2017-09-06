@@ -11,9 +11,8 @@ style_catalogue_initialise <- function(tab) {
 }
 
 style_catalogue_import_num_formats <- function(tab){
-  # This lookup table coverts
 
-  lookup_df <- xltabr:::get_cell_format_df()
+  lookup_df <- utils::read.csv(get_cell_format_path(), stringsAsFactors = FALSE)
 
   # Convert dataframe into two vectors
   style_keys <- lookup_df$excel_format

@@ -26,6 +26,8 @@ body_initialise <- function(tab) {
 #' @param row_style_names Manually specify the styles that apply to each row (as opposed to using the autodetect functions).  Styles provided must be present in the style catalogue
 #' @param left_header_style_names Manually specify the addition styles that will apply to cells in the left headers.  Must be present in styles catalogue
 #' @param col_style_names Manually specify the additional styles that will be applied to each column.  Must be present in styles catalogue
+#' @param fill_na_with Manually specify a string to replace any NAs with in workbook. Default leaves NAs as blank cells
+#' @param fill_nan_with Manually specify a string to replace any NANs with in workbook. Default leaves NANs as "#NUM!"
 #'
 #' @export
 add_body <-
@@ -34,7 +36,9 @@ add_body <-
            left_header_colnames = NULL,
            row_style_names = NULL,
            left_header_style_names = NULL,
-           col_style_names = NULL) {
+           col_style_names = NULL,
+           fill_na_with = NULL,
+           fill_nan_with = NULL) {
 
   # Make all factors character
   i <- sapply(df, is.factor)
@@ -74,6 +78,10 @@ add_body <-
     tab$body$meta_col_ <- col_style_names
     tab$body$user_provided_col_style_names <- col_style_names
   }
+
+  if (not_null(fill_na_with)) tab$body$fill_na_with <- fill_na_with
+
+  if (not_null(fill_nan_with)) tab$body$fill_nan_with <- fill_nan_with
 
   tab
 }
@@ -216,6 +224,20 @@ body_write_rows <- function(tab) {
     row <- min(body_get_wb_rows(tab))
 
     openxlsx::writeData(tab$wb, ws_name, data, startRow = row, startCol = col, colNames = FALSE)
+
+    if(not_null(tab$body$fill_na_with)){
+      row_values <- body_get_wb_rows(tab)
+        for (c in 1:ncol(data)){
+          for (r in row_values[is.na(data[,c])]) openxlsx::writeData(tab$wb, ws_name, tab$body$fill_na_with, startRow = r, startCol = c, colNames = FALSE)
+        }
+    }
+
+    if(not_null(tab$body$fill_nan_with)){
+      row_values <- body_get_wb_rows(tab)
+      for (c in 1:ncol(data)){
+        for (r in row_values[is.nan(data[,c])]) openxlsx::writeData(tab$wb, ws_name, tab$body$fill_nan_with, startRow = r, startCol = c, colNames = FALSE)
+      }
+    }
 
     tab
 }
