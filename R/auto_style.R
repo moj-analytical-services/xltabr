@@ -111,7 +111,9 @@ auto_detect_left_headers <- function(tab, keyword = "(all)") {
 
 # For title level
 # Note we assume there are a maximum of 5 title levels
-get_inv_title_count_title <- function(left_headers_df, keyword) {
+get_inv_title_count_title <- function(left_headers_df,
+                                      keyword,
+                                      allcount_to_level_translate = NULL) {
   # +-------+-------+-------+-----------+-------------+--------------+
   # | col1  | col2  | col3  | all_count | title_level | indent_level |
   # +-------+-------+-------+-----------+-------------+--------------+
@@ -120,14 +122,15 @@ get_inv_title_count_title <- function(left_headers_df, keyword) {
   # | (all) | -     | -     |         1 | title_5     | indent_2     |
   # | -     | -     | -     |         0 |             | indent_3     |
   # +-------+-------+-------+-----------+-------------+--------------+
+  if (is.null(allcount_to_level_translate)) {
+    allcount_to_level_translate = c("0" = NA, "1" = 5, "2" = 4, "3" = 3, "4" = 2, "5" = 1)
+  }
+
   to_count <- (left_headers_df == keyword)
   all_count <- rowSums(to_count)
 
   #rows with higher (all) count should have a lower title value because title_1 is the most emphasized
-  all_count_inv <- 6 - all_count
-  all_count_inv[all_count_inv == 6] <- NA
-
-  all_count_inv
+  allcount_to_level_translate[as.character(all_count)]
 
 }
 
@@ -154,11 +157,11 @@ get_inv_title_count_indent <- function(left_headers_df, keyword) {
 }
 
 # Autodetect the 'title level' e.g. title 1 is most prominent, title 2 next etc.
-auto_detect_body_title_level <- function(tab, keyword = "(all)") {
+auto_detect_body_title_level <- function(tab, keyword = "(all)", allcount_to_level_translate = NULL) {
 
   left_headers_df <- tab$body$body_df_to_write[tab$body$left_header_colnames]
 
-  all_count_inv <- get_inv_title_count_title(left_headers_df, keyword)
+  all_count_inv <- get_inv_title_count_title(left_headers_df, keyword = keyword, allcount_to_level_translate = allcount_to_level_translate)
 
   # Append title level to both meta_row_ and meta_left_title_row_
   col <- tab$body$body_df$meta_row_[not_na(all_count_inv)]

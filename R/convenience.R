@@ -98,6 +98,7 @@ auto_df_to_wb <-
 #' @param ws_name The name of the worksheet you want to write to
 #' @param replace_na_with Manually specify a string to replace any NAs with in workbook. Default leaves NAs as blank cells
 #' @param replace_nan_with Manually specify a string to replace any NANs with in workbook. Default leaves NANs as "#NUM!"
+#' @param allcount_to_level_translate Manually specify how to translate summary levels into header formatting
 #'
 #' @export
 auto_crosstab_to_wb <-
@@ -119,7 +120,8 @@ auto_crosstab_to_wb <-
            ws_name = NULL,
            number_format_overrides = list(),
            fill_na_with = NULL,
-           fill_nan_with = NULL) {
+           fill_nan_with = NULL,
+           allcount_to_level_translate = NULL) {
 
   top_header_provided <- TRUE
   if (is.null(top_headers)) {
@@ -140,7 +142,7 @@ auto_crosstab_to_wb <-
     tab <- auto_detect_left_headers(tab)
   }
 
-  tab <- auto_detect_body_title_level(tab)
+  tab <- auto_detect_body_title_level(tab, allcount_to_level_translate = allcount_to_level_translate)
 
   if (auto_number_format) {
     tab <- auto_style_number_formatting(tab, overrides = number_format_overrides)
