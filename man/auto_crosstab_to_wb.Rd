@@ -47,11 +47,11 @@ auto_crosstab_to_wb(df, auto_number_format = TRUE, top_headers = NULL,
 
 \item{number_format_overrides}{e.g. list("colname1" = "currency1") see \link{auto_style_number_formatting}}
 
+\item{fill_na_with}{Manually specify a string to replace any NAs with in workbook. Default leaves NAs as blank cells}
+
+\item{fill_nan_with}{Manually specify a string to replace any NANs with in workbook. Default leaves NANs as "#NUM!"}
+
 \item{allcount_to_level_translate}{Manually specify how to translate summary levels into header formatting}
-
-\item{replace_na_with}{Manually specify a string to replace any NAs with in workbook. Default leaves NAs as blank cells}
-
-\item{replace_nan_with}{Manually specify a string to replace any NANs with in workbook. Default leaves NANs as "#NUM!"}
 }
 \description{
 Take a cross tabulation produced by \code{reshape2::dcast} and output a formatted openxlsx wb object

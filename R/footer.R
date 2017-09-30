@@ -1,4 +1,4 @@
-#' Create all the required properties for the footer on the tab object
+# Create all the required properties for the footer on the tab object
 footer_initialise <- function(tab) {
 
     tab$footer <- list()
@@ -24,7 +24,7 @@ add_footer <- function(tab, footer_text, footer_style_names = "footer") {
 
 }
 
-#' Get the columns occupied by the footer in the wb
+# Get the columns occupied by the footer in the wb
 footer_get_wb_cols <- function(tab) {
 
 
@@ -44,7 +44,7 @@ footer_get_wb_cols <- function(tab) {
 }
 
 
-#' Get the rows occupied by the footer in the wb
+# Get the rows occupied by the footer in the wb
 footer_get_wb_rows <- function(tab) {
 
   offset <- body_get_bottom_wb_row(tab)
@@ -61,7 +61,7 @@ footer_get_wb_rows <- function(tab) {
   footer_rows
 }
 
-#' Get the bottom row of the footer in the wb
+# Get the bottom row of the footer in the wb
 footer_get_bottom_wb_row <- function(tab) {
 
     body_bottom <- body_get_bottom_wb_row(tab)
@@ -70,13 +70,13 @@ footer_get_bottom_wb_row <- function(tab) {
     max(c(body_bottom, footer_rows))
 }
 
-#' Get the rightmost column of the footers in the wb
+# Get the rightmost column of the footers in the wb
 footer_get_rightmost_wb_col <- function(tab) {
     footer_cols <- footer_get_wb_cols(tab)
     max(c(footer_cols, tab$extent$topleft_col - 1))
 }
 
-#' Create table |row|col|style name| containing the styles names
+# Create table |row|col|style name| containing the styles names
 footer_get_cell_styles_table <- function(tab) {
 
   rows <- footer_get_wb_rows(tab)
@@ -101,7 +101,7 @@ footer_get_cell_styles_table <- function(tab) {
   df
 }
 
-#' Write all the required data (but no styles)
+# Write all the required data (but no styles)
 footer_write_rows <- function(tab) {
 
   if (is.null(tab$footer$footer_text)) {
