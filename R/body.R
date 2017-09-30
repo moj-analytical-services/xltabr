@@ -1,4 +1,5 @@
-#' Initialise the body, creating all the required properties the core tab object
+#' Initialise the body element of the tab, creating all the required properties
+#' the core tab object
 #'
 #' @param tab The core tab object
 body_initialise <- function(tab) {
@@ -10,7 +11,7 @@ body_initialise <- function(tab) {
   # meta_row_ and meta_left_header_row_.  We create a duplicate that
   # contains only the data that we want to write to the worksheet, called body_df_to_write
   # so we don't accidentally write the meta data to the Excel worksheet
-  tab$body$body_df<- NULL  # This will include a column for meta_row_ and meta_left_header_row_
+  tab$body$body_df <- NULL  # This will include a column for meta_row_ and meta_left_header_row_
   tab$body$body_df_to_write <- NULL # This is the df that's actually written to wb
   tab$body$left_header_colnames <- NULL # This will contain the column names for each of the columns which are left headers
 

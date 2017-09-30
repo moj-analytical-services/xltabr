@@ -2,8 +2,7 @@
 % Please edit documentation in R/auto_style.R
 \name{auto_style_number_formatting}
 \alias{auto_style_number_formatting}
-\title{Use the data type of the columns to choose an automatic Excel format
-Number formats are only applied to body cells}
+\title{Use the data type of the columns to choose an automatic Excel format for body cells}
 \usage{
 auto_style_number_formatting(tab, overrides = list())
 }
@@ -13,5 +12,5 @@ auto_style_number_formatting(tab, overrides = list())
 \item{overrides}{a list containing any manual overrides where the user wants to provide their own style name}
 }
 \description{
-Note this reads currency styling from the styles defined \href{https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/number_formats.xlsx?raw=true}{here}
+This function reads currency styling from the styles defined \href{https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/number_formats.xlsx?raw=true}{here}
 }

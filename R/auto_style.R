@@ -1,9 +1,8 @@
 # Functions in this file are used to attempt to auto-detect styles from the information in the table
 
-#' Use the data type of the columns to choose an automatic Excel format
-#' Number formats are only applied to body cells
+#' Use the data type of the columns to choose an automatic Excel format for body cells
 #'
-#' Note this reads currency styling from the styles defined [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/number_formats.xlsx?raw=true)
+#' This function reads currency styling from the styles defined [here](https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/number_formats.xlsx?raw=true)
 #' @param tab a table object
 #' @param overrides a list containing any manual overrides where the user wants to provide their own style name
 #' @export
@@ -47,9 +46,8 @@ auto_style_number_formatting <- function(tab, overrides = list()) {
 }
 
 
-
-# Uses the presence of '(all)' in the leftmost columns of data to detect that these
-# columns are really left headers rather than body colummns
+# Uses presence of '(all)' in the leftmost columns to detect the summary level
+# of the row, and then writes this style information to tab$body$body_df
 auto_style_body_rows <- function(tab, indent = FALSE, keyword = "(all)") {
 
   # If headers haven't been provided by the user, attempt to autodetect them
@@ -64,7 +62,13 @@ auto_style_body_rows <- function(tab, indent = FALSE, keyword = "(all)") {
 
 }
 
-# Auto detect which of the columns are left headers
+#' Uses the presence of '(all)' in the leftmost columns of data to detect that these
+#' columns are really left headers rather than body colummns
+#'
+#' Populates tab$body$left_header_colnames automatically
+#' @param tab a tab object
+#' @param keyword The keyword to use to detect summarisation.  Uses '(all)' by default because this is what reshape2::dcast uses
+#' @export
 auto_detect_left_headers <- function(tab, keyword = "(all)") {
   # Looking to write tab$body$left_header_colnames
 
@@ -75,7 +79,7 @@ auto_detect_left_headers <- function(tab, keyword = "(all)") {
 
   col_classes <- sapply(tab$body$body_df_to_write, class)
 
-  rightmost_character <- min(which(col_classes != "character")) -1
+  rightmost_character <- min(which(col_classes != "character")) - 1
 
   if (rightmost_character == 0) {
     tab$body$left_header_colnames = NULL
@@ -156,7 +160,14 @@ get_inv_title_count_indent <- function(left_headers_df, keyword) {
 
 }
 
-# Autodetect the 'title level' e.g. title 1 is most prominent, title 2 next etc.
+#' Autodetect the 'title level' of each row in the cross tabulation
+#' e.g. title 1 is most prominent, title 2 next etc.
+#'
+#' Uses the presence of '(all)' to detect the prominence.  The parameter allcount_to_level_translate allows the user to control how the count of '(all)' in the left header is translated into the header leve
+#' @param tab a tab object
+#' @param keyword The keyword to use to detect summarisation.  Uses '(all)' by default because this is what reshape2::dcast uses
+#' @param allcount_to_level_translate A named vector that provides a lookup - by default c("0" = NA, "1" = 5, "2" = 4, "3" = 3, "4" = 2, "5" = 1), which says that e.g. allcount 1 results in title_5 etc
+#' @export
 auto_detect_body_title_level <- function(tab, keyword = "(all)", allcount_to_level_translate = NULL) {
 
   left_headers_df <- tab$body$body_df_to_write[tab$body$left_header_colnames]
@@ -178,9 +189,18 @@ auto_detect_body_title_level <- function(tab, keyword = "(all)", allcount_to_lev
 
 }
 
-# Consolidate the header columns into one, taking the rightmost value and applying indent
-# e.g. a | b | (all) -> b
-# e.g. (all) | (all) | (all) -> Grand Total
+#' Consolidate the header columns into one, taking the rightmost value and applying indent
+#'
+#' e.g. a | b | (all) -> b
+#' e.g. (all) | (all) | (all) -> Grand Total
+#'
+#' @param tab a tab object
+#' @param keyword The keyword to use to detect summarisation.  Uses '(all)' by default because this is what reshape2::dcast uses
+#' @param total_text The text to use for the grand total (a row where all the left headers are '(all)'. Defaults to Grand Total.
+#' @param left_header_colname The column name of left header column, which is now a single column.
+#'
+#' @export
+
 auto_style_indent <- function(tab, keyword = "(all)", total_text = NULL, left_header_colname = " ") {
 
   if (is.null(total_text)) {
@@ -201,10 +221,10 @@ auto_style_indent <- function(tab, keyword = "(all)", total_text = NULL, left_he
   all_count <- rowSums(to_count)
 
   # paste together all left headers
-  concat <- do.call(paste, c(left_headers_df, sep="=|="))
+  concat <- do.call(paste, c(left_headers_df, sep = "=|="))
 
   # Split concatenated string into elements, and find last element that's not (all)
-  elems <- strsplit(concat, "=\\|=", perl=TRUE)
+  elems <- strsplit(concat, "=\\|=", perl = TRUE)
 
   last_elem <- lapply(elems, function(x) {
     x <- x[x != keyword]
@@ -221,8 +241,6 @@ auto_style_indent <- function(tab, keyword = "(all)", total_text = NULL, left_he
   tab$body$body_df_to_write <- tab$body$body_df_to_write[cols]
   tab$body$body_df_to_write  <- cbind(new_left_headers = new_left_headers, tab$body$body_df_to_write, stringsAsFactors = FALSE)
   names(tab$body$body_df_to_write)[1] <- left_header_colname
-
-
 
   tab$body$left_header_colnames <- c(left_header_colname)
 
@@ -262,12 +280,13 @@ auto_style_indent <- function(tab, keyword = "(all)", total_text = NULL, left_he
   tab
 }
 
+# Add a right vertical border to the rightmost column of the left headers
 add_left_header_vertical_border <- function(tab, stylename = "right_border") {
 
   # What's the right most cell in the
   right_most <- length(tab$body$left_header_colnames)
 
-  tab$body$meta_col_[right_most] <- paste(tab$body$meta_col_[right_most], stylename, sep="|")
+  tab$body$meta_col_[right_most] <- paste(tab$body$meta_col_[right_most], stylename, sep = "|")
 
   tab
 
