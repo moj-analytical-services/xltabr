@@ -1,7 +1,7 @@
 # Combined.R contains functions that combine outputs from each
 # of the elements (title, top_headers, body etc.)
 
-#' Create all the required properties of the extent
+# Create all the required properties of the extent
 extent_initialise <- function(tab, topleft_row, topleft_col) {
 
   tab$extent <- list()
@@ -68,7 +68,7 @@ write_all_elements_to_wb <- function(tab) {
   tab
 }
 
-#' Get all the styles currently in use by the workbook
+# Get all the styles currently in use by the workbook
 combine_all_styles <- function(tab) {
 
   t1 <- title_get_cell_styles_table(tab)

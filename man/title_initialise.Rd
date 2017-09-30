@@ -7,7 +7,7 @@
 title_initialise(tab)
 }
 \arguments{
-\item{The}{core tab object}
+\item{tab}{core tab object}
 }
 \description{
 Create all the required properties for the title on the tab object

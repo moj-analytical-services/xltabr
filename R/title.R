@@ -1,6 +1,6 @@
 #' Create all the required properties for the title on the tab object
 #'
-#' @param The core tab object
+#' @param tab core tab object
 title_initialise <- function(tab) {
 
   tab$title <- list()

@@ -1,9 +1,9 @@
 # Use default .xlsx style catalogue to initialise the catalogue of styles
 style_catalogue_initialise <- function(tab) {
 
-  path <- xltabr:::get_style_path()
+  path <- get_style_path()
 
-  path_num <- xltabr:::get_num_format_path()
+  path_num <- get_num_format_path()
 
   tab <- style_catalogue_xlsx_import(tab)
   tab <- style_catalogue_import_num_formats(tab)
@@ -30,7 +30,7 @@ style_catalogue_xlsx_import <- function(tab) {
   # if initialising style_catalogue do we want to reset it with line below?
   tab$style_catalogue <- list()
 
-  path <- xltabr:::get_style_path()
+  path <- get_style_path()
 
   wb <- openxlsx::loadWorkbook(path)
   listed_styles <- openxlsx::readWorkbook(wb, colNames = FALSE)

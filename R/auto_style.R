@@ -13,7 +13,7 @@ auto_style_number_formatting <- function(tab, overrides = list()) {
   col_classes <- sapply(tab$body$body_df_to_write, class)
 
   # This lookup table coverts
-  path <- xltabr:::get_num_format_path()
+  path <- get_num_format_path()
 
   lookup_df <- utils::read.csv(path, stringsAsFactors = FALSE)
   # Convert to a named vector that can be used as a lookup
