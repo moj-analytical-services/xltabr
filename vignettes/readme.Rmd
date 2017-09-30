@@ -171,9 +171,9 @@ tab <- xltabr::initialise() %>%  #Options here for providing an existing workboo
   xltabr::add_top_headers(h_list) %>% # Optional row_style_names and col_style_names allows custom formatting
   xltabr::add_body(df) %>%  #Optional left_header_colnames, row_style_names, left_header_style_names col_style names
   xltabr::add_footer(footer_text) %>% # Optional footer_style_names
-  xltabr:::auto_detect_left_headers() %>% # Auto detect left headers through presence of keyword, default = '(all)'
-  xltabr:::auto_detect_body_title_level() %>% # Auto detect level of emphasis of each row in body, through presence of keyword
-  xltabr:::auto_style_indent() %>% # Consolidate all left headers into a single column, with indentation to signify emphasis level
+  xltabr::auto_detect_left_headers() %>% # Auto detect left headers through presence of keyword, default = '(all)'
+  xltabr::auto_detect_body_title_level() %>% # Auto detect level of emphasis of each row in body, through presence of keyword
+  xltabr::auto_style_indent() %>% # Consolidate all left headers into a single column, with indentation to signify emphasis level
   xltabr::auto_merge_title_cells() %>% # merge the cells in the title
   xltabr::auto_merge_footer_cells() # merge the cells in the footer
 ```
