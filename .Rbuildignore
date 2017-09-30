@@ -6,3 +6,4 @@
 .Rprofile
 .Rhistory
 ^travis\.R$
+^cran-comments.md$
