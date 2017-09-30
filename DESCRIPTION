@@ -1,18 +1,27 @@
 Package: xltabr
 Type: Package
-Title: Automatically write beautifully-formatted cross tabulations/contingency tables to Excel from R  
+Title: Automatically write beautifully formatted cross tabulations/contingency tables to Excel from R  
 Version: 0.1.0
-Author: Robin Linacre <robinlinacre@hotmail.com>, Karik Isichei <karik.isichei@gmail.com>
+Authors@R: c(
+    person("Robin", "Linacre", , "robinlinacre@hotmail.com",
+    role = c("aut", "cre")),
+    person(
+    "Karik", "Isichei", email="karik.isichei@gmail.com",
+    role=c("aut", "cre"))
+    )
 Maintainer: Robin Linacre <robinlinacre@hotmail.com>
-Description: xltabr allows you to write beautifully formatted cross tabulations to Excel 
-    usign openxlsx. It has been developed to help automate the process of publishing 
+Description: 'xltabr' allows you to write beautifully formatted cross tabulations to Excel 
+    usign 'openxlsx'. It has been developed to help automate the process of publishing 
     Official Statistics.  The user provides a dataframe, which is outputted to Excel with 
     various types of rich formatting which are automatically detected from the structure
-    of the cross tabulation.
+    of the cross tabulation.  Documentation can be found at the following url
+    <https://github.com/moj-analytical-services/xltabr>
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
+URL: https://github.com/moj-analytical-services/xltabr#readme
+BugReports: https://github.com/moj-analytical-services/xltabr/issues
 Roxygen: list(markdown = TRUE)
 Imports:
   magrittr,
