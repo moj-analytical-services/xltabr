@@ -78,16 +78,10 @@ openxlsx::openXL(wb)
 ``` r
 path <- system.file("extdata", "styles_pub.xlsx", package = "xltabr")
 cell_path <- system.file("extdata", "style_to_excel_number_format_alt.csv", package = "xltabr")
-
 xltabr::set_style_path(path)
 xltabr::set_cell_format_path(cell_path)
-
 wb <- xltabr::auto_crosstab_to_wb(ct)
 openxlsx::openXL(wb)
-
-# Set paths back to default
-xltabr::set_style_path()
-xltabr::set_cell_format_path()
 ```
 
 ![image](vignettes/example_5.png?raw=true)
@@ -95,6 +89,10 @@ xltabr::set_cell_format_path()
 ### Example 5: Output more than one table
 
 ``` r
+# Change back to default styles
+xltabr::set_style_path()
+xltabr::set_cell_format_path()
+
 # Create second crosstab
 ct2 <- reshape2::dcast(df, drive + age ~ colour, value.var= "value", margins=c("drive", "age"), fun.aggregate = sum)
 ct2 <- dplyr::arrange(ct2, -row_number())
@@ -116,10 +114,11 @@ tab <- xltabr::auto_crosstab_to_wb(ct, titles = titles, footers = c(footers, "")
 
 xltabr::set_style_path(path)
 xltabr::set_cell_format_path(cell_path)
+
 wb <- xltabr::auto_crosstab_to_wb(ct2, titles = titles2, footers = footers2, insert_below_tab = tab)
 openxlsx::openXL(wb)
 
-# Change back to default
+# Change back to default styles
 xltabr::set_style_path()
 xltabr::set_cell_format_path()
 ```
@@ -150,9 +149,11 @@ The following provides a list of all the options you can provide to `auto_crosst
     ## 
     ##      auto_crosstab_to_wb(df, auto_number_format = TRUE, top_headers = NULL,
     ##        titles = NULL, footers = NULL, auto_open = FALSE, indent = TRUE,
-    ##        left_header_colnames = NULL, vertical_border = TRUE, styles_xlsx = NULL,
-    ##        num_styles_csv = NULL, return_tab = FALSE, auto_merge = TRUE,
-    ##        insert_below_tab = NULL)
+    ##        left_header_colnames = NULL, vertical_border = TRUE, return_tab = FALSE,
+    ##        auto_merge = TRUE, insert_below_tab = NULL, total_text = NULL,
+    ##        include_header_rows = TRUE, wb = NULL, ws_name = NULL,
+    ##        number_format_overrides = list(), fill_na_with = NULL,
+    ##        fill_nan_with = NULL, allcount_to_level_translate = NULL)
     ##      
     ## Arguments:
     ## 
@@ -161,6 +162,8 @@ The following provides a list of all the options you can provide to `auto_crosst
     ## auto_number_format: Whether to automatically detect number format
     ## 
     ## top_headers: A list.  Custom top headers. See 'add_top_headers()'
+    ## 
+    ##   titles: The title.  A character vector.  One element per row of title
     ## 
     ##  footers: Table footers.  A character vector.  One element per row of footer.
     ## 
@@ -172,17 +175,27 @@ The following provides a list of all the options you can provide to `auto_crosst
     ## 
     ## vertical_border: Boolean. Do you want a left border?
     ## 
-    ## styles_xlsx: File path (string).  If provided, the styles defined in this xlsx are used rather than the default. See here for template.
-    ## 
     ## return_tab: Boolean.  Return a tab object rather than a openxlsx workbook object
     ## 
     ## auto_merge: Boolean.  Whether to merge cells in the title and footers to width of body
     ## 
     ## insert_below_tab: A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.
     ## 
-    ##    title: The title.  A character vector.  One element per row of title
+    ## total_text: The text that is used for the 'grand total' of a cross tabulation
     ## 
-    ## num_styles_csv.: File path.  If provided, overrides the default number styles, which can be found here.
+    ## include_header_rows: Boolean - whether to include or omit the header rows
+    ## 
+    ##       wb: A existing openxlsx workbook.  If not provided, a new one will be created
+    ## 
+    ##  ws_name: The name of the worksheet you want to write to
+    ## 
+    ## number_format_overrides: e.g. list("colname1" = "currency1") see auto_style_number_formatting
+    ## 
+    ## fill_na_with: Manually specify a string to replace any NAs with in workbook. Default leaves NAs as blank cells
+    ## 
+    ## fill_nan_with: Manually specify a string to replace any NANs with in workbook. Default leaves NANs as "#NUM!"
+    ## 
+    ## allcount_to_level_translate: Manually specify how to translate summary levels into header formatting
 
 Advanced usage
 --------------
@@ -197,9 +210,9 @@ tab <- xltabr::initialise() %>%  #Options here for providing an existing workboo
   xltabr::add_top_headers(h_list) %>% # Optional row_style_names and col_style_names allows custom formatting
   xltabr::add_body(df) %>%  #Optional left_header_colnames, row_style_names, left_header_style_names col_style names
   xltabr::add_footer(footer_text) %>% # Optional footer_style_names
-  xltabr:::auto_detect_left_headers() %>% # Auto detect left headers through presence of keyword, default = '(all)'
-  xltabr:::auto_detect_body_title_level() %>% # Auto detect level of emphasis of each row in body, through presence of keyword
-  xltabr:::auto_style_indent() %>% # Consolidate all left headers into a single column, with indentation to signify emphasis level
+  xltabr::auto_detect_left_headers() %>% # Auto detect left headers through presence of keyword, default = '(all)'
+  xltabr::auto_detect_body_title_level() %>% # Auto detect level of emphasis of each row in body, through presence of keyword
+  xltabr::auto_style_indent() %>% # Consolidate all left headers into a single column, with indentation to signify emphasis level
   xltabr::auto_merge_title_cells() %>% # merge the cells in the title
   xltabr::auto_merge_footer_cells() # merge the cells in the footer
 ```
