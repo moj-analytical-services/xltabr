@@ -7,15 +7,14 @@ Authors@R: c(
     role = c("aut", "cre")),
     person(
     "Karik", "Isichei", email="karik.isichei@gmail.com",
-    role=c("aut", "cre"))
+    role=c("aut"))
     )
-Maintainer: Robin Linacre <robinlinacre@hotmail.com>
 Description: 'xltabr' allows you to write beautifully formatted cross tabulations to Excel 
     usign 'openxlsx'. It has been developed to help automate the process of publishing 
     Official Statistics.  The user provides a dataframe, which is outputted to Excel with 
     various types of rich formatting which are automatically detected from the structure
-    of the cross tabulation.  Documentation can be found at the following url
-    <https://github.com/moj-analytical-services/xltabr>
+    of the cross tabulation.  Documentation can be found at the following
+    url <https://github.com/moj-analytical-services/xltabr>.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
