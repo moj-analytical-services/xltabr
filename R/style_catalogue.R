@@ -47,24 +47,20 @@ style_catalogue_xlsx_import <- function(tab) {
         next
       }
 
-      # tmp_list <- list()
-      # tmp_list$style <- i$style
-
-      # cell <- openxlsx::readWorkbook(wb, rows = r, cols = c + 1, colNames = FALSE, rowNames = FALSE)
-      # tmp_list$rowHeight <- cell[1, 1]
+      #See https://github.com/moj-analytical-services/xltabr/issues/88
+      value <- as.character(value)
 
       style_list <- convert_style_object(i$style)
       style_key <- create_style_key(style_list)
 
-      if (!value %in% names(tab$style_catalogue)){
-        tab$style_catalogue[[value]] <- style_key
-      }
+      tab$style_catalogue[[value]] <- style_key
     }
   }
 
   # Add in a checker to catch default style objects
   for (style_name in listed_styles$X1){
     if (!style_name %in% names(tab$style_catalogue)){
+      value <- as.character(value)
       tab$style_catalogue[[style_name]] <- create_style_key(convert_style_object(openxlsx::createStyle()))
     }
   }
