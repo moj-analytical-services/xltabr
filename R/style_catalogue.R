@@ -73,9 +73,17 @@ style_catalogue_xlsx_import <- function(tab) {
     }
   }
 
-  # If there are any cells populated with text that do not have a style,
+  # If there are any cells populated with text (a style name) but that do not have any styling applied
   # These need to be entered into the style catalogue with the default style
   # Otherwise, when xltabr tries to apply their styling, it will raise a 'style not found' error
+
+  # Listed styles is a table with all the cells with contents in the styles workbook
+  listed_styles <- openxlsx::readWorkbook(wb, colNames = FALSE)
+  for (style_name in listed_styles$X1) {
+    if (!style_name %in% names(tab$style_catalogue)) {
+      tab$style_catalogue[[style_name]] <- convert_style_list_to_character_key(convert_style_object_to_list(openxlsx::createStyle()))
+    }
+  }
 
   tab
 
