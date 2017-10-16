@@ -11,7 +11,7 @@ test_that("style conversion functions work as expected", {
   expect_true(t1[["fontSize"]] == 12)
   expect_true(all(t1[["fontDecoration"]] == c("BOLD","ITALIC")))
 
-  expect_true(xltabr:::create_style_key(t1) == style_key_test)
+  expect_true(xltabr:::convert_style_list_to_character_key(t1) == style_key_test)
 
 })
 
