@@ -60,7 +60,11 @@ style_catalogue_xlsx_import <- function(tab) {
       # Convert from s4 object to list
       style_list <- convert_style_object_to_list(this_style_object$style)
 
-      # Add row height property
+      # Add row height property if it's different to the default
+      if (as.character(r) %in% names(wb$rowHeights[[1]])) {
+        style_list$row_height <- wb$rowHeights[[1]][[as.character(r)]]
+        style_list$row_height <- as.double(style_list$row_height)
+      }
 
       #Convert from list to charaster string
       style_key <- convert_style_list_to_character_key(style_list)
@@ -69,7 +73,13 @@ style_catalogue_xlsx_import <- function(tab) {
     }
   }
 
+  # If there are any cells populated with text that do not have a style,
+  # These need to be entered into the style catalogue with the default style
+  # Otherwise, when xltabr tries to apply their styling, it will raise a 'style not found' error
+
   tab
+
+
 }
 
 # Serialises a list to a character string
@@ -78,7 +88,6 @@ convert_style_list_to_character_key <- function(style_list){
   style_key <- gsub(' +', ' ', paste0(utils::capture.output(dput(style_list)), collapse = ""))
   style_key
 }
-
 
 # Parses a character style_key to style_list
 style_key_parser <- function(style_key){
@@ -149,23 +158,24 @@ add_style_defintions_to_catalogue <- function(tab, style_definitions){
   tab
 }
 
-convert_style_object_to_list <- function(style, convert_to_S4 = FALSE){
-  if(convert_to_S4){
 
-    if(typeof(style) == "character"){
+convert_style_object_to_list <- function(style, convert_to_S4 = FALSE){
+  if (convert_to_S4) {
+
+    if (typeof(style) == "character") {
       style <- style_key_parser(style)
     }
 
     style_properties <- names(style)
 
-    if("numFmt" %in% style_properties){
+    if ("numFmt" %in% style_properties) {
       style_properties <- style_properties[!("numFmt" == style_properties)]
       out_style <- openxlsx::createStyle(numFmt = style[["numFmt"]])
     } else{
       out_style <- openxlsx::createStyle()
     }
 
-    for (prop in style_properties){
+    for (prop in style_properties) {
       out_style[[prop]] <- style[[prop]]
     }
 
@@ -175,7 +185,7 @@ convert_style_object_to_list <- function(style, convert_to_S4 = FALSE){
     out_style <- style$as.list()
 
     # For some reason fills do not export properly so workaround is added here
-    if(any(c("fillFg", "fillBg") %in% names(out_style))){
+    if (any(c("fillFg", "fillBg") %in% names(out_style))) {
       out_style[["fill"]] <- list(fillFg = out_style[["fillFg"]], fillBg = out_style[["fillBg"]])
       out_style[["fillFg"]] <- NULL
       out_style[["fillBg"]] <- NULL
@@ -207,7 +217,7 @@ add_styles_to_wb <- function(tab){
   # iterate over a unique list of style_keys for and apply them to the workbook for each row col
   unique_style_keys <- unique(full_table$style_key)
 
-  for (sk in unique_style_keys){
+  for (sk in unique_style_keys) {
     row_col_styles <- full_table[full_table$style_key == sk,]
     rows <- row_col_styles$row
     cols <- row_col_styles$col
@@ -217,8 +227,23 @@ add_styles_to_wb <- function(tab){
     # Add cell style
     openxlsx::addStyle(tab$wb, tab$misc$ws_name, created_style, rows, cols)
 
-    # If this row's row height is greater than Apply row height.
+    # If this row's row height is greater than apply row height
+    created_style <- style_key_parser(sk)
+    existing_row_height <-  get_prop_or_return_null(tab$wb$rowHeights[[1]], as.character(rows[[1]]))
 
+    if (is.null(existing_row_height)) {
+      existing_row_height <- 15
+    } else {
+      existing_row_height <- as.double(existing_row_height)
+    }
+
+    new_row_height <- get_prop_or_return_null(created_style, "row_height")
+
+    if (not_null(new_row_height)) {
+      if (new_row_height > existing_row_height) {
+        openxlsx::setRowHeights(tab$wb, tab$misc$ws_name, rows, new_row_height)
+      }
+    }
   }
 
   tab
@@ -229,12 +254,12 @@ compare_style_lists <- function(a, b){
   a_names <- sort(names(a))
   b_names <- sort(names(b))
 
-  if(length(a_names) != length(b_names)) return(FALSE)
-  if(!all(a_names == b_names)) return(FALSE)
+  if (length(a_names) != length(b_names)) return(FALSE)
+  if (!all(a_names == b_names)) return(FALSE)
 
   final_check <- TRUE
-  for (prop in a_names){
-    if(!identical(a[prop], b[prop])){
+  for (prop in a_names) {
+    if (!identical(a[prop], b[prop])) {
       final_check <- FALSE
       break;
     }
