@@ -33,3 +33,11 @@ is_null_or_blank <- function(x) {
 
   return(FALSE)
 }
+
+get_prop_or_return_null <- function(mylist, key) {
+  if (key %in% names(mylist) ) {
+    return(mylist[[key]])
+  } else {
+    return(NULL)
+  }
+}
