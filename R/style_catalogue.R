@@ -60,6 +60,8 @@ style_catalogue_xlsx_import <- function(tab) {
       # Convert from s4 object to list
       style_list <- convert_style_object_to_list(this_style_object$style)
 
+      # Add row height property
+
       #Convert from list to charaster string
       style_key <- convert_style_list_to_character_key(style_list)
 
@@ -70,28 +72,37 @@ style_catalogue_xlsx_import <- function(tab) {
   tab
 }
 
-# add_to_dictionary
-# returns a style_key string based on our style catelogue objects (should also work with default R lists)
+# Serialises a list to a character string
+# Returns a style_key string based on our style catalogue objects (should also work with default R lists)
 convert_style_list_to_character_key <- function(style_list){
   style_key <- gsub(' +', ' ', paste0(utils::capture.output(dput(style_list)), collapse = ""))
-
   style_key
 }
 
-# Converts style object property to string representation (used in convert_style_list_to_character_key function) Depreciated
-property_to_key <- function(style_object, property){
-  if(is.null(style_object[[property]])){
-    return(NULL)
-  }
-  else{
-    return(paste(property, paste0(style_object[[property]], collapse = "%"), sep = "_"))
-  }
+
+# Parses a character style_key to style_list
+style_key_parser <- function(style_key){
+  style_list <- eval(parse(text = style_key))
+  style_list
 }
 
-# Converts style_key to style_list
-style_key_parser <- function(style_key){
-  style_list <- eval(parse(text=style_key))
-  style_list
+# Where we have an existing style, and a new style, this function determines the inheritance rules
+# similar to cascading style sheets
+# e.g. in body|header_1, we want header_1 styles to over
+cascade_style <- function(existing_style, new_style) {
+
+  for (property_name in names(new_style)) {
+
+    # fontDectoration is a special case because we we want bold + italic to = bolditalic, not italic
+    if (property_name == "fontDecoration") {
+      existing_style[[property_name]] <- unique(c(existing_style[[property_name]], new_style[[property_name]]))
+    } else {
+      existing_style[property_name] <- new_style[property_name]
+    }
+  }
+
+  existing_style
+
 }
 
 # looks at the cell_style_definition and build a final style_key for that cell
@@ -105,38 +116,32 @@ build_style <- function(tab, cell_style_definition){
   base_styles <- names(tab$style_catalogue)[!grepl("\\|",names(tab$style_catalogue))]
   ussd <- unique(seperated_style_definition)
   style_check <- ussd %in% base_styles
-  if(!all(style_check)){
+  if (!all(style_check)) {
     stop(paste("The following style names:",  paste0(ussd[!style_check], collapse = ", "), "are not in the style_catalogue please add then maunally or specify them in style.xlsx"))
   }
-  ##
 
-  if (length(seperated_style_definition) <= 1){
-    return (tab$style_catalogue[[seperated_style_definition]])
+
+  if (length(seperated_style_definition) <= 1) {
+    return(tab$style_catalogue[[seperated_style_definition]])
   }
   else{
     # Otherwise build final style
     previous_style <- style_key_parser(tab$style_catalogue[[seperated_style_definition[1]]])
-    for (i in 2:length(seperated_style_definition)){
-      current_style <- style_key_parser(tab$style_catalogue[[seperated_style_definition[i]]])
-      for (property_name in names(current_style)){
-        if(property_name == "fontDecoration"){
-          previous_style[[property_name]] <- unique(c(previous_style[[property_name]], current_style[[property_name]]))
-        } else {
-          previous_style[property_name] <- current_style[property_name]
-        }
-      }
+    for (base_style_index in 2:length(seperated_style_definition)) {
+      current_style <- style_key_parser(tab$style_catalogue[[seperated_style_definition[base_style_index]]])
+      previous_style <- cascade_style(previous_style, current_style)
     }
   }
-  return (convert_style_list_to_character_key(previous_style))
+  return(convert_style_list_to_character_key(previous_style))
 }
 
-add_style_defintions_to_catelogue <- function(tab, style_definitions){
+add_style_defintions_to_catalogue <- function(tab, style_definitions){
 
-  for (style_def in style_definitions){
+  for (style_def in style_definitions) {
     style_key <- build_style(tab, style_def)
 
     # Always log the key value pair in the style dictionary
-    if (!style_def %in% names(tab$style_catalogue)){
+    if (!style_def %in% names(tab$style_catalogue)) {
       tab$style_catalogue[[style_def]] <- style_key
     }
   }
@@ -182,18 +187,19 @@ convert_style_object_to_list <- function(style, convert_to_S4 = FALSE){
 
 add_styles_to_wb <- function(tab){
 
+  # Get a table with a style for each cell
   full_table <- combine_all_styles(tab)
 
-  if(is.null(full_table)) stop("Please ensure add_from has appropriate values and a table has been added to tab")
+  if (is.null(full_table)) stop("Please ensure add_from has appropriate values and a table has been added to tab")
 
   # Bloody factors
-  full_table <- data.frame(lapply(full_table, as.character), stringsAsFactors=FALSE)
+  full_table <- data.frame(lapply(full_table, as.character), stringsAsFactors = FALSE)
 
   # Get a unique vector of style_name from full_table
   unique_styles_definitions <- unique(full_table$style_name)
 
   # Add unique style_name vector to style catalogue
-  tab <- add_style_defintions_to_catelogue(tab, unique_styles_definitions)
+  tab <- add_style_defintions_to_catalogue(tab, unique_styles_definitions)
 
   # add the style_key to each style name in full table
   full_table$style_key <- unlist(tab$style_catalogue[full_table$style_name])
@@ -207,7 +213,12 @@ add_styles_to_wb <- function(tab){
     cols <- row_col_styles$col
 
     created_style <- convert_style_object_to_list(sk, convert_to_S4 = TRUE)
+
+    # Add cell style
     openxlsx::addStyle(tab$wb, tab$misc$ws_name, created_style, rows, cols)
+
+    # If this row's row height is greater than Apply row height.
+
   }
 
   tab

@@ -42,12 +42,13 @@ test_that("Run through style_catalogue functions from reading style sheet to add
   bs2 <- xltabr:::build_style(tab, cell_style_definition = test_cell_style_def2)
   bs3 <- xltabr:::build_style(tab, cell_style_definition = test_cell_style_def3)
 
+
   expect_true(expected_bs_1 == bs1)
   expect_true(expected_bs_2 == bs2)
   expect_true(expected_bs_3 == bs3)
 
   multiple_styles <- c(test_cell_style_def1, test_cell_style_def2, test_cell_style_def3)
-  tab <- xltabr:::add_style_defintions_to_catelogue(tab, multiple_styles)
+  tab <- xltabr:::add_style_defintions_to_catalogue(tab, multiple_styles)
 
   expect_true(all(names(tab$style_catalogue) %in% c(expected_style_names, multiple_styles)))
 })
