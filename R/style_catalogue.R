@@ -1,15 +1,15 @@
 # Use default .xlsx style catalogue to initialise the catalogue of styles
+# Following initialisation, we have tab$style catalogue, which contains each style.
+# Values are chracter 'structures' e.g. '"structure(list(valign = \"center\"), .Names = \"valign\")"'
 style_catalogue_initialise <- function(tab) {
-
-  path <- get_style_path()
-
-  path_num <- get_num_format_path()
 
   tab <- style_catalogue_xlsx_import(tab)
   tab <- style_catalogue_import_num_formats(tab)
   tab
 }
 
+# Number formats are stored in a csv, by default at xltabr/inst/extdata/style_to_excel_number_format.csv
+# This is a named style (e.g. percent1) whcich translates into an Excel style (e.g. #,0.0%;#,0.0%;;* @)
 style_catalogue_import_num_formats <- function(tab){
 
   lookup_df <- utils::read.csv(get_cell_format_path(), stringsAsFactors = FALSE)
@@ -18,8 +18,13 @@ style_catalogue_import_num_formats <- function(tab){
   style_keys <- lookup_df$excel_format
   style_names <- lookup_df$style_name
 
-  for (i in 1:length(style_names)){
-    tab$style_catalogue[[style_names[i]]] <- create_style_key(list(numFmt = style_keys[i]))
+  if (length(style_names) == 0) {
+    warning("Your number format excel contained no data.  For an example see xltabr/inst/extdata/style_to_excel_number_format.csv")
+    return(tab)
+  }
+
+  for (i in 1:length(style_names)) {
+    tab$style_catalogue[[style_names[i]]] <- convert_style_list_to_character_key(list(numFmt = style_keys[i]))
   }
   tab
 }
@@ -27,41 +32,38 @@ style_catalogue_import_num_formats <- function(tab){
 # Iterate through the default style workbook, adding them to the styles catalogue
 style_catalogue_xlsx_import <- function(tab) {
 
-  # if initialising style_catalogue do we want to reset it with line below?
-  tab$style_catalogue <- list()
-
   path <- get_style_path()
 
   wb <- openxlsx::loadWorkbook(path)
-  listed_styles <- openxlsx::readWorkbook(wb, colNames = FALSE)
 
-  for (i in wb$styleObjects) {
-    for (iter in 1:length(i$rows)){
-      r <- i$rows[iter]
-      c <- i$cols[iter]
+  # When you load an Excel document, openxlsx creates a list of the distinct style objects in the workbook
+  # Iterate through these style objects
+  for (this_style_object in wb$styleObjects) {
+
+    # It's possible that two styles (e.g. top header, title1) might have the same style.  If so, create an entry for both
+    for (this_row in 1:length(this_style_object$rows)) {
+
+      r <- this_style_object$rows[this_row]
+      c <- 1 # We assume that all styles are stored in the leftmost column
+
       suppressWarnings(cell <- openxlsx::readWorkbook(wb, rows = r, cols = c, colNames = FALSE, rowNames = FALSE))
 
-      value <- cell[1, 1]
+      style_cat_name <- cell[1, 1]
 
-      if (is.null(value)) {
+      if (is_null_or_blank(style_cat_name)) {
         next
       }
 
       #See https://github.com/moj-analytical-services/xltabr/issues/88
-      value <- as.character(value)
+      style_cat_name <- as.character(style_cat_name)
 
-      style_list <- convert_style_object(i$style)
-      style_key <- create_style_key(style_list)
+      # Convert from s4 object to list
+      style_list <- convert_style_object_to_list(this_style_object$style)
 
-      tab$style_catalogue[[value]] <- style_key
-    }
-  }
+      #Convert from list to charaster string
+      style_key <- convert_style_list_to_character_key(style_list)
 
-  # Add in a checker to catch default style objects
-  for (style_name in listed_styles$X1){
-    if (!style_name %in% names(tab$style_catalogue)){
-      value <- as.character(value)
-      tab$style_catalogue[[style_name]] <- create_style_key(convert_style_object(openxlsx::createStyle()))
+      tab$style_catalogue[[style_cat_name]] <- style_key
     }
   }
 
@@ -70,13 +72,13 @@ style_catalogue_xlsx_import <- function(tab) {
 
 # add_to_dictionary
 # returns a style_key string based on our style catelogue objects (should also work with default R lists)
-create_style_key <- function(style_list){
+convert_style_list_to_character_key <- function(style_list){
   style_key <- gsub(' +', ' ', paste0(utils::capture.output(dput(style_list)), collapse = ""))
 
   style_key
 }
 
-# Converts style object property to string representation (used in create_style_key function) Depreciated
+# Converts style object property to string representation (used in convert_style_list_to_character_key function) Depreciated
 property_to_key <- function(style_object, property){
   if(is.null(style_object[[property]])){
     return(NULL)
@@ -125,7 +127,7 @@ build_style <- function(tab, cell_style_definition){
       }
     }
   }
-  return (create_style_key(previous_style))
+  return (convert_style_list_to_character_key(previous_style))
 }
 
 add_style_defintions_to_catelogue <- function(tab, style_definitions){
@@ -142,7 +144,7 @@ add_style_defintions_to_catelogue <- function(tab, style_definitions){
   tab
 }
 
-convert_style_object <- function(style, convert_to_S4 = FALSE){
+convert_style_object_to_list <- function(style, convert_to_S4 = FALSE){
   if(convert_to_S4){
 
     if(typeof(style) == "character"){
@@ -204,7 +206,7 @@ add_styles_to_wb <- function(tab){
     rows <- row_col_styles$row
     cols <- row_col_styles$col
 
-    created_style <- convert_style_object(sk, convert_to_S4 = TRUE)
+    created_style <- convert_style_object_to_list(sk, convert_to_S4 = TRUE)
     openxlsx::addStyle(tab$wb, tab$misc$ws_name, created_style, rows, cols)
   }
 
