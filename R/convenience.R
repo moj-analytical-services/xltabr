@@ -170,11 +170,11 @@ auto_crosstab_to_wb <-
 
   tab <- write_all_elements_to_wb(tab)
 
+  tab <- add_styles_to_wb(tab)
+
   if (auto_open) {
     openxlsx::openXL(tab$wb)
   }
-
-  tab <- add_styles_to_wb(tab)
 
   if (return_tab) {
     return(tab)
