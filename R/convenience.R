@@ -97,6 +97,7 @@ auto_df_to_wb <-
 #' @param ws_name The name of the worksheet you want to write to
 #' @param fill_na_with Manually specify a string to replace any NAs with in workbook. Default leaves NAs as blank cells
 #' @param fill_nan_with Manually specify a string to replace any NANs with in workbook. Default leaves NANs as "#NUM!"
+#' @param fill_inf_with Manually specify a string to replace any Infs with in workbook. Default leaves NANs as "#NUM!"
 #' @param allcount_to_level_translate Manually specify how to translate summary levels into header formatting
 #'
 #' @export
@@ -118,8 +119,7 @@ auto_crosstab_to_wb <-
            wb = NULL,
            ws_name = NULL,
            number_format_overrides = list(),
-           fill_na_with = NULL,
-           fill_nan_with = NULL,
+           fill_non_values_with = list(na = NULL, nan = NULL, inf = NULL, neg_inf = NULL),
            allcount_to_level_translate = NULL) {
 
   top_header_provided <- TRUE
@@ -135,7 +135,7 @@ auto_crosstab_to_wb <-
     tab <- add_top_headers(tab, top_headers)
   }
 
-  tab <- add_body(tab, df,left_header_colnames = left_header_colnames, fill_na_with = fill_na_with, fill_nan_with = fill_nan_with)
+  tab <- add_body(tab, df,left_header_colnames = left_header_colnames, fill_non_values_with = fill_non_values_with)
 
   if (is.null(left_header_colnames)) {
     tab <- auto_detect_left_headers(tab)
