@@ -41,3 +41,7 @@ get_prop_or_return_null <- function(mylist, key) {
     return(NULL)
   }
 }
+
+is_truely_na <- function(x){
+  return(is.na(x) & !is.nan(x))
+}
