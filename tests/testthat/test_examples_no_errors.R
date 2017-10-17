@@ -1,4 +1,4 @@
-context("Test full examples don't produce errors")
+context("Test full examples don't produce unknown errors")
 
 test_that("Test cross tab from synthetic data 1", {
 
@@ -19,8 +19,9 @@ test_that("Test cross tab from synthetic data 1.5 (adding NA and NaN)", {
   ct[6,4] <- Inf
   ct[7,4] <- -Inf
 
-  tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE, fill_non_values_with = list(na = '*', nan = '**', inf = '££', neg_inf = '$$'))
-
+  tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE, fill_non_values_with = list(na = '*', nan = 10.1234, inf = '££', neg_inf = '$$'))
+  expect_error(xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE, fill_non_values_with = list(na = list('*',"**"))))
+  expect_error(xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE, fill_non_values_with = list(chicken = '*')))
 })
 
 test_that("Test cross tab from synthetic data 2", {

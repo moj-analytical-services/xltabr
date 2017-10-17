@@ -27,7 +27,7 @@ body_initialise <- function(tab) {
 #' @param row_style_names Manually specify the styles that apply to each row (as opposed to using the autodetect functions).  Styles provided must be present in the style catalogue
 #' @param left_header_style_names Manually specify the addition styles that will apply to cells in the left headers.  Must be present in styles catalogue
 #' @param col_style_names Manually specify the additional styles that will be applied to each column.  Must be present in styles catalogue
-#' @param fill_non_values_with Manual changes
+#' @param fill_non_values_with Manually specify a list of strings that will replace non numbers types NA, NaN, Inf and -Inf. e.g. list(na = '*', nan = '', inf = '-', neg_inf = '--'). Note: NaNs are not treated as NAs.
 #'
 #' @export
 add_body <-
@@ -78,7 +78,12 @@ add_body <-
     tab$body$user_provided_col_style_names <- col_style_names
   }
 
-  # Here
+  # Run checks on fill_non_values_with
+  possible_names <- c('na', 'nan', 'inf', 'neg_inf')
+
+  if (any(!names(fill_non_values_with) %in% possible_names) | max(unlist(lapply(fill_non_values_with, length))) > 1 | !is.list(fill_non_values_with)){
+    stop(paste0('Error: The input fill_non_values_with must be a list and cannot have names other than: ', paste0(possible_names, collapse = ", "), '. Each element in this list must also be a single value (e.g. not a vector or list)'))
+  }
   tab$body$fill_non_values_with <- fill_non_values_with
 
   tab
@@ -223,11 +228,11 @@ body_write_rows <- function(tab) {
 
     openxlsx::writeData(tab$wb, ws_name, data, startRow = row, startCol = col, colNames = FALSE)
 
-    # Here
+    # Replace non-values with specified values
     if(not_null(tab$body$fill_non_values_with$na)){
       row_values <- body_get_wb_rows(tab)
         for (c in 1:ncol(data)){
-          for (r in row_values[is.na(data[,c])]) openxlsx::writeData(tab$wb, ws_name, tab$body$fill_non_values_with$na, startRow = r, startCol = c, colNames = FALSE)
+          for (r in row_values[is_truely_na(data[,c])]) openxlsx::writeData(tab$wb, ws_name, tab$body$fill_non_values_with$na, startRow = r, startCol = c, colNames = FALSE)
         }
     }
 

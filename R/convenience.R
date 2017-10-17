@@ -95,9 +95,7 @@ auto_df_to_wb <-
 #' @param number_format_overrides e.g. list("colname1" = "currency1") see [auto_style_number_formatting]
 #' @param wb A existing openxlsx workbook.  If not provided, a new one will be created
 #' @param ws_name The name of the worksheet you want to write to
-#' @param fill_na_with Manually specify a string to replace any NAs with in workbook. Default leaves NAs as blank cells
-#' @param fill_nan_with Manually specify a string to replace any NANs with in workbook. Default leaves NANs as "#NUM!"
-#' @param fill_inf_with Manually specify a string to replace any Infs with in workbook. Default leaves NANs as "#NUM!"
+#' @param fill_non_values_with Manually specify a list of strings that will replace non numbers types NA, NaN, Inf and -Inf. e.g. list(na = '*', nan = '', inf = '-', neg_inf = '--'). Note: NaNs are not treated as NAs.
 #' @param allcount_to_level_translate Manually specify how to translate summary levels into header formatting
 #'
 #' @export

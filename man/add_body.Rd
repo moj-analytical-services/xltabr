@@ -22,7 +22,7 @@ add_body(tab, df, left_header_colnames = NULL, row_style_names = NULL,
 
 \item{col_style_names}{Manually specify the additional styles that will be applied to each column.  Must be present in styles catalogue}
 
-\item{fill_non_values_with}{Manual changes}
+\item{fill_non_values_with}{Manually specify a list of strings that will replace non numbers types NA, NaN, Inf and -Inf. e.g. list(na = '*', nan = '', inf = '-', neg_inf = '--'). Note: NaNs are not treated as NAs.}
 }
 \description{
 Add a table body (a df) to the tab.

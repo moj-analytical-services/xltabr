@@ -152,8 +152,8 @@ The following provides a list of all the options you can provide to `auto_crosst
     ##        left_header_colnames = NULL, vertical_border = TRUE, return_tab = FALSE,
     ##        auto_merge = TRUE, insert_below_tab = NULL, total_text = NULL,
     ##        include_header_rows = TRUE, wb = NULL, ws_name = NULL,
-    ##        number_format_overrides = list(), fill_na_with = NULL,
-    ##        fill_nan_with = NULL, allcount_to_level_translate = NULL)
+    ##        number_format_overrides = list(), fill_non_values_with = list(na = NULL,
+    ##        nan = NULL, inf = NULL, neg_inf = NULL), allcount_to_level_translate = NULL)
     ##      
     ## Arguments:
     ## 
@@ -191,9 +191,7 @@ The following provides a list of all the options you can provide to `auto_crosst
     ## 
     ## number_format_overrides: e.g. list("colname1" = "currency1") see auto_style_number_formatting
     ## 
-    ## fill_na_with: Manually specify a string to replace any NAs with in workbook. Default leaves NAs as blank cells
-    ## 
-    ## fill_nan_with: Manually specify a string to replace any NANs with in workbook. Default leaves NANs as "#NUM!"
+    ## fill_non_values_with: Manually specify a list of strings that will replace non numbers types NA, NaN, Inf and -Inf. e.g. list(na = '*', nan = '', inf = '-', neg_inf = '-'). Note: NaNs are not treated as NAs.
     ## 
     ## allcount_to_level_translate: Manually specify how to translate summary levels into header formatting
 
