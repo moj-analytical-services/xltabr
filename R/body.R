@@ -224,31 +224,31 @@ body_write_rows <- function(tab) {
     openxlsx::writeData(tab$wb, ws_name, data, startRow = row, startCol = col, colNames = FALSE)
 
     # Here
-    if(not_null(tab$body$na)){
+    if(not_null(tab$body$fill_non_values_with$na)){
       row_values <- body_get_wb_rows(tab)
         for (c in 1:ncol(data)){
-          for (r in row_values[is.na(data[,c])]) openxlsx::writeData(tab$wb, ws_name, tab$body$na, startRow = r, startCol = c, colNames = FALSE)
+          for (r in row_values[is.na(data[,c])]) openxlsx::writeData(tab$wb, ws_name, tab$body$fill_non_values_with$na, startRow = r, startCol = c, colNames = FALSE)
         }
     }
 
-    if(not_null(tab$body$nan)){
+    if(not_null(tab$body$fill_non_values_with$nan)){
       row_values <- body_get_wb_rows(tab)
       for (c in 1:ncol(data)){
-        for (r in row_values[is.nan(data[,c])]) openxlsx::writeData(tab$wb, ws_name, tab$body$nan, startRow = r, startCol = c, colNames = FALSE)
+        for (r in row_values[is.nan(data[,c])]) openxlsx::writeData(tab$wb, ws_name, tab$body$fill_non_values_with$nan, startRow = r, startCol = c, colNames = FALSE)
       }
     }
 
-    if(not_null(tab$body$inf)){
+    if(not_null(tab$body$fill_non_values_with$inf)){
       row_values <- body_get_wb_rows(tab)
       for (c in 1:ncol(data)){
-        for (r in row_values[is.infinite(data[,c]) & sign(data[,c]) == 1]) openxlsx::writeData(tab$wb, ws_name, tab$body$inf, startRow = r, startCol = c, colNames = FALSE)
+        for (r in row_values[is.infinite(data[,c]) & data[,c] > 0]) openxlsx::writeData(tab$wb, ws_name, tab$body$fill_non_values_with$inf, startRow = r, startCol = c, colNames = FALSE)
       }
     }
 
-    if(not_null(tab$body$neg_inf)){
+    if(not_null(tab$body$fill_non_values_with$neg_inf)){
       row_values <- body_get_wb_rows(tab)
       for (c in 1:ncol(data)){
-        for (r in row_values[is.infinite(data[,c]) & sign(data[,c]) == -1]) openxlsx::writeData(tab$wb, ws_name, tab$body$neg_inf, startRow = r, startCol = c, colNames = FALSE)
+        for (r in row_values[is.infinite(data[,c]) & data[,c] < 0]) openxlsx::writeData(tab$wb, ws_name, tab$body$fill_non_values_with$neg_inf, startRow = r, startCol = c, colNames = FALSE)
       }
     }
     tab
