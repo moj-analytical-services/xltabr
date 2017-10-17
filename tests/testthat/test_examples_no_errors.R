@@ -16,8 +16,12 @@ test_that("Test cross tab from synthetic data 1.5 (adding NA and NaN)", {
   ct <- reshape2::dcast(df, drive + age + colour ~ type, value.var= "value", margins=c("drive", "age", "colour"), fun.aggregate = mean)
   ct[4,4] <- NA
   ct[5,4] <- NaN
-  tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE, fill_na_with = "**", fill_nan_with = "..")
+  ct[6,4] <- Inf
+  ct[6,5] <- -Inf
 
+  tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE, fill_non_values_with = list(na = 'a', nan = 'b', inf = 'c', neg_inf = 'd'))
+
+  openxlsx::openXL(tab$wb)
 })
 
 test_that("Test cross tab from synthetic data 2", {
