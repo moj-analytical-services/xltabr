@@ -6,7 +6,8 @@
 \usage{
 add_body(tab, df, left_header_colnames = NULL, row_style_names = NULL,
   left_header_style_names = NULL, col_style_names = NULL,
-  fill_na_with = NULL, fill_nan_with = NULL)
+  fill_non_values_with = list(na = NULL, nan = NULL, inf = NULL, neg_inf =
+  NULL))
 }
 \arguments{
 \item{tab}{The core tab object}
@@ -21,9 +22,7 @@ add_body(tab, df, left_header_colnames = NULL, row_style_names = NULL,
 
 \item{col_style_names}{Manually specify the additional styles that will be applied to each column.  Must be present in styles catalogue}
 
-\item{fill_na_with}{Manually specify a string to replace any NAs with in workbook. Default leaves NAs as blank cells}
-
-\item{fill_nan_with}{Manually specify a string to replace any NANs with in workbook. Default leaves NANs as "#NUM!"}
+\item{fill_non_values_with}{Manual changes}
 }
 \description{
 Add a table body (a df) to the tab.
