@@ -7,7 +7,7 @@ output:
     variant: markdown_github
 ---
 
-[![Coverage Status](https://img.shields.io/codecov/c/github/moj-analytical-services/xltabr/dev.svg)](https://codecov.io/github/moj-analytical-services/xltabr?branch=dev)
+[![Coverage Status](https://img.shields.io/codecov/c/github/moj-analytical-services/xltabr/master.svg)](https://codecov.io/github/moj-analytical-services/xltabr?branch=master)
 [![Build Status](https://travis-ci.org/moj-analytical-services/xltabr.svg?branch=dev)](https://travis-ci.org/moj-analytical-services/xltabr)
 
 **Warning: `xltabr` is in early development.  Please raise an [issue](https://github.com/moj-analytical-services/xltabr/issues) if you find any bugs**
