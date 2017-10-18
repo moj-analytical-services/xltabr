@@ -78,3 +78,20 @@ combine_all_styles <- function(tab) {
 
   rbind(t1, t2, t3, t4)
 }
+
+#' Write the styles and data contained in tab object to the workbook at tab$wb.
+#' This is useful if the user has prepared a tab object, e.g. using auto_crosstab_to_tab
+#' maybe performed some customisation, and now needs to write out to the workbook
+#'
+#' @param tab a table object
+#' @export
+write_data_and_styles_to_wb <- function(tab) {
+
+  tab <- write_all_elements_to_wb(tab)
+
+  tab <- add_styles_to_wb(tab)
+
+  tab
+
+}
+
