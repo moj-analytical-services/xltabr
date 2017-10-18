@@ -12,13 +12,13 @@ style_catalogue_initialise <- function(tab) {
 
   path <- "styles.xlsx"
   num_path <- "style_to_excel_number_format.csv"
-  xltabr_style_lookup <- convert_xlsx_and_csv_to_style_lookup(tab)
+  xltabr_style_lookup <- convert_xlsx_and_csv_to_style_lookup()
   xltabr_style_lookup <- add_num_formats_to_style_lookup(xltabr_style_lookup)
   tab$style_catalogue <- xltabr_style_lookup
   tab
 }
 
-convert_xlsx_and_csv_to_style_lookup <- function(tab) {
+convert_xlsx_and_csv_to_style_lookup <- function() {
 
   # This is a bit tricky due to the potential for styles in the .xlsx file which
   # could have no styling ( e.g. body), and therefore do not exist in when we iterate through wb$styleObjects
@@ -38,7 +38,8 @@ convert_xlsx_and_csv_to_style_lookup <- function(tab) {
     }
 
     worksheet <- wb$worksheets[[1]] # We only expect styles in the first sheet of the .xlsx workbook
-    # Associate a default style with rows in the xlsx that do not have a style
+    # Associate a default style with rows in the xlsx that do not have a style.  Note at this point
+    # we don't check for whether the contents of the cell are actually nothing
     for (row_index in worksheet$sheet_data$rows) {
 
       key <- paste(row_index,1, sep = ",")
@@ -55,7 +56,10 @@ convert_xlsx_and_csv_to_style_lookup <- function(tab) {
     xltabr_style_lookup_new <- list()
     for (row_index in worksheet$sheet_data$rows) {
       old_key <- paste(row_index,1, sep = ",")
-      value_sheet <- openxlsx::readWorkbook(wb, rows = row_index, cols = 1, colNames = FALSE)
+      value_sheet <- suppressWarnings(openxlsx::readWorkbook(wb, rows = row_index, cols = 1, colNames = FALSE))
+      if (is_null_or_blank(value_sheet)) {
+        next
+      }
       new_key <- value_sheet[[1,1]]
       xltabr_style_lookup_new[[new_key]] <- xltabr_style_lookup[[old_key]]
       xltabr_style_lookup_new[[new_key]]$row_in_xlsx_stylesheet <- row_index
@@ -73,7 +77,6 @@ convert_xlsx_and_csv_to_style_lookup <- function(tab) {
 
     for (xltabr_style in xltabr_style_lookup) {
 
-      worksheet_index <- which(tab$wb$sheet_names == tab$misc$ws_name)
       row <- as.character(xltabr_style$row_in_xlsx_stylesheet)
       row_height <- wb$rowHeights[[1]][row]  #This will return na if there's no entry
 
@@ -107,7 +110,7 @@ add_num_formats_to_style_lookup <- function(xltabr_style_lookup) {
 
   if (length(style_strings) == 0) {
     warning("Your number format excel contained no data.  For an example see xltabr/inst/extdata/style_to_excel_number_format.csv")
-    return(tab)
+    return(NULL)
   }
 
   for (i in 1:length(style_strings)) {
@@ -154,6 +157,8 @@ style_string_parse_and_combine <- function(style_lookup, style_string) {
 
   # This is a reduce operation, but Reduce only works with vectors
   base_style <- xltabr_styles_to_combine[[1]]
+  xltabr_styles_to_combine[[1]] <- NULL
+
   for (s in xltabr_styles_to_combine) {
     base_style <- style_inherit(base_style, s)
   }
@@ -164,7 +169,26 @@ style_string_parse_and_combine <- function(style_lookup, style_string) {
 
 style_inherit <- function(base_xltabr_style, new_xltabr_style) {
 
+  # Ignore fontColour = 1 (i.e. user just left it black)
+  if (not_null(new_xltabr_style$style_list$fontColour)) {
+    if (new_xltabr_style$style_list$fontColour == "1") {
+      new_xltabr_style$style_list$fontColour <- base_xltabr_style$style_list$fontColour
+    }
+  }
+
+  if (not_null(new_xltabr_style$style_list$fontName)) {
+    tryCatch({
+      base_xltabr_style$style_list$fontFamily <- NULL
+      base_xltabr_style$style_list$fontScheme <- NULL
+    })
+  }
+
   new_style_list <- modifyList(base_xltabr_style$style_list, new_xltabr_style$style_list)
+
+  # Inherit font decoration (we want bold + italic to become bold, italic, not italic)
+  new_style_list$fontDecoration <- unique(c(base_xltabr_style$style_list$fontDecoration, new_xltabr_style$style_list$fontDecoration))
+
+
 
   new_xltabr_style$style_list <- new_style_list
 
@@ -237,8 +261,8 @@ add_styles_to_wb <- function(tab) {
     cols <- row_col_styles$col
 
     tab <- create_style_if_not_exists(tab, style_combination_string)
-    xltabr_style <- tab$style_catalogue[[style_combination_string]]
 
+    xltabr_style <- tab$style_catalogue[[style_combination_string]]
     openxlsx::addStyle(tab$wb, tab$misc$ws_name, xltabr_style$s4style, rows, cols)
 
     tab <- update_row_heights(tab, rows, xltabr_style)

@@ -1,52 +1,217 @@
 context("Test styles")
 
-test_that("style conversion functions work as expected", {
+test_that("Test font decoration inherits correctly", {
 
-  style_key_test <- "structure(list(fontName = structure(list(val = \"Calibri\"), .Names = \"val\"), fontSize = structure(list(val = 12), .Names = \"val\"), fontDecoration = c(\"BOLD\", \"ITALIC\")), .Names = c(\"fontName\", \"fontSize\", \"fontDecoration\"))"
+  path <- system.file("extdata", "tester_styles.xlsx", package = "xltabr")
+  xltabr::set_style_path(path)
+  tab <- xltabr::initialise()
 
-  t1 <- xltabr:::style_key_parser(style_key_test)
+  tab <- xltabr:::create_style_if_not_exists(tab, "bold|italic")
+  xltabr_style <- tab$style_catalogue$`bold|italic`
 
-  expect_true(all(names(t1) == c("fontName", "fontSize", "fontDecoration")))
-  expect_true(t1[["fontName"]] == "Calibri")
-  expect_true(t1[["fontSize"]] == 12)
-  expect_true(all(t1[["fontDecoration"]] == c("BOLD","ITALIC")))
+  # Check bolditalic works as anticipated etc
+  t1 <- all(xltabr_style$style_list$fontDecoration == c("BOLD", "ITALIC"))
+  expect_true(t1)
 
-  expect_true(xltabr:::convert_style_list_to_character_key(t1) == style_key_test)
+  t2 <- all(xltabr_style$s4style$fontDecoration == c("BOLD", "ITALIC"))
+  expect_true(t2)
+
+  # Manual test that it actually renders to bold_italic - commented so test does not open Excel!
+  # wb <- openxlsx::createWorkbook()
+  # openxlsx::addWorksheet(wb, "Cars")
+  # openxlsx::writeData(wb, "Cars", "hello")
+  # openxlsx::addStyle(wb, "Cars", xltabr_style$s4style, 1,1)
+  # openxlsx::openXL(wb)
 
 })
 
-test_that("Run through style_catalogue functions from reading style sheet to adding to final style_catalogue and wb", {
+test_that("Check row height inherits as expected", {
 
   path <- system.file("extdata", "tester_styles.xlsx", package = "xltabr")
-  cell_path <- system.file("extdata", "style_to_excel_number_format_alt.csv", package = "xltabr")
+  xltabr::set_style_path(path)
+  tab <- xltabr::initialise()
 
-  xltabr:::set_style_path(path)
-  xltabr:::set_cell_format_path(cell_path)
+  # Check we take the max height
+  style_string <- "border1|rowheight_30|rowheight_40"
+  tab <- xltabr:::create_style_if_not_exists(tab, style_string)
+  xltabr_style <- tab$style_catalogue[[style_string]]
+  t1 <- xltabr_style$row_height == 40
+  expect_true(t1)
 
-  expected_style_names <- c("border1", "border2", "bg1", "text_colour1", "font1", "font2", "bg2", "text_colour2","number1","integer1","text1","date1","datetime1","general", "percent1")
+  # Order shouldn't matter
+  style_string <- "border1|rowheight_40|font1|rowheight_30|font2"
+  tab <- xltabr:::create_style_if_not_exists(tab, style_string)
+  xltabr_style <- tab$style_catalogue[[style_string]]
+  t2 <- xltabr_style$row_height == 40
+  expect_true(t2)
 
-  tab <- xltabr:::style_catalogue_initialise(list())
+  # If no height specified in any, should return null
+  style_string <- "bolditalic|bg1"
+  tab <- xltabr:::create_style_if_not_exists(tab, style_string)
+  xltabr_style <- tab$style_catalogue[[style_string]]
 
-  expect_true(all(names(tab$style_catalogue) %in% expected_style_names))
+  t3 <- is.null(xltabr_style$row_height)
+  expect_true(t3)
 
-  test_cell_style_def1 <- "border1|border2|integer1"
-  expected_bs_1 <- "structure(list(fontName = structure(\"Calibri\", .Names = \"val\"), fontColour = structure(\"1\", .Names = \"theme\"), fontSize = structure(\"12\", .Names = \"val\"), fontFamily = structure(\"2\", .Names = \"val\"), fontScheme = structure(\"minor\", .Names = \"val\"), fontDecoration = c(\"BOLD\", \"ITALIC\"), borderRight = \"thin\", borderBottom = \"thin\", borderRightColour = structure(list( auto = \"1\"), .Names = \"auto\"), borderBottomColour = structure(list( auto = \"1\"), .Names = \"auto\"), borderTop = \"thin\", borderLeft = \"thin\", borderTopColour = structure(list(auto = \"1\"), .Names = \"auto\"), borderLeftColour = structure(list(auto = \"1\"), .Names = \"auto\"), numFmt = \"#,#;#,#;;* @\"), .Names = c(\"fontName\", \"fontColour\", \"fontSize\", \"fontFamily\", \"fontScheme\", \"fontDecoration\", \"borderRight\", \"borderBottom\", \"borderRightColour\", \"borderBottomColour\", \"borderTop\", \"borderLeft\", \"borderTopColour\", \"borderLeftColour\", \"numFmt\"))"
+  # Manual test that it actually renders to yellow - commented so test does not open Excel!
+  # tab <- xltabr::initialise()
+  # wb <- tab$wb
+  # openxlsx::writeData(wb, "Sheet1", "hello")
+  # style_string <- "`border1|rowheight_40|font1|rowheight_30|font2"
+  # tab <- xltabr:::create_style_if_not_exists(tab, style_string)
+  # xltabr_style <- tab$style_catalogue[[style_string]]
+  # openxlsx::addStyle(wb, "Sheet1", xltabr_style$s4style, 1,1)
+  # tab <- xltabr:::update_row_heights(tab, 1, xltabr_style)
+  # openxlsx::openXL(tab$wb)
 
-  test_cell_style_def2 <- "border1|bg1|text_colour1|font1|text1"
-  expected_bs_2 <- "structure(list(fontName = structure(\"Arial\", .Names = \"val\"), fontColour = structure(\"1\", .Names = \"theme\"), fontSize = structure(\"16\", .Names = \"val\"), fontFamily = structure(\"2\", .Names = \"val\"), fontScheme = structure(\"minor\", .Names = \"val\"), fontDecoration = \"BOLD\", borderRight = \"thin\", borderBottom = \"thin\", borderRightColour = structure(list(auto = \"1\"), .Names = \"auto\"), borderBottomColour = structure(list(auto = \"1\"), .Names = \"auto\"), fill = structure(list(fillFg = structure(\"FFFFFF00\", .Names = \" rgb\"), fillBg = structure(\"64\", .Names = \" indexed\")), .Names = c(\"fillFg\", \"fillBg\")), row_height = 18, numFmt = \"TEXT\"), .Names = c(\"fontName\", \"fontColour\", \"fontSize\", \"fontFamily\", \"fontScheme\", \"fontDecoration\", \"borderRight\", \"borderBottom\", \"borderRightColour\", \"borderBottomColour\", \"fill\", \"row_height\", \"numFmt\"))"
-  test_cell_style_def3 <- "border2|bg2|text_colour2|font2|date1"
-  expected_bs_3 <- "structure(list(fontName = structure(\"Times New Roman\", .Names = \"val\"), fontColour = structure(\"1\", .Names = \"theme\"), fontSize = structure(\"14\", .Names = \"val\"), fontScheme = structure(\"minor\", .Names = \"val\"), fontDecoration = \"ITALIC\", borderTop = \"thin\", borderLeft = \"thin\", borderTopColour = structure(list( auto = \"1\"), .Names = \"auto\"), borderLeftColour = structure(list( auto = \"1\"), .Names = \"auto\"), fill = structure(list( fillFg = structure(\"FF00FFE4\", .Names = \" rgb\"), fillBg = structure(\"64\", .Names = \" indexed\")), .Names = c(\"fillFg\", \"fillBg\")), row_height = 16, numFmt = \"yyyy-mm-dd\"), .Names = c(\"fontName\", \"fontColour\", \"fontSize\", \"fontScheme\", \"fontDecoration\", \"borderTop\", \"borderLeft\", \"borderTopColour\", \"borderLeftColour\", \"fill\", \"row_height\", \"numFmt\"))"
-  bs1 <- xltabr:::build_style(tab, cell_style_definition = test_cell_style_def1)
-  bs2 <- xltabr:::build_style(tab, cell_style_definition = test_cell_style_def2)
-  bs3 <- xltabr:::build_style(tab, cell_style_definition = test_cell_style_def3)
+
+})
+
+test_that("Check background colour works", {
+
+  path <- system.file("extdata", "tester_styles.xlsx", package = "xltabr")
+  xltabr::set_style_path(path)
+  tab <- xltabr::initialise()
+
+  style_string <- "bg1|bg2"
+  tab <- xltabr:::create_style_if_not_exists(tab, style_string)
+  xltabr_style <- tab$style_catalogue[[style_string]]
+  t1 <- xltabr_style$style_list$fill$fillFg == "FF00FFE4"
+  expect_true(t1)
+
+  style_string <- "bg2|bg1|border1"
+  tab <- xltabr:::create_style_if_not_exists(tab, style_string)
+  xltabr_style <- tab$style_catalogue[[style_string]]
+  t2 <- xltabr_style$style_list$fill$fillFg == "FFFFFF00"
+  expect_true(t2)
+
+  # Manual test that it actually renders to yellow - commented so test does not open Excel!
+  # wb <- openxlsx::createWorkbook()
+  # openxlsx::addWorksheet(wb, "Cars")
+  # openxlsx::writeData(wb, "Cars", "hello")
+  # openxlsx::addStyle(wb, "Cars", xltabr_style$s4style, 1,1)
+  # openxlsx::openXL(wb)
+
+})
 
 
-  expect_true(expected_bs_1 == bs1)
-  expect_true(expected_bs_2 == bs2)
-  expect_true(expected_bs_3 == bs3)
+test_that("Test that border inheritence works" ,{
 
-  multiple_styles <- c(test_cell_style_def1, test_cell_style_def2, test_cell_style_def3)
-  tab <- xltabr:::add_style_defintions_to_catalogue(tab, multiple_styles)
+  path <- system.file("extdata", "tester_styles.xlsx", package = "xltabr")
+  xltabr::set_style_path(path)
+  tab <- xltabr::initialise()
 
-  expect_true(all(names(tab$style_catalogue) %in% c(expected_style_names, multiple_styles)))
+  style_string <- "border1|border2|bold|font1|font2"
+  tab <- xltabr:::create_style_if_not_exists(tab, style_string)
+  xltabr_style <- tab$style_catalogue[[style_string]]
+
+  expect_true(xltabr_style$style_list$borderBottom == "medium")
+  expect_true(xltabr_style$style_list$borderRight == "thin")
+  expect_true(xltabr_style$style_list$borderLeft == "thin")
+  expect_true(xltabr_style$style_list$borderTop == "thin")
+
+
+  # Manual test that it actually renders to bold_italic - commented so test does not open Excel!
+  # wb <- openxlsx::createWorkbook()
+  # openxlsx::addWorksheet(wb, "Cars")
+  # openxlsx::writeData(wb, "Cars", "hello", 2,2)
+  # openxlsx::addStyle(wb, "Cars", xltabr_style$s4style, 2,2)
+  # openxlsx::openXL(wb)
+
+})
+
+test_that("Test that text colour works", {
+
+  path <- system.file("extdata", "tester_styles.xlsx", package = "xltabr")
+  xltabr::set_style_path(path)
+  tab <- xltabr::initialise()
+
+  style_string <- "text_colour1|text_colour2|bold|font1|font2"
+  tab <- xltabr:::create_style_if_not_exists(tab, style_string)
+  xltabr_style <- tab$style_catalogue[[style_string]]
+
+  # Manual test that it actually renders to bold_italic - commented so test does not open Excel!
+  # wb <- openxlsx::createWorkbook()
+  # openxlsx::addWorksheet(wb, "Cars")
+  # openxlsx::writeData(wb, "Cars", "hello", 2,2)
+  # openxlsx::addStyle(wb, "Cars", xltabr_style$s4style, 2,2)
+  # openxlsx::openXL(wb)
+
+})
+
+
+
+test_that("Check row height works across multiple sheets", {
+
+  path <- system.file("extdata", "tester_styles.xlsx", package = "xltabr")
+  xltabr::set_style_path(path)
+  tab <- xltabr::initialise()
+
+  path <- system.file("extdata", "test_3x3.csv", package = "xltabr")
+  df <- read.csv(path)
+
+  tab <- xltabr::add_body(tab, df)
+  tab$body$body_df$meta_row_ <- c("italic", "border2|rowheight_30|rowheight_40", "font1|rowheight_30")
+  tab$body$meta_col_ <- c("text_colour1", "bg2", "italic")
+  tab <- xltabr:::write_all_elements_to_wb(tab)
+  tab <- xltabr:::add_styles_to_wb(tab)
+
+  tab <- xltabr::initialise(insert_below_tab = tab)
+
+  tab <- xltabr::add_body(tab, df)
+  tab$body$body_df$meta_row_ <- c("rowheight_40", "bg2", "bg1")
+  tab$body$meta_col_ <- c("", "", "")
+  tab <- xltabr:::write_all_elements_to_wb(tab)
+  tab <- xltabr:::add_styles_to_wb(tab)
+
+  tab <- xltabr::initialise(tab$wb, ws_name = "My_second_sheet")
+
+  tab <- xltabr::add_body(tab, df)
+  tab$body$body_df$meta_row_ <- c("rowheight_40", "rowheight_40", "bg2")
+  tab$body$meta_col_ <- c("", "", "")
+  tab <- xltabr:::write_all_elements_to_wb(tab)
+  tab <- xltabr:::add_styles_to_wb(tab)
+
+  #We now expect the row height on the second sheet of the workbook to be 40, 40, null
+
+  t1 <- all(tab$wb$rowHeights[[1]] == c("40","30","40"))
+  testthat::expect_true(t1)
+
+  t1 <- all(tab$wb$rowHeights[[2]] == c("40", "40"))
+  testthat::expect_true(t1)
+
+  # Check this works in Excel
+  # openxlsx::openXL(tab$wb)
+
+
+})
+
+
+test_that("Check number formats inherit as expected", {
+
+  path <- system.file("extdata", "tester_styles.xlsx", package = "xltabr")
+  xltabr::set_style_path(path)
+  tab <- xltabr::initialise()
+
+  style_string <- "percent1|integer1"
+  tab <- xltabr:::create_style_if_not_exists(tab, style_string)
+  xltabr_style <- tab$style_catalogue[[style_string]]
+  df <- read.csv(xltabr::get_cell_format_path())
+  expected <- as.character(df[df$style_name == "integer1",]$excel_format)
+  t1 <- (xltabr_style$s4style$numFmt$formatCode == expected)
+
+  style_string <- "integer1|percent1"
+  tab <- xltabr:::create_style_if_not_exists(tab, style_string)
+  xltabr_style <- tab$style_catalogue[[style_string]]
+  df <- read.csv(xltabr::get_cell_format_path())
+  expected <- as.character(df[df$style_name == "percent1",]$excel_format)
+  t1 <- (xltabr_style$s4style$numFmt$formatCode == expected)
+
+  # Manual test that it actually renders to bold_italic - commented so test does not open Excel!
+  wb <- openxlsx::createWorkbook()
+  # openxlsx::addWorksheet(wb, "Cars")
+  # openxlsx::writeData(wb, "Cars", 1.2, 2,2)
+  # openxlsx::addStyle(wb, "Cars", xltabr_style$s4style, 2,2)
+  # openxlsx::openXL(wb)
+
 })
