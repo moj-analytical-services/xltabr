@@ -54,8 +54,8 @@ ct <- reshape2::dcast(df, drive + age  ~ type, value.var= "value", margins=c("dr
 ct <- dplyr::arrange(ct, -row_number())
 
 # Use the main convenience function from xltabr to output to excel
-wb <- xltabr::auto_crosstab_to_wb(ct)  #wb is an openxlsx workbook object
-openxlsx::openXL(wb)
+tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE)  #wb is an openxlsx workbook object
+openxlsx::openXL(tab$wb)
 ```
 
 ![image](vignettes/example_2.png?raw=true)
