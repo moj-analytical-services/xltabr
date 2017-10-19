@@ -183,7 +183,7 @@ style_inherit <- function(base_xltabr_style, new_xltabr_style) {
     })
   }
 
-  new_style_list <- modifyList(base_xltabr_style$style_list, new_xltabr_style$style_list)
+  new_style_list <- utils::modifyList(base_xltabr_style$style_list, new_xltabr_style$style_list)
 
   # Inherit font decoration (we want bold + italic to become bold, italic, not italic)
   new_style_list$fontDecoration <- unique(c(base_xltabr_style$style_list$fontDecoration, new_xltabr_style$style_list$fontDecoration))
