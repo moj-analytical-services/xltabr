@@ -1,0 +1,77 @@
+---
+title: "xltabr from the bottom up"
+author: Robin Linacre
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  md_document:
+    variant: markdown_github
+---
+
+## Introduction
+
+This documentation explains the internals of xltabr, and is intended for advanced users who want greater control of the formatting of their outputs.
+
+You may find [this diagram](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=xltabr#Uhttps%3A%2F%2Fdrive.google.com%2Fa%2Fdigital.justice.gov.uk%2Fuc%3Fid%3D0BwYwuy7YhhdxY2hGQnVGNFN6QkE%26export%3Ddownload) helpful as you work through this document.
+
+## The main `tab` object
+
+Users of the xltabr package progressively build up an object called `tab`, which is just an R list.  For instance, we add titles to this object at `tab$titles`, and styles are stored in `tab$style_catalogue`.
+
+A good place to start in `xltabr` is to generate a `tab` object and start exploring its contents, which you can do using the following code:
+
+```{r echo=TRUE, eval=FALSE}
+path <- system.file("extdata", "synthetic_data.csv", package="xltabr")
+df <- read.csv(path, stringsAsFactors = FALSE)
+ct <- reshape2::dcast(df, drive + age  ~ type, value.var= "value", margins=c("drive", "age"), fun.aggregate = sum)
+ct <- dplyr::arrange(ct, -row_number())
+tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE)
+View(tab)
+```
+
+## Building blocks
+
+Styles are read into xltabr from an Excel style sheet. That is, the user defines the styles in an Excel spreadsheet, and reads these styles into xltabr.  Styles can then be applied to cells in Excel output tables.  The default stylesheet can be found [here](https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/styles.xlsx) in the repo, and you can download it [here](https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/styles.xlsx?raw=true).
+
+When styles are read in, they are crated at `xltabr_style`s, the definition for which can be found [here](https://github.com/moj-analytical-services/xltabr/blob/ec84ae6260a0eb4c513e8f097eb316e16e9a6c7c/R/style_catalogue.R#L1).
+
+The stylesheet provides a set of 'base' styles.  Styles will later be combined, in a way that borrows concepts from [Cascading Style Sheets (CSS)](https://en.wikipedia.org/wiki/Cascading_Style_Sheets).  Specifically, when styles are combined, they follow a system of inheritance.
+
+Let's see what the style catalogue looks like:
+
+```{r echo=TRUE, eval=FALSE}
+
+tab <- xltabr::initialise()  # Under the hood this calls xltabr:::style_catalogue_initialise(tab)
+View(tab$style_catalogue)
+
+```
+
+Now we have a style catalogue, we need a way of applying styles to tables of data.
+
+One way of doing this would be to define a style for each individual cell of the output table.  However, this would require a huge amount of code.
+
+Instead, in `xltabr` we define a style for each row and each column of the output table.  The 'final style' which is applied is then a combination of the row and column style, where the base style is the row style, which then inherits additional properties from the column style.
+
+These styles are held in the table as meta data.
+
+
+```{r echo=TRUE, eval=FALSE}
+
+tab <- xltabr::initialise()  # Under the hood this calls xltabr:::style_catalogue_initialise(tab)
+View(tab$style_catalogue)
+
+```
+
+
+
+##
+
+
+Let's consider creating and styling a simple 2x2 table in xltabr.
+
+```{r}
+df <-  
+df
+```
+
+
+
