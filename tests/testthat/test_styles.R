@@ -250,8 +250,6 @@ test_that("Check it's possible to add a custom s4 style", {
 
   tab <- style_catalogue_add_openxlsx_style(tab, "custom", s4style, row_height = 40)
 
-  t2 <- tab$style_catalogue$currency2$s4style$numFmt$formatCode == "£ #,###"
-
   t1 <- tab$style_catalogue$custom$row_height == 40
   t2 <- tab$style_catalogue$custom$style_list$fontName == "Courier"
   t3 <- tab$style_catalogue$custom$s4style$fontColour == "FF80A9ED"
