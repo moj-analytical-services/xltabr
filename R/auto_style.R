@@ -55,6 +55,12 @@ auto_style_body_rows <- function(tab, indent = FALSE, keyword = "(all)") {
     tab <- auto_detect_left_headers(tab)
   }
 
+  # If no headers, return tab and message
+  if (is.null(tab$body$left_header_colnames)) {
+    message("No left header columns detected or provided")
+    return(tab)
+  }
+
   # Autodetect the 'summary level' e.g. header 1 is most prominent, header 2 next etc.
   tab <- auto_detect_body_title_level(tab, keyword)
 
@@ -78,6 +84,11 @@ auto_detect_left_headers <- function(tab, keyword = "(all)") {
   # This is the last left_header
 
   col_classes <- sapply(tab$body$body_df_to_write, class)
+
+  if (!("character" %in% col_classes)) {
+    tab$body$left_header_colnames = NULL
+    return(tab)
+  }
 
   rightmost_character <- min(which(col_classes != "character")) - 1
 
@@ -170,6 +181,11 @@ get_inv_title_count_indent <- function(left_headers_df, keyword) {
 #' @export
 auto_detect_body_title_level <- function(tab, keyword = "(all)", allcount_to_level_translate = NULL) {
 
+  # Stop if no left header colnames provided
+  if (is.null(tab$body$left_header_colnames)) {
+    return(tab)
+  }
+
   left_headers_df <- tab$body$body_df_to_write[tab$body$left_header_colnames]
 
   all_count_inv <- get_inv_title_count_title(left_headers_df, keyword = keyword, allcount_to_level_translate = allcount_to_level_translate)
@@ -209,7 +225,8 @@ auto_style_indent <- function(tab, keyword = "(all)", total_text = NULL, left_he
 
   tab$misc$coalesce_left_header_colname = left_header_colname
   if (is.null(tab$body$left_header_colnames )) {
-    stop("You've called auto_style_indent, but there are no left_header_colnames to work with")
+    message("You've called auto_style_indent, but there are no left_header_colnames to work with")
+    return(tab)
   }
 
   left_headers_df <- tab$body$body_df_to_write[tab$body$left_header_colnames]

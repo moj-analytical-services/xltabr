@@ -66,4 +66,4 @@ f3_col <- c(1e8, 2e10)
 
 df <- data.frame(text_col, date_col, datetime_col, int_col, f1_col, f2_col, f3_col)
 lapply(df, class)
-saveRDS(df, 'inst/extdata/number_types.rds')
+saveRDS(df, 'inst/extdata/test_number_types.rds')

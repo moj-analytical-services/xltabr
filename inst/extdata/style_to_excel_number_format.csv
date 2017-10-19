@@ -2,7 +2,9 @@ style_name, excel_format
 number1,"#,0.0#;#,0.0#;;* @"
 integer1,"#,#;#,#;;* @"
 text1,TEXT
-date1,"yyyy-mm-dd"
-datetime1,"yyyy-mm-dd hh:mm:ss"
+date1,yyyy-mm-dd
+datetime1,yyyy-mm-dd hh:mm:ss
 general,GENERAL
-percent1, "#,0.0%;#,0.0%;;* @"
+percent1,"#,0.0%;#,0.0%;;* @"
+currency1,"£ #,##0"
+currency_text,"[>=100000]£ 0.0,,""M"";[>=1000] £ 0.0,""K"";£ 0.0"

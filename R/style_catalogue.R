@@ -295,3 +295,47 @@ update_row_heights <- function(tab, rows, xltabr_style) {
   tab
 
 }
+
+#' Manually add an Excel num format to the style catalogue
+#'
+#' @param tab a table object
+#' @param style_string the name (key) in the tab$style_catalogue
+#' @param excel_num_format an excel number format e.g. "#.00"
+#'
+#' @export
+style_catalogue_add_excel_num_format <- function(tab, style_string, excel_num_format) {
+
+  s4style <- openxlsx::createStyle(numFmt = excel_num_format)
+
+  xltabr_style <- list()
+  xltabr_style$s4style <- s4style
+  xltabr_style$style_list <- convert_s4style_to_style_list(s4style)
+  xltabr_style$excel_num_format <- excel_num_format
+  xltabr_style['row_height'] <- list(NULL)
+
+  tab$style_catalogue[[style_string]] <- xltabr_style
+
+  tab
+}
+
+
+#' Manually add an openxlsx s4 style the style catalogue
+#'
+#' @param tab a table object
+#' @param style_string the name (key) in the tab$style_catalogue
+#' @param openxlsx_style an openxlsx s4 style
+#' @param row_height the height of the row.  optional.
+#'
+#' @export
+style_catalogue_add_openxlsx_style <- function(tab, style_string, openxlsx_style, row_height = NULL) {
+
+  xltabr_style <- list()
+  xltabr_style$s4style <- openxlsx_style
+  xltabr_style$style_list <- convert_s4style_to_style_list(openxlsx_style)
+  xltabr_style['row_height'] <- list(row_height)
+
+  tab$style_catalogue[[style_string]] <- xltabr_style
+
+  tab
+
+}
