@@ -208,10 +208,95 @@ test_that("Check number formats inherit as expected", {
   t1 <- (xltabr_style$s4style$numFmt$formatCode == expected)
 
   # Manual test that it actually renders to bold_italic - commented so test does not open Excel!
-  wb <- openxlsx::createWorkbook()
+  # wb <- openxlsx::createWorkbook()
   # openxlsx::addWorksheet(wb, "Cars")
   # openxlsx::writeData(wb, "Cars", 1.2, 2,2)
   # openxlsx::addStyle(wb, "Cars", xltabr_style$s4style, 2,2)
   # openxlsx::openXL(wb)
+
+})
+
+
+test_that("Check it's possible to add a number format", {
+
+  path <- system.file("extdata", "tester_styles.xlsx", package = "xltabr")
+  xltabr::set_style_path(path)
+  tab <- xltabr::initialise()
+  tab <- style_catalogue_add_excel_num_format(tab, "currency2", "£ #,###")
+
+  t1 <- tab$style_catalogue$currency2$s4style$numFmt$numFmtId == 9999
+  t2 <- tab$style_catalogue$currency2$s4style$numFmt$formatCode == "£ #,###"
+
+  expect_true(t1)
+  expect_true(t2)
+
+  # Manual test that it actually renders to bold_italic - commented so test does not open Excel!
+  # wb <- openxlsx::createWorkbook()
+  # openxlsx::addWorksheet(wb, "Cars")
+  # openxlsx::writeData(wb, "Cars", 12.12)
+  # openxlsx::addStyle(wb, "Cars", tab$style_catalogue$currency2$s4style, 1,1)
+  # openxlsx::openXL(wb)
+
+
+})
+
+test_that("Check it's possible to add a custom s4 style", {
+
+  path <- system.file("extdata", "tester_styles.xlsx", package = "xltabr")
+  xltabr::set_style_path(path)
+  tab <- xltabr::initialise()
+
+  s4style <- openxlsx::createStyle(fontName = "Courier", fontColour = "#80a9ed", fontSize = 20, numFmt =  "£    #,###")
+
+  tab <- style_catalogue_add_openxlsx_style(tab, "custom", s4style, row_height = 40)
+
+  t2 <- tab$style_catalogue$currency2$s4style$numFmt$formatCode == "£ #,###"
+
+  t1 <- tab$style_catalogue$custom$row_height == 40
+  t2 <- tab$style_catalogue$custom$style_list$fontName == "Courier"
+  t3 <- tab$style_catalogue$custom$s4style$fontColour == "FF80A9ED"
+
+  expect_true(t1)
+  expect_true(t2)
+  expect_true(t3)
+
+
+  # Manual test that it actually renders to bold_italic - commented so test does not open Excel!
+  # wb <- openxlsx::createWorkbook()
+  # openxlsx::addWorksheet(wb, "Cars")
+  # openxlsx::writeData(wb, "Cars", 12.12)
+  # openxlsx::addStyle(wb, "Cars", tab$style_catalogue$custom$s4style, 1,1)
+  # openxlsx::openXL(wb)
+
+
+
+})
+
+
+test_that("Have a look at what the various default number formats look like", {
+
+  tab <- xltabr::initialise()
+  xltabr::set_style_path()
+
+  path <- get_cell_format_path()
+  df <- read.csv(path, stringsAsFactors = FALSE)
+  style_strings <- df$style_name
+
+  # Create dataframe with numbers of different sizes
+  nums <- 2.1 ** (1:20)
+
+  l <- list()
+  for (s in style_strings) {
+    l[[s]] <- nums
+  }
+
+  df <- data.frame(l)
+
+  tab <- auto_crosstab_to_tab(df)
+  tab$body$meta_col_ <- style_strings
+
+  tab <- xltabr::write_data_and_styles_to_wb(tab)
+
+  # openxlsx::openXL(tab$wb)
 
 })

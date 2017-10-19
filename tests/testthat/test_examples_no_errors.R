@@ -48,7 +48,7 @@ test_that("Test basic table", {
 })
 
 test_that("Test table numtypes", {
-  path <- system.file("extdata", "number_types.rds", package="xltabr")
+  path <- system.file("extdata", "test_number_types.rds", package="xltabr")
   df <- readRDS(path)
   tab <- xltabr::initialise()
   tab <- xltabr::add_body(tab, df)
