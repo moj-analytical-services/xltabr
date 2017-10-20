@@ -1,4 +1,4 @@
-[![Coverage Status](https://img.shields.io/codecov/c/github/moj-analytical-services/xltabr/dev.svg)](https://codecov.io/github/moj-analytical-services/xltabr?branch=dev) [![Build Status](https://travis-ci.org/moj-analytical-services/xltabr.svg?branch=dev)](https://travis-ci.org/moj-analytical-services/xltabr)
+[![Coverage Status](https://img.shields.io/codecov/c/github/moj-analytical-services/xltabr/master.svg)](https://codecov.io/github/moj-analytical-services/xltabr?branch=master) [![Build Status](https://travis-ci.org/moj-analytical-services/xltabr.svg?branch=dev)](https://travis-ci.org/moj-analytical-services/xltabr)
 
 **Warning: `xltabr` is in early development. Please raise an [issue](https://github.com/moj-analytical-services/xltabr/issues) if you find any bugs**
 
@@ -45,8 +45,8 @@ ct <- reshape2::dcast(df, drive + age  ~ type, value.var= "value", margins=c("dr
 ct <- dplyr::arrange(ct, -row_number())
 
 # Use the main convenience function from xltabr to output to excel
-wb <- xltabr::auto_crosstab_to_wb(ct)  #wb is an openxlsx workbook object
-openxlsx::openXL(wb)
+tab <- xltabr::auto_crosstab_to_wb(ct, return_tab = TRUE)  #wb is an openxlsx workbook object
+openxlsx::openXL(tab$wb)
 ```
 
 ![image](vignettes/example_2.png?raw=true)
@@ -153,7 +153,8 @@ The following provides a list of all the options you can provide to `auto_crosst
     ##        auto_merge = TRUE, insert_below_tab = NULL, total_text = NULL,
     ##        include_header_rows = TRUE, wb = NULL, ws_name = NULL,
     ##        number_format_overrides = list(), fill_non_values_with = list(na = NULL,
-    ##        nan = NULL, inf = NULL, neg_inf = NULL), allcount_to_level_translate = NULL)
+    ##        nan = NULL, inf = NULL, neg_inf = NULL), allcount_to_level_translate = NULL,
+    ##        left_header_col_widths = NULL, body_header_col_widths = NULL)
     ##      
     ## Arguments:
     ## 
@@ -194,6 +195,12 @@ The following provides a list of all the options you can provide to `auto_crosst
     ## fill_non_values_with: Manually specify a list of strings that will replace non numbers types NA, NaN, Inf and -Inf. e.g. list(na = '*', nan = '', inf = '-', neg_inf = '-'). Note: NaNs are not treated as NAs.
     ## 
     ## allcount_to_level_translate: Manually specify how to translate summary levels into header formatting
+    ## 
+    ## left_header_col_widths: Width of row header columns you wish to set in Excel column width units. If singular, value is applied to all row header columns. If a vector, vector must have length equal to the number of row headers in workbook. Use special case "auto" for
+    ##           automatic sizing. Default (NULL) leaves column widths unchanged.
+    ## 
+    ## body_header_col_widths: Width of body header columns you wish to set in Excel column width units. If singular, value is applied to all body columns. If a vector, vector must have length equal to the number of body headers in workbook. Use special case "auto" for
+    ##           automatic sizing. Default (NULL) leaves column widths unchanged.
 
 Advanced usage
 --------------

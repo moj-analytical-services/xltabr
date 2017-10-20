@@ -10,7 +10,8 @@ auto_crosstab_to_wb(df, auto_number_format = TRUE, top_headers = NULL,
   auto_merge = TRUE, insert_below_tab = NULL, total_text = NULL,
   include_header_rows = TRUE, wb = NULL, ws_name = NULL,
   number_format_overrides = list(), fill_non_values_with = list(na = NULL,
-  nan = NULL, inf = NULL, neg_inf = NULL), allcount_to_level_translate = NULL)
+  nan = NULL, inf = NULL, neg_inf = NULL), allcount_to_level_translate = NULL,
+  left_header_col_widths = NULL, body_header_col_widths = NULL)
 }
 \arguments{
 \item{df}{A data.frame.  The cross tabulation to convert to Excel}
@@ -50,6 +51,10 @@ auto_crosstab_to_wb(df, auto_number_format = TRUE, top_headers = NULL,
 \item{fill_non_values_with}{Manually specify a list of strings that will replace non numbers types NA, NaN, Inf and -Inf. e.g. list(na = '*', nan = '', inf = '-', neg_inf = '--'). Note: NaNs are not treated as NAs.}
 
 \item{allcount_to_level_translate}{Manually specify how to translate summary levels into header formatting}
+
+\item{left_header_col_widths}{Width of row header columns you wish to set in Excel column width units. If singular, value is applied to all row header columns. If a vector, vector must have length equal to the number of row headers in workbook. Use special case "auto" for automatic sizing. Default (NULL) leaves column widths unchanged.}
+
+\item{body_header_col_widths}{Width of body header columns you wish to set in Excel column width units. If singular, value is applied to all body columns. If a vector, vector must have length equal to the number of body headers in workbook. Use special case "auto" for automatic sizing. Default (NULL) leaves column widths unchanged.}
 }
 \description{
 Take a cross tabulation produced by \code{reshape2::dcast} and output a formatted openxlsx wb object
