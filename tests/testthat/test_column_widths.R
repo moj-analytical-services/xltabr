@@ -29,6 +29,6 @@ test_that("Column widths work with offset", {
   tab <- xltabr:::write_all_elements_to_wb(tab)
   tab <- xltabr:::add_styles_to_wb(tab)
   tab <- xltabr::set_wb_widths(tab, left_header_col_widths = 20, body_header_col_widths = 10)
-  openxlsx::openXL(tab$wb)
+  # openxlsx::openXL(tab$wb)
 })
 
