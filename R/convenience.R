@@ -97,6 +97,9 @@ auto_df_to_wb <-
 #' @param ws_name The name of the worksheet you want to write to
 #' @param fill_non_values_with Manually specify a list of strings that will replace non numbers types NA, NaN, Inf and -Inf. e.g. list(na = '*', nan = '', inf = '-', neg_inf = '--'). Note: NaNs are not treated as NAs.
 #' @param allcount_to_level_translate Manually specify how to translate summary levels into header formatting
+#' @param left_header_col_widths Width of row header columns you wish to set in Excel column width units. If singular, value is applied to all row header columns. If a vector, vector must have length equal to the number of row headers in workbook. Use special case "auto" for automatic sizing. Default (NULL) leaves column widths unchanged.
+#' @param body_header_col_widths Width of body header columns you wish to set in Excel column width units. If singular, value is applied to all body columns. If a vector, vector must have length equal to the number of body headers in workbook. Use special case "auto" for automatic sizing. Default (NULL) leaves column widths unchanged.
+
 #'
 #' @export
 auto_crosstab_to_wb <-
@@ -118,7 +121,9 @@ auto_crosstab_to_wb <-
            ws_name = NULL,
            number_format_overrides = list(),
            fill_non_values_with = list(na = NULL, nan = NULL, inf = NULL, neg_inf = NULL),
-           allcount_to_level_translate = NULL) {
+           allcount_to_level_translate = NULL,
+           left_header_col_widths = NULL,
+           body_header_col_widths = NULL) {
 
 
   tab <- auto_crosstab_to_tab(df,
@@ -142,6 +147,8 @@ auto_crosstab_to_wb <-
   tab <- write_all_elements_to_wb(tab)
 
   tab <- add_styles_to_wb(tab)
+
+  tab <- set_wb_widths(tab, left_header_col_widths = left_header_col_widths, body_header_col_widths = body_header_col_widths)
 
   if (auto_open) {
     openxlsx::openXL(tab$wb)

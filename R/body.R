@@ -59,21 +59,21 @@ add_body <-
   # If the user has provided row or col style names, add them.  Use recycling rules.
   if (not_null(row_style_names)) {
     m <- rbind(tab$body$body_df[[1]], row_style_names)
-    row_style_names <-m[2,]
+    row_style_names <- m[2,]
     tab$body$body_df$meta_row_ <- row_style_names
     tab$body$user_provided_row_style_names <- row_style_names
   }
 
   if (not_null(left_header_style_names)) {
     m <- rbind(tab$body$body_df[[1]], left_header_style_names)
-    left_header_style_names <-m[2,]
+    left_header_style_names <- m[2,]
     tab$body$body_df$meta_left_header_row_ <- left_header_style_names
     tab$body$user_provided_left_header_style_names <- left_header_style_names
   }
 
   if (not_null(col_style_names)) {
     m <- rbind(names(df), col_style_names)
-    col_style_names <-m[2,]
+    col_style_names <- m[2,]
     tab$body$meta_col_ <- col_style_names
     tab$body$user_provided_col_style_names <- col_style_names
   }
@@ -81,7 +81,7 @@ add_body <-
   # Run checks on fill_non_values_with
   possible_names <- c('na', 'nan', 'inf', 'neg_inf')
 
-  if (any(!names(fill_non_values_with) %in% possible_names) | max(unlist(lapply(fill_non_values_with, length))) > 1 | !is.list(fill_non_values_with)){
+  if (any(!names(fill_non_values_with) %in% possible_names) | max(unlist(lapply(fill_non_values_with, length))) > 1 | !is.list(fill_non_values_with)) {
     stop(paste0('Error: The input fill_non_values_with must be a list and cannot have names other than: ', paste0(possible_names, collapse = ", "), '. Each element in this list must also be a single value (e.g. not a vector or list)'))
   }
   tab$body$fill_non_values_with <- fill_non_values_with
@@ -186,7 +186,7 @@ body_get_cell_styles_table <- function(tab) {
 
   #All cells get body
   df_br <- data.frame(row = r, style_name = tab$body$body_df$meta_row_, stringsAsFactors = FALSE) #br stands for body row
-  df <- merge(df, df_br, by="row") #At this point, df has all row col combos for the body, but not the left columns, and the given row style
+  df <- merge(df, df_br, by = "row") #At this point, df has all row col combos for the body, but not the left columns, and the given row style
 
   #If left header columns actually exist
   if (length(lh_cols) > 0) {
@@ -201,9 +201,9 @@ body_get_cell_styles_table <- function(tab) {
 
   #Add a final column that includes the column style information - i.e. top header styles
   df_th <- data.frame(col = c_all_body, top_header_style = tab$body$meta_col_, stringsAsFactors = FALSE)
-  df <- merge(df, df_th, by="col")
+  df <- merge(df, df_th, by = "col")
 
-  df$style_name <- paste(df$style_name, df$top_header_style, sep="|")
+  df$style_name <- paste(df$style_name, df$top_header_style, sep = "|")
   df <- df[, c("row", "col", "style_name")]
   df$style_name <- remove_leading_trailing_pipe(df$style_name)
 
@@ -229,32 +229,83 @@ body_write_rows <- function(tab) {
     openxlsx::writeData(tab$wb, ws_name, data, startRow = row, startCol = col, colNames = FALSE)
 
     # Replace non-values with specified values
-    if(not_null(tab$body$fill_non_values_with$na)){
+    if (not_null(tab$body$fill_non_values_with$na)) {
       row_values <- body_get_wb_rows(tab)
-        for (c in 1:ncol(data)){
+        for (c in 1:ncol(data)) {
           for (r in row_values[is_truely_na(data[,c])]) openxlsx::writeData(tab$wb, ws_name, tab$body$fill_non_values_with$na, startRow = r, startCol = c, colNames = FALSE)
         }
     }
 
-    if(not_null(tab$body$fill_non_values_with$nan)){
+    if (not_null(tab$body$fill_non_values_with$nan)) {
       row_values <- body_get_wb_rows(tab)
-      for (c in 1:ncol(data)){
+      for (c in 1:ncol(data)) {
         for (r in row_values[is.nan(data[,c])]) openxlsx::writeData(tab$wb, ws_name, tab$body$fill_non_values_with$nan, startRow = r, startCol = c, colNames = FALSE)
       }
     }
 
-    if(not_null(tab$body$fill_non_values_with$inf)){
+    if (not_null(tab$body$fill_non_values_with$inf)) {
       row_values <- body_get_wb_rows(tab)
-      for (c in 1:ncol(data)){
+      for (c in 1:ncol(data)) {
         for (r in row_values[is.infinite(data[,c]) & data[,c] > 0]) openxlsx::writeData(tab$wb, ws_name, tab$body$fill_non_values_with$inf, startRow = r, startCol = c, colNames = FALSE)
       }
     }
 
-    if(not_null(tab$body$fill_non_values_with$neg_inf)){
+    if (not_null(tab$body$fill_non_values_with$neg_inf)) {
       row_values <- body_get_wb_rows(tab)
-      for (c in 1:ncol(data)){
+      for (c in 1:ncol(data)) {
         for (r in row_values[is.infinite(data[,c]) & data[,c] < 0]) openxlsx::writeData(tab$wb, ws_name, tab$body$fill_non_values_with$neg_inf, startRow = r, startCol = c, colNames = FALSE)
       }
     }
     tab
+}
+
+#' Set column widths to tab workbook
+#'
+#' @param tab The core tab object
+#' @param left_header_col_widths Width of row header columns you wish to set in Excel column width units. If singular, value is applied to all row header columns. If a vector, vector must have length equal to the number of row headers in workbook. Use special case "auto" for automatic sizing. Default (NULL) leaves column widths unchanged.
+#' @param body_header_col_widths Width of body header columns you wish to set in Excel column width units. If singular, value is applied to all body columns. If a vector, vector must have length equal to the number of body headers in workbook. Use special case "auto" for automatic sizing. Default (NULL) leaves column widths unchanged.
+#'
+#' @export
+set_wb_widths <- function(tab, left_header_col_widths = NULL, body_header_col_widths = NULL){
+
+  ws_name <- tab$misc$ws_name
+
+  # get row header columns
+  rhc <- body_get_wb_left_header_cols(tab)
+
+  # calculate body columns
+  all_cols <- body_get_wb_cols(tab)
+  bc <- all_cols[!all_cols %in% rhc]
+
+  # Set row hearder column widths
+  if (not_null(left_header_col_widths)) {
+    # Error checking
+    if (typeof(left_header_col_widths) == "character") {
+      if (left_header_col_widths != 'auto') stop('If left_header_col_widths is a character it must be set to \"auto\". Otherwise it must be a number or vector of numbers')
+    } else {
+      if (!typeof(left_header_col_widths) %in% c('double','integer')) stop('If left_header_col_widths is a character it must be set to \"auto\". Otherwise it must be a number or vector of numbers')
+    }
+    if (length(left_header_col_widths) != 1 & length(left_header_col_widths) != length(rhc)) {
+      stop(paste0('left_header_col_widths must either be a single value or a vector equal to the number of row_header_columns (', length(rhc),')'))
+    }
+
+    openxlsx::setColWidths(tab$wb, sheet = ws_name, cols = rhc, widths = left_header_col_widths, ignoreMergedCells = T)
+  }
+
+  # Set body hearder column widths
+  if (not_null(body_header_col_widths)) {
+    # Error checking
+    if (typeof(body_header_col_widths) == "character") {
+      if (body_header_col_widths != 'auto') stop('If body_header_col_widths is a character it must be set to \"auto\". Otherwise it must be a number or vector of numbers')
+    } else {
+      if (!typeof(body_header_col_widths) %in% c('double','integer')) stop('If body_header_col_widths is a character it must be set to \"auto\". Otherwise it must be a number or vector of numbers')
+    }
+    if (length(body_header_col_widths) != 1 & length(body_header_col_widths) != length(bc)) {
+      stop(paste0('body_header_col_widths must either be a single value or a vector equal to the number of row_header_columns (', length(bc),')'))
+    }
+
+    openxlsx::setColWidths(tab$wb, sheet = ws_name, cols = bc, widths = body_header_col_widths, ignoreMergedCells = T)
+  }
+
+  return(tab)
 }
