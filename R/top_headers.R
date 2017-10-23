@@ -21,7 +21,7 @@ top_headers_initialise <- function(tab) {
 #' @param tab The core tab object
 #' @param top_headers For a single top_header row, a character vector.  For multiple top_header rows, a list of character vectors.
 #' @param row_style_names A character vector, with an element for each row of the top header.  Each element is a style_name (i.e. a key in the style catalogue)
-#' @param col_style_names A character vector, with and elemment for each column of the top header.  Each element is a style name. Col styles in inherit from row_styles.
+#' @param col_style_names A character vector, with and element for each column of the top header.  Each element is a style name. Col styles in inherit from row_styles.
 #'
 #' @export
 add_top_headers <- function(tab, top_headers, col_style_names="", row_style_names="body|top_header_1") {

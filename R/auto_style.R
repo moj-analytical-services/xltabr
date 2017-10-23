@@ -69,7 +69,7 @@ auto_style_body_rows <- function(tab, indent = FALSE, keyword = "(all)") {
 }
 
 #' Uses the presence of '(all)' in the leftmost columns of data to detect that these
-#' columns are really left headers rather than body colummns
+#' columns are really left headers rather than body columns
 #'
 #' Populates tab$body$left_header_colnames automatically
 #' @param tab a tab object
@@ -174,7 +174,7 @@ get_inv_title_count_indent <- function(left_headers_df, keyword) {
 #' Autodetect the 'title level' of each row in the cross tabulation
 #' e.g. title 1 is most prominent, title 2 next etc.
 #'
-#' Uses the presence of '(all)' to detect the prominence.  The parameter allcount_to_level_translate allows the user to control how the count of '(all)' in the left header is translated into the header leve
+#' Uses the presence of '(all)' to detect the prominence.  The parameter allcount_to_level_translate allows the user to control how the count of '(all)' in the left header is translated into the header level
 #' @param tab a tab object
 #' @param keyword The keyword to use to detect summarisation.  Uses '(all)' by default because this is what reshape2::dcast uses
 #' @param allcount_to_level_translate A named vector that provides a lookup - by default c("0" = NA, "1" = 5, "2" = 4, "3" = 3, "4" = 2, "5" = 1), which says that e.g. allcount 1 results in title_5 etc

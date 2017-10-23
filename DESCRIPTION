@@ -10,7 +10,7 @@ Authors@R: c(
     role=c("aut"))
     )
 Description: 'xltabr' allows you to write beautifully formatted cross tabulations to Excel 
-    usign 'openxlsx'. It has been developed to help automate the process of publishing 
+    using 'openxlsx'. It has been developed to help automate the process of publishing 
     Official Statistics.  The user provides a dataframe, which is outputted to Excel with 
     various types of rich formatting which are automatically detected from the structure
     of the cross tabulation.  Documentation can be found at the following

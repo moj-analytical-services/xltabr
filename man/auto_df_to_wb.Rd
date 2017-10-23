@@ -2,7 +2,7 @@
 % Please edit documentation in R/convenience.R
 \name{auto_df_to_wb}
 \alias{auto_df_to_wb}
-\title{Take a data.frame in r and output an openxlsx wb objet}
+\title{Take a data.frame in r and output an openxlsx wb object}
 \usage{
 auto_df_to_wb(df, auto_number_format = TRUE, titles = NULL,
   footers = NULL, left_header_colnames = NULL, vertical_border = TRUE,
@@ -31,5 +31,5 @@ auto_df_to_wb(df, auto_number_format = TRUE, titles = NULL,
 \item{insert_below_tab}{A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.}
 }
 \description{
-Take a data.frame in r and output an openxlsx wb objet
+Take a data.frame in r and output an openxlsx wb object
 }

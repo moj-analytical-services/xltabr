@@ -7,7 +7,7 @@
 set_num_format_path(path = NULL)
 }
 \arguments{
-\item{path}{the file path to the number formats (csv file). If NULL the function sets the nu,ber format to the default option.}
+\item{path}{the file path to the number formats (csv file). If NULL the function sets the number format to the default option.}
 }
 \description{
 Set the path to the number formats to be used by xltabr. To get this path see get_num_format_path.
