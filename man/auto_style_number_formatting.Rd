@@ -12,5 +12,5 @@ auto_style_number_formatting(tab, overrides = list())
 \item{overrides}{a list containing any manual overrides where the user wants to provide their own style name}
 }
 \description{
-This function reads currency styling from the styles defined \href{https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/number_formats.xlsx?raw=true}{here}
+This function reads styling from the styles defined \href{https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/number_format_defaults.csv}{here}
 }

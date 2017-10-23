@@ -9,7 +9,7 @@ Authors@R: c(
     "Karik", "Isichei", email="karik.isichei@gmail.com",
     role=c("aut"))
     )
-Description: 'xltabr' allows you to write beautifully formatted cross tabulations to Excel 
+Description: This package allows you to write beautifully formatted cross tabulations to Excel 
     using 'openxlsx'. It has been developed to help automate the process of publishing 
     Official Statistics.  The user provides a dataframe, which is outputted to Excel with 
     various types of rich formatting which are automatically detected from the structure
