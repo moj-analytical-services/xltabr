@@ -11,6 +11,6 @@ set_style_path(path = NULL)
 }
 \description{
 Set the path to the style sheet to be used by package. To get this path see get_style_path.
-Default cell formats used by xltabr is \href{https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/styles.xlsx?raw=true}{here}.
+Default cell formats used by xltabr is \href{https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/styles.xlsx?raw=true}{here}.
 If no path is supplied the function sets the style sheet to default.
 }

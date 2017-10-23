@@ -11,6 +11,6 @@ set_num_format_path(path = NULL)
 }
 \description{
 Set the path to the number formats to be used by xltabr. To get this path see get_num_format_path.
-Default number format used by package is \href{https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/number_format_defaults.csv?raw=true}{here}.
+Default number format used by package is \href{https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/number_format_defaults.csv?raw=true}{here}.
 If no path is supplied the function sets the cell format to default to default.
 }
