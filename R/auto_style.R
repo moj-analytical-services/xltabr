@@ -2,7 +2,7 @@
 
 #' Use the data type of the columns to choose an automatic Excel format for body cells
 #'
-#' This function reads currency styling from the styles defined [here](https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/number_formats.xlsx?raw=true)
+#' This function reads styling from the styles defined [here](https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/number_format_defaults.csv)
 #' @param tab a table object
 #' @param overrides a list containing any manual overrides where the user wants to provide their own style name
 #' @export
