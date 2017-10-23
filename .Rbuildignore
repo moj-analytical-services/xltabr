@@ -8,3 +8,5 @@
 ^travis\.R$
 ^cran-comments.md$
 ^vignettes.+$
+^README\.md$
+^NEWS\.md$
