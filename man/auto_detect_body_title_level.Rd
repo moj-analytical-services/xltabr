@@ -16,5 +16,5 @@ auto_detect_body_title_level(tab, keyword = "(all)",
 \item{allcount_to_level_translate}{A named vector that provides a lookup - by default c("0" = NA, "1" = 5, "2" = 4, "3" = 3, "4" = 2, "5" = 1), which says that e.g. allcount 1 results in title_5 etc}
 }
 \description{
-Uses the presence of '(all)' to detect the prominence.  The parameter allcount_to_level_translate allows the user to control how the count of '(all)' in the left header is translated into the header leve
+Uses the presence of '(all)' to detect the prominence.  The parameter allcount_to_level_translate allows the user to control how the count of '(all)' in the left header is translated into the header level
 }

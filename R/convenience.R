@@ -1,6 +1,6 @@
 # These functions are convenience functinos that wrap other functionality to save the user typing
 
-#' Take a data.frame in r and output an openxlsx wb objet
+#' Take a data.frame in r and output an openxlsx wb object
 #'
 #' @param df The data.frame to convert to Excel
 #' @param auto_number_format Boolean. Whether to automatically detect number formats of columns

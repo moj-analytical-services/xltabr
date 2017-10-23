@@ -54,7 +54,7 @@ set_cell_format_path <- function(path = NULL){
 #' Set the path to the number formats to be used by xltabr. To get this path see get_num_format_path.
 #' Default number format used by package is [here](https://github.com/moj-analytical-services/xltabr/blob/dev/inst/extdata/number_format_defaults.csv?raw=true).
 #' If no path is supplied the function sets the cell format to default to default.
-#' @param path the file path to the number formats (csv file). If NULL the function sets the nu,ber format to the default option.
+#' @param path the file path to the number formats (csv file). If NULL the function sets the number format to the default option.
 #' @export
 set_num_format_path <- function(path = NULL){
   if(is.null(path)) path <- system.file("extdata", "number_format_defaults.csv", package = "xltabr")

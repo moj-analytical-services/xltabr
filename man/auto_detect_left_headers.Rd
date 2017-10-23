@@ -3,7 +3,7 @@
 \name{auto_detect_left_headers}
 \alias{auto_detect_left_headers}
 \title{Uses the presence of '(all)' in the leftmost columns of data to detect that these
-columns are really left headers rather than body colummns}
+columns are really left headers rather than body columns}
 \usage{
 auto_detect_left_headers(tab, keyword = "(all)")
 }
