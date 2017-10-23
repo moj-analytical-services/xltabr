@@ -15,9 +15,9 @@ You may find [this diagram](https://www.draw.io/?lightbox=1&highlight=0000ff&edi
 
 ## The main `tab` object
 
-Users of the xltabr package progressively build up an object called `tab`, which is just an R list.  For instance, we add titles to this object at `tab$titles`, and styles are stored in `tab$style_catalogue`.
+Users of the xltabr package progressively build up an object called `tab`, which is just an R list, and is called `tab` by convention.  For instance, we add titles to this object at `tab$titles`, and styles are stored in `tab$style_catalogue`.
 
-A good place to start in `xltabr` is to generate a `tab` object and start exploring its contents, which you can do using the following code:
+A good place to start in understanding `xltabr` is to generate a `tab` object and start exploring its contents, which you can do using the following code:
 
 ```{r echo=TRUE, eval=FALSE}
 path <- system.file("extdata", "synthetic_data.csv", package="xltabr")
@@ -30,7 +30,7 @@ View(tab)
 
 ## Building blocks
 
-Styles are read into xltabr from an Excel style sheet. That is, the user defines the styles in an Excel spreadsheet, and reads these styles into xltabr.  Styles can then be applied to cells in Excel output tables.  The default stylesheet can be found [here](https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/styles.xlsx) in the repo, and you can download it [here](https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/styles.xlsx?raw=true).
+Styles are read into xltabr from an Excel style sheet. The user defines the styles in an Excel spreadsheet, and reads these styles into xltabr.  Styles can then be applied to cells in Excel output tables.  The default stylesheet can be found [here](https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/styles.xlsx) in the repo, and you can download it [here](https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/styles.xlsx?raw=true).
 
 When styles are read in, they are crated at `xltabr_style`s, the definition for which can be found [here](https://github.com/moj-analytical-services/xltabr/blob/ec84ae6260a0eb4c513e8f097eb316e16e9a6c7c/R/style_catalogue.R#L1).
 
@@ -40,6 +40,7 @@ Let's see what the style catalogue looks like:
 
 ```{r echo=TRUE, eval=FALSE}
 
+# You can use xltabr::set_style_path() to use your own style sheet.  Otherwise the default one is used.
 tab <- xltabr::initialise()  # Under the hood this calls xltabr:::style_catalogue_initialise(tab)
 View(tab$style_catalogue)
 
