@@ -14,3 +14,9 @@ auto_style_number_formatting(tab, overrides = list())
 \description{
 This function reads styling from the styles defined \href{https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/number_format_defaults.csv}{here}
 }
+\examples{
+body_data <- readRDS(system.file("extdata", "test_number_types.rds", package="xltabr"))
+tab <- initialise()
+tab <- add_body(tab, body_data)
+tab <- auto_style_number_formatting(tab)
+}

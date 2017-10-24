@@ -14,6 +14,8 @@
 #' @param insert_below_tab A existing tab object.  If provided, this table will be written on the same sheet, below the provided tab.
 #'
 #' @export
+#' @examples
+#' wb <- auto_crosstab_to_wb(mtcars)
 auto_df_to_wb <-
   function(df,
            auto_number_format = TRUE,
@@ -102,6 +104,9 @@ auto_df_to_wb <-
 
 #'
 #' @export
+#' @examples
+#' crosstab <- read.csv(system.file("extdata", "example_crosstab.csv", package="xltabr"))
+#' wb <- auto_crosstab_to_wb(crosstab)
 auto_crosstab_to_wb <-
   function(df,
            auto_number_format = TRUE,
@@ -186,6 +191,9 @@ auto_crosstab_to_wb <-
 #' @param allcount_to_level_translate Manually specify how to translate summary levels into header formatting
 #'
 #' @export
+#' @examples
+#' crosstab <- read.csv(system.file("extdata", "example_crosstab.csv", package="xltabr"))
+#' tab <- auto_crosstab_to_tab(crosstab)
 auto_crosstab_to_tab <-
   function(df,
            auto_number_format = TRUE,

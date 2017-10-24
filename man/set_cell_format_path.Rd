@@ -14,3 +14,7 @@ Set the path to the cell formats to be used by xltabr. To get this path see get_
 Default cell format used by package is \href{https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/style_to_excel_number_format.csv?raw=true}{here}.
 If no path is supplied the function sets the cell format to default to default.
 }
+\examples{
+my_file_path <- system.file("extdata", "style_to_excel_number_format.csv", package = "xltabr")
+set_cell_format_path(my_file_path)
+}

@@ -34,5 +34,5 @@ tab <- initialise()
 # Note you could also use xltabr::auto_detect_left_headers
 colnames <- c("drive", "age")
 lh_styles <- "left_header"
-tab <- add_body(tab, crosstab, left_header_colnames = colnames)
+tab <- add_body(tab, crosstab, left_header_colnames = colnames, left_header_style_names = lh_styles)
 }

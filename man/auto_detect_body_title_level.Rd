@@ -18,3 +18,9 @@ auto_detect_body_title_level(tab, keyword = "(all)",
 \description{
 Uses the presence of '(all)' to detect the prominence.  The parameter allcount_to_level_translate allows the user to control how the count of '(all)' in the left header is translated into the header level
 }
+\examples{
+crosstab <- read.csv(system.file("extdata", "example_crosstab.csv", package="xltabr"))
+tab <- initialise()
+tab <- add_body(tab, crosstab, left_header_colnames = c("drive", "age"))
+tab <- auto_detect_body_title_level(tab)
+}

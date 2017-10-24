@@ -20,3 +20,9 @@ auto_style_indent(tab, keyword = "(all)", total_text = NULL,
 e.g. a | b | (all) -> b
 e.g. (all) | (all) | (all) -> Grand Total
 }
+\examples{
+crosstab <- read.csv(system.file("extdata", "example_crosstab.csv", package="xltabr"))
+tab <- initialise()
+tab <- add_body(tab, crosstab, left_header_colnames = c("drive", "age"))
+tab <- auto_style_indent(tab)
+}

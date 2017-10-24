@@ -24,3 +24,6 @@ A list which contains the dataframe
 \description{
 Create a new xltabr object for cross tabulation
 }
+\examples{
+tab <- initialise()
+}

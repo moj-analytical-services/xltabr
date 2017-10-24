@@ -33,3 +33,6 @@ auto_df_to_wb(df, auto_number_format = TRUE, titles = NULL,
 \description{
 Take a data.frame in r and output an openxlsx wb object
 }
+\examples{
+wb <- auto_crosstab_to_wb(mtcars)
+}

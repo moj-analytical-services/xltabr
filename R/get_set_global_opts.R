@@ -3,6 +3,8 @@
 #' Returns path to current style sheet which is set in global options. To change this path see set_style_path.
 #' Default stylesheet used by package is [here](https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/styles.xlsx?raw=true)
 #' @export
+#' @examples
+#' get_style_path()
 get_style_path <- function(){
   getOption("xltabr.style.path")
 }
@@ -12,6 +14,8 @@ get_style_path <- function(){
 #' Returns path to cell format definitions which is set in global options. To change this path see set_cell_format_path.
 #' Default cell format used by package is [here](https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/style_to_excel_number_format.csv?raw=true)
 #' @export
+#' @examples
+#' get_cell_format_path()
 get_cell_format_path <- function(){
   getOption("xltabr.cell.format.path")
 }
@@ -21,6 +25,8 @@ get_cell_format_path <- function(){
 #' Returns path to number format definitions which is set in global options. To change this path see get_num_format_path.
 #' Default number formats used by package is [here](https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/number_format_defaults.csv?raw=true)
 #' @export
+#' @examples
+#' get_num_format_path()
 get_num_format_path <- function(){
   getOption("xltabr.number.format.path")
 }
@@ -32,9 +38,12 @@ get_num_format_path <- function(){
 #' If no path is supplied the function sets the style sheet to default.
 #' @param path the file path to the style sheet path (xlsx file). If NULL the function sets the cell format to the default option.
 #' @export
+#' @examples
+#' my_file_path <- system.file("extdata", "styles.xlsx", package = "xltabr")
+#' set_style_path(my_file_path)
 set_style_path <- function(path = NULL){
-  if(is.null(path)) path <- system.file("extdata", "styles.xlsx", package = "xltabr")
-  if(file.exists(path)) options(list(xltabr.style.path = path)) else stop("Speficied file path does not exist")
+  if (is.null(path)) path <- system.file("extdata", "styles.xlsx", package = "xltabr")
+  if (file.exists(path)) options(list(xltabr.style.path = path)) else stop("Speficied file path does not exist")
 }
 
 #' Set cell format path
@@ -44,9 +53,12 @@ set_style_path <- function(path = NULL){
 #' If no path is supplied the function sets the cell format to default to default.
 #' @param path the file path to the cell formats (csv file). If NULL the function sets the cell format to the default option.
 #' @export
+#' @examples
+#' my_file_path <- system.file("extdata", "style_to_excel_number_format.csv", package = "xltabr")
+#' set_cell_format_path(my_file_path)
 set_cell_format_path <- function(path = NULL){
-  if(is.null(path)) path <- system.file("extdata", "style_to_excel_number_format.csv", package = "xltabr")
-  if(file.exists(path)) options(list(xltabr.cell.format.path = path)) else stop("Speficied file path does not exist")
+  if (is.null(path)) path <- system.file("extdata", "style_to_excel_number_format.csv", package = "xltabr")
+  if (file.exists(path)) options(list(xltabr.cell.format.path = path)) else stop("Speficied file path does not exist")
 }
 
 #' Set number format path
@@ -56,7 +68,10 @@ set_cell_format_path <- function(path = NULL){
 #' If no path is supplied the function sets the cell format to default to default.
 #' @param path the file path to the number formats (csv file). If NULL the function sets the number format to the default option.
 #' @export
+#' @examples
+#' my_file_path <- system.file("extdata", "number_format_defaults.csv", package = "xltabr")
+#' set_num_format_path(my_file_path)
 set_num_format_path <- function(path = NULL){
-  if(is.null(path)) path <- system.file("extdata", "number_format_defaults.csv", package = "xltabr")
-  if(file.exists(path)) options(list(xltabr.number.format.path = path)) else stop("Speficied file path does not exist")
+  if (is.null(path)) path <- system.file("extdata", "number_format_defaults.csv", package = "xltabr")
+  if (file.exists(path)) options(list(xltabr.number.format.path = path)) else stop("Speficied file path does not exist")
 }
