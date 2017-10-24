@@ -8,5 +8,13 @@ There were no ERRORs, WARNINGs or NOTEs.
 
 This is my first CRAN submission.
 
+## Steps taken to address previous CRAN comments:
+
+Since the first submission I have:
+
+- Removed the redundant 'from R' from package description
+- Added an example for every user-accessible function to the .md files
+- I've made sure that none of the examples write to the user's home directory.  
+
 ## Downstream dependencies
 There are currently no downstream dependencies for this package
