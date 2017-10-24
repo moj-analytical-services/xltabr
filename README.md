@@ -1,4 +1,4 @@
-[![Coverage Status](https://img.shields.io/codecov/c/github/moj-analytical-services/xltabr/master.svg)](https://codecov.io/github/moj-analytical-services/xltabr?branch=master) [![Build Status](https://travis-ci.org/moj-analytical-services/xltabr.svg?branch=dev)](https://travis-ci.org/moj-analytical-services/xltabr)
+[![Coverage Status](https://img.shields.io/codecov/c/github/moj-analytical-services/xltabr/master.svg)](https://codecov.io/github/moj-analytical-services/xltabr?branch=master) [![Build Status](https://travis-ci.org/moj-analytical-services/xltabr.svg?branch=dev)](https://travis-ci.org/moj-analytical-services/xltabr) [![Cran Status](http://www.r-pkg.org/badges/version/xltabr)](https://cran.r-project.org/web/packages/xltabr/index.html) [![Cran Downloads](https://cranlogs.r-pkg.org/badges/xltabr)](https://www.r-pkg.org/pkg/tidyxl)
 
 **Warning: `xltabr` is in early development. Please raise an [issue](https://github.com/moj-analytical-services/xltabr/issues) if you find any bugs**
 
@@ -201,6 +201,12 @@ The following provides a list of all the options you can provide to `auto_crosst
     ## 
     ## body_header_col_widths: Width of body header columns you wish to set in Excel column width units. If singular, value is applied to all body columns. If a vector, vector must have length equal to the number of body headers in workbook. Use special case "auto" for
     ##           automatic sizing. Default (NULL) leaves column widths unchanged.
+    ## 
+    ## Examples:
+    ## 
+    ##      crosstab <- read.csv(system.file("extdata", "example_crosstab.csv", package="xltabr"))
+    ##      wb <- auto_crosstab_to_wb(crosstab)
+    ## 
 
 Advanced usage
 --------------
