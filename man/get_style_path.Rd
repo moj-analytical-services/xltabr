@@ -10,3 +10,6 @@ get_style_path()
 Returns path to current style sheet which is set in global options. To change this path see set_style_path.
 Default stylesheet used by package is \href{https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/styles.xlsx?raw=true}{here}
 }
+\examples{
+get_style_path()
+}

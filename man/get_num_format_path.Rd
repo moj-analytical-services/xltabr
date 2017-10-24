@@ -10,3 +10,6 @@ get_num_format_path()
 Returns path to number format definitions which is set in global options. To change this path see get_num_format_path.
 Default number formats used by package is \href{https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/number_format_defaults.csv?raw=true}{here}
 }
+\examples{
+get_num_format_path()
+}

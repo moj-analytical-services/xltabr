@@ -14,3 +14,7 @@ Set the path to the style sheet to be used by package. To get this path see get_
 Default cell formats used by xltabr is \href{https://github.com/moj-analytical-services/xltabr/blob/master/inst/extdata/styles.xlsx?raw=true}{here}.
 If no path is supplied the function sets the style sheet to default.
 }
+\examples{
+my_file_path <- system.file("extdata", "styles.xlsx", package = "xltabr")
+set_style_path(my_file_path)
+}

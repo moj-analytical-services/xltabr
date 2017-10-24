@@ -9,6 +9,8 @@
 #' @return A list which contains the dataframe
 #' @importFrom magrittr %>%
 #' @export
+#' @examples
+#' tab <- initialise()
 initialise <- function(wb = NULL, ws_name = NULL, topleft_row = 1, topleft_col = 1, insert_below_tab = NULL) {
 
   # Main object

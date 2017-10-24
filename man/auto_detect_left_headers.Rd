@@ -15,3 +15,9 @@ auto_detect_left_headers(tab, keyword = "(all)")
 \description{
 Populates tab$body$left_header_colnames automatically
 }
+\examples{
+crosstab <- read.csv(system.file("extdata", "example_crosstab.csv", package="xltabr"))
+tab <- initialise()
+tab <- add_body(tab, crosstab)
+tab <- auto_detect_left_headers(tab)
+}

@@ -303,6 +303,9 @@ update_row_heights <- function(tab, rows, xltabr_style) {
 #' @param excel_num_format an excel number format e.g. "#.00"
 #'
 #' @export
+#' @examples
+#' tab <- xltabr::initialise()
+#' tab <- style_catalogue_add_excel_num_format(tab, "currency2", "£ #,###")
 style_catalogue_add_excel_num_format <- function(tab, style_string, excel_num_format) {
 
   s4style <- openxlsx::createStyle(numFmt = excel_num_format)
@@ -327,6 +330,13 @@ style_catalogue_add_excel_num_format <- function(tab, style_string, excel_num_fo
 #' @param row_height the height of the row.  optional.
 #'
 #' @export
+#' @examples
+#' tab <- xltabr::initialise()
+#' s4style <- openxlsx::createStyle(fontName = "Courier",
+#'                                  fontColour = "#80a9ed",
+#'                                  fontSize = 20,
+#'                                  numFmt =  "£    #,###")
+#' tab <- style_catalogue_add_openxlsx_style(tab, "custom", s4style, row_height = 40)
 style_catalogue_add_openxlsx_style <- function(tab, style_string, openxlsx_style, row_height = NULL) {
 
   xltabr_style <- list()

@@ -1,6 +1,6 @@
 Package: xltabr
 Type: Package
-Title: Automatically Write Beautifully Formatted Cross Tabulations/Contingency Tables to Excel from R
+Title: Automatically Write Beautifully Formatted Cross Tabulations/Contingency Tables to Excel
 Version: 0.1.1
 Authors@R: c(
     person("Robin", "Linacre", , "robinlinacre@hotmail.com",

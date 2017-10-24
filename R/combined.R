@@ -40,7 +40,7 @@ extent_get_bottom_wb_row <- function(tab) {
 
   er <- extent_get_rows(tab)
 
-  if (length(er)==0) {
+  if (length(er) == 0) {
     return(tab$extent$topleft_row - 1)
   } else {
     return(max(er))
@@ -52,7 +52,7 @@ extent_get_rightmost_wb_col <- function(tab) {
 
   ec <- extent_get_cols(tab)
 
-  if (length(ec)==0) {
+  if (length(ec) == 0) {
     return(tab$extent$topleft_col - 1)
   } else {
     return(max(ec))
@@ -85,6 +85,10 @@ combine_all_styles <- function(tab) {
 #'
 #' @param tab a table object
 #' @export
+#' @examples
+#' crosstab <- read.csv(system.file("extdata", "example_crosstab.csv", package="xltabr"))
+#' tab <- auto_crosstab_to_tab(crosstab)
+#' tab <- write_data_and_styles_to_wb(tab)
 write_data_and_styles_to_wb <- function(tab) {
 
   tab <- write_all_elements_to_wb(tab)

@@ -16,3 +16,7 @@ style_catalogue_add_excel_num_format(tab, style_string, excel_num_format)
 \description{
 Manually add an Excel num format to the style catalogue
 }
+\examples{
+tab <- xltabr::initialise()
+tab <- style_catalogue_add_excel_num_format(tab, "currency2", "£ #,###")
+}

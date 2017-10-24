@@ -6,6 +6,11 @@
 #' @param tab a table object
 #' @param overrides a list containing any manual overrides where the user wants to provide their own style name
 #' @export
+#' @examples
+#' body_data <- readRDS(system.file("extdata", "test_number_types.rds", package="xltabr"))
+#' tab <- initialise()
+#' tab <- add_body(tab, body_data)
+#' tab <- auto_style_number_formatting(tab)
 auto_style_number_formatting <- function(tab, overrides = list()) {
 
   # Want to add number style to meta_col_ on body only -  tab$body$meta_col_
@@ -75,6 +80,11 @@ auto_style_body_rows <- function(tab, indent = FALSE, keyword = "(all)") {
 #' @param tab a tab object
 #' @param keyword The keyword to use to detect summarisation.  Uses '(all)' by default because this is what reshape2::dcast uses
 #' @export
+#' @examples
+#' crosstab <- read.csv(system.file("extdata", "example_crosstab.csv", package="xltabr"))
+#' tab <- initialise()
+#' tab <- add_body(tab, crosstab)
+#' tab <- auto_detect_left_headers(tab)
 auto_detect_left_headers <- function(tab, keyword = "(all)") {
   # Looking to write tab$body$left_header_colnames
 
@@ -179,6 +189,11 @@ get_inv_title_count_indent <- function(left_headers_df, keyword) {
 #' @param keyword The keyword to use to detect summarisation.  Uses '(all)' by default because this is what reshape2::dcast uses
 #' @param allcount_to_level_translate A named vector that provides a lookup - by default c("0" = NA, "1" = 5, "2" = 4, "3" = 3, "4" = 2, "5" = 1), which says that e.g. allcount 1 results in title_5 etc
 #' @export
+#' @examples
+#' crosstab <- read.csv(system.file("extdata", "example_crosstab.csv", package="xltabr"))
+#' tab <- initialise()
+#' tab <- add_body(tab, crosstab, left_header_colnames = c("drive", "age"))
+#' tab <- auto_detect_body_title_level(tab)
 auto_detect_body_title_level <- function(tab, keyword = "(all)", allcount_to_level_translate = NULL) {
 
   # Stop if no left header colnames provided
@@ -216,7 +231,11 @@ auto_detect_body_title_level <- function(tab, keyword = "(all)", allcount_to_lev
 #' @param left_header_colname The column name of left header column, which is now a single column.
 #'
 #' @export
-
+#' @examples
+#' crosstab <- read.csv(system.file("extdata", "example_crosstab.csv", package="xltabr"))
+#' tab <- initialise()
+#' tab <- add_body(tab, crosstab, left_header_colnames = c("drive", "age"))
+#' tab <- auto_style_indent(tab)
 auto_style_indent <- function(tab, keyword = "(all)", total_text = NULL, left_header_colname = " ") {
 
   if (is.null(total_text)) {

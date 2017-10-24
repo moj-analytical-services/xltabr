@@ -37,7 +37,7 @@ body_initialise <- function(tab) {
 #' # Note you could also use xltabr::auto_detect_left_headers
 #' colnames <- c("drive", "age")
 #' lh_styles <- "left_header"
-#' tab <- add_body(tab, crosstab, left_header_colnames = colnames)
+#' tab <- add_body(tab, crosstab, left_header_colnames = colnames, left_header_style_names = lh_styles)
 add_body <-
   function(tab,
            df,
@@ -274,6 +274,12 @@ body_write_rows <- function(tab) {
 #' @param body_header_col_widths Width of body header columns you wish to set in Excel column width units. If singular, value is applied to all body columns. If a vector, vector must have length equal to the number of body headers in workbook. Use special case "auto" for automatic sizing. Default (NULL) leaves column widths unchanged.
 #'
 #' @export
+#' @examples
+#' crosstab <- read.csv(system.file("extdata", "example_crosstab.csv", package="xltabr"))
+#' tab <- initialise()
+#' colnames <- c("drive", "age")
+#' tab <- add_body(tab, crosstab, left_header_colnames = colnames)
+#' tab <- set_wb_widths(tab, left_header_col_widths = "auto", body_header_col_widths = c(7,14,28))
 set_wb_widths <- function(tab, left_header_col_widths = NULL, body_header_col_widths = NULL){
 
   ws_name <- tab$misc$ws_name
