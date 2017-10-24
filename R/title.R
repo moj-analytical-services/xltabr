@@ -17,6 +17,12 @@ title_initialise <- function(tab) {
 #' @param title_text A character vector.  Each element is a row of the title
 #' @param title_style_names A character vector.  Each elemment is a style_name
 #' @export
+#' @examples
+#' crosstab <- read.csv(system.file("extdata", "example_crosstab.csv", package="xltabr"))
+#' tab <- initialise()
+#' title_text <- c("Main title on first row", "subtitle on second row")
+#' title_style_names <- c("title", "subtitle")
+#' tab <- add_title(tab, title_text, title_style_names)
 add_title <- function(tab, title_text, title_style_names = NULL) {
 
   if (is.null(title_style_names)) {

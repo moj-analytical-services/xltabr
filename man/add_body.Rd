@@ -27,3 +27,12 @@ add_body(tab, df, left_header_colnames = NULL, row_style_names = NULL,
 \description{
 Add a table body (a df) to the tab.
 }
+\examples{
+crosstab <- read.csv(system.file("extdata", "example_crosstab.csv", package="xltabr"))
+tab <- initialise()
+
+# Note you could also use xltabr::auto_detect_left_headers
+colnames <- c("drive", "age")
+lh_styles <- "left_header"
+tab <- add_body(tab, crosstab, left_header_colnames = colnames)
+}

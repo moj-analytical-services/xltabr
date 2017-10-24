@@ -24,6 +24,15 @@ top_headers_initialise <- function(tab) {
 #' @param col_style_names A character vector, with and element for each column of the top header.  Each element is a style name. Col styles in inherit from row_styles.
 #'
 #' @export
+#' @examples
+#' crosstab <- read.csv(system.file("extdata", "example_crosstab.csv", package="xltabr"))
+#' tab <- initialise()
+#'
+#' top_headers_row_1 <- c("", "", "Car type", "Car type", "Car type")
+#' top_headers_row_2 <- c("Drive", "Age", "Sedan", "Sport", "Supermini")
+#' top_headers <- list(top_headers_row_1, top_headers_row_2)
+#'
+#' tab <- add_top_headers(tab, top_headers)
 add_top_headers <- function(tab, top_headers, col_style_names="", row_style_names="body|top_header_1") {
 
   # Check types and assign the data to top_headers_list.  Each row is an element in the list
