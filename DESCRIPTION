@@ -1,7 +1,7 @@
 Package: xltabr
 Type: Package
 Title: Automatically Write Beautifully Formatted Cross Tabulations/Contingency Tables to Excel
-Version: 0.1.1
+Version: 0.1.2.9000
 Authors@R: c(
     person("Robin", "Linacre", , "robinlinacre@hotmail.com",
     role = c("aut", "cre")),
